@@ -1,0 +1,350 @@
+
+
+@font-face
+{   font-family: chiarostdb;
+    src: url(chiarostdb.otf) format('opentype');
+}
+
+body
+{   background-color: #000044;
+    color: lightblue;
+    font-family: chiarostdb;
+}
+
+div
+{   display: inline;
+}
+
+.clickables
+{   color: lightskyblue;
+}
+
+.clickables:hover
+{   color: lavender;
+    cursor: pointer;
+}
+
+.clicky
+{   color: lightskyblue;
+    cursor: url(SwordOfSeals.cur),pointer;
+}
+
+.clicky:hover
+{   color: deepskyblue;
+}
+
+.noselect
+{   /* prevent text selection */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.warning
+{   color: crimson;
+}
+
+.strike
+{   text-decoration:line-through;
+}
+
+#io_area textarea
+{   display: block;
+    background-color: navy;
+    color: cyan;
+}
+
+#io_area .no
+{   cursor:not-allowed;
+    text-decoration:line-through;
+}
+
+#alter_container
+{   display:block;
+}
+
+#alter
+{   background-color: navy;
+    display:block;
+    width:90%;
+    margin: 10px;
+    border-style: solid;
+    border-width: 1px;
+    color: #555555;
+    padding: 10px;
+}
+#alter .portrait
+{   max-height: 100px;
+    max-width: 100px;
+}
+#alter_inner
+{   /* height: 100px; */
+    display: inline-block;
+    vertical-align: top;
+    color: aliceblue;
+}
+    #alter .inner
+    {   padding-left: 5px;
+        padding-right: 5px;
+        display: inline-block;
+        vertical-align: top;
+        line-height: 1.4;
+    }
+
+
+
+
+.stars
+{   font-size: small;
+}
+
+#adder_container
+{   display: block;
+}
+
+#adder
+{   display: inline-block;
+    margin-left: 1%;
+    margin: 10px;
+    border-style: solid;
+    border-width: 1px;
+    color: #555555;
+    padding: 10px;
+
+}
+#adder .dropdown
+{   display: inline-block;
+    height: 27px;
+    vertical-align: middle;
+}
+#adder .message
+{   margin: 10px;
+    color:aliceblue;
+    vertical-align:middle;
+}
+
+#hidden_div
+{   display:none;
+}
+
+
+.table_wrapper
+{   background-color: hotpink; /* should never be visible */
+    display: block;
+    width:99%;
+    margin:auto;
+    border-style: solid;
+    border-width: 1px;
+    color: #555555;
+}
+
+.row
+{   background-color: #555555;
+    display: block; /* because the rows are blocks */
+    height: 21px; /* 1.3em; */
+    line-height: 1.2; /* apparently the text wont align without this */
+ /* margin:auto; */ /* to align it to the center */
+ /* border-style: solid;
+    border-width: 0px;
+    box-sizing: border-box; */
+ /* color: #555555; */ /* belongs to the table */
+}
+
+.click_item.name
+{   cursor: url(SwordOfSeals.cur),pointer;
+}
+
+.click_item
+{   cursor: pointer;
+}
+
+.row .item
+{   display:inline-block; /* so it acts like blocks because it is blocks */
+    vertical-align:top; /* get the blocks lined up with each other */
+    text-align: center;
+ /* color: #555555; */ /* this colour belongs to the row */
+    background-color: hotpink; /* error colour if no colour found */
+ /* margin:0; */
+ /* padding:0; */
+    border-style: solid;
+    border-width: 1px; /* 1px 1px 1px 1px; */ /* ok we get it its 1px */
+    box-sizing: border-box; /* to make sure it includes the border in sizing */
+ /* white-space: nowrap; */ /* i cant figure out why this is here so it goes */
+    overflow:hidden; /* dont spill out of the div */
+    height:100%; /* fill the row (21px) */
+}
+
+.item img
+{   height: 1.1em;
+}
+
+.row .name.nosummon, .exclusive
+{ font-style:italic; }
+
+.row .name.nosummon .subname
+{ font-style:normal; }
+
+/*
+display_properties =
+[   'name','hp', 'atk', 'spd', 'def', 'res', 'weapon_type', 'colour_type', 'move_type',
+    'weapon', 'assist', 'special', 'passive_a', 'passive_b', 'passive_c'  ];
+*/
+
+.row .subdiv{ display:inline-block; }
+
+.row .half.subdiv  { width: 50% }
+
+#friends_table .name.subdiv  { width:  14% }
+#allies_table  .name.subdiv  { width:  20% }
+.row .name   { width:100% }
+    .row:nth-child(even) .name  { background-color: #cccccc; }
+    .row:nth-child(odd)  .name  { background-color: #eeeeee; }
+    .row .name.title { background-color: #aaaaaa; }
+
+#friends_table .info.subdiv  { width: 34% }
+#allies_table  .info.subdiv  { width: 20% }
+    #friends_table .obtained { width:14% }
+    #allies_table  .obtained { display: none }
+        .row:nth-child(even) .obtained  { background-color: #aaffaa; }
+        .row:nth-child(odd)  .obtained  { background-color: #ccffcc; }
+        .row .obtained.title { background-color: #77ff77; }
+    #friends_table .favourite { width:14% }
+    #allies_table  .favourite { display: none }
+        .row:nth-child(even) .favourite  { background-color: #ffaaff; }
+        .row:nth-child(odd)  .favourite  { background-color: #ffccff; }
+        .row .favourite.title { background-color: #ff77ff; }
+    #friends_table .fruit { width:14% }
+    #allies_table  .fruit { display: none }
+        .row:nth-child(even) .fruit  { background-color: #aaffff; }
+        .row:nth-child(odd)  .fruit  { background-color: #ccffff; }
+        .row .fruit.title { background-color: #77ffff; }
+    #friends_table .origin { width:29% }
+    #allies_table  .origin { width:50% }
+        .row:nth-child(even) .origin  { background-color: #aaaaff; }
+        .row:nth-child(odd)  .origin  { background-color: #ccccff; }
+        .row .origin.title { background-color: #7777ff; }
+    #friends_table .rarity { width:29%; font-size: small; line-height:1.5 }
+    #allies_table  .rarity { width:50%; font-size: small; line-height:1.5 }
+        .row:nth-child(even) .rarity  { background-color: #ffaaaa; }
+        .row:nth-child(odd)  .rarity  { background-color: #ffcccc; }
+        .row .rarity.title { background-color: #ff7777; }
+
+#friends_table .type.subdiv  { width: 12% } /* 'weapon_type', 'colour_type', 'move_type', */
+#allies_table  .type.subdiv  { width: 16% }
+    .weapon_type   { width:34% }
+        .weapon_type.title { background-color: #cccccc; }
+        .weapon_type.bow { background-color: #dddddd; }
+        .weapon_type.dagger { background-color: #cccccc; }
+        .weapon_type.staff { background-color: #eeeeee; }
+         /* .weapon_type.axe { background-color: #ccffcc; } */
+        .row:nth-child(even) .weapon_type.axe { background-color: #aaffaa; }
+        .row:nth-child(odd)  .weapon_type.axe { background-color: #ccffcc; }
+         /* .weapon_type.dragon { background-color: #ccffff; } */
+        .row:nth-child(even) .weapon_type.dragon { background-color: #aaffff; }
+        .row:nth-child(odd)  .weapon_type.dragon { background-color: #ccffff; }
+            /* .weapon_type.breath { background-color: #ccffff; } */
+         /* .weapon_type.lance { background-color: #ccccff; } */
+        .row:nth-child(even) .weapon_type.lance { background-color: #aaaaff; }
+        .row:nth-child(odd)  .weapon_type.lance { background-color: #ccccff; }
+        /* .weapon_type.sword { background-color: #ffcccc; } */
+        .row:nth-child(even) .weapon_type.sword { background-color: #ffaaaa; }
+        .row:nth-child(odd)  .weapon_type.sword { background-color: #ffcccc; }
+        /* .weapon_type.tome { background-color: #ffaaff; } */
+        .row:nth-child(even) .weapon_type.tome { background-color: #ffaaff; }
+        .row:nth-child(odd)  .weapon_type.tome { background-color: #ffccff; }
+         /* .weapon_type.tome_blue { background-color: #ffaaff; }
+            .weapon_type.tome_green { background-color: #ffaaff; }
+            .weapon_type.tome_red { background-color: #ffaaff; } */
+        .row:nth-child(even) .weapon_type.heart { background-color: #ffaaff; }
+        .row:nth-child(odd)  .weapon_type.heart { background-color: #ffccff; }
+    .colour_type   { width:33% }
+        .colour_type.title { background-color: #dddddd; }
+        /* .colour_type.blue { background-color: #ccccff; } */
+        .row:nth-child(even) .colour_type.blue { background-color: #aaaaff; }
+        .row:nth-child(odd)  .colour_type.blue { background-color: #ccccff; }
+        /* .colour_type.colourless { background-color: #dddddd; } */
+        .row:nth-child(even) .colour_type.grey { background-color: #cccccc; }
+        .row:nth-child(odd)  .colour_type.grey { background-color: #eeeeee; }
+        .row:nth-child(even) .colour_type.colourless { background-color: #cccccc; }
+        .row:nth-child(odd)  .colour_type.colourless { background-color: #eeeeee; }
+        /* .colour_type.green { background-color: #ccffcc; } */
+        .row:nth-child(even) .colour_type.green { background-color: #aaffaa; }
+        .row:nth-child(odd)  .colour_type.green { background-color: #ccffcc; }
+        /* .colour_type.red { background-color: #ffcccc; } */
+        .row:nth-child(even) .colour_type.red { background-color: #ffaaaa; }
+        .row:nth-child(odd)  .colour_type.red { background-color: #ffcccc; }
+    .move_type   { width:33% }
+        .move_type.title { background-color: #eeeeee; }
+        /* .move_type.armored { background-color: #ffaaff; } */
+        .row:nth-child(even) .move_type.armor { background-color: #ffaaff; }
+        .row:nth-child(odd)  .move_type.armor { background-color: #ffccff; }
+        /* .move_type.cavalry { background-color: #ffcc77; } */
+        .row:nth-child(even) .move_type.cavalry { background-color: #ffca44; }
+        .row:nth-child(odd)  .move_type.cavalry { background-color: #ffea44; }
+        /* .move_type.flyer { background-color: #ccffff; } */
+        .row:nth-child(even) .move_type.flyer { background-color: #aaffff; }
+        .row:nth-child(odd)  .move_type.flyer { background-color: #ccffff; }
+        .row:nth-child(even) .move_type.flier { background-color: #aaffff; }
+        .row:nth-child(odd)  .move_type.flier { background-color: #ccffff; }
+        /* .move_type.infantry { background-color: #cccccc; } */
+        .row:nth-child(even) .move_type.infantry { background-color: #cccccc; }
+        .row:nth-child(odd)  .move_type.infantry { background-color: #eeeeee; }
+
+#friends_table .stat.subdiv  { width: 40% }
+#allies_table  .stat.subdiv  { width: 44% }
+    .nature { width:25% }
+        .row:nth-child(even) .nature  { background-color: #cccccc; }
+        .row:nth-child(odd)  .nature  { background-color: #eeeeee; }
+        .row .nature.title { background-color: #aaaaaa; }
+    .rating { width:15% }
+        .row:nth-child(even) .rating  { background-color: #aaffaa; }
+        .row:nth-child(odd)  .rating  { background-color: #ccffcc; }
+        .row .rating.title { background-color: #77ff77; }
+    .hp { width:12% }
+        .row:nth-child(even) .hp  { background-color: #ffaaff; }
+        .row:nth-child(odd)  .hp  { background-color: #ffccff; }
+        .row .hp.title { background-color: #ff77ff; }
+    .atk { width:12% }
+        .row:nth-child(even) .atk  { background-color: #ffca44; }
+        .row:nth-child(odd)  .atk  { background-color: #ffea44; }
+        .row .atk.title { background-color: #ffaa44; }
+    .spd { width:12% }
+        .row:nth-child(even) .spd  { background-color: #aaffff; }
+        .row:nth-child(odd)  .spd  { background-color: #ccffff; }
+        .row .spd.title { background-color: #77ffff; }
+    .def { width:12% }
+        .row:nth-child(even) .def  { background-color: #ffaaaa; }
+        .row:nth-child(odd)  .def  { background-color: #ffcccc; }
+        .row .def.title { background-color: #ff7777; }
+    .res { width:12% }
+        .row:nth-child(even) .res  { background-color: #aaaaff; }
+        .row:nth-child(odd)  .res  { background-color: #ccccff; }
+        .row .res.title { background-color: #7777ff; }
+
+.row .skill.subdiv { width: 50% }
+    .weapon { width:18% }
+        .row:nth-child(even) .weapon { background-color: #ffca44; }
+        .row:nth-child(odd)  .weapon { background-color: #ffea44; }
+        .row .weapon.title { background-color: #ffa744; }
+    .assist { width:17% }
+        .row:nth-child(even) .assist { background-color: #aaffff; }
+        .row:nth-child(odd) .assist { background-color: #ccffff; }
+        .row .assist.title { background-color: #77ffff; }
+    .special { width:17% }
+        .row:nth-child(even) .special { background-color: #ffaaff; }
+        .row:nth-child(odd)  .special { background-color: #ffccff; }
+        .row .special.title { background-color: #ff77ff; }
+    .passive_a { width:16% }
+        .row:nth-child(even) .passive_a { background-color: #ffaaaa; }
+        .row:nth-child(odd)  .passive_a { background-color: #ffcccc; }
+        .row .passive_a.title { background-color: #ff7777; }
+    .passive_b { width:16% }
+        .row:nth-child(even) .passive_b { background-color: #aaaaff; }
+        .row:nth-child(odd)  .passive_b { background-color: #ccccff; }
+        .row .passive_b.title { background-color: #7777ff; }
+    .passive_c { width:16% }
+        .row:nth-child(even) .passive_c { background-color: #aaffaa; }
+        .row:nth-child(odd)  .passive_c { background-color: #ccffcc; }
+        .row .passive_c.title { background-color: #77ff77; }

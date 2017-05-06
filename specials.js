@@ -1,0 +1,526 @@
+
+dat.specials =
+{
+    aegis :
+    {   tag : 'aegis',
+        name : "Aegis",
+        effects : { receive : { cloak: -0.5, range:2 } },
+        text : "Reduces damage inflicted by attacks from foes 2 spaces away by 50%.",
+        cooldown : 3,
+        sp: 200,
+        prerequisite : 'holy_vestments',
+        inherit : 'melee',
+    },
+
+    aether :
+    {   tag : 'aether',
+        name : "Aether",
+        effects : { strike : { moon: 0.5, sun: 0.5 } },
+        text : "Resolve combat as if foe suffered Def/Res-50%. Unit recovers HP=half damage dealt.",
+        cooldown : 5,
+        sp: 500,
+        prerequisites : ['luna','sol'],
+        inherit : 'no_staff',
+    },
+
+    astra :
+    {   tag : 'astra',
+        name : "Astra",
+        effects : { strike : { star:1.5 } },
+        text : "Grants +150% to damage dealt.",
+        cooldown : 5,
+        sp: 200,
+        prerequisite : 'night_sky',
+        inherit : 'no_staff',
+    },
+
+    blazing_flame :
+    {   tag : 'blazing_flame',
+        name : "Blazing Flame",
+        effects : { before : { flame: 1.5 } },
+        text : "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 300,
+        prerequisite : 'rising_flame',
+        inherit : 'no_staff',
+    },
+
+    blazing_light :
+    {   tag : 'blazing_light',
+        name : "Blazing Light",
+        effects : { before : { light: 1.5 } },
+        text : "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 300,
+        prerequisite : 'rising_light',
+        inherit : 'no_staff',
+    },
+
+    blazing_thunder :
+    {   tag : 'blazing_thunder',
+        name : "Blazing Thunder",
+        effects : { before : { thunder: 1.5 } },
+        text : "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 300,
+        prerequisite : 'rising_thunder',
+        inherit : 'no_staff',
+    },
+
+    blazing_wind :
+    {   tag : 'blazing_wind',
+        name : "Blazing Wind",
+        effects : { before : { wind: 1.5 } },
+        text : "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 300,
+        prerequisite : 'rising_wind',
+        inherit : 'no_staff',
+    },
+
+    bonfire :
+    {   tag : 'bonfire',
+        name : "Bonfire",
+        effects : { strike : { fire:0.5 } },
+        text : "Boosts damage dealt by 50% of unit's Def.",
+        cooldown : 3,
+        sp: 200,
+        inherit : 'no_staff',
+    },
+
+    buckler :
+    {   tag : 'buckler',
+        name : "Buckler",
+        effects : { receive : { shield: -0.3, range:1 } },
+        text : "Reduces damage inflicted by attacks from adjacent foes by 30%.",
+        cooldown : 3,
+        sp: 100,
+        prerequisite : null,
+        inherit : 'melee',
+    },
+
+    chilling_wind :
+    {   tag : 'chilling_wind',
+        name : "Chilling Wind",
+        effects : { strike : { ice:0.5 } },
+        text : "Boosts damage dealt by 50% of unit's Res.",
+        cooldown : 4,
+        sp: 100,
+        inherit : 'no_staff',
+    },
+
+    daylight :
+    {   tag : 'daylight',
+        name : "Daylight",
+        effects : { strike : { sun: 0.3 } },
+        text : "Heal 30% of damage dealt.",
+        cooldown : 4,
+        sp: 100,
+        prerequisite : null,
+        inherit : 'no_staff',
+    },
+
+    draconic_aura :
+    {   tag : 'draconic_aura',
+        name : "Draconic Aura",
+        effects : { strike : { draconic:0.3 } },
+        text : "Grants +30% to Atk.",
+        cooldown : 3,
+        sp: 200,
+        prerequisite : 'dragon_gaze',
+        inherit : 'no_staff',
+    },
+
+    dragon_fang :
+    {   tag : 'dragon_fang',
+        name : "Dragon Fang",
+        effects : { strike : { draconic:0.5 } },
+        text : "Grants +30% to Atk.",
+        cooldown : 4,
+        sp: 200,
+        prerequisite : 'dragon_gaze',
+        inherit : 'no_staff',
+    },
+
+    dragon_gaze :
+    {   tag : 'dragon_gaze',
+        name : "Dragon Gaze",
+        effects : { strike : { draconic:0.3 } },
+        text : "Grants +30% to Atk.",
+        cooldown : 4,
+        sp: 100,
+        inherit : 'no_staff',
+    },
+
+    escutcheon :
+    {   tag : 'escutcheon',
+        name : "Escutcheon",
+        effects : { receive : { shield: -0.3, range:1 } },
+        text : "Reduces damage inflicted by attacks from adjacent foes by 30%.",
+        cooldown : 2,
+        sp: 200,
+        prerequisite : 'buckler',
+        inherit : 'melee',
+    },
+
+    galeforce :
+    {   tag : 'galeforce',
+        name : "Galeforce",
+        effects : { initiate: 'extra_turn' },
+        text : "If this unit initiates an attack, it can take another action after combat. (Once per turn only.)",
+        cooldown : 5,
+        sp: 500,
+        prerequisite : 'astra',
+        inherit : 'melee',
+    },
+
+    glacies :
+    {   tag : 'glacies',
+        name : "Glacies",
+        effects : { strike : { ice:0.8 } },
+        text : "Boosts damage dealt by 80% of unit's Res.",
+        cooldown : 4,
+        sp: 200,
+        prerequisite : 'chilling_wind',
+        inherit : 'no_staff',
+    },
+
+    glimmer :
+    {   tag : 'glimmer',
+        name : "Glimmer",
+        effects : { strike : { star:0.5 } },
+        text : "Grants +150% to damage dealt.",
+        cooldown : 3,
+        sp: 200,
+        prerequisite : 'night_sky',
+        inherit : 'no_staff',
+    },
+
+    glowing_ember :
+    {   tag : 'glowing_ember',
+        name : "Glowing Ember",
+        effects : { strike : { fire:0.5 } },
+        text : "Boosts damage dealt by 50% of unit's Def.",
+        cooldown : 4,
+        sp: 100,
+        inherit : 'no_staff',
+    },
+
+    growing_flame :
+    {   tag : 'growing_flame',
+        name : "Growing Flame",
+        effects : { before : { flame: 1.5 } },
+        text : "Before combat this unit initiates, foes in a wide area around target take damage equal to (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 300,
+        prerequisite : 'rising_flame',
+        inherit : 'no_staff',
+    },
+
+    growing_light :
+    {   tag : 'growing_light',
+        name : "Growing Light",
+        effects : { before : { light: 1.5 } },
+        text : "Before combat this unit initiates, foes in a wide area around target take damage equal to (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 300,
+        prerequisite : 'rising_light',
+        inherit : 'no_staff',
+    },
+
+    growing_thunder :
+    {   tag : 'growing_thunder',
+        name : "Growing Thunder",
+        effects : { before : { thunder: 1.5 } },
+        text : "Before combat this unit initiates, foes in a wide area around target take damage equal to (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 300,
+        prerequisite : 'rising_thunder',
+        inherit : 'no_staff',
+    },
+
+    growing_wind :
+    {   tag : 'growing_wind',
+        name : "Growing Wind",
+        effects : { before : { wind: 1.5 } },
+        text : "Before combat this unit initiates, foes in a wide area around target take damage equal to (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 300,
+        prerequisite : 'rising_wind',
+        inherit : 'no_staff',
+    },
+
+    heavenly_light :
+    {   tag : 'heavenly_light',
+        name : "Heavenly Light",
+        effects : { staff : { heal_allies: 10 } },
+        text : "When healing an ally with a staff, all other allies recover 10 HP.",
+        cooldown : 2,
+        sp: 150,
+        prerequisite : 'imbue',
+        inherit : 'staff',
+    },
+
+    holy_vestments :
+    {   tag : 'holy_vestments',
+        name : "Holy Vestments",
+        effects : { receive : { cloak: -0.3, range:2 } },
+        text : "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.",
+        cooldown : 3,
+        sp : 100,
+        inherit: 'melee'
+    },
+
+    iceberg :
+    {   tag : 'iceberg',
+        name : "Iceberg",
+        effects : { strike : { ice:0.5 } },
+        text : "Boosts damage dealt by 80% of unit's Res.",
+        cooldown : 3,
+        sp: 200,
+        prerequisite : 'chilling_wind',
+        inherit : 'no_staff',
+    },
+
+    ignis :
+    {   tag : 'ignis',
+        name : "Ignis",
+        effects : { strike : { fire:0.8 } },
+        text : "Boosts damage dealt by 80% of unit's Def.",
+        cooldown : 4,
+        sp: 200,
+        prerequisite : 'glowing_ember',
+        inherit : 'no_staff',
+    },
+
+    imbue :
+    {   tag : 'imbue',
+        name : "Imbue",
+        effects : { staff : { heal_ally: +10 } },
+        text : "When healing an ally with a staff, increases recovered HP by 10.",
+        cooldown : 1,
+        sp: 50,
+        prerequisite : 'imbue',
+        inherit : 'staff',
+    },
+
+    kindled_fire_balm :
+    {   tag : 'kindled_fire_balm',
+        name : "Kindled-Fire Balm",
+        effects : { staff : { allies: 'fire', atk: +4 } },
+        text : "When healing an ally with a staff, grants all allies Atk+4 for 1 turn.",
+        cooldown : 1,
+        sp: 150,
+        prerequisite : 'imbue',
+        inherit : 'staff',
+    },
+
+    luna :
+    {   tag : 'luna',
+        name : "Luna",
+        effects : { strike : { moon: 0.5 } },
+        text : "Resolve combat as if foe suffered Def/Res-50%.",
+        cooldown : 3,
+        sp: 200,
+        prerequisite : 'new_moon',
+        inherit : 'no_staff',
+    },
+
+    miracle :
+    {   tag : 'miracle',
+        name : "Miracle",
+        effects : { receive : { safe: 1 } },
+        text : "If HP > 1, survive a lethal attack with 1 HP remaining.",
+        cooldown : 5,
+        sp : 200,
+        prerequisite: 'imbue',
+        inherit: 'all'
+    },
+
+    moonbow :
+    {   tag : 'moonbow',
+        name : "Moonbow",
+        effects : { strike : { moon: 0.3 } },
+        text : "Resolve combat as if foe suffered Def/Res-30%.",
+        cooldown : 2,
+        sp: 200,
+        prerequisite : 'new_moon',
+        inherit : 'no_staff',
+    },
+
+    new_moon :
+    {   tag : 'new_moon',
+        name : "New Moon",
+        effects : { strike : { moon: 0.3 } },
+        text : "Resolve combat as if foe suffered Def/Res-30%.",
+        cooldown : 3,
+        sp: 100,
+        prerequisite : null,
+        inherit : 'no_staff',
+    },
+
+    night_sky :
+    {   tag : 'night_sky',
+        name : "Night Sky",
+        effects : { strike : { moon: 0.5 } },
+        text : "Grants +50% to damage dealt.",
+        cooldown : 4,
+        sp: 100,
+        inherit : 'no_staff',
+    },
+
+    noontime :
+    {   tag : 'noontime',
+        name : "Noontime",
+        effects : { strike : { sun: 0.3 } },
+        text : "Heal 30% of damage dealt.",
+        cooldown : 3,
+        sp: 200,
+        prerequisite : 'daylight',
+        inherit : 'no_staff',
+    },
+
+    pavise :
+    {   tag : 'pavise',
+        name : "Pavise",
+        effects : { receive : { shield: -0.5, range:1 } },
+        text : "Reduces damage inflicted by attacks from adjacent foes by 50%.",
+        cooldown : 3,
+        sp: 200,
+        prerequisite : 'buckler',
+        inherit : 'melee',
+    },
+
+    reprisal :
+    {   tag : 'reprisal',
+        name : "Reprisal",
+        effects : { strike : { ouch: 0.3 } },
+        text : "Grants bonus to damage dealt equal to 30% of damage suffered.",
+        cooldown : 2,
+        sp: 200,
+        prerequisite: 'retribution',
+        inherit : 'no_staff',
+    },
+
+    retribution :
+    {   tag : 'retribution',
+        name : "Retribution",
+        effects : { strike : { ouch: 0.3 } },
+        text : "Grants bonus to damage dealt equal to 30% of damage suffered.",
+        cooldown : 3,
+        sp: 100,
+        prerequisite: null,
+        inherit : 'no_staff',
+    },
+
+    rising_flame :
+    {   tag : 'rising_flame',
+        name : "Rising Flame",
+        effects : { before : { flame: 1 } },
+        text : "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 150,
+        prerequisite : null,
+        inherit : 'no_staff',
+    },
+
+    rising_light :
+    {   tag : 'rising_light',
+        name : "Rising Light",
+        effects : { before : { light: 1 } },
+        text : "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 150,
+        prerequisite : null,
+        inherit : 'no_staff',
+    },
+
+    rising_thunder :
+    {   tag : 'rising_thunder',
+        name : "Rising Thunder",
+        effects : { before : { thunder: 1 } },
+        text : "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 150,
+        prerequisite : null,
+        inherit : 'no_staff',
+    },
+
+    rising_wind :
+    {   tag : 'rising_wind',
+        name : "Rising Wind",
+        effects : { before : { wind: 1 } },
+        text : "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).",
+        cooldown : 5,
+        sp: 150,
+        prerequisite : null,
+        inherit : 'no_staff',
+    },
+
+    sacred_cowl :
+    {   tag : 'sacred_cowl',
+        name : "Sacred Cowl",
+        effects : { receive : { cloak: -0.3, range:2 } },
+        text : "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.",
+        cooldown : 2,
+        sp : 200,
+        prerequisite: 'holy_vestments',
+        inherit: 'melee'
+    },
+
+    sol :
+    {   tag : 'sol',
+        name : "Sol",
+        effects : { strike : { sun: 0.5 } },
+        text : "Heal 50% of damage dealt.",
+        cooldown : 4,
+        sp: 200,
+        prerequisite : 'daylight',
+        inherit : 'no_staff',
+    },
+
+    solid_earth_balm :
+    {   tag : 'solid_earth_balm',
+        name : "Solid-Earth Balm",
+        effects : { staff : { allies: 'earth', def: +4 } },
+        text : "When healing an ally with a staff, grants all allies Def+4 for 1 turn.",
+        cooldown : 1,
+        sp: 150,
+        prerequisite : 'imbue',
+        inherit : 'staff',
+    },
+
+    still_water_balm :
+    {   tag : 'still_water_balm',
+        name : "Still-Water Balm",
+        effects : { staff : { allies: 'water', res: +4 } },
+        text : "When healing an ally with a staff, grants all allies Res+4 for 1 turn.",
+        cooldown : 1,
+        sp: 150,
+        prerequisite : 'imbue',
+        inherit : 'staff',
+    },
+
+    swift_winds_balm :
+    {   tag : 'swift_winds_balm',
+        name : "Swift-Winds Balm",
+        effects : { staff : { allies: 'winds', spd: +4 } },
+        text : "When healing an ally with a staff, grants all allies Spd+4 for 1 turn.",
+        cooldown : 1,
+        sp: 150,
+        prerequisite : 'imbue',
+        inherit : 'staff',
+    },
+
+    vengeance :
+    {   tag : 'vengeance',
+        name : "Vengeance",
+        effects : { strike : { ouch: 0.5 } },
+        text : "Grants bonus to damage dealt equal to 50% of damage suffered.",
+        cooldown : 3,
+        sp: 200,
+        prerequisite: 'retribution',
+        inherit : 'no_staff',
+    }
+
+};
