@@ -44,8 +44,6 @@ let queueue = new createjs.LoadQueue();
          // console.log("file load event .. ", event.item );
         }
 
-queueue.loadFile({  id:"test_file",  src:"test.json"  });
-
 queueue.loadManifest
 (   [   'stringy.js', 'divvy.js', 'checky.js', 'io_area.js',
         'allies.js','chars.js','weapons.js','assists.js','specials.js','passives.js',
