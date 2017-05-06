@@ -184,7 +184,7 @@ let io_area =
 
         attach_oauthbuttons : function()
         {
-            googly.signin.innerText = 'connect';
+            googly.signin.innerText = 'connect (authorization required to read/write to google sheets)';
             googly.signin.className = 'clickables';
             this.oauthbutton.append(googly.signin);
 
