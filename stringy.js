@@ -8,7 +8,7 @@ let stringy =
         return false;
     },
 
-    img_feh : 'feh_owl.jpg',
+    img_feh : 'images/feh_owl.jpg',
     img_type_path : 'images/type/',
     img_portrait_path : 'images/portrait/',
     img_portrait_prefix : 'icon_portrait_',

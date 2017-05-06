@@ -2,7 +2,7 @@
 
 @font-face
 {   font-family: chiarostdb;
-    src: url(chiarostdb.otf) format('opentype');
+    src: url(assets/chiarostdb.otf) format('opentype');
 }
 
 body
@@ -26,7 +26,7 @@ div
 
 .clicky
 {   color: lightskyblue;
-    cursor: url(SwordOfSeals.cur),pointer;
+    cursor: url(assets/SwordOfSeals.cur),pointer;
 }
 
 .clicky:hover
