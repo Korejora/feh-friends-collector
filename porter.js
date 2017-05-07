@@ -145,7 +145,7 @@ let porter =
             this.textarea.oninput = function(){ porter.googly.handle_change(); };
             this.div.appendChild(this.textarea);
 
-            this.set_text(localStorage.googlytext);
+            if(localStorage.googlytext) { this.set_text(localStorage.googlytext); }
 
             this.div.appendChild(document.createTextNode(" 〜 "));
 
