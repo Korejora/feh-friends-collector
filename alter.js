@@ -20,6 +20,8 @@ let alter =
         // inner section to contain other (than portrait) contents
         alter.inner = new divvy({parent:alter.div, classname:'inner', id:'alter_inner'});
 
+        alter.note = new divvy ({parent:alter.inner.div, classname:'inner', id:'alter_note'});
+
         alter.left = new divvy({parent:alter.inner.div, classname:'inner'});
 
         // name display
@@ -28,8 +30,11 @@ let alter =
         alter.left.div.appendChild(document.createElement('br'));
 
         // rarity display & dropdown selector
-        alter.rarity.setup();
+        alter.rarity_setup();
         alter.left.append(alter.rarity.div);
+        alter.left.add_linebreak();
+        alter.nature_setup();
+        alter.left.append(alter.nature.div);
 
 
         alter.right = new divvy({parent:alter.inner.div, classname:'inner',});
@@ -60,11 +65,7 @@ let alter =
 
     rebuild : function() // if the ally changes
     {
-        this.portrait.src =
-            stringy.img_portrait_path
-          + stringy.img_portrait_prefix
-          + this.ally.tag
-          + '.png';
+        this.portrait.src = stringy.find_img_path('portrait',this.ally.tag);
 
         this.name.reset_to(this.ally.return_name());
 
@@ -73,8 +74,11 @@ let alter =
 
     refresh : function() // if something changes but the ally doesn't need to be redone
     {
-        this.rarity.display.innerText = stringy.rar_num_to_star(this.ally.rarity);
-        this.rarity.edit.refresh();
+        if (this.ally == allies.feh) { return; }
+        this.note.clear(); this.note.hide();
+        this.left.show(); this.right.show();
+        this.rarity.refresh();
+        this.nature.refresh();
         this.inherit.rebuild();
     },
 
@@ -82,245 +86,356 @@ let alter =
     reset : function() // if an ally was not found
     {   this.ally = allies.feh;
         this.portrait.src = stringy.img_feh;
-        this.name.reset_to(" No friend selected 〜 ");
+        this.note.reset_to(" No friend selected 〜 "); this.note.show();
+        this.left.hide(); this.right.hide();
     },
 
 
-
-    rarity :
+    dropprop : class dropprop extends divvy
     {
-        setup : function()
-        {
+        constructor()
+        {   super({parent:alter.div, className:'basic'});
             let that = this;
-            this.div = document.createElement('div');
-            this.div.id = 'RARITY_DIV_TEST';
-            this.div.className += ' rarity ';
 
-                this.display = new divvy({parent:this.div,classname:' clicky noselect '});
-                this.display.div.onmousedown = function() { that.edit.toggle(); };
+            this.display = new divvy({parent:this.div, classname:'clicky noselect'});
+            this.display.div.onmousedown = function() { that.handle_display_click(); };
 
-                // it's not a divvy cause it has preexisting stuff
-                this.edit.div = document.createElement('div');
-                this.edit.div.style.display = 'none';
-                this.edit.div.appendChild(document.createTextNode(" 〜 "));
-                this.div.appendChild(this.edit.div);
-                this.edit.dropdown = document.createElement('select');
-                this.edit.dropdown.className = ' dropdown ';
-                for (let i=5; i>=1; i--)
-                {   let option = document.createElement('option');
-                    option.innerText = stringy.rar_num_to_star(i);
-                    this.edit.dropdown.appendChild(option);
-                }
-                this.edit.dropdown.onchange = function() { that.edit.update(); };
-                this.edit.div.appendChild(this.edit.dropdown);
-        },
+            this.edit = new divvy({parent:this.div});
+            this.edit.add_linebreak();
+            this.edit.add_squiggly();
+            this.edit.hide();
+            this.edit.dropdown = document.createElement('select');
+            this.edit.dropdown.className = ' dropdown ';
+            this.edit.dropdown.onchange = function() { that.resolve_input(); };
+            this.edit.append(this.edit.dropdown);
 
-        edit :
-        {
-            toggle : function()
-            {   if (!this.active) { this.enable(); }
-                else { this.disable(); }
-            },
-            enable : function ()
-            {   this.div.style.display = '';
-                this.dropdown.value = alter.rarity.display.div.innerText;
-                this.active = true;
-            },
-            disable : function()
-            {   this.div.style.display = 'none';
-                this.active = false;
-            },
-            update : function()
-            {   if (this.active)
-                {   alter.ally.set_rarity(stringy.interpret_rarity(this.dropdown.value));
-                    refreshment();
-                }
-            },
-            refresh : function()
-            {   for ( let i=5; i>0; i-- )
-                {   let drop = this.dropdown;
-                    let opt = drop.options[5-i];
-                    let minrar = alter.ally.minimum_rarity;
-
-                    opt.disabled = false;
-                    if ( i < minrar )
-                    {   opt.disabled = true;
-                        if ( drop.value == opt.value )
-                        {   drop.value = drop.options[5-minrar].value;
-                        }
-                    }
-                }
-
-                this.disable();
-            }
         }
-    },
 
-    inherit :
-    {
-        setup : function()
-        {
-
-            this.clicky = new divvy({innertext:"learnable skills", classname:'clicky'});
-            let that = this;
-            this.clicky.div.onmousedown = function() { that.display.toggle(); };
-
-            this.display = new divvy({parent:alter.right.lower.div,classname:'inner'});
-            this.display.hide();
-
-            this.note = new divvy({parent:this.display.div});
-
-            this.display.options = new divvy({parent:this.display.div});
-            this.display.div.appendChild(document.createElement('br'));
-
-            this.final_tick = new checky
-            (   {   parent:this.display.options.div,
-                    default:true,
-                    label:"final only",
-                    id:"final_text"
-                }
-            );
-            this.final_tick.checkbox.onclick = function()
-            {   inheritance.rebuild();
-                alter.inherit.rebuild();
-            };
-
-            this.weapons = new this.subsection('weapons');
-            this.assists = new this.subsection('assists');
-            this.specials = new this.subsection('specials');
-            this.passive_a = new this.subsection('passive_a');
-            this.passive_b = new this.subsection('passive_b');
-            this.passive_c = new this.subsection('passive_c');
-
-            this.teach = new divvy({parent:alter.inherit.display.div,classname:'inner'});
-            let t = this.teach;
-            t.title = document.createElement('div');
-            t.title.style['text-decoration'] = 'underline';
-            t.append(t.title);
-            t.append(document.createElement('br'));
-            t.name = new divvy({parent:t,classname:'inner'});
-            t.obtained = new divvy({parent:t,classname:'inner'});
-            t.fruit = new divvy({parent:t,classname:'inner'});
-            t.rarity = new divvy({parent:t,classname:'inner'});
-            t.nature = new divvy({parent:t,classname:'inner'});
-
-        }, // end inherit setup
-
-        display :
-        {
-            toggle : function()
-            {   if (!this.active) { this.enable(); }
-                else { this.disable(); }
-            },
-            enable : function ()
-            {
-                alter.inherit.rebuild();
-                this.div.style.display = '';
-                this.active = true;
-            },
-            disable : function()
-            {   this.div.style.display = 'none';
-                this.active = false;
-            },
-            update : function()
-            {   // ?
-            }
-        },
-
-        rebuild : function() // this = alter.inherit
-        {
-            if (alter.ally == allies.feh)
-            {   this.note.reset_to("Feh is already knowledgeable enough :)");
-                this.note.append(document.createElement('br'));
+        handle_display_click()
+        {   if (!this.active)
+            {   this.activate();
             }
             else
-            {   this.note.clear();
-                this.learnable = inheritance.filter_for_ally(alter.ally);
+            {   this.deactivate();
             }
+        }
+        activate()
+        {   alter.refresh();
+            this.edit.show();
+            this.active = true;
+        }
+        deactivate()
+        {   this.edit.hide();
+            this.active = false;
+        }
 
-            this.weapons.rebuild();
-            this.assists.rebuild();
-            this.specials.rebuild();
-            this.passive_a.rebuild();
-            this.passive_b.rebuild();
-            this.passive_c.rebuild();
+    },
 
-            this.teach.hide();
 
-        },
 
-        rebuild_teachers (type, tag)
+    rarity_setup()
+    {
+        this.rarity = new this.dropprop();
+        let rarity = this.rarity;
+
+
+        // when the ally's rarity is changed via the dropdown
+        rarity.resolve_input = function()
+        {   if (this.active)
+            {   alter.ally.set_rarity(this.edit.dropdown.value);
+                this.deactivate();
+                refreshment();
+            }
+        };
+
+        // when the alter's ally changes
+        rarity.refresh = function()
         {
-            let t = this.teach;
+            this.display.reset_to(stringy.rar_num_to_star(alter.ally.rarity));
+            this.edit.dropdown.value = alter.rarity.display.div.innerText;
 
-            t.title.innerText = dat[type][tag].name+" teachers";
-            t.name.clear();
-            t.obtained.clear();
-            t.fruit.clear();
-            t.rarity.clear();
-            t.nature.clear();
+            // disable rarities inappropriate for the new ally
+            for ( let i=5; i>0; i-- )
+            {   let drop = this.edit.dropdown;
+                let opt = drop.options[5-i];
+                let minrar = alter.ally.minimum_rarity;
 
-            let teachers = alter.inherit.learnable[type][tag].teachers;
-            for ( let i=0; i < teachers.length; i++ )
-            {   let teacher = teachers[i];
-
-                t.name.add_text_n(teacher.return_name());
-                t.obtained.add_text_n("(#"+teacher.obtained+")");
-                t.fruit.add_text_n(teacher.return_fruit());
-                    if(teacher.return_fruit()) {t.fruit.show();} else {t.fruit.hide();}
-                t.rarity.add_text_n(teacher.return_rarity_stars());
-                t.nature.add_text_n(teacher.return_nature());
-
+                opt.disabled = false;
+                if ( i < minrar )
+                {   opt.disabled = true;
+                    if ( drop.value == opt.value )
+                    {   drop.value = drop.options[5-minrar].value;
+                    }
+                }
             }
-
-            t.show();
-
-        },
+            this.deactivate();
+        };
 
 
-        subsection : class subsection
+        rarity.setup = function()
         {
-            constructor(type)
-            {
-                this.type = type;
-                this.learn = new divvy({parent:alter.inherit.display.div, classname:'inner'});
+            this.div.className += ' rarity ';
+
+            // dropdown options
+            for (let i=5; i>=1; i--)
+            {   let option = document.createElement('option');
+                option.innerText = stringy.rar_num_to_star(i);
+                this.edit.dropdown.appendChild(option);
             }
 
+            this.deactivate();
+        };
 
-            rebuild () // this = inherit[subsection]
+        rarity.setup();
+
+    },
+
+
+    nature_setup()
+    {   this.nature = new this.dropprop();
+        let nature = this.nature;
+
+        nature.resolve_input = function(bone)
+        {   if (this.active)
             {
-                this.learn.clear();
-                let type = this.type;
-                let skills_array = Object.keys(alter.inherit.learnable[type]);
-
-                if (alter.ally == allies.feh)
-                {   this.learn.reset_to('');
-                    return 0;
+                if(this[bone].dropdown.value == "neutral")
+                {   this.boon.dropdown.value = "neutral";
+                    this.bane.dropdown.value = "neutral";
                 }
 
-                if (!skills_array.length)
-                {   this.learn.reset_to("No "+type+" :( ");
-                    return 0;
-                }
-
-                skills_array.sort();
-
-                for ( let i=0; i < skills_array.length; i++ )
-                {   let tag = skills_array[i];
-                    let div = document.createElement('div');
-                    div.innerText = dat[type][tag].name;
-                    div.onmousedown = function() { alter.inherit.rebuild_teachers(type, tag); };
-                    div.className = ' clicky ';
-                    this.learn.append(div);
-                    this.learn.append(document.createElement('br'));
-                }
+                alter.ally.set_boon(this.boon.dropdown.value);
+                alter.ally.set_bane(this.bane.dropdown.value);
+                alter.ally.assign_max_stats();
+                this.display.reset_to(stringy.display_nature(alter.ally.boon, alter.ally.bane));
+                refreshment();
+                this.activate();
             }
+        };
 
-        },
+        nature.refresh = function()
+        {
+            this.display.reset_to(stringy.display_nature(alter.ally.boon, alter.ally.bane));
+            if ( alter.ally.summon === false || alter.ally.rarity <= 2 )
+            {   // do not edit the nature of a non-summonable ally
+                this.boon.dropdown.value = "neutral";
+                this.boon.dropdown.disabled = true;
+                this.bane.dropdown.value = "neutral";
+                this.bane.dropdown.disabled = true;
+            }
+            else // enable nature dropdowns if not enabled
+            {   this.boon.dropdown.disabled = false;
+                this.bane.dropdown.disabled = false;
+            }
+            this.deactivate();
+        };
 
-    }
+        nature.setup = function()
+        {
+            let that = this;
+
+            this.edit.clear(); this.dropdown = null;
+            this.edit.add_linebreak();
+            this.edit.add_squiggly();
+
+            this.boon = new divvy({parent:this.edit});
+            let boon = this.boon;
+            boon.dropdown = document.createElement('select');
+            boon.dropdown.className = ' dropdown ';
+            boon.dropdown.appendChild(document.createElement('option'));
+            boon.dropdown.childNodes[0].innerText = "neutral";
+            ["hp","atk","spd","def","res"].forEach(function(stat)
+            {   let option = document.createElement('option');
+                option.innerText = stat+"+";
+                boon.dropdown.appendChild(option);
+            });
+            boon.dropdown.onchange = function() { that.resolve_input('boon'); };
+            boon.append(boon.dropdown);
+
+            this.bane = new divvy({parent:this.edit});
+            let bane = this.bane;
+            bane.dropdown = document.createElement('select');
+            bane.dropdown.className = ' dropdown ';
+            bane.dropdown.appendChild(document.createElement('option'));
+            bane.dropdown.childNodes[0].innerText = "neutral";
+            ["hp","atk","spd","def","res"].forEach(function(stat)
+            {   let option = document.createElement('option');
+                option.innerText = stat+"–";
+                bane.dropdown.appendChild(option);
+            });
+            bane.dropdown.onchange = function() { that.resolve_input('bane'); };
+            bane.append(bane.dropdown);
+
+            this.deactivate();
+        };
+
+        nature.setup();
+    },
 
 };
 
+
+alter.inherit =
+{
+    setup : function()
+    {
+
+        this.clicky = new divvy({innertext:"learnable skills", classname:'clicky'});
+        let that = this;
+        this.clicky.div.onmousedown = function() { that.display.toggle(); };
+
+        this.display = new divvy({parent:alter.right.lower.div,classname:'inner'});
+        this.display.hide();
+
+        this.note = new divvy({parent:this.display.div});
+
+        this.display.options = new divvy({parent:this.display.div});
+        this.display.div.appendChild(document.createElement('br'));
+
+        this.final_tick = new checky
+        (   {   parent:this.display.options.div,
+                default:true,
+                label: stringy.final_tick_text,
+                id:"final_tick"
+            }
+        );
+        this.final_tick.checkbox.onclick = function()
+        {   inheritance.rebuild();
+            alter.inherit.rebuild();
+        };
+
+        this.weapons = new this.subsection('weapons');
+        this.assists = new this.subsection('assists');
+        this.specials = new this.subsection('specials');
+        this.passive_a = new this.subsection('passive_a');
+        this.passive_b = new this.subsection('passive_b');
+        this.passive_c = new this.subsection('passive_c');
+
+        this.teach = new divvy({parent:alter.inherit.display.div,classname:'inner'});
+        let t = this.teach;
+        t.title = document.createElement('div');
+        t.title.style['text-decoration'] = 'underline';
+        t.append(t.title);
+        t.append(document.createElement('br'));
+        t.name = new divvy({parent:t,classname:'inner'});
+        t.obtained = new divvy({parent:t,classname:'inner'});
+        t.fruit = new divvy({parent:t,classname:'inner'});
+        t.rarity = new divvy({parent:t,classname:'inner'});
+        t.nature = new divvy({parent:t,classname:'inner'});
+
+    }, // end inherit setup
+
+    display :
+    {
+        toggle : function()
+        {   if (!this.active) { this.enable(); }
+            else { this.disable(); }
+        },
+        enable : function ()
+        {
+            alter.inherit.rebuild();
+            this.div.style.display = '';
+            this.active = true;
+        },
+        disable : function()
+        {   this.div.style.display = 'none';
+            this.active = false;
+        },
+        update : function()
+        {   // ?
+        }
+    },
+
+    rebuild : function() // this = alter.inherit
+    {
+        if (alter.ally == allies.feh)
+        {   this.note.reset_to("Feh is already knowledgeable enough :)");
+            this.note.append(document.createElement('br'));
+
+        }
+        else
+        {   this.note.clear();
+            this.learnable = inheritance.filter_for_ally(alter.ally);
+        }
+
+        this.weapons.rebuild();
+        this.assists.rebuild();
+        this.specials.rebuild();
+        this.passive_a.rebuild();
+        this.passive_b.rebuild();
+        this.passive_c.rebuild();
+
+        this.teach.hide();
+
+    },
+
+    rebuild_teachers (type, tag)
+    {
+        let t = this.teach;
+
+        t.title.innerText = dat[type][tag].name+" teachers";
+        t.name.clear();
+        t.obtained.clear();
+        t.fruit.clear();
+        t.rarity.clear();
+        t.nature.clear();
+
+        if (alter.ally == allies.feh) { return; }
+
+        let teachers = alter.inherit.learnable[type][tag].teachers;
+        for ( let i=0; i < teachers.length; i++ )
+        {   let teacher = teachers[i];
+
+            t.name.add_text_n(teacher.return_name());
+            t.obtained.add_text_n("(#"+teacher.obtained+")");
+            t.fruit.add_text_n(teacher.return_fruit());
+                if(teacher.return_fruit()) {t.fruit.show();} else {t.fruit.hide();}
+            t.rarity.add_text_n(teacher.return_rarity_stars());
+            t.nature.add_text_n(teacher.return_nature());
+
+        }
+
+        t.show();
+
+    },
+
+
+    subsection : class subsection
+    {
+        constructor(type)
+        {
+            this.type = type;
+            this.learn = new divvy({parent:alter.inherit.display.div, classname:'inner'});
+        }
+
+
+        rebuild () // this = inherit[subsection]
+        {
+            this.learn.clear();
+            if (alter.ally == allies.feh) { return; }
+
+            let type = this.type;
+            let skills_array = Object.keys(alter.inherit.learnable[type]);
+
+            if (!skills_array.length)
+            {   this.learn.reset_to("No "+type+" :( ");
+                return 0;
+            }
+
+            skills_array.sort();
+
+            for ( let i=0; i < skills_array.length; i++ )
+            {   let tag = skills_array[i];
+                let div = document.createElement('div');
+                div.innerText = dat[type][tag].name;
+                div.onmousedown = function() { alter.inherit.rebuild_teachers(type, tag); };
+                div.className = ' clicky ';
+                this.learn.append(div);
+                this.learn.append(document.createElement('br'));
+            }
+        }
+
+    },
+
+};
 
 alter.setup();

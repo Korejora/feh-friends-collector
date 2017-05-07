@@ -65,6 +65,7 @@ let friends =
 
         friends.roster = friends.roster.sort(function(a,b){return a.obtained-b.obtained;});
         tableau.friends_table.ally_list = friends.roster;
+        alter.reset();
         refreshment();
         tableau.last_sorted = null;
     },
@@ -90,12 +91,12 @@ let friends =
         }
 
         let save_string = JSON.stringify(save);
-        io_area.set_stringy_text(save_string);
+        porter.stringy.set_text(save_string);
     },
 
     restore_friends_string : function ()
     {
-        let save_string = io_area.return_stringy_text();
+        let save_string = porter.stringy.return_text();
         let save = JSON.parse(save_string);
 
         let restore_array = [];
@@ -130,7 +131,7 @@ let friends =
     },
 
     fetch_googly_text : function()
-    {   let text = io_area.return_googly_text();
+    {   let text = porter.googly.return_text();
         if (text.includes('spreadsheets'))
         {   let regexp = /\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/;
             let blop = regexp.exec(text);

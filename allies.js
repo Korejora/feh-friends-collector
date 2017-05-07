@@ -216,6 +216,7 @@ allies.ally = class ally
 
     set_rarity (r)
     {
+        r = stringy.interpret_rarity(r);
      // if(isNaN(r)) { r = this.minimum_rarity };
         r = Math.max(r||null, this.minimum_rarity);
         r = Math.min(r, 5);
@@ -283,7 +284,10 @@ allies.ally = class ally
 
     send_home()
     {   this.home = true;
+    }
 
+    is_home()
+    {   return this.home;
     }
 
 };

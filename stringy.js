@@ -1,7 +1,7 @@
 
 let stringy =
 {
-    includes_any : function(string, array)
+    includes_any(string, array)
     {   for( let i=0; i<array.length; i++ )
         {   if (string.includes(array[i])) { return true; }
         }
@@ -15,6 +15,36 @@ let stringy =
     img_colour_prefix : 'orb_',
     img_icon_prefix : 'icon-',
     img_png_suffix : '.png',
+
+    find_img_path (type,key)
+    {
+        if(type.includes('colour'))
+        {   return this.img_type_path +
+                this.img_colour_prefix +
+                key +
+                this.img_png_suffix;
+        }
+
+        if(type.includes('weapon') || type.includes('move'))
+        {   return this.img_type_path +
+                this.img_icon_prefix +
+                type + '-' +
+                key +
+                this.img_png_suffix;
+        }
+
+        if(type.includes('portrait'))
+        {   return stringy.img_portrait_path +
+                stringy.img_portrait_prefix +
+                key +
+                this.img_png_suffix;
+        }
+
+        return this.img_feh;
+
+    },
+
+    final_tick_text : "end of chain only (except weapons)",
 
     origin :
     {    0 : { display: "Heroes",   text: "Fire Emblem Heroes" },

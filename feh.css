@@ -50,13 +50,13 @@ div
 {   text-decoration:line-through;
 }
 
-#io_area textarea
+#porter textarea
 {   display: block;
     background-color: navy;
     color: cyan;
 }
 
-#io_area .no
+#porter .no
 {   cursor:not-allowed;
     text-decoration:line-through;
 }
@@ -91,6 +91,11 @@ div
         display: inline-block;
         vertical-align: top;
         line-height: 1.4;
+    }
+
+    #alter .basic
+    {   display: block;
+
     }
 
 

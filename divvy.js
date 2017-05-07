@@ -6,7 +6,7 @@ class divvy
         this.div = document.createElement('div');
 
         if (!params) { return; }
-        
+
         if (params.classname) { this.div.className = params.classname; }
         if (params.id) { this.div.id = params.id; }
         if (params.innertext) { this.div.innerText = params.innertext; }
@@ -28,6 +28,10 @@ class divvy
     add_text_n(string)
     {   this.div.appendChild(document.createTextNode(string));
         this.div.appendChild(document.createElement('br'));
+    }
+
+    add_linebreak()
+    {   this.div.appendChild(document.createElement('br'));
     }
 
     clear() { this.div.innerHTML = ''; }

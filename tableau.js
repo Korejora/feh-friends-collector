@@ -57,22 +57,22 @@ let tableau =
 
     activate_friends_table : function()
     {
-        this.allies_table.div.style.display = 'none';
-        this.friends_table.div.style.display = '';
-        adder.div.style.visibility = '';
-        document.getElementById('io_area').style.display = '';
+        this.allies_table.hide();
+
+        this.friends_table.show();
+        adder.show();
+        porter.show();
 
         this.active_table = 'friends_table';
     },
 
     activate_allies_table : function()
     {
-        this.friends_table.div.style.display = 'none';
-        adder.div.style.visibility = 'hidden';
-        document.getElementById('io_area').style.display = 'none';
+        this.friends_table.hide();
+        adder.hide();
+        porter.hide();
 
-     // this.table_output_div.appendChild(this.allies_table.div);
-        this.allies_table.div.style = display = '';
+        this.allies_table.show();
 
         this.active_table = 'allies_table';
     }
@@ -193,6 +193,8 @@ tableau.table = class
         {   let ally = this.ally_list[i];
             this.rows.push( new tableau.row(ally) );
             this.rows[i].build_items();
+            // hide allies that have gone home TODO: MAKE A FILTER FOR THIS INSTEAD
+            if (ally.is_home()) { this.rows[i].div.style.display = 'none'; }
         }
 
         this.refresh();
@@ -204,11 +206,17 @@ tableau.table = class
 
     refresh ()
     {
-        for ( let i = 0;  i < this.rows.length;  i++)
-        {   this.div.appendChild(this.rows[i].div);
+        let rows = this.filter_rows();
+        for ( let i = 0;  i < rows.length;  i++)
+        {   this.div.appendChild(rows[i].div);
         }
 
         if ( tableau.hide_skills ) { this.hide_skill_divs(); }
+
+    }
+
+    filter_rows()
+    {   return this.rows;
 
     }
 
@@ -235,6 +243,14 @@ tableau.table = class
         this.rows.forEach( function(row)
         {   row.hide_skill_div();
         });
+    }
+
+    show()
+    {   this.div.style.display = '';
+    }
+
+    hide()
+    {   this.div.style.display = 'none';
     }
 
 
@@ -309,12 +325,6 @@ tableau.row = class
                 case 'rarity':
                     item_div.className += ' stars ';
                     break;
-             /* case 'colour_type':
-                    item_div.className += " "+val+" ";
-                    item_div.child_img = document.createElement('img');
-                    item_div.child_img.onerror = function(){this.src = 'feh_owl.jpg';};
-                    item_div.child_img.src = 'images/'+'orb_'+val+'.png';
-                    break; */
                 case 'weapon_type':
                     if(val.includes('tome')){item_div.className+=' tome ';}
                     if(val.includes('dragon')){item_div.className+=' dragon ';}
@@ -325,10 +335,7 @@ tableau.row = class
                     item_div.className += " "+val+" ";
                     item_div.child_img = document.createElement('img');
                     item_div.child_img.onerror = function(){this.src = stringy.img_feh;};
-                    let s = stringy;
-                    item_div.child_img.src = (key=='colour_type')
-                        ? s.img_type_path+s.img_colour_prefix+val+s.img_png_suffix
-                        : s.img_type_path+s.img_icon_prefix+key+'-'+val+s.img_png_suffix;
+                    item_div.child_img.src = stringy.find_img_path(key,val);
                     break;
                 case 'weapon':
                     if ( dat.weapons[val] && dat.weapons[val].inherit == 'exclusive')
@@ -566,3 +573,27 @@ tableau.check_if_reverse_sort = function(property)
     if ( reverse_sorts.indexOf(property) != -1 ) { return true; }
     else { return false; }
 };
+
+
+
+
+tableau.filters =
+{
+
+};
+
+class tableau_filter
+{   constructor(params)
+    {   this.property = params.property;
+        this.value = params.value;
+
+        this.checky = new checky(
+            {   default: true,
+                label: params.value // FIXME: get this to display the icon!
+            });
+
+
+
+    }
+
+}

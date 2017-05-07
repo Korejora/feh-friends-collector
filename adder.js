@@ -4,6 +4,9 @@ let adder =
 {   list : {},
     options : [],
 
+    show : divvy.prototype_show,
+    hide : divvy.prototype_hide,
+
     setup : function()
     {
         let container_div = document.getElementById('adder_container');
@@ -91,7 +94,7 @@ let adder =
     refresh : function()
     {
         let rarity_list = { '★★★★★':5, '★★★★':4, '★★★':3, '★★':2, '★':1 };
-        adder.ally.rarity = rarity_list[adder.rarity.dropdown.value];
+        adder.ally.set_rarity(adder.rarity.dropdown.value);
 
         let boondrop = adder.boon.dropdown;
         let banedrop = adder.bane.dropdown;

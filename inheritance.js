@@ -6,12 +6,6 @@ let inheritance =
         passive_a:{}, passive_b:{}, passive_c:{} },
 
     rebuild : function()
-    {   if (alter.inherit.final_tick.checkbox.checked === true)
-        {   this.rebuild_final(); }
-        else{ this.rebuild_all(); }
-    },
-
-    rebuild_all : function()
     {
         this.legacy.weapons  = {};
         this.legacy.assists  = {};
@@ -24,63 +18,46 @@ let inheritance =
         {   let friend = friends.roster[i];
             if ( friend.origin === 0 ) { continue; } // cannot inherit from anna, alfonse, or sharena
             if ( friend.favourite ) { continue; } // do not inherit from favourites
-
-            let skills = friend.return_skills();
-
-            for ( let type in this.legacy )
-            {
-                for ( let i=0; i < skills[type].length; i++ )
-                {
-                    // iterate over each skill in the friend's skill list
-                    let tag = skills[type][i];
-
-                    // skip if not found in database
-                    if (!dat[type][tag]) { continue; }
-
-                    // don't add exclusive skills to the list
-                    if (dat[type][tag].inherit == "exclusive") { continue; }
-
-                    // make new entry if not already present
-                    if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[friend] }; }
-
-                    // add to the list of teachers if entry exists
-                    else { this.legacy[type][tag].teachers.push(friend); }
-                }
-            }
-
-        }
-    },
-
-    rebuild_final : function()
-    {   // only take if final skill
-        this.legacy.weapons  = {};
-        this.legacy.assists  = {};
-        this.legacy.specials = {};
-        this.legacy.passive_a = {};
-        this.legacy.passive_b = {};
-        this.legacy.passive_c = {};
-
-        for ( let i=0; i < friends.roster.length; i++ )
-        {   let friend = friends.roster[i];
-            if ( friend.origin === 0 ) { continue; } // cannot inherit from anna, alfonse, or sharena
-            if ( friend.favourite ) { continue; } // do not inherit from favourites
-            if ( friend.home ) { continue; } // cannot inherit from allies that have gone home 
+            if ( friend.home ) { continue; } // cannot inherit from allies that have gone home
 
             let skills = friend.return_skills();
             let ends = friend.return_final_base_skills();
 
-            for ( let type in this.legacy )
+            if (alter.inherit.final_tick.checkbox.checked === true)
             {
-                let tag = skills[type][skills[type].length-1];
-                if( tag != ends[type] ) { continue; } // skip if not the end of a chain
+                for ( let type in this.legacy )
+                {
+                    let tag = skills[type][skills[type].length-1]; // get only last skill known
+                    if( type != 'weapons' && tag != ends[type] ) { continue; } // skip if not the end of a chain
 
-                if (!dat[type][tag]) { continue; }
-                if (dat[type][tag].inherit == "exclusive") { continue; }
+                    if (!dat[type][tag]) { continue; } // skip if not found in database
+                    if (dat[type][tag].inherit == "exclusive") { continue; } // don't add exclusive skills to the list
 
-                if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[friend] }; }
-                else { this.legacy[type][tag].teachers.push(friend); }
+                    // make new entry if not already present, else add to the list
+                    if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[friend] }; }
+                    else { this.legacy[type][tag].teachers.push(friend); }
 
+                }
             }
+            else
+            {
+                for ( let type in this.legacy )
+                {
+
+                    for ( let i=0; i < skills[type].length; i++ )
+                    {
+                        // iterate over each skill in the friend's skill list
+                        let tag = skills[type][i];
+
+                        if (!dat[type][tag]) { continue; }
+                        if (dat[type][tag].inherit == "exclusive") { continue; }
+
+                        if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[friend] }; }
+                        else { this.legacy[type][tag].teachers.push(friend); }
+                    }
+                }
+            }
+
 
         }
     },
