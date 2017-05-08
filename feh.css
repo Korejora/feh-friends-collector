@@ -6,7 +6,7 @@
 }
 
 body
-{   background-color: #000044;
+{   background-color: #000033;
     color: lightblue;
     font-family: chiarostdb;
 }
@@ -44,6 +44,12 @@ div
 
 .warning
 {   color: crimson;
+}
+.error
+{   color: coral;
+}
+.inform
+{   color: cornflowerblue;
 }
 
 .strike

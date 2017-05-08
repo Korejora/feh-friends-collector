@@ -72,7 +72,7 @@ function run_this_function_on_queue_complete()
 
  // rebuild_table();
 
-    handleClientLoad();
+    googly.load_gapi();
     porter.setup();
     tableau.setup();
     googly.setup();

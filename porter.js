@@ -149,31 +149,31 @@ let porter =
 
             this.div.appendChild(document.createTextNode(" 〜 "));
 
+            this.saverestoredivvy = new divvy({parent:this.div});
+
             this.save = new divvy(
-                {   parent:this.div,
+                {   parent:this.saverestoredivvy.div,
                     innertext:" write ",
                     classname:'clickables'
                 });
             this.save.div.onclick = function() { friends.save_friends_googly(); };
 
-            this.div.appendChild(document.createTextNode(" 〜 "));
+            this.saverestoredivvy.add_squiggly();
 
             this.restore = new divvy(
-                {   parent:this.div,
+                {   parent:this.saverestoredivvy.div,
                     innertext:" read ",
                     classname:'clickables'
                 });
             this.restore.div.onclick = function() { friends.restore_friends_googly(); };
 
-            this.div.appendChild(document.createTextNode(" 〜 "));
+            this.saverestoredivvy.add_squiggly();
 
             this.oauthbutton = new divvy({parent:this.div});
 
             this.div.appendChild(document.createTextNode(" 〜 "));
 
-            this.note = new divvy({parent:this.div});
-            this.note.div.className = 'warning';
-            this.note.div.innerText = "Please be careful with the write function! It will CLEAR the spreadsheet (and may also set it on fire)!";
+            this.note = new divvy({id:'googly_note',parent:this.div, classname:'warning'});
 
             this.hide();
             porter.div.appendChild(this.div);
@@ -181,7 +181,7 @@ let porter =
 
         attach_oauthbuttons : function()
         {
-            googly.signin.innerText = 'connect (authorization required to read/write to google sheets)';
+            googly.signin.innerText = 'connect';
             googly.signin.className = 'clickables';
             this.oauthbutton.append(googly.signin);
 
@@ -219,6 +219,11 @@ let porter =
             this.googly.show();
             this.mode = 'googly';
         }
+    },
+
+    googly_note(string, type)
+    {   porter.googly.note.set_text(string);
+        porter.googly.note.set_class(type);
     }
 
 };
@@ -227,4 +232,5 @@ function happy_fun_click(div)
 {
     console.log('happy_fun_click');
  // let happyfundiv = document.getElementById('happy_fun_div');
+    document.getElementById('happy_fun_div').appendChild(document.createTextNode(":) "));
 }

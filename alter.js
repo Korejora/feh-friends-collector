@@ -67,7 +67,7 @@ let alter =
     {
         this.portrait.src = stringy.find_img_path('portrait',this.ally.tag);
 
-        this.name.reset_to(this.ally.return_name());
+        this.name.set_text(this.ally.return_name());
 
         this.refresh();
     },
@@ -86,7 +86,7 @@ let alter =
     reset : function() // if an ally was not found
     {   this.ally = allies.feh;
         this.portrait.src = stringy.img_feh;
-        this.note.reset_to(" No friend selected 〜 "); this.note.show();
+        this.note.set_text(" No friend selected 〜 "); this.note.show();
         this.left.hide(); this.right.hide();
     },
 
@@ -151,7 +151,7 @@ let alter =
         // when the alter's ally changes
         rarity.refresh = function()
         {
-            this.display.reset_to(stringy.rar_num_to_star(alter.ally.rarity));
+            this.display.set_text(stringy.rar_num_to_star(alter.ally.rarity));
             this.edit.dropdown.value = alter.rarity.display.div.innerText;
 
             // disable rarities inappropriate for the new ally
@@ -206,7 +206,7 @@ let alter =
                 alter.ally.set_boon(this.boon.dropdown.value);
                 alter.ally.set_bane(this.bane.dropdown.value);
                 alter.ally.assign_max_stats();
-                this.display.reset_to(stringy.display_nature(alter.ally.boon, alter.ally.bane));
+                this.display.set_text(stringy.display_nature(alter.ally.boon, alter.ally.bane));
                 refreshment();
                 this.activate();
             }
@@ -214,7 +214,7 @@ let alter =
 
         nature.refresh = function()
         {
-            this.display.reset_to(stringy.display_nature(alter.ally.boon, alter.ally.bane));
+            this.display.set_text(stringy.display_nature(alter.ally.boon, alter.ally.bane));
             if ( alter.ally.summon === false || alter.ally.rarity <= 2 )
             {   // do not edit the nature of a non-summonable ally
                 this.boon.dropdown.value = "neutral";
@@ -348,7 +348,7 @@ alter.inherit =
     rebuild : function() // this = alter.inherit
     {
         if (alter.ally == allies.feh)
-        {   this.note.reset_to("Feh is already knowledgeable enough :)");
+        {   this.note.set_text("Feh is already knowledgeable enough :)");
             this.note.append(document.createElement('br'));
 
         }
@@ -417,7 +417,7 @@ alter.inherit =
             let skills_array = Object.keys(alter.inherit.learnable[type]);
 
             if (!skills_array.length)
-            {   this.learn.reset_to("No "+type+" :( ");
+            {   this.learn.set_text("No "+type+" :( ");
                 return 0;
             }
 

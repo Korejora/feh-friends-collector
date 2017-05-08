@@ -10,12 +10,22 @@ class divvy
         if (params.classname) { this.div.className = params.classname; }
         if (params.id) { this.div.id = params.id; }
         if (params.innertext) { this.div.innerText = params.innertext; }
-        if (params.parent) params.parent.append(this.div);
+        if (params.parent)
+        {   let par = params.parent;
+            if (par.tagName == 'DIV')
+            {   par.appendChild(this.div);
+            }
+            else
+            {   par.append(this.div);
+            }
+        }
     }
 
     add_to_class(string) { this.div.className += string; }
 
-    reset_to(string) { this.div.innerText = string; }
+    set_text(string) { this.div.innerText = string; }
+
+    set_class(string) { this.div.className = string; }
 
     append(child) { this.div.appendChild(child); }
 
