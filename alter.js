@@ -2,7 +2,7 @@
 let alter =
 {
 
-    setup : function()
+    setup : function alter_setup()
     {
         let container_div = document.getElementById('alter_container');
 
@@ -97,8 +97,11 @@ let alter =
         {   super({parent:alter.div, className:'basic'});
             let that = this;
 
-            this.display = new divvy({parent:this.div, classname:'clicky noselect'});
-            this.display.div.onmousedown = function() { that.handle_display_click(); };
+            this.clickable = new divvy({parent:this.div, classname:'clicky noselect'});
+            this.clickable.div.onmousedown = function() { that.handle_display_click(); };
+            this.display = new divvy({parent:this.clickable});
+            this.clickable.add_text(" ▼");
+
 
             this.edit = new divvy({parent:this.div});
             this.edit.add_linebreak();
@@ -298,7 +301,7 @@ alter.inherit =
                 id:"final_tick"
             }
         );
-        this.final_tick.checkbox.onclick = function()
+        this.final_tick.handle_click = function()
         {   inheritance.rebuild();
             alter.inherit.rebuild();
         };
@@ -427,6 +430,7 @@ alter.inherit =
             {   let tag = skills_array[i];
                 let div = document.createElement('div');
                 div.innerText = dat[type][tag].name;
+                /* jshint loopfunc: true */
                 div.onmousedown = function() { alter.inherit.rebuild_teachers(type, tag); };
                 div.className = ' clicky ';
                 this.learn.append(div);

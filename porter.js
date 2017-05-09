@@ -2,21 +2,20 @@
 let porter =
 {
 
-    setup : function()
+    setup : function porter_setup()
     {
 
-        this.div = document.createElement('div');
-        this.div.id = 'porter';
-        document.getElementById('for_textarea_stuff').appendChild(this.div);
+        this.divvy = new divvy({id:'porter',parent:document.getElementById('for_textarea_stuff')});
+        this.div = this.divvy.div;
 
         this.select = new divvy({parent:this.div});
 
         // must be created in time for toggle
-        this.stringy.setup();
+        this.stringly.setup();
         this.googly.setup();
 
         this.select.div.appendChild(document.createTextNode(" 〜 "));
-        this.select.stringy = new divvy(
+        this.select.stringly = new divvy(
             {   parent:this.select.div,
                 innertext: "save/restore string",
                 classname: "clickables"
@@ -28,10 +27,10 @@ let porter =
                 classname: "clickables"
             });
         this.select.div.appendChild(document.createTextNode(" 〜 "));
-        this.select.stringy.div.onclick = function() { porter.stringy_select(); };
+        this.select.stringly.div.onclick = function() { porter.stringly_select(); };
         this.select.googly.div.onclick = function() { porter.googly_select(); };
 
-        this.mode = 'stringy';
+        this.mode = '';
 
     },
 
@@ -39,9 +38,9 @@ let porter =
     {   porter.set_text(JSON.stringify(JSON.parse(this.return_text()),null,2));
     },
 
-    show : function show(){ this.div.style.display = ''; },
-    hide : function hide() { this.div.style.display = 'none'; },
-    toggle : divvy.prototype_toggle,
+    show() { this.divvy.show(); },
+    hide() { this.divvy.hide(); },
+    toggle() { this.divvy.toggle(); },
 
     rainbow :
     {
@@ -64,7 +63,7 @@ let porter =
             let hue_hue_hue_hue = function()
             {   hue++;
                 inverse_hue = hue+180;
-                porter.stringy.textarea.style.backgroundColor = "hsl(" + hue + ", 40%,  20%)";
+                porter.stringly.textarea.style.backgroundColor = "hsl(" + hue + ", 40%,  20%)";
              // this.div.style.color   = "hsl(" + inverse_hue + ", 100%, 50%)";
                 this.hue = hue;
             };
@@ -72,7 +71,7 @@ let porter =
         }
     },
 
-    stringy :
+    stringly :
     {
         setup : function()
         {
@@ -120,7 +119,16 @@ let porter =
 
         show : divvy.prototype_show,
         hide : divvy.prototype_hide,
-        toggle : divvy.prototype_toggle,
+        toggle()
+        {   if (this.div.style.display == 'none')
+            {   this.show();
+                alter.select.stringly.underline();
+            }
+            else
+            {   this.hide();
+                alter.select.stringly.dont_underline();
+            }
+        },
 
         set_text : function(string){ this.textarea.value = string; },
         return_text : function(){ return this.textarea.value; },
@@ -193,7 +201,16 @@ let porter =
 
         show : divvy.prototype_show,
         hide : divvy.prototype_hide,
-        toggle : divvy.prototype_toggle,
+        toggle()
+        {   if (this.div.style.display == 'none')
+            {   this.div.style.display = '';
+                alter.select.googly.underline();
+            }
+            else
+            {   this.hide();
+                alter.select.googly.dont_underline();
+            }
+        },
 
         set_text : function(string){ this.textarea.value = string; },
         return_text : function(){ return this.textarea.value; },
@@ -204,19 +221,19 @@ let porter =
 
     },
 
-    stringy_select : function()
-    {   if (this.mode == 'stringy') { this.stringy.toggle(); }
+    stringly_select : function()
+    {   if (this.mode == 'stringly') { this.stringly.toggle(); }
         else
-        {   this.googly.hide();
-            this.stringy.show();
-            this.mode = 'stringy';
+        {   this.googly.hide(); this.select.googly.dont_underline();
+            this.stringly.show(); this.select.stringly.underline();
+            this.mode = 'stringly';
         }
     },
     googly_select : function()
     {   if (this.mode == 'googly') { this.googly.toggle(); }
         else
-        {   this.stringy.hide();
-            this.googly.show();
+        {   this.stringly.hide(); this.select.stringly.dont_underline();
+            this.googly.show(); this.select.googly.underline();
             this.mode = 'googly';
         }
     },

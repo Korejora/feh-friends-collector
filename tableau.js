@@ -1,10 +1,7 @@
 
 let tableau =
 {
-    table_settings_div : document.getElementById('table_settings_div'),
     table_output_div : document.getElementById('table_output_div'),
-
-    skill_tick : {},
 
     row_properties :
     [   { key : 'name', display : 'Name', parent_div : 'name' },
@@ -53,9 +50,9 @@ let tableau =
         this.table_output_div.appendChild(this.allies_table.div);
     },
 
-    active_table : 'allies_table',
+    active_table : this.allies_table,
 
-    activate_friends_table : function()
+    activate_friends_table()
     {
         this.allies_table.hide();
 
@@ -63,10 +60,10 @@ let tableau =
         adder.show();
         porter.show();
 
-        this.active_table = 'friends_table';
+        this.active_table = this.friends_table;
     },
 
-    activate_allies_table : function()
+    activate_allies_table()
     {
         this.friends_table.hide();
         adder.hide();
@@ -74,47 +71,92 @@ let tableau =
 
         this.allies_table.show();
 
-        this.active_table = 'allies_table';
-    }
+        this.active_table = this.allies_table;
+    },
+
+    add_feh_row()
+    {   this.friends_table.div.appendChild(tableau.feh_row.div);
+    },
+
+    refresh()
+    {   this.friends_table.refresh();
+        this.allies_table.refresh();
+    },
 
 };
 
-tableau.setup = function ( )
+
+tableau.setup = function tableau_setup()
 {
     this.table_output_div.innerHTML = '';
+    this.table_setting = new divvy({id:'table_setting', parent:this.table_output_div});
 
-    // skill tick
-    this.skill_tick = new checky({default:true,label:"show skills"});
-    this.skill_tick.checkbox.onclick = function()
-    {   if (tableau.skill_tick.checkbox.checked === true) { tableau.show_skill_divs(); }
-        else { tableau.hide_skill_divs(); }
+
+    // clicks to switch between collection and allies
+    this.table_setting.switch = new divvy({ classname:'inner', parent:this.table_setting });
+
+    this.table_setting.switch.add_squiggly();
+    this.activate_friends_select = new divvy(
+        {   innertext: "collection",
+            classname: 'clickables',
+            parent: this.table_setting.switch.div,
+        });
+    this.table_setting.switch.add_squiggly();
+
+    this.table_setting.switch.add_linebreak();
+
+    this.table_setting.switch.add_squiggly();
+    this.activate_allies_select = new divvy(
+        {   innertext: "all allies",
+            classname: 'clickables',
+            parent: this.table_setting.switch.div
+        });
+    this.table_setting.switch.add_squiggly();
+
+    this.activate_friends_select.div.onmousedown = function()
+    {   tableau.activate_friends_table();
+        tableau.activate_friends_select.underline();
+        tableau.activate_allies_select.dont_underline();
+    };
+    this.activate_allies_select.div.onmousedown = function()
+    {   tableau.activate_allies_table();
+        tableau.activate_allies_select.underline();
+        tableau.activate_friends_select.dont_underline();
     };
 
 
-    this.table_switch_div = document.createElement('div');
-    this.table_settings_div.appendChild(this.table_switch_div);
+    this.table_setting.add_divider();
 
-    this.table_switch_div.appendChild(document.createTextNode(' 〜 '));
 
-    this.activate_friends_div = document.createElement('div');
-    this.activate_friends_div.className = ' clickables ';
-    this.activate_friends_div.innerText = "collection";
-    this.activate_friends_div.onmousedown = function() { tableau.activate_friends_table(); };
-    this.table_switch_div.appendChild(this.activate_friends_div);
+    // ticks
+    this.table_setting.ticks = new divvy({classname:'inner', parent:this.table_setting.div});
+    this.skill_tick = new checky(
+        {   default:true,
+            label:"show skills",
+            parent:this.table_setting.ticks.div
+        });
+    this.skill_tick.handle_click = function()
+    {   if (tableau.skill_tick.checkbox.checked === true)
+        {      tableau.show_skill_divs(); }
+        else { tableau.hide_skill_divs(); }
+    };
 
-    this.table_switch_div.appendChild(document.createTextNode(' 〜 '));
+    this.table_setting.ticks.add_linebreak();
+    this.table_setting.ticks.append(this.subsifters.basic.home.div);
 
-    this.activate_allies_div = document.createElement('div');
-    this.activate_allies_div.className = ' clickables ';
-    this.activate_allies_div.innerText = "all allies";
-    this.activate_allies_div.onmousedown = function() { tableau.activate_allies_table(); };
-    this.table_switch_div.appendChild(this.activate_allies_div);
 
-    this.table_switch_div.appendChild(document.createTextNode(" 〜 "));
+    this.table_setting.add_divider();
 
-    this.table_settings_div.appendChild(this.table_switch_div);
 
-    this.table_settings_div.appendChild(this.skill_tick.div);
+    // filters
+    this.table_setting.filters = new divvy({id:'table_setting_filters', classname:'inner', parent:this.table_setting.div});
+
+
+    for(let key in this.filters)
+    {   let filter = this.filters[key];
+        this.table_setting.filters.append(filter.div);
+    }
+
 
 
 
@@ -155,6 +197,7 @@ tableau.table = class
         this.div.className = 'table_wrapper';
         this.ally_list = [];
         this.rows = [];
+        this.filtered_rows = [];
         this.last_sorted = null;
     }
 
@@ -194,7 +237,7 @@ tableau.table = class
             this.rows.push( new tableau.row(ally) );
             this.rows[i].build_items();
             // hide allies that have gone home TODO: MAKE A FILTER FOR THIS INSTEAD
-            if (ally.is_home()) { this.rows[i].div.style.display = 'none'; }
+            // if (ally.is_home()) { this.rows[i].div.style.display = 'none'; }
         }
 
         this.refresh();
@@ -206,18 +249,36 @@ tableau.table = class
 
     refresh ()
     {
-        let rows = this.filter_rows();
+        let rows = this.rows;
         for ( let i = 0;  i < rows.length;  i++)
         {   this.div.appendChild(rows[i].div);
         }
+        this.filter_rows();
 
         if ( tableau.hide_skills ) { this.hide_skill_divs(); }
 
     }
 
     filter_rows()
-    {   return this.rows;
+    {
+        for ( let key in tableau.filters)
+        {   let filter = tableau.filters[key];
+            this.do_filter(filter);
+        }
+        for ( let key in tableau.subfilters)
+        {   let subfilter = tableau.subfilters[key];
+            this.do_filter(subfilter);
+        }
+    }
 
+    do_filter(filter)
+    {
+        if(filter.active)
+        {   let filtered = this.rows.filter(filter.checkpoint,filter);
+            for ( let i=0; i < filtered.length; i++ )
+            {   document.getElementById('hidden_div').appendChild(filtered[i].div);
+            }
+        }
     }
 
     sort_rows(property)
@@ -435,7 +496,7 @@ tableau.row = class
     } // end refresh_items
 
     name_click (item)
-    {   if (tableau.active_table == 'friends_table')
+    {   if (tableau.active_table == tableau.friends_table)
         {   alter.select(this.ally);
         }
     }
@@ -575,25 +636,132 @@ tableau.check_if_reverse_sort = function(property)
 };
 
 
-
-
-tableau.filters =
-{
-
-};
-
-class tableau_filter
+class sifter extends checky
 {   constructor(params)
-    {   this.property = params.property;
+    {   // params = { property: type, value: violet }
+        super({default:params.default});
+
+        this.property = params.property;
         this.value = params.value;
+        this.tag = params.tag;
 
-        this.checky = new checky(
-            {   default: true,
-                label: params.value // FIXME: get this to display the icon!
-            });
+        if (this.property.includes('type'))
+        {   this.img = document.createElement('img');
+            this.img.onerror = function(){this.src = stringy.img_feh;};
+            this.img.src = stringy.find_img_path(this.property,this.tag);
+            this.label.appendChild(this.img);
+            this.label.className += ' icon ';
+        }
+        else
+        {   if(params.label) { this.label.appendChild(document.createTextNode(params.label)); }
+            else {this.label.appendChild(document.createTextNode(this.tag));}
+        }
 
+        this.default = params.default;
+        this.active = !this.checkbox.checked;
 
-
+        this.subfilters = [];
+        if (params.super) { this.superfilter = tableau.filters[params.super]; }
+        if(this.superfilter) { this.superfilter.add_subfilter(this); }
     }
 
+    handle_click()
+    {   this.active = !this.checkbox.checked; // if the type is shown, then the filter is inactive
+        if (this.active) // no need to run subfilters if active
+        {   for(let key in this.subfilters)
+            {   let sub = this.subfilters[key];
+                sub.active = false;
+                sub.checkbox.disabled = true;
+            }
+        }
+        else
+        {   for(let key in this.subfilters)
+            {   let sub = this.subfilters[key];
+                sub.active = !sub.checkbox.checked;
+                sub.checkbox.disabled = false;
+            }
+        }
+        tableau.active_table.refresh();
+    }
+
+    add_subfilter(sub)
+    {   this.div.appendChild(document.createElement('br'));
+        this.div.appendChild(sub.div);
+        this.subfilters[sub.tag] = sub;
+    }
+
+    checkpoint(row)
+    {   let ally = row.ally;
+        return (ally[this.property] == this.value);
+    }
+}
+
+tableau.filters = {};
+
+tableau.sifters =
+{
+    weapon :
+    {
+        red   : new sifter({ tag:'red',   property:'colour_type', value:'red',   default:true }),
+        blue  : new sifter({ tag:'blue',  property:'colour_type', value:'blue',  default:true, }),
+        green : new sifter({ tag:'green', property:'colour_type', value:'green', default:true, }),
+        grey  : new sifter({ tag:'grey',  property:'colour_type', value:'grey',  default:true, }),
+    }
+};
+for ( let group in tableau.sifters)
+{   for ( let key in tableau.sifters[group] )
+    {   tableau.filters[key] = tableau.sifters[group][key];
+    }
+}
+tableau.filters.dummy_move_filter =
+{   div : document.createElement('div'),
+    subfilters: [],
+    add_subfilter(sub)
+    {   if(Object.keys(this.subfilters).length === 0)
+        {   this.div.className = 'checky'; }
+        else { this.div.appendChild(document.createElement('br'));}
+        this.div.appendChild(sub.div);
+        this.subfilters[sub.tag] = sub;
+    }
+};
+
+tableau.subfilters = {};
+
+tableau.subsifters =
+{
+    basic :
+    {
+        home  : new sifter({ tag:'home', label:'sent home', property:'home', value:true, default:false}),
+    },
+
+    weapon :
+    {
+        sword : new sifter({ property:'weapon_type', value:'sword', default:true, tag:'sword', super:'red'}),
+        lance : new sifter({ property:'weapon_type', value:'lance', default:true, tag:'lance', super:'blue'}),
+        axe   : new sifter({ property:'weapon_type', value:'axe',   default:true, tag:'axe',   super:'green'}),
+        bow   : new sifter({ property:'weapon_type', value:'bow',   default:true, tag:'bow',   super:'grey'}),
+        dagger: new sifter({ property:'weapon_type', value:'dagger',default:true, tag:'dagger',super:'grey'}),
+
+        tome_red   : new sifter({ property:'weapon_type', value:'tome_red',   default:true, tag:'tome_red',   super:'red'}),
+        tome_blue  : new sifter({ property:'weapon_type', value:'tome_blue',  default:true, tag:'tome_blue',  super:'blue'}),
+        tome_green : new sifter({ property:'weapon_type', value:'tome_green', default:true, tag:'tome_green', super:'green'}),
+        staff      : new sifter({ property:'weapon_type', value:'staff',      default:true, tag:'staff',      super:'grey'}),
+
+        dragon_red   : new sifter({ property:'weapon_type', value:'dragon_red',   default:true, tag:'dragon_red',   super:'red'}),
+        dragon_blue  : new sifter({ property:'weapon_type', value:'dragon_blue',  default:true, tag:'dragon_blue',  super:'blue'}),
+        dragon_green : new sifter({ property:'weapon_type', value:'dragon_green', default:true, tag:'dragon_green', super:'green'}),
+    },
+
+    move :
+    {
+        infantry : new sifter({ property:'move_type', value:'infantry', default:true, tag:'infantry', super:'dummy_move_filter'}),
+        armor    : new sifter({ property:'move_type', value:'armor',    default:true, tag:'armor',    super:'dummy_move_filter'}),
+        cavalry  : new sifter({ property:'move_type', value:'cavalry',  default:true, tag:'cavalry',  super:'dummy_move_filter'}),
+        flyer    : new sifter({ property:'move_type', value:'flyer',    default:true, tag:'flyer',    super:'dummy_move_filter'}),
+    }
+};
+for ( let group in tableau.subsifters)
+{   for ( let key in tableau.subsifters[group] )
+    {   tableau.subfilters[key] = tableau.subsifters[group][key];
+    }
 }

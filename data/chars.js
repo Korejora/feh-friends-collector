@@ -1561,6 +1561,50 @@ chars.faye = class faye extends allies.ally
 
 
 
+let feh = class feh extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'feh';
+        this.name = "「フェー」";
+        this.title = "Happy Owl";
+        this.text = "アスク王国特務機関の伝書ふくろう";
+        this.summon = true;
+     // this.obtained = #;
+        this.favourite = '❤';
+        this.fruit = '🍑';
+        this.origin = 0;
+        this.minimum_rarity = 5;
+        this.colour_type = 'grey';
+        this.weapon_type = 'heart';
+        this.move_type = 'flyer';
+     // this.level = 40;
+     // this.rating = 158;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : null,
+        };
+
+        this.base_skills =
+        {   weapons   : [ null ],
+            assists   : [ null ],
+            specials  : [ null ],
+            passive_a : [ null ],
+            passive_b : [ null ],
+            passive_c : [ null ],
+        };
+    }
+
+    return_nature() { return "❤"; }
+    set_rarity() { this.rarity = 5; }
+
+};
+
+
+
+
 chars.felicia = class felicia extends allies.ally
 {   constructor()
     {   super();
@@ -1852,7 +1896,7 @@ chars.gunter = class gunter extends allies.ally
             specials  : [ null ],
             passive_a : [ 'armored_blow_1', 'armored_blow_2', 'armored_blow_3' ],
             passive_b : [ null ],
-            passive_c : [ 'spur_res_1', 'spur_res_2', 'spur_res_3' ]
+            passive_c : [ 'hone_atk_1', 'hone_atk_2', 'hone_cavalry' ]
         };
         this.early_passive = 'passive_c';
         this.late_passive =  'passive_a';
@@ -5480,13 +5524,3 @@ chars.zephiel = class zephiel extends allies.ally
         this.late_passive =  'passive_a';
     }
 };
-
-
-for ( let key in chars )
-{   allies.list.push(new chars[key]());
-    allies.tags.push(key);
-}
-
-allies.list.forEach(function(ally)
-{   ally.fresh_ally();
-});

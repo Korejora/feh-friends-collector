@@ -11,7 +11,7 @@ let googly =
 
     rows : [],
 
-    setup : function()
+    setup : function googly_setup()
     {   porter.googly.attach_oauthbuttons();
     },
 

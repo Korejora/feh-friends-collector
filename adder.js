@@ -7,7 +7,7 @@ let adder =
     show : divvy.prototype_show,
     hide : divvy.prototype_hide,
 
-    setup : function()
+    setup : function adder_setup()
     {
         let container_div = document.getElementById('adder_container');
 
@@ -69,7 +69,7 @@ let adder =
 
     add_click : function()
     {   if(!adder.name_dropdown.value)
-        {   tableau.friends_table.div.appendChild(tableau.feh_row.div);
+        {   tableau.add_feh_row();
             return;
         }
         let new_friend =
@@ -82,7 +82,7 @@ let adder =
         refreshment();
     },
 
-    rebuild_ally : function()
+    rebuild_ally()
     {   let tag = adder.list[adder.name_dropdown.value];
         adder.ally = new chars[tag]();
         this.rarity.refresh();
@@ -126,7 +126,7 @@ let adder =
 
     rarity :
     {
-        setup : function()
+        setup()
         {
             this.dropdown = document.createElement('select');
             this.dropdown.className = ' dropdown ';
@@ -138,7 +138,7 @@ let adder =
             this.dropdown.onchange = function() { adder.refresh(); };
         },
 
-        refresh : function()
+        refresh()
         {   for ( let i=5; i>0; i-- )
             {   let drop = this.dropdown;
                 let opt = drop.options[5-i];
@@ -157,7 +157,7 @@ let adder =
 
     boon :
     {
-        setup : function()
+        setup()
         {
             this.dropdown = document.createElement('select');
             this.dropdown.className = ' dropdown ';
@@ -171,8 +171,8 @@ let adder =
                 that.dropdown.appendChild(option);
             });
             this.dropdown.onchange = function()
-            {   if (this.dropdown.value == "neutral")
-                {   adder.bane.dropdown.value = "neutral"; // match neutral to neutral
+            {   if (this.value == "neutral")
+                {   adder.bane.value = "neutral"; // match neutral to neutral
                 }
                 adder.refresh();
             };
@@ -181,7 +181,7 @@ let adder =
 
     bane :
     {
-        setup : function()
+        setup()
         {
             this.dropdown = document.createElement('select');
             this.dropdown.className = ' dropdown ';
@@ -195,13 +195,11 @@ let adder =
                 that.dropdown.appendChild(option);
             });
             this.dropdown.onchange = function()
-            {   if (this.dropdown.value == "neutral")
-                {   adder.boon.dropdown.value = "neutral";
+            {   if (this.value == "neutral")
+                {   adder.boon.value = "neutral";
                 }
                 adder.refresh();
             };
         }
     }
 };
-
-adder.setup();

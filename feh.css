@@ -6,13 +6,19 @@
 }
 
 body
-{   background-color: #000033;
+{   background-color: #000044;
     color: lightblue;
     font-family: chiarostdb;
 }
 
 div
 {   display: inline;
+}
+
+.divider
+{
+    border-left:1px solid grey;
+    display: inline-block;
 }
 
 .clickables
@@ -42,6 +48,10 @@ div
     user-select: none;
 }
 
+.icon img
+{   height: 1em;
+}
+
 .warning
 {   color: crimson;
 }
@@ -54,6 +64,15 @@ div
 
 .strike
 {   text-decoration:line-through;
+}
+
+
+.divvy
+{   vertical-align: top;
+}
+.checky
+{   display: inline-block;
+    vertical-align: top;
 }
 
 #porter textarea
@@ -76,9 +95,7 @@ div
     display:block;
     width:90%;
     margin: 10px;
-    border-style: solid;
-    border-width: 1px;
-    color: #555555;
+    border: solid 1px dimgrey;
     padding: 10px;
 }
 #alter .portrait
@@ -119,9 +136,7 @@ div
 {   display: inline-block;
     margin-left: 1%;
     margin: 10px;
-    border-style: solid;
-    border-width: 1px;
-    color: #555555;
+    border: solid 1px dimgrey;
     padding: 10px;
 
 }
@@ -141,14 +156,33 @@ div
 }
 
 
+
+
+#table_setting
+{   display: block;
+    margin: 4px;
+}
+    #table_setting .inner
+    {   padding-left: 10px;
+        padding-right: 10px;
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+    }
+
+    #table_setting .divider
+    {   height: 70px;
+    }
+
+
+
 .table_wrapper
 {   background-color: hotpink; /* should never be visible */
     display: block;
     width:99%;
     margin:auto;
-    border-style: solid;
-    border-width: 1px;
-    color: #555555;
+    border: 1px solid dimgrey;
+    color: #444444;
 }
 
 .row

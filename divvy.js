@@ -4,10 +4,11 @@ class divvy
     constructor(params)
     {
         this.div = document.createElement('div');
+        this.div.className = 'divvy';
 
         if (!params) { return; }
 
-        if (params.classname) { this.div.className = params.classname; }
+        if (params.classname) { this.div.className += ' '+params.classname; }
         if (params.id) { this.div.id = params.id; }
         if (params.innertext) { this.div.innerText = params.innertext; }
         if (params.parent)
@@ -21,7 +22,7 @@ class divvy
         }
     }
 
-    add_to_class(string) { this.div.className += string; }
+    add_to_class(string) { this.div.className += ' '+string; }
 
     set_text(string) { this.div.innerText = string; }
 
@@ -53,6 +54,16 @@ class divvy
     toggle()
     {   if (this.div.style.display == 'none'){ this.show(); }
         else { this.hide(); }
+    }
+
+    underline() { this.div.style['text-decoration'] = 'underline'; }
+
+    dont_underline() { this.div.style['text-decoration'] = ''; }
+
+    add_divider()
+    {   let divider = document.createElement('div');
+        divider.className = 'divider';
+        this.div.appendChild(divider);
     }
 
 }

@@ -1,31 +1,43 @@
 
 let allies =
 {
-    check_dragon : function(ally)
+    check_dragon(ally)
     {   let dragons = [ 'dragon_red', 'dragon_blue', 'dragon_green' ];
         if ( dragons.indexOf(ally.weapon_type) != -1 ) { return true; }
         else {return false; }
     },
 
-    check_melee : function(ally)
+    check_melee(ally)
     {   let melee = [   'sword', 'lance', 'axe', 'cheese',
                         'dragon_red', 'dragon_blue', 'dragon_green'];
         if ( melee.indexOf(ally.weapon_type) != -1) { return true; }
         else { return false; }
     },
 
-    check_ranged : function(ally)
+    check_ranged(ally)
     {   let ranged = [ 'bow', 'dagger', 'tome_red', 'tome_blue', 'tome_green', 'staff',];
         if ( ranged.indexOf(ally.weapon_type) != -1) { return true; }
         else { return false; }
     },
 
-    check_colourless : function(ally)
+    check_colourless(ally)
     {   let shades = ['colourless','colorless','grey','gray','clear'];
         if ( shades.indexOf(ally.weapon_type) != -1) { return true; }
         else { return false; }
     },
 
+};
+
+allies.setup = function allies_setup()
+{
+    for ( let key in chars )
+    {   allies.list.push(new chars[key]());
+        allies.tags.push(key);
+    }
+
+    allies.list.forEach(function setup_ally(ally) { ally.fresh_ally(); });
+
+    allies.feh = new feh();
 };
 
 // allies.list = [];
@@ -35,24 +47,6 @@ let allies =
 // see end of chars.js
 allies.list = [];
 allies.tags = [];
-
-
-allies.feh =
-{   tag : 'feh',
-    name : "フェー",
-    favourite : '❤',
-    origin : 0,
-    rarity : 5,
-    weapon_type: 'heart',
-    colour_type: 'grey',
-    move_type: 'flyer',
-
-    toggle_favourite : function() { this.favourite = (!this.favourite) ? '❤' : null ; },
-    cycle_fruit : function () { this.fruit = friends.next_fruit(this.fruit); },
-    return_nature : function () { return "❤"; },
-    set_rarity : function() { this.rarity = 5; },
-    return_name : function() { return this.name; }
-};
 
 
 allies.skills = ['weapons','assists','specials','passive_a','passive_b','passive_c'];
