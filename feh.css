@@ -161,17 +161,19 @@ div
 #table_setting
 {   display: block;
     margin: 4px;
+    margin-left: 1%;
 }
     #table_setting .inner
     {   padding-left: 10px;
         padding-right: 10px;
         display: inline-block;
-        vertical-align: top;
+        vertical-align: middle;
         text-align: center;
     }
 
     #table_setting .divider
     {   height: 70px;
+        vertical-align: middle;
     }
 
 

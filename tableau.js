@@ -112,6 +112,7 @@ tableau.setup = function tableau_setup()
             parent: this.table_setting.switch.div
         });
     this.table_setting.switch.add_squiggly();
+    this.table_setting.switch.add_linebreak(); // necessary to align line proeprly
 
     this.activate_friends_select.div.onmousedown = function()
     {   tableau.activate_friends_table();
@@ -123,8 +124,6 @@ tableau.setup = function tableau_setup()
         tableau.activate_allies_select.underline();
         tableau.activate_friends_select.dont_underline();
     };
-
-
 
 
     this.table_setting.add_divider();
@@ -158,7 +157,6 @@ tableau.setup = function tableau_setup()
     {   let filter = this.filters[key];
         this.table_setting.filters.append(filter.div);
     }
-
 
 
 
