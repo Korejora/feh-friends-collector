@@ -125,6 +125,8 @@ tableau.setup = function tableau_setup()
     };
 
 
+
+
     this.table_setting.add_divider();
 
 
@@ -165,6 +167,7 @@ tableau.setup = function tableau_setup()
     this.setup_allies_table();
 
     this.activate_friends_table();
+    this.activate_friends_select.underline();
 
     this.feh_row = new this.row(allies.feh);
     this.feh_row.build_items();
@@ -692,7 +695,7 @@ class sifter extends checky
 
     checkpoint(row)
     {   let ally = row.ally;
-        return (ally[this.property] == this.value);
+        return (ally[this.property] === this.value);
     }
 }
 
@@ -700,6 +703,10 @@ tableau.filters = {};
 
 tableau.sifters =
 {
+    basic :
+    {
+     // favourite : new sifter({ tag:'favourite', label:'💔', property:'favourite', value:null, default:true})
+    },
     weapon :
     {
         red   : new sifter({ tag:'red',   property:'colour_type', value:'red',   default:true }),

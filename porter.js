@@ -122,11 +122,11 @@ let porter =
         toggle()
         {   if (this.div.style.display == 'none')
             {   this.show();
-                alter.select.stringly.underline();
+                porter.select.stringly.underline();
             }
             else
             {   this.hide();
-                alter.select.stringly.dont_underline();
+                porter.select.stringly.dont_underline();
             }
         },
 
@@ -204,11 +204,11 @@ let porter =
         toggle()
         {   if (this.div.style.display == 'none')
             {   this.div.style.display = '';
-                alter.select.googly.underline();
+                porter.select.googly.underline();
             }
             else
             {   this.hide();
-                alter.select.googly.dont_underline();
+                porter.select.googly.dont_underline();
             }
         },
 

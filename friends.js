@@ -339,9 +339,7 @@ let friends =
             ).then(
             function(response)
             {
-                let d = new Date();
-                let datetime = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
-                porter.googly_note("Saved roster to google sheet. "+datetime,'inform');
+                porter.googly_note("Saved roster to google sheet. "+stringy.show_time(),'inform');
             },
             function(response)
             {   console.log('Error: ' + response.result.error.message);

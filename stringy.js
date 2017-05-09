@@ -145,4 +145,9 @@ let stringy =
         return nature;
     },
 
+    show_time()
+    {   let d = new Date();
+        return d.toLocaleTimeString();
+    }
+
 };
