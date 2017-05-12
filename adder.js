@@ -1,6 +1,6 @@
 
 // adder.js
-// handles adding a friend to the friend roster 
+// handles adding a friend to the friend roster
 
 
 let adder =
@@ -114,13 +114,19 @@ let adder =
         adder.ally.set_bane(banedrop.value);
         adder.ally.assign_min_stats();
 
-        adder.stats.innerHTML = " "
+        let brave_speed = '';
+        if(adder.ally.weapon.includes('brave'))
+        {   brave_speed = "(" + (adder.ally.spd - 5) + ")";
+        }
+
+        adder.stats.set_text( " "
             + "hp "  + adder.ally.hp  + ", "
             + "atk " + adder.ally.atk
                 + "("+(adder.ally.atk+adder.ally.get_base_weapon_might())+")" +", "
-            + "spd " + adder.ally.spd + ", "
+            + "spd " + adder.ally.spd
+                + brave_speed + ", "
             + "def " + adder.ally.def + ", "
-            + "res " + adder.ally.res + "  ";
+            + "res " + adder.ally.res + "  " );
     },
 
     rarity :
