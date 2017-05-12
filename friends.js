@@ -1,4 +1,8 @@
 
+// friends.js
+// handles the friends roster
+
+
 let friends =
 {
     roster : [],
@@ -65,7 +69,7 @@ let friends =
 
         friends.roster = friends.roster.sort(function(a,b){return a.obtained-b.obtained;});
         tableau.friends_table.ally_list = friends.roster;
-        alter.reset();
+        alter.reset_ally();
         refreshment();
         tableau.last_sorted = null;
     },
@@ -166,18 +170,13 @@ let friends =
             }
             else
             {   console.log('no data found.');
-                porter.googly_note("Found sheet, but no data. Is the sheet empty?", 'error');
+                porter.googly_note(stringy.googly_warn_no_data, 'error');
             }
         },
         function(response)
         {   let error_message = response.result.error.message;
             console.log('Error: ' + response.result.error.message);
-            if (error_message.includes("request is missing a valid API key"))
-            {   porter.googly_note("Couldn't authorize connection. Are you connected to Google?", 'error');
-            }
-            if (error_message.includes("does not have permission"))
-            {   porter.googly_note("Couldn't access the sheet. Do you have permission to read that sheet?", 'error');
-            }
+            stringy.googly_do_error(error_message, 'read');
         }      );
     },
 
@@ -243,7 +242,7 @@ let friends =
 
         if (columns.tag === undefined && columns.name === undefined )
         {   console.log("couldn't find tags/names column! aborting ..");
-            porter.googly_note("Couldn't find Name column. Do you have a column titled 'Name', 'Character', or similar?",'error');
+            porter.googly_note(stringy.googly_warn_no_name,'error');
             return;
         }
 
@@ -269,7 +268,7 @@ let friends =
             restore_array.push(friend);
         }
 
-        porter.googly_note("Roster restored from google sheet.",'inform');
+        porter.googly_note(stringy.googly_info_roster_restored,'inform');
 
         this.restore_friends(restore_array);
     },
@@ -339,7 +338,7 @@ let friends =
             ).then(
             function(response)
             {
-                porter.googly_note("Saved roster to google sheet. "+stringy.show_time(),'inform');
+                porter.googly_note(stringy.googly_info_roster_saved+" "+stringy.show_time(),'inform');
             },
             function(response)
             {   console.log('Error: ' + response.result.error.message);
@@ -349,12 +348,7 @@ let friends =
         {
             let error_message = response.result.error.message;
             console.log('Error: ' + response.result.error.message);
-            if (error_message.includes("missing required authentication credential"))
-            {   porter.googly_note("Couldn't authorize connection. Are you connected to Google?", 'error');
-            }
-            if (error_message.includes("does not have permission"))
-            {   porter.googly_note("Couldn't access the sheet. Do you have permission to write to that sheet?", 'error');
-            }
+            stringy.googly_do_error(error_message, 'write');
         }     );
 
     },
