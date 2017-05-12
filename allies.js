@@ -1,4 +1,9 @@
 
+// allies.js
+// handles ally functions
+// see chars.js for character databse
+
+
 let allies =
 {
     check_dragon(ally)
@@ -47,6 +52,15 @@ allies.setup = function allies_setup()
 // see end of chars.js
 allies.list = [];
 allies.tags = [];
+allies.growths =
+        [   [ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11 ], // possible gp
+            [ 6,  8,  9, 11, 13, 14, 16, 18, 19, 21, 23, 24 ], // rarity 1
+            [ 7,  8, 10, 12, 14, 15, 17, 19, 21, 23, 25, 26 ], // rarity 2
+            [ 7,  9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29 ], // rarity 3
+            [ 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 31 ], // rarity 4
+            [ 8, 10, 13, 15, 17, 19, 22, 24, 26, 28, 30, 33 ]  // rarity 5
+        ];
+
 
 
 allies.skills = ['weapons','assists','specials','passive_a','passive_b','passive_c'];
@@ -58,42 +72,60 @@ allies.ally = class ally
     constructor()
     {
         this.rarity = 5; // default
+        this.skills =
+        {   weapons : [], assists : [], specials : [],
+            passive_a:[], passive_b:[], passive_c: []
+        };
+        this.inherited_skills =
+        {   weapons : [], assists : [], specials : [],
+            passive_a:[], passive_b:[], passive_c: []
+        };
     }
 
 
     assign_max_stats ()
     {
+        let stats = this.return_max_stats();
+        for ( let key in stats )
+        {   this[key] = stats[key];
+        }
 
-        let growths =
-        [   [ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11 ], // possible gp
-            [ 6,  8,  9, 11, 13, 14, 16, 18, 19, 21, 23, 24 ], // rarity 1
-            [ 7,  8, 10, 12, 14, 15, 17, 19, 21, 23, 25, 26 ], // rarity 2
-            [ 7,  9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29 ], // rarity 3
-            [ 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 31 ], // rarity 4
-            [ 8, 10, 13, 15, 17, 19, 22, 24, 26, 28, 30, 33 ]  // rarity 5
-        ];
+        this.rating = this.hp + this.atk + this.spd + this.def + this.res;
+    }
 
-        if ( !this.growth_points) { this.assign_growths(); }
+    return_max_stats(rarity = this.rarity)
+    {
+        let growths = allies.growths;
 
-        for (let stat in this.base_stats[this.rarity])
-        {   let min = this.base_stats[this.rarity][stat]; // value at level 1
+        let stats = {};
+        for (let stat in this.base_stats[rarity])
+        {   let min = this.base_stats[rarity][stat]; // value at level 1
             let gp = this.growth_points[stat];
             if (this.summon)
             {   if (stat == this.boon) { min++; gp++; }
                 if (stat == this.bane) { min--; gp--; }
             }
-            let max =  min + growths[this.rarity][gp];
-            this[stat] = max;
+            let max =  min + growths[rarity][gp];
+            stats[stat] = max;
         }
 
-        this.rating = this.hp + this.atk + this.spd + this.def + this.res;
+        return stats;
 
     }
 
     assign_min_stats ()
     {
-        for (let stat in this.base_stats[this.rarity])
-        {   let min = this.base_stats[this.rarity][stat];
+        let stats = this.return_min_stats();
+        for ( let key in stats )
+        {   this[key] = stats[key];
+        }
+    }
+
+    return_min_stats (rarity = this.rarity)
+    {
+        let stats = {};
+        for (let stat in this.base_stats[rarity])
+        {   let min = this.base_stats[rarity][stat];
             if (this.summon) // ignore boon/bane on special map allies
             {   if (stat == this.boon) { min++; }
                 if (stat == this.bane) { min--; }
@@ -101,7 +133,7 @@ allies.ally = class ally
             this[stat] = min;
         }
 
-        this.rating = this.hp + this.atk + this.spd + this.def + this.res;
+        return stats;
     }
 
 
@@ -237,6 +269,18 @@ allies.ally = class ally
     set_boon(boon) { this.boon = stringy.interpret_stat(boon); }
     set_bane(bane) { this.bane = stringy.interpret_stat(bane); }
 
+    set_nature(boon, bane)
+    {   if( boon == 'neutral' || bane == 'neutral' )
+        {   this.set_boon('neutral');
+            this.set_bane('netural');
+        }
+        else
+        {   this.set_boon(boon);
+            this.set_bane(bane);
+        }
+        this.assign_max_stats();
+    }
+
     return_nature() { return stringy.display_nature(this.boon, this.bane); }
 
     return_skills() { return this.skills; }
@@ -277,11 +321,31 @@ allies.ally = class ally
     }
 
     send_home()
-    {   this.home = true;
+    {   if (this.origin !== 0)
+        {   this.home = true;
+            refreshment();
+        }
+    }
+
+    undo_send_home()
+    {   this.home = false;
+        refreshment();
     }
 
     is_home()
     {   return this.home;
+    }
+
+    inherit_skill(skill, type)
+    {
+        if(type) { this.inherited_skills[type].push(dat[type][skill]); }
+        else
+        {   for ( let key in dat )
+            {   if (dat[key][skill])
+                {   this.inherited_skills[key].push(dat[key][skill]);
+                }
+            }
+        }
     }
 
 };

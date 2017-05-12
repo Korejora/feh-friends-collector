@@ -1,4 +1,7 @@
 
+// checky.js 
+// checky class
+
 class checky
 {
     constructor(params)
@@ -15,12 +18,22 @@ class checky
 
         if (!params) { return; }
 
+        if (params.type) {this.checkbox.type = params.type; }
+
         if (params.default) { this.checkbox.defaultChecked = params.default; }
         if (params.label) { this.label.appendChild(document.createTextNode(params.label)); }
 
         if (params.classname) { this.div.className += ' '+params.classname; }
         if (params.id) { this.div.id = params.id; }
-        if (params.parent) params.parent.append(this.div);
+        if (params.parent)
+        {   let par = params.parent;
+            if (par.tagName == 'DIV')
+            {   par.appendChild(this.div);
+            }
+            else
+            {   par.add_child(this.div);
+            }
+        }
 
         this.div.appendChild(this.label);
 

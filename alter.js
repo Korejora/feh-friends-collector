@@ -1,165 +1,209 @@
 
+// alter.js
+// handles viewing and altering an friend from the friend roster
+
+
 let alter =
 {
 
     setup : function alter_setup()
     {
         let container_div = document.getElementById('alter_container');
+        container_div.innerHTML = '';
 
-        alter.div = document.createElement('div');
-        alter.div.id = 'alter';
-        container_div.appendChild(alter.div);
+        this.div = document.createElement('div');
+        this.div.id = 'alter';
+        container_div.appendChild(this.div);
 
         // ally picture display
-        alter.portrait = document.createElement('img');
-        alter.portrait.className = 'portrait';
-        alter.portrait.onerror = function() { this.src = stringy.img_feh; };
-        alter.portrait.src = stringy.img_feh;
-        alter.div.appendChild(alter.portrait);
+        this.portrait_container = new divvy({ classname:'inner left', parent:this.div });
+        this.portrait = document.createElement('img');
+        this.portrait.className = 'portrait';
+        this.portrait.onerror = function() { this.src = stringy.img_feh; };
+        this.portrait.src = stringy.img_feh;
+        this.portrait_container.add_child(this.portrait);
 
         // inner section to contain other (than portrait) contents
-        alter.inner = new divvy({parent:alter.div, classname:'inner', id:'alter_inner'});
+        this.inner = new divvy({ id:'alter_inner', classname:'inner', parent:this.div });
 
-        alter.note = new divvy ({parent:alter.inner.div, classname:'inner', id:'alter_note'});
+        this.note = new divvy ({ id:'alter_note', classname:'inner note', parent:this.inner.div });
 
-        alter.left = new divvy({parent:alter.inner.div, classname:'inner'});
-
-        // name display
-        alter.name = new divvy({parent:alter.left.div, classname:'name div'});
-
-        alter.left.div.appendChild(document.createElement('br'));
-
-        // rarity display & dropdown selector
-        alter.rarity_setup();
-        alter.left.append(alter.rarity.div);
-        alter.left.add_linebreak();
-        alter.nature_setup();
-        alter.left.append(alter.nature.div);
+        // left
+        this.left = new divvy({ id:'alter_left', classname:'inner left', parent:this.inner.div});
+        this.name = new divvy({parent:this.left.div, id:'alter_name'});
+        this.left.add_linebreak();
+        this.rarity = new divvy({parent:this.left.div});
+        this.left.add_linebreak();
+        this.nature = new divvy({parent:this.left.div});
+        this.left.add_linebreak();
 
 
-        alter.right = new divvy({parent:alter.inner.div, classname:'inner',});
-        alter.right.upper = new divvy({parent:alter.right.div, classname:'inner'});
-        alter.right.upper.add_squiggly();
+        this.right = new divvy({parent:this.inner.div, classname:'inner right', id:'alter_right'});
+        this.right.upper = new divvy({parent:this.right.div, classname:'inner'});
+        this.right.upper.add_squiggly();
 
-        alter.right.append(document.createElement('br'));
-        alter.right.lower = new divvy({parent:alter.right.div, classname:'inner'});
+        this.right.add_linebreak();
+        this.right.lower = new divvy({parent:this.right.div, classname:'inner'});
+
+        this.basic = new subalter_basic();
+        this.add_to_selection(this.basic);
 
         // inherit skill list
-        alter.inherit.setup();
+        this.inherit.setup();
 
-        alter.right.upper.append(alter.inherit.clicky.div);
-        alter.right.upper.add_squiggly();
+        this.sendhome = new subalter_sendhome();
+        this.add_to_selection(this.sendhome);
 
+        this.selection.forEach( function(selectable)
+        {   selectable.call_deselection = function() { alter.deselection(); };
+        });
 
-        alter.reset();
+        this.reset_ally();
 
     },
 
 
-    select : function (ally)
+    select_ally : function alter_select_ally(ally)
     {   this.ally = ally;
-        if(!ally) { this.reset(); return -1; }
+        if(!ally) { this.reset_ally(); return -1; }
         this.rebuild();
     },
 
 
-    rebuild : function() // if the ally changes
+    rebuild : function alter_rebuild() // if the ally changes
     {
         this.portrait.src = stringy.find_img_path('portrait',this.ally.tag);
 
-        this.name.set_text(this.ally.return_name());
+        this.deselection();
+
+        this.basic.rebuild();
+        this.inherit.rebuild();
+        this.sendhome.rebuild();
 
         this.refresh();
     },
 
-    refresh : function() // if something changes but the ally doesn't need to be redone
+    refresh : function alter_refresh() // if something changes but the ally doesn't need to be redone
     {
         if (this.ally == allies.feh) { return; }
         this.note.clear(); this.note.hide();
+        this.left_rebuild();
         this.left.show(); this.right.show();
-        this.rarity.refresh();
-        this.nature.refresh();
         this.inherit.rebuild();
     },
 
 
-    reset : function() // if an ally was not found
+    reset_ally : function alter_reset_ally() // if an ally was not found
     {   this.ally = allies.feh;
         this.portrait.src = stringy.img_feh;
         this.note.set_text(" No friend selected 〜 "); this.note.show();
         this.left.hide(); this.right.hide();
     },
 
-
-    dropprop : class dropprop extends divvy
+    left_rebuild()
     {
-        constructor()
-        {   super({parent:alter.div, className:'basic'});
-            let that = this;
+        this.name.set_text(this.ally.return_name());
+        if(this.ally.favourite) { this.name.add_text(" ❤ "); }
+        this.rarity.set_text(this.ally.return_rarity_stars());
+        this.nature.set_text(this.ally.return_nature());
+    },
 
-            this.clickable = new divvy({parent:this.div, classname:'clicky noselect'});
-            this.clickable.div.onmousedown = function() { that.handle_display_click(); };
-            this.display = new divvy({parent:this.clickable});
-            this.clickable.add_text(" ▼");
+    send_ally_home()
+    {
+        let name = this.ally.return_name();
+        if (!this.ally.is_home()) { this.ally.send_home(); }
+        else { this.ally.undo_send_home(); }
+        this.reset_ally();
+        this.note.set_text(name + " sent home.");
+    },
 
+    selection : [],
 
-            this.edit = new divvy({parent:this.div});
-            this.edit.add_linebreak();
-            this.edit.add_squiggly();
-            this.edit.hide();
-            this.edit.dropdown = document.createElement('select');
-            this.edit.dropdown.className = ' dropdown ';
-            this.edit.dropdown.onchange = function() { that.resolve_input(); };
-            this.edit.append(this.edit.dropdown);
+    add_to_selection(sub)
+    {   this.right.upper.add_child(sub.select);
+        this.right.upper.add_squiggly();
+        if(sub instanceof selectable) { this.selection.push(sub); } // FIXME: remove deprecated selectdivs
+        else { this.selection.push(sub.select); }
+        this.right.lower.add_child(sub.display);
+    },
 
-        }
-
-        handle_display_click()
-        {   if (!this.active)
-            {   this.activate();
-            }
-            else
-            {   this.deactivate();
-            }
-        }
-        activate()
-        {   alter.refresh();
-            this.edit.show();
-            this.active = true;
-        }
-        deactivate()
-        {   this.edit.hide();
-            this.active = false;
-        }
-
+    deselection()
+    {
+        this.basic.do_deselect();
+        this.inherit.select.do_deselect();
+        this.sendhome.do_deselect();
     },
 
 
+};
+
+
+alter.construct_subalter = function subalter_constructor(select_text)
+{
+    this.select = new selectdiv({ innertext:select_text, deselectable:true });
+    let that = this;
+    this.select.activate = function(){ that.display.show(); };
+    this.select.deactivate = function(){ that.display.hide(); };
+
+    this.display = new divvy({ parent: alter.right.lower });
+    this.display.hide();
+
+    alter.add_to_selection(this);
+
+};
+
+class subalter_basic extends selectable
+{
+    constructor()
+    {   super({deselectable:true});
+        this.select.set_text("overview");
+
+        this.rarity_setup();
+
+        this.display.add_linebreak();
+
+        this.nature_setup();
+
+        this.deselection();
+
+    }
 
     rarity_setup()
     {
-        this.rarity = new this.dropprop();
-        let rarity = this.rarity;
+        this.rarity = new selectable({deselectable:true});
+        let rar = this.rarity;
+        rar.call_deselection = function() { alter.basic.deselection(); };
 
+        rar.container = new divvy({parent:this.display});
+        rar.container.add_child(rar.select);
+        rar.container.add_child(rar.display);
 
-        // when the ally's rarity is changed via the dropdown
-        rarity.resolve_input = function()
-        {   if (this.active)
-            {   alter.ally.set_rarity(this.edit.dropdown.value);
-                this.deactivate();
-                refreshment();
-            }
+        rar.display.add_text(" ");
+
+        rar.dropdown = document.createElement('select');
+        rar.dropdown.className = 'dropdown';
+        rar.dropdown.onchange = function alter_basic_rarity_onchange()
+        {   alter.ally.set_rarity(rar.dropdown.value);
+            rar.rebuild();
+            rar.do_deselect();
+            refreshment();
         };
+        rar.display.add_child(rar.dropdown);
 
-        // when the alter's ally changes
-        rarity.refresh = function()
+        for (let i=5; i>=1; i--)
+        {   let option = document.createElement('option');
+            option.innerText = stringy.rar_num_to_star(i);
+            rar.dropdown.appendChild(option);
+        }
+
+        rar.rebuild = function()
         {
-            this.display.set_text(stringy.rar_num_to_star(alter.ally.rarity));
-            this.edit.dropdown.value = alter.rarity.display.div.innerText;
+            this.select.set_text(alter.ally.return_rarity_stars());
+            this.dropdown.value = this.select.div.innerText;
 
             // disable rarities inappropriate for the new ally
             for ( let i=5; i>0; i-- )
-            {   let drop = this.edit.dropdown;
+            {   let drop = this.dropdown;
                 let opt = drop.options[5-i];
                 let minrar = alter.ally.minimum_rarity;
 
@@ -171,131 +215,100 @@ let alter =
                     }
                 }
             }
-            this.deactivate();
+            this.do_deselect();
         };
-
-
-        rarity.setup = function()
-        {
-            this.div.className += ' rarity ';
-
-            // dropdown options
-            for (let i=5; i>=1; i--)
-            {   let option = document.createElement('option');
-                option.innerText = stringy.rar_num_to_star(i);
-                this.edit.dropdown.appendChild(option);
-            }
-
-            this.deactivate();
-        };
-
-        rarity.setup();
-
-    },
-
+    }
 
     nature_setup()
-    {   this.nature = new this.dropprop();
-        let nature = this.nature;
+    {
+        this.nature = new selectable({deselectable:true});
+        let nat = this.nature;
+        nat.call_deselection = function() { alter.basic.deselection(); };
 
-        nature.resolve_input = function(bone)
-        {   if (this.active)
-            {
-                if(this[bone].dropdown.value == "neutral")
-                {   this.boon.dropdown.value = "neutral";
-                    this.bane.dropdown.value = "neutral";
-                }
+        nat.container = new divvy({parent:this.display});
+        nat.container.add_child(nat.select);
+        nat.container.add_child(nat.display);
 
-                alter.ally.set_boon(this.boon.dropdown.value);
-                alter.ally.set_bane(this.bane.dropdown.value);
-                alter.ally.assign_max_stats();
-                this.display.set_text(stringy.display_nature(alter.ally.boon, alter.ally.bane));
-                refreshment();
-                this.activate();
+        nat.display.add_text(" ");
+
+        nat.boondrop = document.createElement('select');
+        nat.boondrop.className = 'dropdown';
+        nat.boondrop.appendChild(document.createElement('option'));
+        nat.boondrop.childNodes[0].innerText = "neutral";
+        ["hp","atk","spd","def","res"].forEach(function(stat)
+        {   let option = document.createElement('option');
+            option.innerText = stat+"+";
+            nat.boondrop.appendChild(option);
+        });
+        nat.boondrop.onchange = function() { nat.resolve_input('boon'); };
+        nat.display.add_child(nat.boondrop);
+
+        nat.banedrop = document.createElement('select');
+        nat.banedrop.className = ' dropdown ';
+        nat.banedrop.appendChild(document.createElement('option'));
+        nat.banedrop.childNodes[0].innerText = "neutral";
+        ["hp","atk","spd","def","res"].forEach(function(stat)
+        {   let option = document.createElement('option');
+            option.innerText = stat+"–";
+            nat.banedrop.appendChild(option);
+        });
+        nat.banedrop.onchange = function() { nat.resolve_input('bane'); };
+        nat.display.add_child(nat.banedrop);
+
+        nat.resolve_input = function(bone)
+        {   if(this[bone+'drop'].value == "neutral")
+            {   this.boondrop.value = "neutral";
+                this.banedrop.value = "neutral";
             }
+            alter.ally.set_nature(this.boondrop.value, this.banedrop.value);
+            this.select.set_text(alter.ally.return_nature());
+            tableau.friends_table.rebuild_rows();
         };
 
-        nature.refresh = function()
+        nat.rebuild = function()
         {
-            this.display.set_text(stringy.display_nature(alter.ally.boon, alter.ally.bane));
+            this.select.set_text(alter.ally.return_nature());
             if ( alter.ally.summon === false || alter.ally.rarity <= 2 )
-            {   // do not edit the nature of a non-summonable ally
-                this.boon.dropdown.value = "neutral";
-                this.boon.dropdown.disabled = true;
-                this.bane.dropdown.value = "neutral";
-                this.bane.dropdown.disabled = true;
+            {   // do not change the nature of a non-summonable ally
+                this.boondrop.value = "neutral";
+                this.boondrop.disabled = true;
+                this.banedrop.value = "neutral";
+                this.banedrop.disabled = true;
             }
             else // enable nature dropdowns if not enabled
-            {   this.boon.dropdown.disabled = false;
-                this.bane.dropdown.disabled = false;
+            {   this.boondrop.disabled = false;
+                this.banedrop.disabled = false;
             }
-            this.deactivate();
+            this.do_deselect();
         };
 
-        nature.setup = function()
-        {
-            let that = this;
+    }
 
-            this.edit.clear(); this.dropdown = null;
-            this.edit.add_linebreak();
-            this.edit.add_squiggly();
+    deselection()
+    {   this.rarity.do_deselect();
+        this.nature.do_deselect();
+    }
 
-            this.boon = new divvy({parent:this.edit});
-            let boon = this.boon;
-            boon.dropdown = document.createElement('select');
-            boon.dropdown.className = ' dropdown ';
-            boon.dropdown.appendChild(document.createElement('option'));
-            boon.dropdown.childNodes[0].innerText = "neutral";
-            ["hp","atk","spd","def","res"].forEach(function(stat)
-            {   let option = document.createElement('option');
-                option.innerText = stat+"+";
-                boon.dropdown.appendChild(option);
-            });
-            boon.dropdown.onchange = function() { that.resolve_input('boon'); };
-            boon.append(boon.dropdown);
-
-            this.bane = new divvy({parent:this.edit});
-            let bane = this.bane;
-            bane.dropdown = document.createElement('select');
-            bane.dropdown.className = ' dropdown ';
-            bane.dropdown.appendChild(document.createElement('option'));
-            bane.dropdown.childNodes[0].innerText = "neutral";
-            ["hp","atk","spd","def","res"].forEach(function(stat)
-            {   let option = document.createElement('option');
-                option.innerText = stat+"–";
-                bane.dropdown.appendChild(option);
-            });
-            bane.dropdown.onchange = function() { that.resolve_input('bane'); };
-            bane.append(bane.dropdown);
-
-            this.deactivate();
-        };
-
-        nature.setup();
-    },
-
-};
-
+    rebuild()
+    {   this.rarity.rebuild();
+        this.nature.rebuild();
+    }
+}
 
 alter.inherit =
 {
-    setup : function()
+    setup()
     {
-
-        this.clicky = new divvy({innertext:"learnable skills", classname:'clicky'});
-        let that = this;
-        this.clicky.div.onmousedown = function() { that.display.toggle(); };
-
-        this.display = new divvy({parent:alter.right.lower.div,classname:'inner'});
-        this.display.hide();
+        this.construct_subalter = alter.construct_subalter;
+        this.construct_subalter("learnable skills");
 
         this.note = new divvy({parent:this.display.div});
 
-        this.display.options = new divvy({parent:this.display.div});
-        this.display.div.appendChild(document.createElement('br'));
+        this.display.options = new divvy({ parent:this.display });
+        this.display.add_linebreak();
 
         this.final_tick = new checky
-        (   {   parent:this.display.options.div,
+        (   {   parent:this.display.options,
                 default:true,
                 label: stringy.final_tick_text,
                 id:"final_tick"
@@ -313,12 +326,12 @@ alter.inherit =
         this.passive_b = new this.subsection('passive_b');
         this.passive_c = new this.subsection('passive_c');
 
-        this.teach = new divvy({parent:alter.inherit.display.div,classname:'inner'});
+        this.teach = new divvy({classname:'inner', parent:this.display });
         let t = this.teach;
         t.title = document.createElement('div');
         t.title.style['text-decoration'] = 'underline';
-        t.append(t.title);
-        t.append(document.createElement('br'));
+        t.add_child(t.title);
+        t.add_child(document.createElement('br'));
         t.name = new divvy({parent:t,classname:'inner'});
         t.obtained = new divvy({parent:t,classname:'inner'});
         t.fruit = new divvy({parent:t,classname:'inner'});
@@ -327,32 +340,11 @@ alter.inherit =
 
     }, // end inherit setup
 
-    display :
-    {
-        toggle : function()
-        {   if (!this.active) { this.enable(); }
-            else { this.disable(); }
-        },
-        enable : function ()
-        {
-            alter.inherit.rebuild();
-            this.div.style.display = '';
-            this.active = true;
-        },
-        disable : function()
-        {   this.div.style.display = 'none';
-            this.active = false;
-        },
-        update : function()
-        {   // ?
-        }
-    },
-
-    rebuild : function() // this = alter.inherit
+    rebuild() // this = alter.inherit
     {
         if (alter.ally == allies.feh)
         {   this.note.set_text("Feh is already knowledgeable enough :)");
-            this.note.append(document.createElement('br'));
+            this.note.add_linebreak();
 
         }
         else
@@ -368,10 +360,9 @@ alter.inherit =
         this.passive_c.rebuild();
 
         this.teach.hide();
-
     },
 
-    rebuild_teachers (type, tag)
+    rebuild_teachers(type, tag)
     {
         let t = this.teach;
 
@@ -387,20 +378,15 @@ alter.inherit =
         let teachers = alter.inherit.learnable[type][tag].teachers;
         for ( let i=0; i < teachers.length; i++ )
         {   let teacher = teachers[i];
-
             t.name.add_text_n(teacher.return_name());
             t.obtained.add_text_n("(#"+teacher.obtained+")");
             t.fruit.add_text_n(teacher.return_fruit());
                 if(teacher.return_fruit()) {t.fruit.show();} else {t.fruit.hide();}
             t.rarity.add_text_n(teacher.return_rarity_stars());
             t.nature.add_text_n(teacher.return_nature());
-
         }
-
         t.show();
-
     },
-
 
     subsection : class subsection
     {
@@ -428,18 +414,86 @@ alter.inherit =
 
             for ( let i=0; i < skills_array.length; i++ )
             {   let tag = skills_array[i];
-                let div = document.createElement('div');
-                div.innerText = dat[type][tag].name;
+                let that = this;
+                let selecty = new selectdiv({innertext:dat[type][tag].name, classname:'clicky', parent:that.learn});
                 /* jshint loopfunc: true */
-                div.onmousedown = function() { alter.inherit.rebuild_teachers(type, tag); };
-                div.className = ' clicky ';
-                this.learn.append(div);
-                this.learn.append(document.createElement('br'));
+                selecty.handle_click = function alter_inherit_subsection_handle_click()
+                {   alter.inherit.rebuild_teachers(type, tag);
+                    if(alter.inherit.last_clicked){alter.inherit.last_clicked.dont_underline();}
+                    selecty.underline();
+                    alter.inherit.last_clicked = selecty;
+                };
+                this.learn.add_linebreak();
             }
         }
-
-    },
+    }
 
 };
 
-alter.setup();
+
+
+
+class subalter_inherited extends selectable // single
+{
+    constructor()
+    {
+        super({deselectable:true});
+
+        this.list = new divvy({ parent:this.display });
+
+        this.adder = new divvy({ parent: this.display });
+
+    }
+
+}
+
+
+
+
+class subalter_sendhome extends selectable // single
+{
+    constructor()
+    {
+        super({deselectable:true});
+
+        this.ask = new divvy({ parent:this.display });
+
+        this.display.add_linebreak();
+
+        this.confirm = new divvy({ parent:this.display, innertext:"confirm", classname:'clicky' });
+        this.confirm.div.onclick = function() { alter.sendhome.resolve(); };
+
+    }
+
+    rebuild()
+    {
+        if (alter.ally.origin === 0)
+        {   this.select.set_text("send home");
+            this.ask.set_text(alter.ally.return_name() + " is already at home in Askr!");
+            this.confirm.hide();
+        }
+
+        else if (!alter.ally.is_home())
+        {   this.select.set_text("send home");
+            this.ask.set_text("Really send " + alter.ally.return_name() + " home?");
+            this.confirm.show();
+        }
+        else
+        {   this.select.set_text("recall");
+            this.ask.set_text("Really call " + alter.ally.return_name() + " back?");
+            this.confirm.show();
+        }
+    }
+
+    resolve()
+    {
+        if(!alter.ally.is_home())
+        {   alter.send_ally_home();
+        }
+        else
+        {   alter.ally.undo_send_home();
+            this.ask.set_text(alter.ally.return_name() + " recalled.");
+            this.confirm.hide();
+        }
+    }
+}
