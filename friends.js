@@ -95,12 +95,12 @@ let friends =
         }
 
         let save_string = JSON.stringify(save);
-        porter.stringy.set_text(save_string);
+        porter.stringly.set_text(save_string);
     },
 
     restore_friends_string : function ()
     {
-        let save_string = porter.stringy.return_text();
+        let save_string = porter.stringly.return_text();
         let save = JSON.parse(save_string);
 
         let restore_array = [];
