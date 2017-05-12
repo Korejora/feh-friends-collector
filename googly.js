@@ -1,8 +1,4 @@
 
-// googly.js
-// handles google voodoo
-
-
 let googly =
 {
     signin  : document.getElementById('authorize-button'),
@@ -16,29 +12,7 @@ let googly =
     rows : [],
 
     setup : function googly_setup()
-    {
-        this.init_client = function initClient()
-        {
-            gapi.client.init(
-            {
-                discoveryDocs: googly.discovery_docs,
-                clientId: googly.happy_fun_key,
-                scope: googly.scopes
-            } ).then(function googly_init_success()
-                {
-                    gapi.auth2.getAuthInstance().isSignedIn.listen(googly.update_singin_status);
-                    googly.update_singin_status(gapi.auth2.getAuthInstance().isSignedIn.get());
-                    googly.signin.onclick = googly.handle_auth_click;
-                    googly.signout.onclick = googly.handle_singout_click;
-                }   );
-        };
-
-        this.load_gapi();
-
-        porter.googly.attach_oauthbuttons();
-
-
-
+    {   porter.googly.attach_oauthbuttons();
     },
 
     discovery_docs : ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
@@ -46,7 +20,7 @@ let googly =
     scopes : "https://www.googleapis.com/auth/spreadsheets",
 
     load_gapi : function handleClientLoad()
-    {   gapi.load('client:auth2', this.init_client);
+    {   gapi.load('client:auth2', initClient);
     },
 
     update_singin_status: function updateSigninStatus(isSignedIn)
@@ -84,3 +58,16 @@ let googly =
 
       var authorizeButton = document.getElementById('authorize-button');
       var signoutButton = document.getElementById('signout-button');
+
+      function initClient() {
+        gapi.client.init({
+          discoveryDocs: googly.discovery_docs,
+          clientId: googly.happy_fun_key,
+          scope: googly.scopes
+        }).then(function () {
+          gapi.auth2.getAuthInstance().isSignedIn.listen(googly.update_singin_status);
+          googly.update_singin_status(gapi.auth2.getAuthInstance().isSignedIn.get());
+          authorizeButton.onclick = googly.handle_auth_click;
+          signoutButton.onclick = googly.handle_singout_click;
+        });
+      }

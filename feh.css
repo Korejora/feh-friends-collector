@@ -21,15 +21,6 @@ div
     display: inline-block;
 }
 
-a
-{   color: white;
-    text-decoration: none;
-}
-
-a:hover
-{   color:lightgrey;
-}
-
 .clickables
 {   color: lightskyblue;
 }
@@ -57,7 +48,7 @@ a:hover
     user-select: none;
 }
 
-img.icon
+.icon img
 {   height: 1em;
 }
 
@@ -77,11 +68,11 @@ img.icon
 
 
 .divvy
-{   /* vertical-align: top; */
+{   vertical-align: top;
 }
 .checky
 {   display: inline-block;
-    /* vertical-align: top; */
+    vertical-align: top;
 }
 
 #porter textarea
@@ -106,30 +97,23 @@ img.icon
     margin: 10px;
     border: solid 1px dimgrey;
     padding: 10px;
-    min-height: 100px;
 }
 #alter .portrait
 {   max-height: 100px;
     max-width: 100px;
 }
-    #alter_inner
-    {   /* height: 100px; */
-        display: inline-block;
-        vertical-align: top;
-        color: aliceblue;
-    }
-
+#alter_inner
+{   /* height: 100px; */
+    display: inline-block;
+    vertical-align: top;
+    color: aliceblue;
+}
     #alter .inner
     {   padding-left: 5px;
         padding-right: 5px;
         display: inline-block;
         vertical-align: top;
         line-height: 1.4;
-    }
-
-    #alter .inner.left
-    {
-        min-width: 100px;
     }
 
     #alter .basic
@@ -178,7 +162,6 @@ img.icon
 {   display: block;
     margin: 4px;
     margin-left: 1%;
-    height: 5em;
 }
     #table_setting .inner
     {   padding-left: 10px;
@@ -187,29 +170,10 @@ img.icon
         vertical-align: middle;
         text-align: center;
     }
-    #table_setting .inner .inner
-    {   padding-left: 2px;
-        padding-right: 2px;
-    }
 
     #table_setting .divider
-    {   height: 97%;
-        vertical-align: top;
-    }
-
-    #table_setting .filter.column
-    {   display: inline-block;
-        vertical-align: top;
-        text-align: left;
-    }
-
-    #table_setting .filter.column .checky.filter
-    {   height:1.1em;
-    }
-
-    #table_setting .checky.filter.text
-    {   font-size: small;
-        margin: 1px;
+    {   height: 70px;
+        vertical-align: middle;
     }
 
 
@@ -407,15 +371,15 @@ display_properties =
         .row .res.title { background-color: #7777ff; }
 
 .row .skill.subdiv { width: 50% }
-    .row .weapon { width:18% }
+    .weapon { width:18% }
         .row:nth-child(even) .weapon { background-color: #ffca44; }
         .row:nth-child(odd)  .weapon { background-color: #ffea44; }
         .row .weapon.title { background-color: #ffa744; }
-    .row .assist { width:17% }
+    .assist { width:17% }
         .row:nth-child(even) .assist { background-color: #aaffff; }
         .row:nth-child(odd) .assist { background-color: #ccffff; }
         .row .assist.title { background-color: #77ffff; }
-    .row .special { width:17% }
+    .special { width:17% }
         .row:nth-child(even) .special { background-color: #ffaaff; }
         .row:nth-child(odd)  .special { background-color: #ffccff; }
         .row .special.title { background-color: #ff77ff; }
@@ -423,11 +387,11 @@ display_properties =
         .row:nth-child(even) .passive_a { background-color: #ffaaaa; }
         .row:nth-child(odd)  .passive_a { background-color: #ffcccc; }
         .row .passive_a.title { background-color: #ff7777; }
-    .row .passive_b { width:16% }
+    .passive_b { width:16% }
         .row:nth-child(even) .passive_b { background-color: #aaaaff; }
         .row:nth-child(odd)  .passive_b { background-color: #ccccff; }
         .row .passive_b.title { background-color: #7777ff; }
-    .row .passive_c { width:16% }
+    .passive_c { width:16% }
         .row:nth-child(even) .passive_c { background-color: #aaffaa; }
         .row:nth-child(odd)  .passive_c { background-color: #ccffcc; }
         .row .passive_c.title { background-color: #77ff77; }

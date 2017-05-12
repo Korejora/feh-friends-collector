@@ -1,24 +1,23 @@
 
-// divvy.js
-// divvy class, selectdiv class
-
 class divvy
 {
     constructor(params)
     {
         this.div = document.createElement('div');
-     // this.div.className = 'divvy';
+        this.div.className = 'divvy';
 
-        if (params)
-        {
-            if (params.classname) { this.add_to_class(params.classname); }
-            if (params.id) { this.div.id = params.id; }
-            if (params.innertext) { this.div.innerText = params.innertext; }
-            if (params.parent)
-            {   let par = params.parent;
-                if (par.tagName == 'DIV')
-                    { par.appendChild(this.div); }
-                else{ par.add_child(this.div); }
+        if (!params) { return; }
+
+        if (params.classname) { this.div.className += ' '+params.classname; }
+        if (params.id) { this.div.id = params.id; }
+        if (params.innertext) { this.div.innerText = params.innertext; }
+        if (params.parent)
+        {   let par = params.parent;
+            if (par.tagName == 'DIV')
+            {   par.appendChild(this.div);
+            }
+            else
+            {   par.append(this.div);
             }
         }
     }
@@ -29,11 +28,7 @@ class divvy
 
     set_class(string) { this.div.className = string; }
 
-    add_child(child)
-    {   if (child instanceof divvy)
-            { this.div.appendChild(child.div); }
-        else{ this.div.appendChild(child); }
-    }
+    append(child) { this.div.appendChild(child); }
 
     add_squiggly()
     {   this.div.appendChild(document.createTextNode(" 〜 "));
@@ -61,6 +56,10 @@ class divvy
         else { this.hide(); }
     }
 
+    underline() { this.div.style['text-decoration'] = 'underline'; }
+
+    dont_underline() { this.div.style['text-decoration'] = ''; }
+
     add_divider()
     {   let divider = document.createElement('div');
         divider.className = 'divider';
@@ -76,73 +75,3 @@ divvy.prototype_toggle = function toggle()
 {   if (this.div.style.display == 'none'){ this.show(); }
     else { this.hide(); }
 };
-
-
-class selectdiv extends divvy // DEPRECATED, USE SELECTABLE CLASS INSTEAD // see selectable.js
-{
-    constructor(params)
-    {   super(params);
-        this.div.className += ' clickables ';
-
-        this.partners = [];
-        if(params.deselectable) { this.deselectable = true; }
-
-        let that = this;
-        this.div.onmousedown = function selectdiv_click() { that.handle_click(); };
-
-        /*
-        this.div.addEventListener('mousedown', function selectdiv_click() { that.select_me(); });
-        this.div.addEventListener('mousedown', function selectdiv_click() { that.handle_click(); });
-        */
-    }
-
-    handle_click()
-    {
-        let currently_selected = this.selected;
-        this.call_deselection();
-        if(this.deselectable && currently_selected)
-            { this.do_deselect(); }
-        else{ this.do_select(); }
-    }
-
-    do_select()
-    {   this.underline();
-        this.activate();
-        this.selected = true;
-    }
-
-    do_deselect()
-    {   this.dont_underline();
-        this.deactivate();
-        this.selected = false;
-    }
-
-    call_deselection()
-    {   // console.log("Ran deselection an uninitialized default selectdiv.", this.div.innerText);
-    }
-
-    activate()
-    {   // console.log("Activated an uninitialized default selectdiv.", this.div.innerText);
-    }
-
-    deactivate()
-    {   // console.log("Deactivated an uninitialized default selectdiv.", this.div.innerText);
-    }
-
-    select_me() // register this first to allow handle_click to override
-    {
-    }
-
-    underline() { this.div.style['text-decoration'] = 'underline'; }
-
-    dont_underline() { this.div.style['text-decoration'] = ''; }
-
-    add_partner(partner) { this.partners.push(partner); }
-
-    add_partners(partners)
-    {   for ( let j = 0; j < partners.length; j++ )
-        {   this.add_partner(partners[j]);
-        }
-    }
-
-}

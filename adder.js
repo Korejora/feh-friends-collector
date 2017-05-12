@@ -1,7 +1,4 @@
 
-// adder.js
-// handles adding a friend to the friend roster 
-
 
 let adder =
 {   list : {},
@@ -13,7 +10,6 @@ let adder =
     setup : function adder_setup()
     {
         let container_div = document.getElementById('adder_container');
-        container_div.innerHTML = '';
 
         adder.div = document.createElement('div');
         adder.div.id = 'adder';
@@ -56,10 +52,15 @@ let adder =
         adder.div.appendChild(adder.button);
 
         // stats div
-        adder.stats = new divvy({ classname:'message', parent:adder.div });
+        adder.stats = document.createElement('div');
+        adder.stats.className = ' message ';
+        adder.div.appendChild(adder.stats);
 
         // message div
-        adder.message = new divvy({ classname:'message', parent:adder.div });
+        adder.message = document.createElement('div');
+        adder.message.className = ' message ';
+        adder.message.innerText = "";
+        adder.div.appendChild(adder.message);
 
         // make sure there is an ally in the stream
         adder.rebuild_ally();

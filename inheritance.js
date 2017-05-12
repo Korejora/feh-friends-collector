@@ -1,8 +1,4 @@
 
-// inheritance.js
-// compiles the list of skills an ally can inherit 
-
-
 let inheritance =
 {
     legacy :

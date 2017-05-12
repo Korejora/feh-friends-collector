@@ -1,8 +1,4 @@
 
-// stringy.js
-// handles strings and string-related functions
-
-
 let stringy =
 {
     includes_any(string, array)
@@ -12,60 +8,36 @@ let stringy =
         return false;
     },
 
-    img_feh : 'images/feh_owl.png',
-    img_path : 'images/',
-
-    img_path_type : 'images/type/',
-    img_path_portrait : 'images/portrait/',
-    img_path_other : 'images/other/',
-
-    img_prefix_portrait : 'icon_portrait_',
-    img_prefix_colour : 'orb_',
-    img_prefix_icon : 'icon-',
-    img_prefix_stars : 'stars_',
-
+    img_feh : 'images/feh_owl.jpg',
+    img_type_path : 'images/type/',
+    img_portrait_path : 'images/portrait/',
+    img_portrait_prefix : 'icon_portrait_',
+    img_colour_prefix : 'orb_',
+    img_icon_prefix : 'icon-',
     img_png_suffix : '.png',
-
-    img_heart : 'images/other/heart.png',
-    img_unfavourite : 'images/other/unfavourite.png',
-
-    path_google_sheets_icon : 'images/other/icon_google_sheets.png',
 
     find_img_path (type,key)
     {
         if(type.includes('colour'))
-        {   return this.img_path_type +
-                this.img_prefix_colour +
+        {   return this.img_type_path +
+                this.img_colour_prefix +
                 key +
                 this.img_png_suffix;
         }
 
         if(type.includes('weapon') || type.includes('move'))
-        {   return this.img_path_type +
-                this.img_prefix_icon +
+        {   return this.img_type_path +
+                this.img_icon_prefix +
                 type + '-' +
                 key +
                 this.img_png_suffix;
         }
 
         if(type.includes('portrait'))
-        {   return this.img_path_portrait +
-                this.img_prefix_portrait +
+        {   return stringy.img_portrait_path +
+                stringy.img_portrait_prefix +
                 key +
                 this.img_png_suffix;
-        }
-
-        if(type.includes('favourite'))
-        {   if(key) { return this.img_heart; }
-            else { return this.img_unfavourite; }
-        }
-
-        if(type.includes('rarity'))
-        {   return this.img_path_other +
-                this.img_prefix_stars +
-                key +
-                this.img_png_suffix;
-
         }
 
         return this.img_feh;
@@ -176,49 +148,6 @@ let stringy =
     show_time()
     {   let d = new Date();
         return d.toLocaleTimeString();
-    },
-
-    googly_do_error(err, mode)
-    {
-            if (err.includes("request is missing a valid API key"))
-            {   porter.googly_note(stringy.googly_error_no_authorize, 'error');
-            }
-            else if (err.includes("does not have permission"))
-            {
-                if (mode=='read')
-                {   porter.googly_note(stringy.googly_error_no_access_read, 'error');
-                }
-                else if (mode=='write')
-                {   porter.googly_note(stringy.googly_error_no_access_write, 'error');
-                }
-                else
-                {   porter.googly_note(stringy.googly_error_no_access, 'error');
-                }
-            }
-            else if (err.includes("Requested entity was not found"))
-            {   porter.googly_note(stringy.googly_error_not_found, 'error');
-            }
-            else if (err.includes("service is currently unavailable"))
-            {   porter.googly_note(stringy.googly_error_unavailable, 'error');
-            }
-            else
-            {
-                porter.googly_note(stringy.googly_error_unknown, 'error');
-            }
-    },
-
-    googly_info_roster_saved : "Saved roster to google sheet.",
-    googly_info_roster_restored : "Roster restored from google sheet.",
-    googly_warn_no_data : "Found sheet, but no data. Is the sheet empty?",
-    googly_warn_no_name : "Couldn't find Name column. Do you have a column titled 'Name', 'Character', or similar?",
-    googly_error_no_authorize :  "Couldn't authorize connection. Are you connected to Google?",
-    googly_error_no_access : "Couldn't access the sheet. Do you have permission to access that sheet?",
-    googly_error_no_access_read : "Couldn't access the sheet. Do you have permission to read that sheet?",
-    googly_error_no_access_write : "Couldn't access the sheet. Do you have permission to write to that sheet?",
-    googly_error_not_found : "Couldn't find the sheet. Are you sure the URL is correct?",
-    googly_error_unavailable : "Google services reported unavailable. Maybe try again?",
-    googly_error_unknown : "Unknown error. Please check the console and report this bug.",
-
-    html_code_email : '<a href="http://www.google.com/recaptcha/mailhide/d?k=01XkIwjoh68Z_DqbpwypIUXQ==&amp;c=gLFFqYqP9wgprFLXQzrg9k9sRx8XZA1Ri5muu6Qz9GQ=" onclick="window.open(\'http://www.google.com/recaptcha/mailhide/d?k\x3d01XkIwjoh68Z_DqbpwypIUXQ\x3d\x3d\x26c\x3dgLFFqYqP9wgprFLXQzrg9k9sRx8XZA1Ri5muu6Qz9GQ\x3d\', \'\', \'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300\'); return false;" title="Reveal this e-mail address">f...</a>@gmail.com',
+    }
 
 };
