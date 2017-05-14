@@ -1099,7 +1099,7 @@ chars.donnel = class donnel extends allies.ally
      // this.obtained = #;
      // this.favourite;
         this.origin = 13;
-        this.minimum_rarity = 3;
+        this.minimum_rarity = 1;
         this.colour_type = 'blue';
         this.weapon_type = 'lance';
         this.move_type = 'infantry';

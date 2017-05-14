@@ -219,6 +219,7 @@ let friends =
                         break;
                     case 'rarity':
                     case 'stars':
+                    case 'rank':
                         columns.rarity = j;
                         break;
                     case 'colour':
@@ -370,7 +371,7 @@ let friends =
                 if (colour.includes('green')) { return 'robin_green'; }
             }
 
-            if(stringy.includes_any(name,['(b)','blue','boy','(m)','(male)']) )
+            if(stringy.includes_any(name,['(b)','blue','boy','(m)','(male)',' male']) )
             {   return 'robin_blue'; }
             if(stringy.includes_any(name,['(g)','green','girl','(f)','female']) )
             {   return 'robin_green'; }
@@ -389,7 +390,7 @@ let friends =
 
             if (stringy.includes_any(name,['dragon','(b)','blue','girl','(f)','female']) )
             {   return 'corrin_dragon'; }
-            if (stringy.includes_any(name,['sword','(r)','red','boy','(m)','(male)']) )
+            if (stringy.includes_any(name,['sword','(r)','red','boy','(m)','(male)', ' male']) )
             {   return 'corrin_sword'; }
             console.log("couldn't figure out which Corrin was meant by: ", friend.name);
             console.log("assuming blue Corrin..");
