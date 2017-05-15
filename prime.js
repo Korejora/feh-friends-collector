@@ -88,7 +88,6 @@ function run_this_function_on_queue_complete()
     tableau.setup();
 
 
-    document.getElementById('sad_ie_div').innerHTML = 'Please send bug reports or feature requests to ' + stringy.html_code_email;
 
 }
 
@@ -96,7 +95,7 @@ function refreshment()
 {
     // if a new ally is added
     // if an ally changes rarity or favourite status
-    tableau.friends_table.rebuild_rows();
+    tableau.rebuild();
     inheritance.rebuild();
     alter.refresh();
 }

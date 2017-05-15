@@ -51,7 +51,7 @@ let adder =
 
         // add button
         adder.button = document.createElement('button');
-        adder.button.onclick = function() { adder.add_click(); };
+        adder.button.onclick = function() { adder.resolve_add(); };
         adder.button.innerText = "+";
         adder.div.appendChild(adder.button);
 
@@ -61,24 +61,44 @@ let adder =
         // message div
         adder.message = new divvy({ classname:'message', parent:adder.div });
 
+        // undo div
+        adder.undo = new divvy({ classname:'clickables', innertext:"undo" });
+        adder.undo.div.onclick = function adder_undo_click() { adder.resolve_undo(); };
+
         // make sure there is an ally in the stream
         adder.rebuild_ally();
 
     },
 
-    add_click : function()
+    resolve_add : function()
     {   if(!adder.name_dropdown.value)
         {   tableau.add_feh_row();
             return;
         }
-        let new_friend =
+        let friend_params =
         {   tag : adder.list[adder.name_dropdown.value],
             rarity : adder.rarity.dropdown.value,
             boon : adder.boon.dropdown.value,
             bane : adder.bane.dropdown.value
         };
-        friends.make_friend(new_friend);
+        let new_friend = friends.make_friend(friend_params);
         refreshment();
+        
+        this.message.set_text("Added " + new_friend.return_name() + " to the roster. ");
+        this.message.add_text("(");
+        this.message.add_child(this.undo);
+        this.message.add_text(")");
+    },
+
+    resolve_undo()
+    {
+        let removed_friend = friends.remove_last();
+        this.message.set_text("Removed " + removed_friend.return_name() + " from the roster.");
+    },
+
+    reset_message()
+    {
+
     },
 
     rebuild_ally()
@@ -119,14 +139,16 @@ let adder =
         {   brave_speed = "(" + (adder.ally.spd - 5) + ")";
         }
 
-        adder.stats.set_text( " "
-            + "hp "  + adder.ally.hp  + ", "
+        adder.stats.set_text(
+              "hp "  + adder.ally.hp  + ", "
             + "atk " + adder.ally.atk
                 + "("+(adder.ally.atk+adder.ally.get_base_weapon_might())+")" +", "
             + "spd " + adder.ally.spd
                 + brave_speed + ", "
             + "def " + adder.ally.def + ", "
             + "res " + adder.ally.res + "  " );
+
+        adder.message.clear();
     },
 
     rarity :
