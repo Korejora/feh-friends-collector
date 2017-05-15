@@ -293,6 +293,62 @@ dat.passive_a =
         inherit : 'melee'
     },
 
+    distant_def_1 :
+    {   tag : 'distant_def_1',
+        name : "Distant Def 1",
+        effects : { distant : { def: +2, res:+2 } },
+        text : "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+2 during combat.",
+        sp : 60,
+        prerequisite: null,
+        inherit : 'all'
+    },
+    distant_def_2 :
+    {   tag : 'distant_def_2',
+        name : "Distant Def 2",
+        effects : { distant : { def: +4, res:+4 } },
+        text : "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+4 during combat.",
+        sp : 120,
+        prerequisite : 'distant_def_1',
+        inherit : 'all'
+    },
+    distant_def_3 :
+    {   tag : 'distant_def_3',
+        name : "Distant Def 3",
+        effects : { distant : { def: +6, res:+6 } },
+        text : "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+2 during combat.",
+        sp : 240,
+        prerequisite : 'distant_def_2',
+        inherit : 'all'
+    },
+
+    earth_boost_1 :
+    {   tag : 'earth_boost_1',
+        name : "Earth Boost 1",
+        effects : { boost: { check:{thresh:'beat',current_hp:3}, def:+2} },
+        text : "If unit has at least 3 more HP than enemy at the start of combat, unit receives Def+2 during combat.",
+        sp : 50,
+        prerequisite: null,
+        inherit : 'all'
+    },
+    earth_boost_2 :
+    {   tag : 'earth_boost_2',
+        name : "Earth Boost 2",
+        effects : { boost: { check:{thresh:'beat',current_hp:3}, def:+4} },
+        text : "If unit has at least 3 more HP than enemy at the start of combat, unit receives Def+4 during combat.",
+        sp : 100,
+        prerequisite : 'earth_boost_1',
+        inherit : 'all'
+    },
+    earth_boost_3 :
+    {   tag : 'earth_boost_3',
+        name : "Earth Boost 3",
+        effects : { boost: { check:{thresh:'beat',current_hp:3}, def:+6} },
+        text : "If unit has at least 3 more HP than enemy at the start of combat, unit receives Def+6 during combat.",
+        sp : 200,
+        prerequisite : 'earth_boost_2',
+        inherit : 'all'
+    },
+
     fortress_def_1 :
     {   tag : 'fortress_def_1',
         name : "Fortress Def 1",
@@ -1439,6 +1495,34 @@ dat.passive_b =
         sp: 240,
         prerequisite: 'wings_of_mercy_2',
         inherit: 'all'
+    },
+
+    wrathful_staff_1 :
+    {   tag : 'wrathful_staff_1',
+        name : "Wrathful Staff 1",
+        effects : { staff:'wrathful', check:{ thresh:'more', hp:1.0 } },
+        text : "If unit has 100% HP at the start of combat, damage from their staff will be calculated the same as other weapons.",
+        sp: 60,
+        prerequisite: null,
+        inherit: 'all'
+    },
+    wrathful_staff_2 :
+    {   tag : 'wrathful_staff_2',
+        name : "Wrathful Staff 2",
+        effects : { staff:'wrathful', check:{ thresh:'more', hp:0.5 } },
+        text : "If unit has ≥ 50% HP at the start of combat, damage from their staff will be calculated the same as other weapons.",
+        sp: 120,
+        prerequisite: 'wrathful_staff_1',
+        inherit: 'all'
+    },
+    wrathful_staff_3 :
+    {   tag : 'wrathful_staff_3',
+        name : "Wrathful Staff 3",
+        effects : { staff:'wrathful', check: false },
+        text : "Damage from unit's staff will be calculated the same as other weapons.",
+        sp: 240,
+        prerequisite: 'wrathful_staff_2',
+        inherit: 'all'
     }
 
 };
@@ -1474,6 +1558,34 @@ dat.passive_c =
         inherit: 'axe'
     },
 
+    blue_tome_exp_1 :
+    {   tag : 'blue_tome_exp_1',
+        name : "B Tome Exp. 1",
+        effects : { bonus: 'tome_blue' },
+        text: "If unit survives and uses a blue tome, unit gets 1.5x EXP. (If similar skill effects also used, only highest multiplier applies.)",
+        sp : 50,
+        prerequisite: null,
+        inherit: 'tome_blue'
+    },
+    blue_tome_exp_2 :
+    {   tag : 'blue_tome_exp_2',
+        name : "B Tome Exp. 2",
+        effects : { bonus: 'tome_blue' },
+        text: "If unit survives, all blue tome users on team get 1.5x EXP. (If similar skill effects also used, only highest multipler applied.)",
+        sp : 100,
+        prerequisite: 'blue_tome_exp_1',
+        inherit: 'tome_blue'
+    },
+    blue_tome_exp_3 :
+    {   tag : 'blue_tome_exp_3',
+        name : "B Tome Exp. 3",
+        effects : { bonus: 'tome_blue' },
+        text: "If unit survives, all blue tome users on team get 2x EXP. (If similar skill effects also used, only highest multipler applied.)",
+        sp : 200,
+        prerequisite: 'blue_tome_exp_2',
+        inherit: 'tome_blue'
+    },
+
     bow_exp_1 :
     {   tag : 'bow_exp_1',
         name : "Bow Exp. 1",
@@ -1499,7 +1611,7 @@ dat.passive_c =
         text: "If unit survives, all bow users on team get 2x EXP. (If similar skill effects also used, only highest multipler applied.)",
         sp : 200,
         prerequisite: 'bow_exp_2',
-        inherit: 'axe'
+        inherit: 'bow'
     },
 
     breath_of_life_1 :

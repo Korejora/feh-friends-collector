@@ -5,7 +5,8 @@ let chars = {};
 
 
 // 17-04-25 finished entry
-// 17-04-26 added ike, mist, soren, titania, updated clair, lukas
+// 17-04-26 added ike, mist, soren, titania; updated clair, lukas
+// 17-05-15 added boey, celica, mae, genny; updated soren, titania
 
 
 
@@ -438,6 +439,49 @@ chars.beruka = class beruka extends allies.ally
 
 
 
+chars.boey = class boey extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'boey';
+        this.name = "Boey";
+        this.title = "Skillful Survivor";
+        this.text = "A mage from Novis who grew up dirt-poor. Of calm demeanor, but not great at magic.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 15;
+        this.minimum_rarity = 5;
+        this.colour_type = 'green';
+        this.weapon_type = 'tome_green';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 149;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 19, atk: 7, spd: 5, def: 8, res: 5 },
+        };
+        this.growth_points =
+                { hp:  7, atk: 6, spd: 6, def: 7, res: 2 };
+
+        this.base_skills =
+        {   weapons   : [ 'wind', 'elwind', 'gronnowl', 'gronnowl_plus' ],
+            assists   : [ null ],
+            specials  : [ 'glowing_ember', 'ignis' ],
+            passive_a : [ 'earth_boost_1', 'earth_boost_2', 'earth_boost_3' ],
+            passive_b : [ 'renewal_1', 'renewal_2', 'renewal_3' ],
+            passive_c : [ null ]
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
+    }
+};
+
+
+
+
 chars.caeda = class caeda extends allies.ally
 {   constructor()
     {   super();
@@ -734,6 +778,49 @@ chars.cecilia = class cecilia extends allies.ally
         };
         this.early_passive = 'passive_b';
         this.late_passive =  'passive_a';
+    }
+};
+
+
+
+
+chars.celica = class celica extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'celica';
+        this.name = "Celica";
+        this.title = "Caring Princess";
+        this.text = "The princess of Zofia; trained as a priestess. Caring towards others, and dislikes fighting. Bears the Brand on her right hand.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 15;
+        this.minimum_rarity = 5;
+        this.colour_type = 'red';
+        this.weapon_type = 'tome_red';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 148;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 17, atk: 8, spd: 7, def: 5, res: 7 },
+        };
+        this.growth_points =
+                { hp:  6, atk: 7, spd: 8, def: 4, res: 3 };
+
+        this.base_skills =
+        {   weapons   : [ 'fire', 'elfire', 'bolganone', 'ragnarok' ],
+            assists   : [ null ],
+            specials  : [ 'rising_light', 'blazing_light' ],
+            passive_a : [ 'distant_def_1', 'distant_def_2', 'distant_def_3' ],
+            passive_b : [ null ],
+            passive_c : [ 'spur_def_1', 'spur_def_2', 'spur_def_3' ],
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
     }
 };
 
@@ -1814,6 +1901,49 @@ chars.gaius = class gaius extends allies.ally
         };
         this.early_passive = 'passive_b';
         this.late_passive =  'passive_a';
+    }
+};
+
+
+
+
+chars.genny = class genny extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'genny';
+        this.name = "Genny";
+        this.title = "Endearing Ally";
+        this.text = "A meek young cleric from Novis. Likes to write her own stories.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 15;
+        this.minimum_rarity = 5;
+        this.colour_type = 'grey';
+        this.weapon_type = 'staff';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 147;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 17, atk: 9, spd: 6, def: 4, res: 8 },
+        };
+        this.growth_points =
+                { hp:  3, atk: 8, spd: 5, def: 4, res: 8 };
+
+        this.base_skills =
+        {   weapons   : [ 'assault', 'gravity' ],
+            assists   : [ 'heal', 'mend', 'physic' ],
+            specials  : [ 'imbue', 'heavenly_light' ],
+            passive_a : [ null ],
+            passive_b : [ 'wrathful_staff_1', 'wrathful_staff_2', 'wrathful_staff_3' ],
+            passive_c : [ null ],
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
     }
 };
 
@@ -3102,6 +3232,49 @@ chars.lyn = class lyn extends allies.ally
             passive_a : [ 'defiant_atk_1', 'defiant_atk_2', 'defiant_atk_3' ],
             passive_b : [ null ],
             passive_c : [ 'spur_spd_1', 'spur_spd_2', 'spur_spd_3' ]
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
+    }
+};
+
+
+
+
+chars.mae = class mae extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'mae';
+        this.name = "Mae";
+        this.title = "Bundle of Energy";
+        this.text = "A mage from Novis and a dear friend of Celica. Always cheerful and energetic, but she has a tendency to get carried away.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 15;
+        this.minimum_rarity = 5;
+        this.colour_type = 'blue';
+        this.weapon_type = 'tome_blue';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 148;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 16, atk: 10, spd: 7, def: 3, res: 8 },
+        };
+        this.growth_points =
+                { hp:  5, atk:  8, spd: 7, def: 2, res: 6 };
+
+        this.base_skills =
+        {   weapons   : [ 'thunder', 'elthunder', 'blarowl', 'blarowl_plus' ],
+            assists   : [ 'draw_back' ],
+            specials  : [ null ],
+            passive_a : [ null ],
+            passive_b : [ 'desperation_1', 'desperation_2', 'desperation_3' ],
+            passive_c : [ 'blue_tome_exp_1', 'blue_tome_exp_2', 'blue_tome_exp_3' ],
         };
         this.early_passive = null;
         this.late_passive =  null;
@@ -4846,7 +5019,7 @@ chars.soren = class soren extends allies.ally
      // this.obtained = #;
      // this.favourite;
         this.origin = 9;
-        this.minimum_rarity = 5;
+        this.minimum_rarity = 4;
         this.colour_type = 'green';
         this.weapon_type = 'tome_green';
         this.move_type = 'infantry';
@@ -4856,8 +5029,8 @@ chars.soren = class soren extends allies.ally
         {   1 : null,
             2 : null,
             3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 7, spd: 9, def: 4, res: 5 },
+            4 : { hp: 16, atk: 7, spd: 9, def: 3, res: 6 },
+            5 : { hp: 17, atk: 7, spd: 9, def: 4, res: 7 },
         };
         this.growth_points =
                 { hp:  5, atk: 8, spd: 7, def: 2, res: 6 };
@@ -4870,8 +5043,8 @@ chars.soren = class soren extends allies.ally
             passive_b : [ 'watersweep_1', 'watersweep_2', 'watersweep_3' ],
             passive_c : [ 'fortify_res_1', 'fortify_res_2', 'fortify_res_3' ]
         };
-        this.early_passive = null;
-        this.late_passive =  null;
+        this.early_passive = 'passive_c';
+        this.late_passive =  'passive_b';
     }
 };
 
@@ -5191,7 +5364,7 @@ chars.titania = class titania extends allies.ally
      // this.obtained = #;
      // this.favourite;
         this.origin = 9;
-        this.minimum_rarity = 5;
+        this.minimum_rarity = 4;
         this.colour_type = 'green';
         this.weapon_type = 'axe';
         this.move_type = 'cavalry';
@@ -5201,7 +5374,7 @@ chars.titania = class titania extends allies.ally
         {   1 : null,
             2 : null,
             3 : null,
-            4 : null,
+            4 : { hp: 17, atk: 5, spd: 8, def: 5, res: 8 },
             5 : { hp: 18, atk: 6, spd: 8, def: 6, res: 8 },
         };
         this.growth_points =
@@ -5215,8 +5388,8 @@ chars.titania = class titania extends allies.ally
             passive_b : [ 'guard_1', 'guard_2', 'guard_3' ],
             passive_c : [ null ]
         };
-        this.early_passive = null;
-        this.late_passive =  null;
+        this.early_passive = 'passive_a';
+        this.late_passive =  'passive_b';
     }
 };
 

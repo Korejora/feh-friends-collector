@@ -129,6 +129,31 @@ dat.weapons =
         inherit : 'weapon_type'
     },
 
+    blarowl :
+    {   tag : 'blarowl',
+        name: "Blárowl",
+        weapon_type : 'tome_blue',
+        might : 6,
+        range : 2,
+        text : "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.",
+        effects : { bonus:'owl' },
+        sp: 200,
+        prerequisite : 'elthunder',
+        inherit : 'weapon_type'
+    },
+    blarowl_plus :
+    {   tag : 'blarowl_plus',
+        name: "Blárowl+",
+        weapon_type : 'tome_blue',
+        might : 10,
+        range : 2,
+        text : "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.",
+        effects : { bonus:'owl' },
+        sp: 300,
+        prerequisite : 'blarowl',
+        inherit : 'weapon_type'
+    },
+
     blarraven :
     {   tag : 'blarraven',
         name: "Blárraven",
@@ -828,6 +853,31 @@ dat.weapons =
         inherit : 'weapon_type'
     },
 
+    gronnowl :
+    {   tag : 'gronnowl',
+        name: "Gronnowl",
+        weapon_type : 'tome_green',
+        might : 6,
+        range : 2,
+        text : "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.",
+        effects : { bonus:'owl' },
+        sp: 200,
+        prerequisite : 'elwind',
+        inherit : 'weapon_type'
+    },
+    gronnowl_plus :
+    {   tag : 'gronnowl_plus',
+        name: "Gronnowl+",
+        weapon_type : 'tome_green',
+        might : 10,
+        range : 2,
+        text : "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.",
+        effects : { bonus:'owl' },
+        sp: 300,
+        prerequisite : 'gronnowl',
+        inherit : 'weapon_type'
+    },
+
     gronnraven :
     {   tag : 'gronnraven',
         name: "Gronnraven",
@@ -1265,6 +1315,19 @@ dat.weapons =
         inherit : 'exclusive'
     },
 
+    ragnarok :
+    {   tag : 'ragnarok',
+        name : "Ragnarok",
+        weapon_type : 'tome_red',
+        might : 14,
+        range : 2,
+        text : "If unit has 100% HP at the start of combat, unit receives Atk/Spd +5. If attacking, unit will receive 5 damage after combat.",
+        effects : { combat : { check:{thresh:'more',hp:1.0}, atk:+5, spd:+5 }, after : { check:'initiate', bleed:5 } },
+        sp: 400,
+        prerequisite : 'bolganone',
+        inherit : 'exclusive'
+    },
+
     ragnell :
     {   tag : 'ragnell',
         name : "Ragnell",
@@ -1300,6 +1363,31 @@ dat.weapons =
         effects : { special_count:'+1' , damage: 'blade' },
         sp: 300,
         prerequisite : 'raudrblade',
+        inherit : 'weapon_type'
+    },
+
+    raudrowl :
+    {   tag : 'raudrowl',
+        name: "Rauðrowl",
+        weapon_type : 'tome_red',
+        might : 6,
+        range : 2,
+        text : "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.",
+        effects : { bonus:'owl' },
+        sp: 200,
+        prerequisite : 'ruin',
+        inherit : 'weapon_type'
+    },
+    raudrowl_plus :
+    {   tag : 'raudrowl_plus',
+        name: "Rauðrowl+",
+        weapon_type : 'tome_red',
+        might : 10,
+        range : 2,
+        text : "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.",
+        effects : { bonus:'owl' },
+        sp: 300,
+        prerequisite : 'raudrowl',
         inherit : 'weapon_type'
     },
 
