@@ -29,7 +29,7 @@ let friends =
             friend.set_rarity(0);
             friend.refresh();
             friend.obtained = friends.roster.length;
-            return friend;
+            return;
         }
         else if (chars[pass.tag])
         {
@@ -52,18 +52,10 @@ let friends =
             friend.assign_max_stats();
 
             if (pass.home) { friend.send_home(); }
-            return friend;
 
         }
         else { console.log('ERR_ALLY_CONSTRUCTOR_NOT_FOUND'); }
 
-    },
-
-    remove_last : function ()
-    {
-        let last_friend = friends.roster.pop();
-        refreshment();
-        return last_friend;
     },
 
     restore_friends : function(restore_array)

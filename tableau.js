@@ -106,11 +106,6 @@ let tableau =
         this.allies_table.refresh();
     },
 
-    rebuild()
-    {   this.friends_table.rebuild_rows();
-        // should never be necessary to rebuild allies table
-    }
-
 };
 
 
