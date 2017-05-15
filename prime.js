@@ -88,7 +88,6 @@ function run_this_function_on_queue_complete()
     tableau.setup();
 
 
-    document.getElementById('sad_ie_div').innerHTML = "Please send bug reports or feature requests to " + stringy.html_code_email;
 
 }
 
