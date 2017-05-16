@@ -470,8 +470,10 @@ class subalter_sendhome extends selectable // single
     rebuild()
     {
         if(!tableau.is_collection_active())
-        {
-            this.select.hide();
+        {   this.select.hide();
+        }
+        else
+        {   this.select.show();
         }
 
         if (alter.ally.origin === 0)
