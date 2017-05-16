@@ -337,6 +337,7 @@ alter.inherit =
         t.fruit = new divvy({parent:t,classname:'inner'});
         t.rarity = new divvy({parent:t,classname:'inner'});
         t.nature = new divvy({parent:t,classname:'inner'});
+        t.unlock = new divvy({parent:t,classname:'inner'});
 
     }, // end inherit setup
 
@@ -372,6 +373,7 @@ alter.inherit =
         t.fruit.clear();
         t.rarity.clear();
         t.nature.clear();
+        t.unlock.clear();
 
         if (alter.ally == allies.feh) { return; }
 
@@ -385,6 +387,16 @@ alter.inherit =
                     if(teacher.return_fruit()) {t.fruit.show();} else {t.fruit.hide();}
                 t.rarity.add_text_n(teacher.return_rarity_stars());
                 t.nature.add_text_n(teacher.return_nature());
+            }
+            if(type.includes('passive'))
+            {   let unlock_rarity = 3;
+                if      (type == teacher.early_passive)   { unlock_rarity = 4; }
+                else if (type == teacher.late_passive)    { unlock_rarity = 5; }
+                else if (type == teacher.odd_passive)     { unlock_rarity = 5; }
+                else if (type == teacher.special_passive) { unlock_rarity = 4; }
+                else if (teacher.minimum_rarity == 5)     { unlock_rarity = 5; }
+                else { unlock_rarity = 3; }
+                t.unlock.add_text_n("("+unlock_rarity+"★"+" unlock"+")");
             }
         }
         t.show();
