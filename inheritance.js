@@ -1,6 +1,6 @@
 
 // inheritance.js
-// compiles the list of skills an ally can inherit 
+// compiles the list of skills an ally can inherit
 
 
 let inheritance =
@@ -18,14 +18,22 @@ let inheritance =
         this.legacy.passive_b = {};
         this.legacy.passive_c = {};
 
-        for ( let i=0; i < friends.roster.length; i++ )
-        {   let friend = friends.roster[i];
-            if ( friend.origin === 0 ) { continue; } // cannot inherit from anna, alfonse, or sharena
-            if ( friend.favourite ) { continue; } // do not inherit from favourites
-            if ( friend.home ) { continue; } // cannot inherit from allies that have gone home
+        let active_roster;
+        if(tableau.is_collection_active())
+        {   active_roster = friends.roster;
+        }
+        else
+        {   active_roster = allies.list;
+        }
 
-            let skills = friend.return_skills();
-            let ends = friend.return_final_base_skills();
+        for ( let i=0; i < active_roster.length; i++ )
+        {   let ally = active_roster[i];
+            if ( ally.origin === 0 ) { continue; } // cannot inherit from anna, alfonse, or sharena
+            if ( ally.favourite ) { continue; } // do not inherit from favourites
+            if ( ally.home ) { continue; } // cannot inherit from allies that have gone home
+
+            let skills = ally.return_skills();
+            let ends = ally.return_final_base_skills();
 
             if (alter.inherit.final_tick.checkbox.checked === true)
             {
@@ -38,8 +46,8 @@ let inheritance =
                     if (dat[type][tag].inherit == "exclusive") { continue; } // don't add exclusive skills to the list
 
                     // make new entry if not already present, else add to the list
-                    if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[friend] }; }
-                    else { this.legacy[type][tag].teachers.push(friend); }
+                    if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[ally] }; }
+                    else { this.legacy[type][tag].teachers.push(ally); }
 
                 }
             }
@@ -50,14 +58,14 @@ let inheritance =
 
                     for ( let i=0; i < skills[type].length; i++ )
                     {
-                        // iterate over each skill in the friend's skill list
+                        // iterate over each skill in the ally's skill list
                         let tag = skills[type][i];
 
                         if (!dat[type][tag]) { continue; }
                         if (dat[type][tag].inherit == "exclusive") { continue; }
 
-                        if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[friend] }; }
-                        else { this.legacy[type][tag].teachers.push(friend); }
+                        if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[ally] }; }
+                        else { this.legacy[type][tag].teachers.push(ally); }
                     }
                 }
             }

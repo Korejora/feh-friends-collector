@@ -59,6 +59,10 @@ let tableau =
 
     activate_friends_table()
     {
+        this.active_table = this.friends_table;
+        refreshment();
+        alter.reset_ally();
+
         this.allies_table.hide();
 
         for ( let key in this.collection_filters)
@@ -71,12 +75,15 @@ let tableau =
         adder.show();
         porter.show();
 
-        this.active_table = this.friends_table;
         tableau.active_table.refresh();
     },
 
     activate_allies_table()
     {
+        this.active_table = this.allies_table;
+        refreshment();
+        alter.reset_ally();
+
         this.friends_table.hide();
         adder.hide();
         porter.hide();
@@ -93,7 +100,6 @@ let tableau =
             current_filter.disable();
         }
 
-        this.active_table = this.allies_table;
         tableau.active_table.refresh();
     },
 
@@ -109,6 +115,11 @@ let tableau =
     rebuild()
     {   this.friends_table.rebuild_rows();
         // should never be necessary to rebuild allies table
+    },
+
+    is_collection_active()
+    {   if (this.active_table == this.friends_table) { return true; }
+        else { return false; }
     }
 
 };
@@ -575,9 +586,7 @@ tableau.row = class
     } // end refresh_items
 
     name_click (item)
-    {   if (tableau.active_table == tableau.friends_table)
-        {   alter.select_ally(this.ally);
-        }
+    {   alter.select_ally(this.ally);
     }
 
     favourite_click (item)

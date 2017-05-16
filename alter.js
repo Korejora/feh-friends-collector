@@ -379,11 +379,13 @@ alter.inherit =
         for ( let i=0; i < teachers.length; i++ )
         {   let teacher = teachers[i];
             t.name.add_text_n(teacher.return_name());
-            t.obtained.add_text_n("(#"+teacher.obtained+")");
-            t.fruit.add_text_n(teacher.return_fruit());
-                if(teacher.return_fruit()) {t.fruit.show();} else {t.fruit.hide();}
-            t.rarity.add_text_n(teacher.return_rarity_stars());
-            t.nature.add_text_n(teacher.return_nature());
+            if(tableau.is_collection_active())
+            {   t.obtained.add_text_n("(#"+teacher.obtained+")");
+                t.fruit.add_text_n(teacher.return_fruit());
+                    if(teacher.return_fruit()) {t.fruit.show();} else {t.fruit.hide();}
+                t.rarity.add_text_n(teacher.return_rarity_stars());
+                t.nature.add_text_n(teacher.return_nature());
+            }
         }
         t.show();
     },
@@ -467,6 +469,11 @@ class subalter_sendhome extends selectable // single
 
     rebuild()
     {
+        if(!tableau.is_collection_active())
+        {
+            this.select.hide();
+        }
+
         if (alter.ally.origin === 0)
         {   this.select.set_text("send home");
             this.ask.set_text(alter.ally.return_name() + " is already at home in Askr!");
