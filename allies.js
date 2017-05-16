@@ -176,6 +176,8 @@ allies.ally = class ally
                         chain = [ null, null, null, c[0], c[1], c[2] ]; break;
                     case this.special_passive: // such as iotes_shield
                         chain = [ null, null, null, null, c[0], null ]; break;
+                    case this.single_passive: // such as iotes_shield
+                        chain = [ null, null, null, c[0], null, null ]; break;
                     case this.odd_passive: // xander's passive a breaks the rules
                         chain = [ null, c[0], c[1], null, null, c[2] ]; break;
                     case this.early_passive:
