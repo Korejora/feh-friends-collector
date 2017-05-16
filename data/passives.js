@@ -1504,7 +1504,7 @@ dat.passive_b =
         text : "If unit has 100% HP at the start of combat, damage from their staff will be calculated the same as other weapons.",
         sp: 60,
         prerequisite: null,
-        inherit: 'all'
+        inherit: 'staff'
     },
     wrathful_staff_2 :
     {   tag : 'wrathful_staff_2',
@@ -1513,7 +1513,7 @@ dat.passive_b =
         text : "If unit has ≥ 50% HP at the start of combat, damage from their staff will be calculated the same as other weapons.",
         sp: 120,
         prerequisite: 'wrathful_staff_1',
-        inherit: 'all'
+        inherit: 'staff'
     },
     wrathful_staff_3 :
     {   tag : 'wrathful_staff_3',
@@ -1522,7 +1522,7 @@ dat.passive_b =
         text : "Damage from unit's staff will be calculated the same as other weapons.",
         sp: 240,
         prerequisite: 'wrathful_staff_2',
-        inherit: 'all'
+        inherit: 'staff'
     }
 
 };

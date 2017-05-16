@@ -114,6 +114,7 @@ let inheritance =
             case 'dragon':
                 if(allies.check_dragon(ally)) { teachable = true;}
                 break;
+
             case 'staff':
                 if(ally.weapon_type == 'staff') { teachable = true; }
                 break;
@@ -121,8 +122,15 @@ let inheritance =
                 if(ally.weapon_type != 'staff') { teachable = true; }
                 break;
             case 'axe':
-                if(ally.weapon_type != 'axe') { teachable = true; }
+                if(ally.weapon_type == 'axe') { teachable = true; }
                 break;
+            case 'bow':
+                if(ally.weapon_type == 'bow') { teachable = true; }
+                break;
+            case 'tome_blue':
+                if(ally.weapon_type == 'tome_blue') { teachable = true; }
+                break;
+
             case 'no_red':
                 if(ally.return_colour() != 'red') { teachable = true; }
                 break;
