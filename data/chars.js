@@ -4181,7 +4181,7 @@ chars.priscilla = class priscilla extends allies.ally
             passive_c : [ 'spur_def_1', 'spur_def_2', 'spur_def_3' ]
         };
         this.early_passive = null;
-        this.late_passive =  'passive_x';
+        this.late_passive =  'passive_c';
     }
 };
 
