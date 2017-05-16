@@ -346,7 +346,7 @@ chars.barst = class barst extends allies.ally
             passive_c : [ 'spur_atk_1', 'spur_atk_2', 'spur_atk_3' ]
         };
         this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
+        this.single_passive =  'passive_b';
     }
 };
 
@@ -432,7 +432,7 @@ chars.beruka = class beruka extends allies.ally
             passive_c : [ null ]
         };
         this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
+        this.single_passive =  'passive_b';
     }
 };
 
@@ -968,7 +968,7 @@ chars.clair = class clair extends allies.ally
      // this.obtained = #;
      // this.favourite;
         this.origin = 15;
-        this.minimum_rarity = 5;
+        this.minimum_rarity = 4;
         this.colour_type = 'blue';
         this.weapon_type = 'lance';
         this.move_type = 'flyer';
@@ -1211,7 +1211,7 @@ chars.donnel = class donnel extends allies.ally
             passive_c : [ null ]
         };
         this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
+        this.single_passive =  'passive_b';
     }
 };
 
@@ -1254,7 +1254,7 @@ chars.draug = class draug extends allies.ally
             passive_c : [ 'spur_def_1', 'spur_def_2', 'ward_armor' ]
         };
         this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
+        this.single_passive =  'passive_b';
     }
 };
 
@@ -1340,7 +1340,7 @@ chars.eirika = class eirika extends allies.ally
             passive_c : [ 'hone_spd_1', 'hone_spd_2', 'hone_spd_3' ]
         };
         this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
+        this.single_passive =  'passive_b';
     }
 };
 
@@ -1383,7 +1383,7 @@ chars.eldigan = class eldigan extends allies.ally
             passive_c : [ null ]
         };
         this.early_passive = null;
-        this.late_passive =  null;
+        this.single_passive =  'passive_b';
     }
 };
 
@@ -2072,7 +2072,7 @@ chars.gwendolyn = class gwendolyn extends allies.ally
             passive_c : [ 'hone_atk_1', 'hone_atk_2', 'hone_armor' ]
         };
         this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
+        this.single_passive =  'passive_b';
     }
 };
 
@@ -2202,6 +2202,7 @@ chars.hector = class hector extends allies.ally
         };
         this.early_passive = null;
         this.late_passive =  null;
+        this.single_passive = 'passive_a';
     }
 };
 
@@ -4009,7 +4010,7 @@ chars.olivia = class olivia extends allies.ally
             passive_c : [ 'hone_atk_1', 'hone_atk_2', 'hone_atk_3' ]
         };
         this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
+        this.single_passive =  'passive_b';
     }
 };
 
@@ -5215,7 +5216,7 @@ chars.takumi = class takumi extends allies.ally
             passive_c : [ 'threaten_spd_1', 'threaten_spd_2', 'threaten_spd_3' ]
         };
         this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
+        this.single_passive =  'passive_a';
     }
 };
 
