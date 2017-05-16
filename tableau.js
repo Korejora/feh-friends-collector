@@ -113,8 +113,7 @@ let tableau =
     },
 
     rebuild()
-    {   this.friends_table.rebuild_rows();
-        // should never be necessary to rebuild allies table
+    {   this.active_table.rebuild_rows();
     },
 
     is_collection_active()
@@ -295,8 +294,6 @@ tableau.table = class
 
     rebuild_rows ()
     {
-        this.hide();
-
         this.div.innerHTML = '';
         this.rebuild_title_row();
 
@@ -312,13 +309,11 @@ tableau.table = class
         this.last_sorted = null;
         this.sort_rows(previous_sort);
 
-        this.show();
-
     }
 
     refresh ()
     {
-        this.hide();
+        if(this == tableau.active_table) { this.hide(); }
 
         let rows = this.rows;
         for ( let i = 0;  i < rows.length;  i++)
@@ -328,7 +323,7 @@ tableau.table = class
 
         if ( tableau.hide_skills ) { this.hide_skill_divs(); }
 
-        this.show();
+        if(this == tableau.active_table) { this.show(); }
 
     }
 

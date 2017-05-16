@@ -262,7 +262,7 @@ class subalter_basic extends selectable
             }
             alter.ally.set_nature(this.boondrop.value, this.banedrop.value);
             this.select.set_text(alter.ally.return_nature());
-            tableau.friends_table.rebuild_rows();
+            tableau.rebuild();
         };
 
         nat.rebuild = function()
