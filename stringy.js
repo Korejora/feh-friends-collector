@@ -72,7 +72,7 @@ let stringy =
 
     },
 
-    final_tick_text : "end of chain only (except weapons)",
+    final_tick_text : "end of chain only",
 
     origin :
     {    0 : { display: "Heroes",   text: "Fire Emblem Heroes" },
