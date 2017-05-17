@@ -153,7 +153,7 @@ tableau.setup = function tableau_setup()
             parent:sets.ticks.div
         });
     sets.ticks.skill.handle_click = function()
-    {   if (sets.ticks.skill.checkbox.checked === true)
+    {   if (sets.ticks.skill.is_ticked())
         {      tableau.show_skill_divs(); }
         else { tableau.hide_skill_divs(); }
     };
@@ -732,7 +732,7 @@ class sifter extends checky // handles filter
             if (!params.special) { this.div.className += ' text'; }
         }
 
-        this.exclude_active = !this.checkbox.checked;
+        this.exclude_active = !this.is_ticked();
 
         this.subfilters = [];
         if (params.sup)
@@ -760,14 +760,14 @@ class sifter extends checky // handles filter
 
     activate_exclusion()
     {
-        this.exclude_active = !this.checkbox.checked;
+        this.exclude_active = !this.is_ticked();
     }
 
     activate_isolation()
     {
         tableau.sift.isolate = this;
         tableau.sift.refresh();
-        this.checkbox.checked = true;
+        this.tick();
     }
 
     add_subfilter(sub) { this.subfilters[sub.tag] = sub; }
@@ -783,7 +783,7 @@ class sifter extends checky // handles filter
 
     enable()
     {   this.checkbox.disabled = false;
-        this.exclude_active = !this.checkbox.checked;
+        this.exclude_active = !this.is_ticked();
     }
 
     disable()
@@ -795,16 +795,19 @@ class sifter extends checky // handles filter
     {
         if (!tableau.is_collection_active() && this.collection)
         {   // do not show favourite or rarity in generic allies list
-            this.disable(); return;
+            this.tick();
+            this.disable();
+            return;
         }
         if (this.supfilter && tableau.sift.include && this.supfilter.exclude_active)
         {   // no need to run subfilters if superfilter active
-            this.disable(); return;
+            this.disable();
+            return;
         }
 
         if (!tableau.sift.include && tableau.sift.isolate != this)
         {   // uncheck other filters when selecting an isolation filter
-            this.checkbox.checked = false;
+            this.untick();
         }
         this.enable(); return;
     }
@@ -829,7 +832,7 @@ tableau.sift = // filter wrangler
     {   this.include = true;
         for ( let key in tableau.sift.filters)
         {   let current_filter = tableau.sift.filters[key];
-            current_filter.checkbox.checked = current_filter.checkbox.defaultChecked;
+            current_filter.set_tick(current_filter.checkbox.defaultChecked);
             current_filter.activate_exclusion();
         }
         this.refresh();

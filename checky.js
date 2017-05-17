@@ -1,5 +1,5 @@
 
-// checky.js 
+// checky.js
 // checky class
 
 class checky
@@ -46,4 +46,9 @@ class checky
     handle_click()
     {   console.log("Clicked on an uninitialized default checkbox.", this.label);
     }
+
+    tick() { this.checkbox.checked = true; }
+    untick() { this.checkbox.checked = false; }
+    set_tick(booly) { this.checkbox.checked = booly; }
+    is_ticked() { return this.checkbox.checked; }
 }

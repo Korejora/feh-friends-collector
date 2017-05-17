@@ -35,7 +35,7 @@ let inheritance =
             let skills = ally.return_skills();
             let ends = ally.return_final_base_skills();
 
-            if (alter.inherit.final_tick.checkbox.checked === true)
+            if (alter.inherit.final_tick.is_ticked() === true)
             {
                 for ( let type in this.legacy )
                 {
