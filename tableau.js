@@ -116,6 +116,8 @@ let tableau =
 
 tableau.setup = function tableau_setup()
 {
+    this.sift = new tableau_filter_handler();
+
     this.table_output_div.innerHTML = '';
     this.table_setting = new divvy({id:'table_setting', parent:this.table_output_div});
     let sets = this.table_setting;
@@ -159,7 +161,7 @@ tableau.setup = function tableau_setup()
     };
 
     sets.ticks.add_linebreak();
-    sets.ticks.add_child(this.sift.special_filters.home.div);
+    sets.ticks.add_child(this.special_filters.home.div);
 
 
     sets.add_divider();
@@ -171,7 +173,7 @@ tableau.setup = function tableau_setup()
     sets.filters.options = new divvy({classname:'inner', parent:sets.filters});
     let fopt = sets.filters.options;
     fopt.include = new selectdiv({ innertext:"include", parent:fopt });
-    fopt.include.activate = function(){ tableau.sift.activate_include_mode(); };
+    fopt.include.activate = function(){ tableau.sift.activate_exclude_move(); };
 
     fopt.add_linebreak();
     fopt.isolate = new selectdiv({ innertext:"isolate", parent:fopt });
@@ -184,8 +186,8 @@ tableau.setup = function tableau_setup()
 
     let addfilt = function append_filter_and_subfilters_to_appropriate_section(tag)
     {   let section = sets.filters.select[tag];
-        let filter = tableau.sift.filters[tag];
-        if (!filter) { filter = tableau.sift.dummy_filters[tag]; }
+        let filter = tableau.filters[tag];
+        if (!filter) { filter = tableau.dummy_filters[tag]; }
         section.add_child(filter.div);
         for ( let key in filter.subfilters )
         {   section.add_linebreak();
@@ -198,8 +200,8 @@ tableau.setup = function tableau_setup()
     let filts = sets.filters.select;
     filts.rar = new divvy({classname:'filter column', parent:filts});
         filts.fav = new divvy({classname:'filter', parent:filts.rar});
-        filts.fav.add_child(tableau.sift.subfilters.favourite.div);
-        filts.fav.add_child(tableau.sift.subfilters.unfavourite.div);
+        filts.fav.add_child(tableau.subfilters.favourite.div);
+        filts.fav.add_child(tableau.subfilters.unfavourite.div);
     addfilt('rar');
     filts.red = new divvy({classname:'filter column', parent:filts});
     addfilt('red');
@@ -318,9 +320,9 @@ tableau.table = class
 
     filter_rows()
     {
-        if (tableau.sift.include)
-        {   for ( let key in tableau.sift.filters)
-            {   let current_filter = tableau.sift.filters[key];
+        if (tableau.sift.exclude)
+        {   for ( let key in tableau.filters)
+            {   let current_filter = tableau.filters[key];
                 if(current_filter.exclude_active) // run all active filters and hide their rows
                 {   let filtered = this.rows.filter(current_filter.checkpoint,current_filter);
                     for ( let i=0; i < filtered.length; i++ )
@@ -343,8 +345,8 @@ tableau.table = class
             }
 
         }
-        for ( let key in tableau.sift.special_filters) // special filters are always running normally
-            {   let current_filter = tableau.sift.special_filters[key];
+        for ( let key in tableau.special_filters) // special filters are always running normally
+            {   let current_filter = tableau.special_filters[key];
                 if(current_filter.exclude_active) // run all active filters and hide their rows
                 {   let filtered = this.rows.filter(current_filter.checkpoint,current_filter);
                     for ( let i=0; i < filtered.length; i++ )
@@ -737,9 +739,9 @@ class sifter extends checky // handles filter
         this.subfilters = [];
         if (params.sup)
         {   let sup = params.sup;
-            if (tableau.sift.filters[sup])
-                { this.supfilter = tableau.sift.filters[sup]; }
-            else{ this.supfilter = tableau.sift.dummy_filters[sup]; }
+            if (tableau.filters[sup])
+                { this.supfilter = tableau.filters[sup]; }
+            else{ this.supfilter = tableau.dummy_filters[sup]; }
             this.supfilter.add_subfilter(this);
         }
 
@@ -749,7 +751,7 @@ class sifter extends checky // handles filter
     handle_click()
     {
         // why are filters so depressing
-        if (tableau.sift.include || tableau.sift.special_filters[this.tag])
+        if (tableau.sift.exclude || tableau.special_filters[this.tag])
         {   this.activate_exclusion();
             tableau.sift.refresh();
         }
@@ -799,13 +801,13 @@ class sifter extends checky // handles filter
             this.disable();
             return;
         }
-        if (this.supfilter && tableau.sift.include && this.supfilter.exclude_active)
+        if (this.supfilter && tableau.sift.exclude && this.supfilter.exclude_active)
         {   // no need to run subfilters if superfilter active
             this.disable();
             return;
         }
 
-        if (!tableau.sift.include && tableau.sift.isolate != this)
+        if (!tableau.sift.exclude && tableau.sift.isolate != this)
         {   // uncheck other filters when selecting an isolation filter
             this.untick();
         }
@@ -824,38 +826,18 @@ class dummy_sifter extends divvy
 }
 
 
-tableau.sift = // filter wrangler
-{   include : false,
-    isolate : null,
+class tableau_filter_handler // tableau.sift
+{
 
-    activate_include_mode()
-    {   this.include = true;
-        for ( let key in tableau.sift.filters)
-        {   let current_filter = tableau.sift.filters[key];
-            current_filter.set_tick(current_filter.checkbox.defaultChecked);
-            current_filter.activate_exclusion();
-        }
-        this.refresh();
-        tableau.active_table.refresh();
-    },
-
-    activate_isolate_mode()
-    {   this.include = false;
+    constructor()
+    {
+        this.exclude = false;
         this.isolate = null;
-        this.refresh();
-        tableau.active_table.refresh();
-    },
 
-    refresh()
-    {   for ( let key in tableau.sift.filters)
-        {   let current_filter = tableau.sift.filters[key];
-            current_filter.refresh();
-        }
-    }
 
-};
+// start lower indent
 
-tableau.sift.filters = // ALL filters are eventually included here
+tableau.filters =
 {
     red   : new sifter({ tag:'red',   property:'colour_type', value:'red',   default:true }),
     blue  : new sifter({ tag:'blue',  property:'colour_type', value:'blue',  default:true }),
@@ -863,12 +845,12 @@ tableau.sift.filters = // ALL filters are eventually included here
     grey  : new sifter({ tag:'grey',  property:'colour_type', value:'grey',  default:true }),
 };
 
-tableau.sift.special_filters = // active even in isolate mode
+tableau.special_filters = // active even in isolate mode
 {
     home  : new sifter({ tag:'home', label:'sent home', property:'home', value:true, default:false, special:true }),
 };
 
-tableau.sift.dummy_filters = // containers (for subfilters) that are not filters themselves
+tableau.dummy_filters = // containers (for subfilters) that are not filters themselves
 {
     fav : new dummy_sifter(),
     rar : new dummy_sifter(),
@@ -876,7 +858,7 @@ tableau.sift.dummy_filters = // containers (for subfilters) that are not filters
 };
 
 
-tableau.sift.subfilters = // subfilters must wait for their superfilter to exist
+tableau.subfilters = // subfilters must wait for their superfilter to exist
 {
     favourite : new sifter({ property:'favourite', value:'❤', default:true, tag:'favourite',  sup:'fav', collection:true}),
     unfavourite:new sifter({ property:'favourite', value:null,default:true, tag:'unfavourite',sup:'fav', collection:true}),
@@ -900,13 +882,55 @@ tableau.sift.subfilters = // subfilters must wait for their superfilter to exist
     dragon_blue  : new sifter({ property:'weapon_type', value:'dragon_blue',  default:true, tag:'dragon_blue',  sup:'blue'}),
     dragon_green : new sifter({ property:'weapon_type', value:'dragon_green', default:true, tag:'dragon_green', sup:'green'}),
 
-    // move is not an actual filter, just an organizational dummy
     infantry : new sifter({ property:'move_type', value:'infantry', default:true, tag:'infantry', sup:'move'}),
     armor    : new sifter({ property:'move_type', value:'armor',    default:true, tag:'armor',    sup:'move'}),
     cavalry  : new sifter({ property:'move_type', value:'cavalry',  default:true, tag:'cavalry',  sup:'move'}),
     flyer    : new sifter({ property:'move_type', value:'flyer',    default:true, tag:'flyer',    sup:'move'}),
 };
 
-for ( let key in tableau.sift.subfilters )
-{   tableau.sift.filters[key] = tableau.sift.subfilters[key];
-}
+// end lower indent
+
+
+        for ( let key in tableau.subfilters )
+        {   tableau.filters[key] = tableau.subfilters[key];
+        }
+
+    } // end constructor
+
+    activate_exclude_move()
+    {   this.exclude = true;
+        for ( let key in tableau.filters)
+        {   let current_filter = tableau.filters[key];
+            current_filter.set_tick(current_filter.checkbox.defaultChecked);
+            current_filter.activate_exclusion();
+        }
+        this.refresh();
+        tableau.active_table.refresh();
+    }
+
+    activate_isolate_mode()
+    {   this.exclude = false;
+        this.isolate = null;
+        this.refresh();
+        tableau.active_table.refresh();
+    }
+
+    refresh()
+    {   for ( let key in tableau.filters)
+        {   let current_filter = tableau.filters[key];
+            current_filter.refresh();
+        }
+    }
+
+ /* filter_rows(rows)
+    {
+        let filtered = [];
+        if (this.exclude)
+        {   for (let key in tableau.filters)
+            {   let current_filter = tableau.filters[key];
+
+            }
+        }
+    } */
+
+} // end tableau_filter_handler
