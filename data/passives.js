@@ -1363,30 +1363,30 @@ dat.passive_b =
 
     wary_fighter_1 :
     {   tag : 'wary_fighter_1',
-        name : "Swordbreaker 1",
+        name : "Wary Fighter 1",
         effects : { nofollowup:1, check:{thresh:'more',hp:0.9} },
-        text : "If unit's HP ≥ 90% in combat against a sword user, unit makes a follow-up attack and foe cannot.",
-        sp: 50,
+        text : "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 90%.",
+        sp: 60,
         prerequisite: null,
-        inherit: 'no_green'
+        inherit: 'armor'
     },
     wary_fighter_2 :
     {   tag : 'wary_fighter_2',
-        name : "Swordbreaker 2",
+        name : "Wary Fighter 2",
         effects : { nofollowup:1, check:{thresh:'more',hp:0.7} },
-        text : "If unit's HP ≥ 70% in combat against a sword user, unit makes a follow-up attack and foe cannot.",
-        sp: 100,
+        text : "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 70%.",
+        sp: 120,
         prerequisite: 'wary_fighter_1',
-        inherit: 'no_green'
+        inherit: 'armor'
     },
     wary_fighter_3 :
     {   tag : 'wary_fighter_3',
-        name : "Swordbreaker 3",
+        name : "Wary Fighter 3",
         effects : { nofollowup:1, check:{thresh:'more',hp:0.5} },
-        text : "If unit's HP ≥ 50% in combat against a sword user, unit makes a follow-up attack and foe cannot.",
-        sp: 200,
+        text : "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 50%.",
+        sp: 240,
         prerequisite: 'wary_fighter_2',
-        inherit: 'no_green'
+        inherit: 'armor'
     },
 
     watersweep_1 :
