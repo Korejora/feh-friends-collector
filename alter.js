@@ -319,12 +319,12 @@ alter.inherit =
             alter.inherit.rebuild();
         };
 
-        this.weapons = new this.subsection('weapons');
-        this.assists = new this.subsection('assists');
-        this.specials = new this.subsection('specials');
-        this.passive_a = new this.subsection('passive_a');
-        this.passive_b = new this.subsection('passive_b');
-        this.passive_c = new this.subsection('passive_c');
+        this.weapons =  new divvy({parent:alter.inherit.display.div, classname:'inner'});
+        this.assists =  new divvy({parent:alter.inherit.display.div, classname:'inner'});
+        this.specials = new divvy({parent:alter.inherit.display.div, classname:'inner'});
+        this.passive_a = new divvy({parent:alter.inherit.display.div, classname:'inner'});
+        this.passive_b = new divvy({parent:alter.inherit.display.div, classname:'inner'});
+        this.passive_c = new divvy({parent:alter.inherit.display.div, classname:'inner'});
 
         this.teach = new divvy({classname:'inner', parent:this.display });
         let t = this.teach;
@@ -353,12 +353,12 @@ alter.inherit =
             this.learnable = inheritance.filter_for_ally(alter.ally);
         }
 
-        this.weapons.rebuild();
-        this.assists.rebuild();
-        this.specials.rebuild();
-        this.passive_a.rebuild();
-        this.passive_b.rebuild();
-        this.passive_c.rebuild();
+        this.rebuild_subsection('weapons');
+        this.rebuild_subsection('assists');
+        this.rebuild_subsection('specials');
+        this.rebuild_subsection('passive_a');
+        this.rebuild_subsection('passive_b');
+        this.rebuild_subsection('passive_c');
 
         this.teach.hide();
     },
@@ -405,45 +405,35 @@ alter.inherit =
         t.show();
     },
 
-    subsection : class subsection
+    rebuild_subsection (type)
     {
-        constructor(type)
-        {
-            this.type = type;
-            this.learn = new divvy({parent:alter.inherit.display.div, classname:'inner'});
+        let subsection = this[type];
+        subsection.clear();
+        if (alter.ally == allies.feh) { return; }
+
+        let skills_array = Object.keys(alter.inherit.learnable[type]);
+
+        if (!skills_array.length)
+        {   subsection.set_text("No "+type+" :( ");
+            return 0;
         }
 
+        skills_array.sort();
 
-        rebuild () // this = inherit[subsection]
-        {
-            this.learn.clear();
-            if (alter.ally == allies.feh) { return; }
-
-            let type = this.type;
-            let skills_array = Object.keys(alter.inherit.learnable[type]);
-
-            if (!skills_array.length)
-            {   this.learn.set_text("No "+type+" :( ");
-                return 0;
-            }
-
-            skills_array.sort();
-
-            for ( let i=0; i < skills_array.length; i++ )
-            {   let tag = skills_array[i];
-                let that = this;
-                let selecty = new selectdiv({innertext:dat[type][tag].name, classname:'clicky', parent:that.learn});
-                /* jshint loopfunc: true */
-                selecty.handle_click = function alter_inherit_subsection_handle_click()
-                {   alter.inherit.rebuild_teachers(type, tag);
-                    if(alter.inherit.last_clicked){alter.inherit.last_clicked.dont_underline();}
-                    selecty.underline();
-                    alter.inherit.last_clicked = selecty;
-                };
-                this.learn.add_linebreak();
-            }
+        for ( let i=0; i < skills_array.length; i++ )
+        {   let tag = skills_array[i];
+            let selecty = new selectdiv({innertext:dat[type][tag].name, classname:'clicky', parent:subsection});
+            /* jshint loopfunc: true */
+            selecty.handle_click = function alter_inherit_subsection_handle_click()
+            {   alter.inherit.rebuild_teachers(type, tag);
+                if(alter.inherit.last_clicked){alter.inherit.last_clicked.dont_underline();}
+                selecty.underline();
+                alter.inherit.last_clicked = selecty;
+            };
+            subsection.add_linebreak();
         }
     }
+
 
 };
 
