@@ -26,8 +26,8 @@ let friends =
         if (chars[pass])
         {   let index = -1 + friends.roster.push( new chars[pass]() );
             let friend = friends.roster[index];
-            friend.set_rarity(0);
-            friend.refresh();
+            friend.set_rarity(0); // minimum_rarity should catch this 
+            friend.rebuild();
             friend.obtained = friends.roster.length;
             return friend;
         }
@@ -48,8 +48,7 @@ let friends =
             friend.bane = (pass.bane) ? pass.bane.replace('–','') : null;
             if (friend.bane == friend.boon) { friend.bane = null; friend.boon = null; }
             friend.set_rarity(rarity);
-            friend.refresh();
-            friend.assign_max_stats();
+            friend.rebuild();
 
             if (pass.home) { friend.send_home(); }
             return friend;
