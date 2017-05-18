@@ -40,7 +40,10 @@ allies.setup = function allies_setup()
         allies.tags.push(key);
     }
 
-    allies.list.forEach(function setup_ally(ally) { ally.fresh_ally(); });
+    allies.list.forEach(function setup_ally(ally)
+    {   ally.set_rarity(5);
+        ally.rebuild();
+    });
 
     allies.feh = new feh();
 };
@@ -223,7 +226,7 @@ allies.ally = class ally
     }
 
 
-    refresh ()
+    rebuild ()
     {
         if (this.colour_type == 'colourless') { this.colour_type = 'grey'; }
         if (this.summon === false) { this.boon = null; this.bane = null; }
@@ -234,13 +237,6 @@ allies.ally = class ally
 
     }
 
-    fresh_ally ()
-    {   this.set_rarity(5);
-        this.assign_max_stats();
-        this.assign_final_base_skills();
-        if (this.colour_type == 'colourless') { this.colour_type = 'grey'; }
-    }
-
 
     set_rarity (r)
     {
@@ -249,7 +245,7 @@ allies.ally = class ally
         r = Math.max(r||null, this.minimum_rarity);
         r = Math.min(r, 5);
         this.rarity = r;
-        this.refresh(); // should it be called automatically?
+        this.rebuild(); // should it be called automatically?
     }
     return_rarity() { return this.rarity; }
     return_rarity_stars() { return stringy.rar_num_to_star(this.rarity); }
