@@ -4780,7 +4780,7 @@ chars.serra = class serra extends allies.ally
         this.base_skills =
         {   weapons   : [ 'assault', 'absorb' ],
             assists   : [ 'heal', 'mend', 'recover' ],
-            specials  : [ 'imbue', 'astra' ],
+            specials  : [ 'imbue', 'swift_winds_balm' ],
             passive_a : [ null ],
             passive_b : [ null ],
             passive_c : [ 'hone_atk_1', 'hone_atk_2', 'hone_atk_3' ]
