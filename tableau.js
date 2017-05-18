@@ -122,26 +122,26 @@ tableau.setup = function tableau_setup()
     this.table_setting = new divvy({id:'table_setting', parent:this.table_output_div});
     let sets = this.table_setting;
 
-
     // clicks to switch between collection and allies
     sets.switch = new divvy({ classname:'inner', parent:sets });
+    let sw = sets.switch;
 
-    sets.switch.add_squiggly();
-    sets.switch.friends = new selectdiv({ innertext:"collection", parent:sets.switch.div });
-    sets.switch.add_squiggly();
+    sw.add_squiggly();
+    sw.friends = new selectdiv({ innertext:"collection", parent:sw.div });
+    sw.add_squiggly();
 
-    sets.switch.add_linebreak();
+    sw.add_linebreak();
 
-    sets.switch.add_squiggly();
-    sets.switch.allies = new selectdiv({ innertext:"all allies", parent:sets.switch.div });
-    sets.switch.add_squiggly();
-    sets.switch.add_linebreak(); // necessary to align line proeprly
+    sw.add_squiggly();
+    sw.allies = new selectdiv({ innertext:"all allies", parent:sw.div });
+    sw.add_squiggly();
+    sw.add_linebreak(); // necessary to align line proeprly
 
     // FIXME
-    sets.switch.friends.call_deselection = function() {sets.switch.allies.do_deselect();};
-    sets.switch.friends.activate = function(){ tableau.activate_friends_table(); };
-    sets.switch.allies.call_deselection = function() { sets.switch.friends.do_deselect(); };
-    sets.switch.allies.activate = function(){ tableau.activate_allies_table(); };
+    sw.friends.call_deselection = function() {sw.allies.do_deselect();};
+    sw.friends.activate = function(){ tableau.activate_friends_table(); };
+    sw.allies.call_deselection = function() { sw.friends.do_deselect(); };
+    sw.allies.activate = function(){ tableau.activate_allies_table(); };
 
 
     sets.add_divider();
@@ -149,19 +149,20 @@ tableau.setup = function tableau_setup()
 
     // ticks
     sets.ticks = new divvy({classname:'inner', parent:sets.div});
-    sets.ticks.skill = new checky(
+    let st = sets.ticks;
+    st.skill = new checky(
         {   default:true,
             label:"show skills",
-            parent:sets.ticks.div
+            parent:st.div
         });
-    sets.ticks.skill.handle_click = function()
-    {   if (sets.ticks.skill.is_ticked())
+    st.skill.handle_click = function()
+    {   if (st.skill.is_ticked())
         {      tableau.show_skill_divs(); }
         else { tableau.hide_skill_divs(); }
     };
 
-    sets.ticks.add_linebreak();
-    sets.ticks.add_child(this.special_filters.home.div);
+    st.add_linebreak();
+    st.add_child(this.special_filters.home.div);
 
 
     sets.add_divider();
@@ -171,17 +172,17 @@ tableau.setup = function tableau_setup()
     sets.filters = new divvy({id:'table_setting_filters', classname:'inner', parent:sets.div});
 
     sets.filters.options = new divvy({classname:'inner', parent:sets.filters});
-    let fopt = sets.filters.options;
-    fopt.include = new selectdiv({ innertext:"include", parent:fopt });
-    fopt.include.activate = function(){ tableau.sift.activate_exclude_move(); };
+    let fo = sets.filters.options;
+    fo.include = new selectdiv({ innertext:"include", parent:fo });
+    fo.include.activate = function(){ tableau.sift.activate_exclude_move(); };
 
-    fopt.add_linebreak();
-    fopt.isolate = new selectdiv({ innertext:"isolate", parent:fopt });
-    fopt.isolate.activate = function(){ tableau.sift.activate_isolate_mode(); };
+    fo.add_linebreak();
+    fo.isolate = new selectdiv({ innertext:"isolate", parent:fo });
+    fo.isolate.activate = function(){ tableau.sift.activate_isolate_mode(); };
 
     // FIXME: make these into selectables
-    fopt.include.call_deselection = function() { fopt.isolate.do_deselect(); };
-    fopt.isolate.call_deselection = function() { fopt.include.do_deselect(); };
+    fo.include.call_deselection = function() { fo.isolate.do_deselect(); };
+    fo.isolate.call_deselection = function() { fo.include.do_deselect(); };
 
 
     let addfilt = function append_filter_and_subfilters_to_appropriate_section(tag)
@@ -197,21 +198,21 @@ tableau.setup = function tableau_setup()
 
 
     sets.filters.select = new divvy({classname:'inner', parent:sets.filters});
-    let filts = sets.filters.select;
-    filts.rar = new divvy({classname:'filter column', parent:filts});
-        filts.fav = new divvy({classname:'filter', parent:filts.rar});
-        filts.fav.add_child(tableau.subfilters.favourite.div);
-        filts.fav.add_child(tableau.subfilters.unfavourite.div);
+    let fs = sets.filters.select;
+    fs.rar = new divvy({classname:'filter column', parent:fs});
+        fs.fav = new divvy({classname:'filter', parent:fs.rar});
+        fs.fav.add_child(tableau.subfilters.favourite.div);
+        fs.fav.add_child(tableau.subfilters.unfavourite.div);
     addfilt('rar');
-    filts.red = new divvy({classname:'filter column', parent:filts});
+    fs.red = new divvy({classname:'filter column', parent:fs});
     addfilt('red');
-    filts.blue = new divvy({classname:'filter column', parent:filts});
+    fs.blue = new divvy({classname:'filter column', parent:fs});
     addfilt('blue');
-    filts.green = new divvy({classname:'filter column', parent:filts});
+    fs.green = new divvy({classname:'filter column', parent:fs});
     addfilt('green');
-    filts.grey = new divvy({classname:'filter column', parent:filts});
+    fs.grey = new divvy({classname:'filter column', parent:fs});
     addfilt('grey');
-    filts.move = new divvy({classname:'filter column', parent:filts});
+    fs.move = new divvy({classname:'filter column', parent:fs});
     addfilt('move');
 
 
@@ -220,8 +221,8 @@ tableau.setup = function tableau_setup()
     this.setup_friends_table();
     this.setup_allies_table();
 
-    sets.switch.friends.do_select(); // start tables in collection mode
-    fopt.include.do_select(); // start filters in include mode
+    sw.friends.do_select(); // start tables in collection mode
+    fo.include.do_select(); // start filters in include mode
 
     this.feh_row = new this.row(allies.feh);
     this.feh_row.build_items();
