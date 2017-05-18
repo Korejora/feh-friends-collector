@@ -390,13 +390,15 @@ alter.inherit =
             }
             if(type.includes('passive'))
             {   let unlock_rarity;
-                if      (teacher.minimum_rarity == 5)       { unlock_rarity = 5; }
-                else if (type == teacher.early_passive)     { unlock_rarity = 4; }
-                else if (type == teacher.special_passive)   { unlock_rarity = 4; }
-                else if (type == teacher.single_passive)    { unlock_rarity = 3; }
-             /* else if (type == teacher.late_passive)      { unlock_rarity = 5; }
-                else if (type == teacher.odd_passive)       { unlock_rarity = 5; } */
+                     if (type == teacher.early_passive)     { unlock_rarity = 4; }
+             // else if (type == teacher.late_passive)      { unlock_rarity = 5; }
+                else if (type == teacher.shield_passive)    { unlock_rarity = 4; }
+                else if (type == teacher.position_passive)  { unlock_rarity = 3; }
+                else if (type == teacher.range_passive)     { unlock_rarity = 3; }
+             // else if (type == teacher.special_passive)   { unlock_rarity = 5; }
                 else { unlock_rarity = 5; }
+                if (unlock_rarity < teacher.minimum_rarity) { unlock_rarity = teacher.minimum_rarity; }
+
                 t.unlock.add_text_n("("+unlock_rarity+"★"+" unlock"+")");
             }
         }

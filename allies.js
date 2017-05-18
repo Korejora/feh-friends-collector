@@ -75,7 +75,7 @@ allies.ally = class ally
     constructor()
     {
         this.rarity = 5; // default
-        this.skills =
+        this.unlocked_skills =
         {   weapons : [], assists : [], specials : [],
             passive_a:[], passive_b:[], passive_c: []
         };
@@ -142,7 +142,7 @@ allies.ally = class ally
 
     rebuild_skills ()
     {
-        this.skills =
+        this.unlocked_skills =
         {   weapons : [], assists : [], specials : [],
             passive_a:[], passive_b:[], passive_c: []
         };
@@ -177,16 +177,16 @@ allies.ally = class ally
                         chain = [ null, null, null, c[0], null, null ]; break;
                     case 'specials':
                         chain = [ null, null, null, c[0], c[1], c[2] ]; break;
-                    case this.special_passive: // such as iotes_shield
+                    case this.shield_passive: // such as iotes_shield
                         chain = [ null, null, null, null, c[0], null ]; break;
-                    case this.single_passive: // such as iotes_shield
+                    case this.position_passive: case this.range_passive: // such as lunge or distant counter
                         chain = [ null, null, null, c[0], null, null ]; break;
-                    case this.odd_passive: // xander's passive a breaks the rules
-                        chain = [ null, c[0], c[1], null, null, c[2] ]; break;
                     case this.early_passive:
                         chain = [ null, c[0], c[1], null, c[2], null ]; break;
                     case this.late_passive:
                         chain = [ null, null, null, c[0], c[1], c[2] ]; break;
+                    case this.special_passive: // xander's passive a breaks the rules
+                        chain = this.special_pattern; break;
                     default:
                         chain = [ null, c[0], c[1], c[2], null, null ]; break;
                 }
@@ -194,10 +194,10 @@ allies.ally = class ally
 
             for( let i = 1; i <= this.rarity; i++ )
             {   let skill = chain[i];
-                if( skill // do not add null skills
-                 && this.skills[key].indexOf(skill) < 0) // do not add if already there
+                if (skill) // do not add null skills
+              // && this.unlocked_skills[key].indexOf(skill) == -1) // do not add if already there
                 {
-                    this.skills[key].push(skill);
+                    this.unlocked_skills[key].push(skill);
                 }
             }
         }
@@ -206,23 +206,12 @@ allies.ally = class ally
 
     assign_skills ()
     {   // slice(-1).pop() last element of array
-        this.weapon    = this.skills.weapons.slice(-1).pop()    || null;
-        this.assist    = this.skills.assists.slice(-1).pop()    || null;
-        this.special   = this.skills.specials.slice(-1).pop()   || null;
-        this.passive_a = this.skills.passive_a.slice(-1).pop() || null;
-        this.passive_b = this.skills.passive_b.slice(-1).pop() || null;
-        this.passive_c = this.skills.passive_c.slice(-1).pop() || null;
-    }
-
-
-    assign_final_base_skills ()
-    {   // slice(-1).pop() last element of array
-        this.weapon    = this.base_skills.weapons.slice(-1).pop()    || null;
-        this.assist    = this.base_skills.assists.slice(-1).pop()    || null;
-        this.special   = this.base_skills.specials.slice(-1).pop()   || null;
-        this.passive_a = this.base_skills.passive_a.slice(-1).pop() || null;
-        this.passive_b = this.base_skills.passive_b.slice(-1).pop() || null;
-        this.passive_c = this.base_skills.passive_c.slice(-1).pop() || null;
+        this.weapon    = this.unlocked_skills.weapons.slice(-1).pop()    || null;
+        this.assist    = this.unlocked_skills.assists.slice(-1).pop()    || null;
+        this.special   = this.unlocked_skills.specials.slice(-1).pop()   || null;
+        this.passive_a = this.unlocked_skills.passive_a.slice(-1).pop() || null;
+        this.passive_b = this.unlocked_skills.passive_b.slice(-1).pop() || null;
+        this.passive_c = this.unlocked_skills.passive_c.slice(-1).pop() || null;
     }
 
 
@@ -281,20 +270,9 @@ allies.ally = class ally
 
     return_nature() { return stringy.display_nature(this.boon, this.bane); }
 
-    return_skills() { return this.skills; }
+    return_skills() { return this.unlocked_skills; }
 
     return_base_skills() { return this.base_skills; }
-
-    return_final_base_skills()
-    {   let best_base_skills = {};
-        best_base_skills.weapons   = this.base_skills.weapons.slice(-1).pop()    || null;
-        best_base_skills.assists   = this.base_skills.assists.slice(-1).pop()    || null;
-        best_base_skills.specials  = this.base_skills.specials.slice(-1).pop()   || null;
-        best_base_skills.passive_a = this.base_skills.passive_a.slice(-1).pop() || null;
-        best_base_skills.passive_b = this.base_skills.passive_b.slice(-1).pop() || null;
-        best_base_skills.passive_c = this.base_skills.passive_c.slice(-1).pop() || null;
-        return best_base_skills;
-    }
 
     get_base_weapon_might()
     {   let c = this.base_skills.weapons;
@@ -344,6 +322,19 @@ allies.ally = class ally
                 }
             }
         }
+    }
+
+    knows_skill(skill, type)
+    {
+        if( this.unlocked_skills[type].indexOf(skill) != -1) { return true; }
+        if(this.inherited_skills[type].indexOf(skill) != -1) { return true; }
+        return false;
+    }
+
+    skill_ends_chain(skill, type)
+    {
+        if(skill == this.base_skills[type].slice(-1)[0]) { return true; }
+        return false;
     }
 
 };

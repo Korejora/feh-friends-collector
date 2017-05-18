@@ -33,14 +33,13 @@ let inheritance =
             if ( ally.home ) { continue; } // cannot inherit from allies that have gone home
 
             let skills = ally.return_skills();
-            let ends = ally.return_final_base_skills();
 
             if (alter.inherit.final_tick.is_ticked() === true)
             {
                 for ( let type in this.legacy )
                 {
                     let tag = skills[type][skills[type].length-1]; // get only last skill known
-                    if( type != 'weapons' && tag != ends[type] ) { continue; } // skip if not the end of a chain
+                    if( type != 'weapons' && !ally.skill_ends_chain(tag, type) ) { continue; } // skip if not the end of a chain
 
                     if (!dat[type][tag]) { continue; } // skip if not found in database
                     if (dat[type][tag].inherit == "exclusive") { continue; } // don't add exclusive skills to the list
@@ -85,10 +84,10 @@ let inheritance =
             for ( let tag in this.legacy[type] )
             {
                 // skip if not found
-                if (!dat[type]) { console.log("ERR_SKILL_NOT_FOUND"); continue; }
+                if (!dat[type]) { console.log("ERR_SKILL_NOT_FOUND", tag); continue; }
 
                 // don't bother inheriting skills already known
-                if ( ally.skills[type].indexOf(tag) != -1 ) { continue; }
+                if ( ally.knows_skill(tag, type) ) { continue; }
 
                 if (this.check_inherit(ally,dat[type][tag]))
                 {   learnable[type][tag] = this.legacy[type][tag];
