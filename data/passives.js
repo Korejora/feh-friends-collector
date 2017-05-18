@@ -315,7 +315,7 @@ dat.passive_a =
     {   tag : 'distant_def_3',
         name : "Distant Def 3",
         effects : { distant : { def: +6, res:+6 } },
-        text : "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+2 during combat.",
+        text : "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+6 during combat.",
         sp : 240,
         prerequisite : 'distant_def_2',
         inherit : 'all'
