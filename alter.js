@@ -156,7 +156,7 @@ class subalter_basic extends selectable
 {
     constructor()
     {   super({deselectable:true});
-        this.select.set_text("overview");
+        this.select.set_text("edit");
 
         this.rarity_setup();
 
