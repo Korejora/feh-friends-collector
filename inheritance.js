@@ -32,9 +32,9 @@ let inheritance =
             if ( ally.favourite ) { continue; } // do not inherit from favourites
             if ( ally.home ) { continue; } // cannot inherit from allies that have gone home
 
-            let skills = ally.return_skills();
+            let skills = ally.return_base_skills();
 
-            if (alter.inherit.final_tick.is_ticked() === true)
+         /* if (alter.inherit.final_tick.is_ticked())
             {
                 for ( let type in this.legacy )
                 {
@@ -49,26 +49,22 @@ let inheritance =
                     else { this.legacy[type][tag].teachers.push(ally); }
 
                 }
-            }
-            else
+            } */
+
+            for ( let type in this.legacy )
             {
-                for ( let type in this.legacy )
-                {
+                for ( let i=0; i < skills[type].length; i++ )
+                {   // iterate over each skill in the ally's skill list
+                    let tag = skills[type][i];
 
-                    for ( let i=0; i < skills[type].length; i++ )
-                    {
-                        // iterate over each skill in the ally's skill list
-                        let tag = skills[type][i];
+                    if (!dat[type][tag]) { continue; } // skip if not found in database
+                    if (dat[type][tag].inherit == "exclusive") { continue; } // don't add exclusive skills to the list
 
-                        if (!dat[type][tag]) { continue; }
-                        if (dat[type][tag].inherit == "exclusive") { continue; }
-
-                        if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[ally] }; }
-                        else { this.legacy[type][tag].teachers.push(ally); }
-                    }
+                    // make new entry if not already present, else add to the list
+                    if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[ally] }; }
+                    else { this.legacy[type][tag].teachers.push(ally); }
                 }
             }
-
 
         }
     },

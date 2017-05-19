@@ -314,11 +314,9 @@ alter.inherit =
                 id:"final_tick"
             }
         );
-        this.final_tick.handle_click = function()
-        {   inheritance.rebuild();
-            alter.inherit.rebuild();
-        };
+        this.final_tick.handle_click = function() { alter.inherit.rebuild(); };
 
+        // subsections
         this.weapons =  new divvy({parent:alter.inherit.display.div, classname:'inner'});
         this.assists =  new divvy({parent:alter.inherit.display.div, classname:'inner'});
         this.specials = new divvy({parent:alter.inherit.display.div, classname:'inner'});
@@ -326,6 +324,7 @@ alter.inherit =
         this.passive_b = new divvy({parent:alter.inherit.display.div, classname:'inner'});
         this.passive_c = new divvy({parent:alter.inherit.display.div, classname:'inner'});
 
+        // single display for teachers of all subsections
         this.teach = new divvy({classname:'inner', parent:this.display });
         let t = this.teach;
         t.title = document.createElement('div');
@@ -346,7 +345,6 @@ alter.inherit =
         if (alter.ally == allies.feh)
         {   this.note.set_text("Feh is already knowledgeable enough :)");
             this.note.add_linebreak();
-
         }
         else
         {   this.note.clear();
@@ -411,18 +409,31 @@ alter.inherit =
         subsection.clear();
         if (alter.ally == allies.feh) { return; }
 
-        let skills_array = Object.keys(alter.inherit.learnable[type]);
+        let learnable = alter.inherit.learnable[type];
+        let skills_array = Object.keys(learnable);
 
         if (!skills_array.length)
         {   subsection.set_text("No "+type+" :( ");
             return 0;
         }
 
+        if (this.final_tick.is_ticked())
+        {   // filter down to end of chain skills
+            skills_array = skills_array.filter( function skill_ends_any_chain(tag)
+            {   for (let i=0; i < learnable[tag].teachers.length; i++)
+                {   let teacher = learnable[tag].teachers[i];
+                    if (teacher.skill_ends_chain(tag, type)) { return true; }
+                }
+                return false;
+            });
+        }
+
         skills_array.sort();
 
+        // build the skill's selectable
         for ( let i=0; i < skills_array.length; i++ )
         {   let tag = skills_array[i];
-            let selecty = new selectdiv({innertext:dat[type][tag].name, classname:'clicky', parent:subsection});
+            let selecty = new selectdiv({innertext:dat[type][tag].name, classname:'clicky', parent:subsection}); // FIXME: selectable
             /* jshint loopfunc: true */
             selecty.handle_click = function alter_inherit_subsection_handle_click()
             {   alter.inherit.rebuild_teachers(type, tag);
