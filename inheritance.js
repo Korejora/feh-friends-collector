@@ -34,23 +34,6 @@ let inheritance =
 
             let skills = ally.return_base_skills();
 
-         /* if (alter.inherit.final_tick.is_ticked())
-            {
-                for ( let type in this.legacy )
-                {
-                    let tag = skills[type][skills[type].length-1]; // get only last skill known
-                    if( type != 'weapons' && !ally.skill_ends_chain(tag, type) ) { continue; } // skip if not the end of a chain
-
-                    if (!dat[type][tag]) { continue; } // skip if not found in database
-                    if (dat[type][tag].inherit == "exclusive") { continue; } // don't add exclusive skills to the list
-
-                    // make new entry if not already present, else add to the list
-                    if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[ally] }; }
-                    else { this.legacy[type][tag].teachers.push(ally); }
-
-                }
-            } */
-
             for ( let type in this.legacy )
             {
                 for ( let i=0; i < skills[type].length; i++ )
