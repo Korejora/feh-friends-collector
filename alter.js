@@ -388,6 +388,12 @@ alter.inherit =
         let teachers = alter.inherit.learnable[type][tag].teachers;
         for ( let i=0; i < teachers.length; i++ )
         {   let teacher = teachers[i];
+
+            if(this.unlocked_tick.is_ticked() && !teacher.knows_skill(tag, type))
+            {   // skip this teacher if they don't know the skill
+                continue;
+            }
+
             t.name.add_text_n(teacher.return_name());
             if(tableau.is_collection_active())
             {   t.obtained.add_text_n("(#"+teacher.obtained+")");
