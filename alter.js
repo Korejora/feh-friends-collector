@@ -315,6 +315,16 @@ alter.inherit =
             }
         );
         this.final_tick.handle_click = function() { alter.inherit.rebuild(); };
+        this.final_tick.div.style['padding-right'] = '10px';
+
+        this.unlocked_tick = new checky
+        (   {   parent:this.display.options,
+                default:true,
+                label: stringy.unlocked_tick_text,
+                id:"unlocked_tick"
+            }
+        );
+        this.unlocked_tick.handle_click = function() { alter.inherit.rebuild(); };
 
         // subsections
         this.weapons =  new divvy({parent:alter.inherit.display.div, classname:'inner'});
@@ -412,11 +422,6 @@ alter.inherit =
         let learnable = alter.inherit.learnable[type];
         let skills_array = Object.keys(learnable);
 
-        if (!skills_array.length)
-        {   subsection.set_text("No "+type+" :( ");
-            return 0;
-        }
-
         if (this.final_tick.is_ticked())
         {   // filter down to end of chain skills
             skills_array = skills_array.filter( function skill_ends_any_chain(tag)
@@ -426,6 +431,22 @@ alter.inherit =
                 }
                 return false;
             });
+        }
+
+        if (this.unlocked_tick.is_ticked())
+        {   // filter down to unlocked skills
+            skills_array = skills_array.filter( function skill_ends_any_chain(tag)
+            {   for (let i=0; i < learnable[tag].teachers.length; i++)
+                {   let teacher = learnable[tag].teachers[i];
+                    if (teacher.knows_skill(tag, type)) { return true; }
+                }
+                return false;
+            });
+        }
+
+        if (!skills_array.length)
+        {   subsection.set_text("No "+type+" :( ");
+            return 0;
         }
 
         skills_array.sort();
