@@ -634,7 +634,7 @@ tableau.cascade_tiebreaker = function (a,b, property)
         let result = this.compare(a,b, prop, reverse);
         if (result) return result;
     }
-    console.log('exhausted tiebreakers for',property);
+    console.log('exhausted tiebreakers for',property,a.tag,b.tag);
     return 0;
 };
 
