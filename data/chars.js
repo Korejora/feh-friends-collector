@@ -2617,8 +2617,8 @@ chars.kagero = class kagero extends allies.ally
         {   1 : null,
             2 : null,
             3 : null,
-            4 : { hp: 18, atk: 7, spd: 0, def: 4, res: 5 },
-            5 : { hp: 19, atk: 7, spd: 0, def: 5, res: 6 },
+            4 : { hp: 15, atk: 9, spd: 8, def: 4, res: 5 },
+            5 : { hp: 16, atk: 9, spd: 8, def: 5, res: 6 },
         };
         this.growth_points =
                 { hp:  3, atk: 8, spd: 7, def: 4, res: 6 };
@@ -2977,6 +2977,49 @@ chars.lissa = class lissa extends allies.ally
         };
         this.early_passive = null;
         this.late_passive =  'passive_b';
+    }
+};
+
+
+
+
+chars.lloyd = class lloyd extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'lloyd';
+        this.name = "Lloyd";
+        this.title = "White Wolf";
+        this.text = "A member of the Black Fang assassins. Delivers justice to those they deem criminals. Known as the White Wolf. Son of the group's leader.";
+        this.summon = false;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 7;
+        this.minimum_rarity = 3;
+        this.colour_type = 'red';
+        this.weapon_type = 'sword';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 158;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : { hp: 16, atk: 7, spd: 8, def: 4, res: 7 },
+            4 : { hp: 16, atk: 8, spd: 9, def: 4, res: 7 },
+            5 : { hp: 17, atk: 8, spd: 9, def: 5, res: 8 },
+        };
+        this.growth_points =
+                { hp:  7, atk: 7, spd: 8, def: 3, res: 6 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'regal_blade' ],
+            assists   : [ null ],
+            specials  : [ 'chilling_wind', 'iceberg' ],
+            passive_a : [ null ],
+            passive_b : [ 'pass_1', 'pass_2', 'pass_3' ],
+            passive_c : [ 'threaten_atk_1', 'threaten_atk_2', 'threaten_atk_3' ],
+        };
+        this.early_passive = 'passive_b';
+        this.late_passive =  'passive_c';
     }
 };
 

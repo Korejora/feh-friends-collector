@@ -158,7 +158,7 @@ dat.weapons =
     {   tag : 'blarraven',
         name: "Blárraven",
         weapon_type : 'tome_blue',
-        might : 9,
+        might : 7,
         range : 2,
         text : "Grants weapon advantage vs. colorless foes.",
         effects : { advantage: 'colourless' },
@@ -170,7 +170,7 @@ dat.weapons =
     {   tag : 'blarraven_plus',
         name: "Blárraven+",
         weapon_type : 'tome_blue',
-        might : 13,
+        might : 11,
         range : 2,
         text : "Grants weapon advantage vs. colorless foes.",
         effects : { advantage: 'colourless' },
@@ -1439,6 +1439,19 @@ dat.weapons =
         sp: 300,
         prerequisite : 'raudrwolf',
         inherit : 'weapon_type'
+    },
+
+    regal_blade :
+    {   tag : 'regal_blade',
+        name : "Regal Blade",
+        weapon_type : 'sword',
+        might : 16,
+        range : 1,
+        text : "If foe's HP is 100% when combat starts, unit receives Atk/Spd+2 during combat.",
+        effects : { combat : { check:{thresh:'more',hp:1.0}, atk:+2, spd:+2 } },
+        sp: 400,
+        prerequisite : 'silver_sword',
+        inherit : 'exclusive'
     },
 
     rexcalibur :
