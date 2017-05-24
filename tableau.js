@@ -658,7 +658,7 @@ tableau.sort_properties =
         [ 'rarity', 'colour_type', 'weapon_type', 'move_type', 'obtained' ], },
 
     origin :
-    {   tiebreaker : [ 'name', 'subname', 'obtained' ], // proximity to main character?
+    {   tiebreaker : [ 'name', 'subname', 'rarity', 'obtained' ], // proximity to main character?
     },
 
     rarity :
