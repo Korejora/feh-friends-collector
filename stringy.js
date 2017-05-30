@@ -31,6 +31,21 @@ let stringy =
 
     path_google_sheets_icon : 'images/other/icon_google_sheets.png',
 
+    suffixes :
+    {
+        robin_blue : ['(b)','blue','boy','(m)','(male)',' male'],
+        robin_green : ['(g)','green','girl','(f)','female'],
+
+        corrin_dragon : ['dragon','(b)','blue','girl','(f)','female'],
+        corrin_sword : ['sword','(r)','red','boy','(m)','(male)', ' male'],
+
+        tiki_shadow : ['(s)','shadow','mystery','emblem','(y)','young'],
+        tiki_awakening : ['(a)','adult','awakening'],
+
+        spring : ['spring','bunny','(s)','(sf)'],
+        bride : ['bride','bridal','(b)','(bb)'],
+    },
+
     find_img_path (type,key)
     {
         if(type.includes('colour'))

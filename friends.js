@@ -24,7 +24,7 @@ let friends =
     // (tag, rarity, boon, bane, favourite)
     {
         if (chars[pass])
-        {   let index = -1 + friends.roster.push( new chars[pass]() );
+        {   let index = (-1) + friends.roster.push( new chars[pass]() );
             let friend = friends.roster[index];
             friend.set_rarity(0); // minimum_rarity should catch this
             friend.rebuild();
@@ -378,9 +378,9 @@ let friends =
                 if (colour.includes('green')) { return 'robin_green'; }
             }
 
-            if(stringy.includes_any(name,['(b)','blue','boy','(m)','(male)',' male']) )
+            if(stringy.includes_any(name, stringy.suffixes.robin_blue) )
             {   return 'robin_blue'; }
-            if(stringy.includes_any(name,['(g)','green','girl','(f)','female']) )
+            if(stringy.includes_any(name, stringy.suffixes.robin_green) )
             {   return 'robin_green'; }
             console.log("couldn't figure out which Robin was meant by: ", friend.name);
             console.log("assuming blue Robin ..");
@@ -395,33 +395,42 @@ let friends =
                 if (colour.includes('red'))  { return 'corrin_sword'; }
             }
 
-            if (stringy.includes_any(name,['dragon','(b)','blue','girl','(f)','female']) )
+            if (stringy.includes_any(name, stringy.suffixes.corrin_dragon) )
             {   return 'corrin_dragon'; }
-            if (stringy.includes_any(name,['sword','(r)','red','boy','(m)','(male)', ' male']) )
+            if (stringy.includes_any(name, stringy.suffixes.corrin_sword) )
             {   return 'corrin_sword'; }
             console.log("couldn't figure out which Corrin was meant by: ", friend.name);
-            console.log("assuming blue Corrin..");
+            console.log("assuming dragon Corrin..");
             return 'corrin_dragon';
         }
 
         if(name.includes('tiki'))
         {   // it's tiki! from shadow dragon or awakening?
-            if (stringy.includes_any(name,['(s)','shadow','mystery','emblem','(y)','young']) )
+            if (stringy.includes_any(name, stringy.suffixes.tiki_shadow) )
             {   return 'tiki_shadow'; }
-            if (stringy.includes_any(name,['(a)','adult','awakening']) )
+            if (stringy.includes_any(name, stringy.suffixes.tiki_awakening) )
             {   return 'tiki_awakening'; }
             console.log("couldn't figure out which Tiki was meant by: ", friend.name);
             console.log("assuming Awakening Tiki..");
             return 'tiki_awakening';
         }
 
-        if( stringy.includes_any(name,['spring','bunny','(s)','(sf)']) )
+        if( stringy.includes_any(name, stringy.suffixes.spring) )
         {   // it's a bunny! which one?
             if (name.includes('camilla')) { return 'camilla_spring'; }
             if (name.includes('chrom'))   { return 'chrom_spring'; }
             if (name.includes('lucina'))  { return 'lucina_spring'; }
             if (name.includes('xander'))  { return 'xander_spring'; }
             console.log("thought a bunny ally was found, but could not identify which");
+        }
+
+        if( stringy.includes_any(name, stringy.suffixes.bride) )
+        {   // it's a bride! which one?
+            if (name.includes('caeda')) { return 'caeda_bride'; }
+            if (name.includes('charlotte'))   { return 'charlotte_bride'; }
+            if (name.includes('cordelia'))  { return 'cordelia_bride'; }
+            if (name.includes('lyn'))  { return 'lyn_bride'; }
+            console.log("thought a bridal ally was found, but could not identify which");
         }
 
         if( name.includes("lon'qu"))
