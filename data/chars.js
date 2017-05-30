@@ -525,6 +525,50 @@ chars.caeda = class caeda extends allies.ally
 
 
 
+chars.caeda_bride = class caeda_bride extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'caeda_bride';
+        this.name = "Caeda";
+        this.subname = "💐";
+        this.title = "Talys's Bride";
+        this.text = "The charming princess of Talys. Has grand dreams of being a bride.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 1;
+        this.minimum_rarity = 5;
+        this.colour_type = 'blue';
+        this.weapon_type = 'tome_blue';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 148;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 16, atk: 7, spd: 9, def: 4, res: 8 },
+        };
+        this.growth_points =
+                { hp:  4, atk: 6, spd: 9, def: 3, res: 6 };
+
+        this.base_skills =
+        {   weapons   : [ 'thunder', 'elthunder', 'blessed_bouquet', 'blessed_bouquet_plus' ],
+            assists   : [ null ],
+            specials  : [ 'chilling_wind', 'iceberg' ],
+            passive_a : [ 'resistance_plus_1', 'attack_res_plus_1', 'attack_res_plus_2' ],
+            passive_b : [ null ],
+            passive_c : [ 'hone_spd_1', 'hone_spd_2', 'hone_spd_3' ]
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
+    }
+};
+
+
+
+
 chars.cain = class cain extends allies.ally
 {   constructor()
     {   super();
@@ -827,6 +871,50 @@ chars.celica = class celica extends allies.ally
 
 
 
+chars.charlotte_bride = class charlotte_bride extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'charlotte_bride';
+        this.name = "Charlotte";
+        this.subname = "💐";
+        this.title = "Money Maiden";
+        this.text = "Nohrian border guard always on patrol, whether to find enemies to fight or a rich fellow to marry.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 14;
+        this.minimum_rarity = 5;
+        this.colour_type = 'blue';
+        this.weapon_type = 'lance';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 157;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 20, atk: 10, spd: 8, def: 5, res: 4 },
+        };
+        this.growth_points =
+                { hp:  8, atk:  8, spd: 7, def: 5, res: 3 };
+
+        this.base_skills =
+        {   weapons   : [ 'thunder', 'elthunder', 'first_bite', 'first_bite_plus' ],
+            assists   : [ 'smite' ],
+            specials  : [ null ],
+            passive_a : [ 'wind_boost_1', 'wind_boost_2', 'wind_boost_3' ],
+            passive_b : [ null ],
+            passive_c : [ 'threaten_atk_1', 'threaten_atk_2', 'threaten_atk_3' ]
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
+    }
+};
+
+
+
+
 chars.cherche = class cherche extends allies.ally
 {   constructor()
     {   super();
@@ -1081,6 +1169,50 @@ chars.cordelia = class cordelia extends allies.ally
         };
         this.early_passive = 'passive_b';
         this.late_passive =  'passive_a';
+    }
+};
+
+
+
+
+chars.cordelia_bride = class cordelia_bride extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'cordelia_bride';
+        this.name = "Cordelia";
+        this.subname = "💐";
+        this.title = "Perfect Bride";
+        this.text = "Pegasus knight of Ylisse who excels in all things, including being delightful. Hopes to marry her perfect match.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 13;
+        this.minimum_rarity = 5;
+        this.colour_type = 'grey';
+        this.weapon_type = 'bow';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 147;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 17, atk: 9, spd: 9, def: 4, res: 5 },
+        };
+        this.growth_points =
+                { hp:  5, atk: 8, spd: 8, def: 3, res: 4 };
+
+        this.base_skills =
+        {   weapons   : [ 'thunder', 'elthunder', 'cupid_arrow', 'cupid_arrow_plus' ],
+            assists   : [ 'rally_attack_speed' ],
+            specials  : [ null ],
+            passive_a : [ null ],
+            passive_b : [ 'escape_route_1', 'escape_route_2', 'escape_route_3' ],
+            passive_c : [ 'breath_of_life_1', 'breath_of_life_2', 'breath_of_life_3' ]
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
     }
 };
 
@@ -3276,6 +3408,50 @@ chars.lyn = class lyn extends allies.ally
             passive_a : [ 'defiant_atk_1', 'defiant_atk_2', 'defiant_atk_3' ],
             passive_b : [ null ],
             passive_c : [ 'spur_spd_1', 'spur_spd_2', 'spur_spd_3' ]
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
+    }
+};
+
+
+
+
+chars.lyn_bride = class lyn_bride extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'lyn_bride';
+        this.name = "Lyn";
+        this.subname = "💐";
+        this.title = "Bride of the Plains";
+        this.text = "Noblewoman of Caelin. Eager to win the bridal tournament and nab the prize bouquet.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 7;
+        this.minimum_rarity = 5;
+        this.colour_type = 'grey';
+        this.weapon_type = 'staff';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 147;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 17, atk: 6, spd: 10, def: 6, res: 5 },
+        };
+        this.growth_points =
+                { hp:  6, atk: 6, spd:  7, def: 4, res: 5 };
+
+        this.base_skills =
+        {   weapons   : [ 'assault', 'candlelight' ],
+            assists   : [ 'heal', 'reconcile', 'rehabilitate' ],
+            specials  : [ 'imbue', 'swift_winds_balm' ],
+            passive_a : [ null ],
+            passive_b : [ 'dazzling_staff_1', 'dazzling_staff_2', 'dazzling_staff_3' ],
+            passive_c : [ null ]
         };
         this.early_passive = null;
         this.late_passive =  null;

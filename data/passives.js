@@ -72,8 +72,27 @@ dat.passive_a =
         name : "Attack Def +2",
         effects : { passive : { atk: +2, def: +2 } },
         text: "Grants Atk/Def+2.",
-        sp : 120,
+        sp : 160,
         prerequisite: 'attack_def_plus_1',
+        inherit : 'all'
+    },
+
+    attack_res_plus_1 :
+    {   tag : 'attack_res_plus_1',
+        name : "Attack Res +1",
+        effects : { passive : { atk: +1, res: +1 } },
+        text: "Grants Atk/Res+1.",
+        sp : 80,
+        prerequisite: 'resistance_plus_1',
+        inherit : 'all'
+    },
+    attack_res_plus_2 :
+    {   tag : 'attack_res_plus_2',
+        name : "Attack Res +2",
+        effects : { passive : { atk: +2, res: +2 } },
+        text: "Grants Atk/Res+2.",
+        sp : 160,
+        prerequisite: 'attack_res_plus_1',
         inherit : 'all'
     },
 
@@ -648,7 +667,35 @@ dat.passive_a =
         sp : 200,
         prerequisite : 'warding_blow_2',
         inherit : 'no_staff'
-    }
+    },
+
+    wind_boost_1 :
+    {   tag : 'wind_boost_1',
+        name : "Wind Boost 1",
+        effects : { boost: { check:{thresh:'beat',current_hp:3}, spd:+2} },
+        text : "If unit has at least 3 more HP than enemy at the start of combat, unit receives Spd+2 during combat.",
+        sp : 50,
+        prerequisite: null,
+        inherit : 'all'
+    },
+    wind_boost_2 :
+    {   tag : 'wind_boost_2',
+        name : "Wind Boost 2",
+        effects : { boost: { check:{thresh:'beat',current_hp:3}, spd:+4} },
+        text : "If unit has at least 3 more HP than enemy at the start of combat, unit receives Spd+4 during combat.",
+        sp : 100,
+        prerequisite : 'wind_boost_1',
+        inherit : 'all'
+    },
+    wind_boost_3 :
+    {   tag : 'wind_boost_3',
+        name : "Wind Boost 3",
+        effects : { boost: { check:{thresh:'beat',current_hp:3}, spd:+6} },
+        text : "If unit has at least 3 more HP than enemy at the start of combat, unit receives Spd+6 during combat.",
+        sp : 200,
+        prerequisite : 'wind_boost_2',
+        inherit : 'all'
+    },
 
 };
 
@@ -794,6 +841,34 @@ dat.passive_b =
         sp: 200,
         prerequisite: 'daggerbreaker_2',
         inherit: 'all'
+    },
+
+    dazzling_staff_1 :
+    {   tag : 'dazzling_staff_1',
+        name : "Dazzling Staff 1",
+        effects : { staff:'dazzling', check:{ thresh:'more', hp:1.0 } },
+        text : "If unit has 100% HP at the start of combat, the enemy cannot counterattack.",
+        sp: 60,
+        prerequisite: null,
+        inherit: 'staff'
+    },
+    dazzling_staff_2 :
+    {   tag : 'dazzling_staff_2',
+        name : "Dazzling Staff 2",
+        effects : { staff:'dazzling', check:{ thresh:'more', hp:0.5 } },
+        text : "If unit has ≥ 50% HP at the start of combat, the enemy cannot counterattack.",
+        sp: 120,
+        prerequisite: 'dazzling_staff_1',
+        inherit: 'staff'
+    },
+    dazzling_staff_3 :
+    {   tag : 'dazzling_staff_3',
+        name : "Dazzling Staff 3",
+        effects : { staff:'dazzling', check: false },
+        text : "The enemy cannot counterattack.",
+        sp: 240,
+        prerequisite: 'dazzling_staff_2',
+        inherit: 'staff'
     },
 
     desperation_1 :

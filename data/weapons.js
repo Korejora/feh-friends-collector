@@ -193,7 +193,7 @@ dat.weapons =
     },
     blarwolf_plus :
     {   tag : 'blarwolf_plus',
-        name: "Rauðrrwolf+",
+        name: "Blárrwolf+",
         weapon_type : 'tome_blue',
         might : 10,
         range : 2,
@@ -204,13 +204,38 @@ dat.weapons =
         inherit : 'weapon_type'
     },
 
+    blessed_bouquet :
+    {   tag : 'blessed_bouquet',
+        name: "Blessed Bouquet",
+        weapon_type : 'tome_blue',
+        might : 9,
+        range : 2,
+        text : "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.",
+        effects : { after : { hone_2 : { def:2, res:2 } } },
+        sp: 200,
+        prerequisite : 'elthunder',
+        inherit : 'weapon_type'
+    },
+    blessed_bouquet_plus :
+    {   tag : 'blessed_bouquet_plus',
+        name: "Blessed Bouquet+",
+        weapon_type : 'tome_blue',
+        might : 12,
+        range : 2,
+        text : "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.",
+        effects : { after : { hone_2 : { def:2, res:2 } } },
+        sp: 300,
+        prerequisite : 'blessed_bouquet',
+        inherit : 'weapon_type'
+    },
+
     blue_egg :
     {   tag : 'blue_egg',
         name: "Blue Egg",
         weapon_type : 'tome_blue',
         might : 7,
         range : 2,
-        text : "If unit initiates attack, unit recovers 4 HP after the battle.",
+        text : "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.",
         effects : { after : { init: { heal_self:4 } } },
         sp: 200,
         prerequisite : 'elwind',
@@ -379,6 +404,19 @@ dat.weapons =
         inherit : 'exclusive'
     },
 
+    candlelight :
+    {   tag : 'candlelight',
+        name : "Candlelight",
+        weapon_type : 'staff',
+        might : 7,
+        range : 2,
+        text : "After combat, foe inflicted with status preventing them from counterattacking.",
+        effects : { after : 'candle' },
+        sp: 150,
+        prerequisite : 'assault',
+        inherit : 'weapon_type'
+    },
+
     carrot_axe :
     {   tag : 'carrot_axe',
         name: "Carrot Axe",
@@ -426,6 +464,33 @@ dat.weapons =
         effects : { after : { init: { heal_self:4 } } },
         sp: 300,
         prerequisite : 'carrot_lance',
+        inherit : 'weapon_type'
+    },
+
+    cupid_arrow :
+    {   tag : 'cupid_arrow',
+        name : "Cupid Arrow",
+        weapon_type : 'bow',
+        might : 8,
+        range : 2,
+        effective: { move_types:['flyer'] },
+        text : "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates. Effective against fliers.",
+        effects : { after : { hone_2 : { def:2, res:2 } } },
+        sp: 200,
+        prerequisite : 'steel_bow',
+        inherit : 'weapon_type'
+    },
+    cupid_arrow_plus :
+    {   tag : 'cupid_arrow_plus',
+        name : "Cupid Arrow+",
+        weapon_type : 'bow',
+        might : 12,
+        range : 2,
+        effective: { move_types:['flyer'] },
+        text : "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates. Effective against fliers.",
+        effects : { after : { hone_2 : { def:2, res:2 } } },
+        sp: 300,
+        prerequisite : 'cupid_arrow',
         inherit : 'weapon_type'
     },
 
@@ -716,6 +781,31 @@ dat.weapons =
        effects : { no_counter_self: true, no_counter_enemy: true },
         sp: 300,
         prerequisite : 'firesweep_bow',
+        inherit : 'weapon_type'
+    },
+
+    first_bite :
+    {   tag : 'first_bite',
+        name: "First Bite",
+        weapon_type : 'lance',
+        might : 10,
+        range : 2,
+        text : "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.",
+        effects : { after : { hone_2 : { def:2, res:2 } } },
+        sp: 200,
+        prerequisite : 'elthunder',
+        inherit : 'weapon_type'
+    },
+    first_bite_plus :
+    {   tag : 'first_bite_plus',
+        name: "First Bite+",
+        weapon_type : 'lance',
+        might : 14,
+        range : 2,
+        text : "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.",
+        effects : { after : { hone_2 : { def:2, res:2 } } },
+        sp: 300,
+        prerequisite : 'first_bite',
         inherit : 'weapon_type'
     },
 

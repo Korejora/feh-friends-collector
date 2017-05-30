@@ -105,6 +105,16 @@ dat.assists =
         inherit : 'no_staff'
     },
 
+    rally_attack_speed :
+    {   tag : 'rally_attack_speed',
+        name : "Rally Attack Speed",
+        range : 1,
+        effect : { rally : { atk:3, spd:3 } },
+        text : "Grants Atk/Spd+3 to an adjacent ally until the end of the turn.",
+        sp: 150,
+        inherit : 'no_staff'
+    },
+
     rally_defense :
     {   tag : 'rally_defense',
         name : "Rally Defense",
