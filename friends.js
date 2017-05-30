@@ -26,7 +26,7 @@ let friends =
         if (chars[pass])
         {   let index = -1 + friends.roster.push( new chars[pass]() );
             let friend = friends.roster[index];
-            friend.set_rarity(0); // minimum_rarity should catch this 
+            friend.set_rarity(0); // minimum_rarity should catch this
             friend.rebuild();
             friend.obtained = friends.roster.length;
             return friend;
