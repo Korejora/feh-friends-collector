@@ -7,6 +7,7 @@ let chars = {};
 // 17-04-25 finished entry
 // 17-04-26 added ike, mist, soren, titania; updated clair, lukas
 // 17-05-15 added boey, celica, mae, genny; updated soren, titania
+// 17-05-30 added brides; updated mae, boey
 
 
 
@@ -450,7 +451,7 @@ chars.boey = class boey extends allies.ally
      // this.obtained = #;
      // this.favourite;
         this.origin = 15;
-        this.minimum_rarity = 5;
+        this.minimum_rarity = 4;
         this.colour_type = 'green';
         this.weapon_type = 'tome_green';
         this.move_type = 'infantry';
@@ -460,7 +461,7 @@ chars.boey = class boey extends allies.ally
         {   1 : null,
             2 : null,
             3 : null,
-            4 : null,
+            4 : { hp: 18, atk: 7, spd: 4, def: 8, res: 4 },
             5 : { hp: 19, atk: 7, spd: 5, def: 8, res: 5 },
         };
         this.growth_points =
@@ -474,8 +475,8 @@ chars.boey = class boey extends allies.ally
             passive_b : [ 'renewal_1', 'renewal_2', 'renewal_3' ],
             passive_c : [ null ]
         };
-        this.early_passive = null;
-        this.late_passive =  null;
+        this.early_passive = 'passive_a';
+        this.late_passive =  'passive_b';
     }
 };
 
@@ -3472,7 +3473,7 @@ chars.mae = class mae extends allies.ally
      // this.obtained = #;
      // this.favourite;
         this.origin = 15;
-        this.minimum_rarity = 5;
+        this.minimum_rarity = 4;
         this.colour_type = 'blue';
         this.weapon_type = 'tome_blue';
         this.move_type = 'infantry';
@@ -3482,7 +3483,7 @@ chars.mae = class mae extends allies.ally
         {   1 : null,
             2 : null,
             3 : null,
-            4 : null,
+            4 : { hp: 15, atk: 10, spd: 6, def: 2, res: 8 },
             5 : { hp: 16, atk: 10, spd: 7, def: 3, res: 8 },
         };
         this.growth_points =
@@ -3496,8 +3497,8 @@ chars.mae = class mae extends allies.ally
             passive_b : [ 'desperation_1', 'desperation_2', 'desperation_3' ],
             passive_c : [ 'blue_tome_exp_1', 'blue_tome_exp_2', 'blue_tome_exp_3' ],
         };
-        this.early_passive = null;
-        this.late_passive =  null;
+        this.early_passive = 'passive_b';
+        this.late_passive =  'passive_c';
     }
 };
 
