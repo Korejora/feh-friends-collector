@@ -8,6 +8,7 @@ let chars = {};
 // 17-04-26 added ike, mist, soren, titania; updated clair, lukas
 // 17-05-15 added boey, celica, mae, genny; updated soren, titania
 // 17-05-30 added brides; updated mae, boey
+// 17-06-01 added special tag
 
 
 
@@ -535,6 +536,7 @@ chars.caeda_bride = class caeda_bride extends allies.ally
         this.title = "Talys's Bride";
         this.text = "The charming princess of Talys. Has grand dreams of being a bride.";
         this.summon = true;
+        this.special = true;
      // this.obtained = #;
      // this.favourite;
         this.origin = 1;
@@ -665,6 +667,7 @@ chars.camilla_spring = class camilla_spring extends allies.ally
         this.title = "Spring Princess";
         this.text = "Princess of Nohr who dotes on her sibling Corrin. Loves her new outfit ever since Corrin said it was cute.";
         this.summon = true;
+        this.special = true;
      // this.obtained = 4;
      // this.favourite;
         this.origin = 14;
@@ -881,6 +884,7 @@ chars.charlotte_bride = class charlotte_bride extends allies.ally
         this.title = "Money Maiden";
         this.text = "Nohrian border guard always on patrol, whether to find enemies to fight or a rich fellow to marry.";
         this.summon = true;
+        this.special = true;
      // this.obtained = #;
      // this.favourite;
         this.origin = 14;
@@ -1011,6 +1015,7 @@ chars.chrom_spring = class chrom_spring extends allies.ally
         this.title = "Spring Exalt";
         this.text = "A prince of Ylisse and descendant of the Hero-King. Dressed to celebrate the spring festival.";
         this.summon = true;
+        this.special = true;
      // this.obtained = #;
      // this.favourite;
         this.origin = 13;
@@ -1185,6 +1190,7 @@ chars.cordelia_bride = class cordelia_bride extends allies.ally
         this.title = "Perfect Bride";
         this.text = "Pegasus knight of Ylisse who excels in all things, including being delightful. Hopes to marry her perfect match.";
         this.summon = true;
+        this.special = true;
      // this.obtained = #;
      // this.favourite;
         this.origin = 13;
@@ -3254,6 +3260,7 @@ chars.lucina_spring = class lucina_spring extends allies.ally
         this.title = "Spring Exalt";
         this.text = "Daughter of Chrom. Future exalt of Ylisse. Curious about the old festival traditions of Ylisse.";
         this.summon = true;
+        this.special = true;
      // this.obtained = #;
      // this.favourite;
         this.origin = 13;
@@ -3427,6 +3434,7 @@ chars.lyn_bride = class lyn_bride extends allies.ally
         this.title = "Bride of the Plains";
         this.text = "Noblewoman of Caelin. Eager to win the bridal tournament and nab the prize bouquet.";
         this.summon = true;
+        this.special = true;
      // this.obtained = #;
      // this.favourite;
         this.origin = 7;
@@ -5845,6 +5853,7 @@ chars.xander_spring = class xander_spring extends allies.ally
         this.title = "Spring Prince";
         this.text = "Nohrian prince who normally wields the divine blade Siegfried but left it behind for the festival.";
         this.summon = true;
+        this.special = true;
      // this.obtained = #;
      // this.favourite;
         this.origin = 14;
