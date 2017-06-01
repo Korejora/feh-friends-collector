@@ -261,6 +261,11 @@ img.icon
 
 .item img
 {   height: 1.1em;
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    margin-left: 50%;
 }
 
 .row .name.nosummon, .exclusive
@@ -308,11 +313,11 @@ display_properties =
         .row:nth-child(even) .origin  { background-color: #aaaaff; }
         .row:nth-child(odd)  .origin  { background-color: #ccccff; }
         .row .origin.title { background-color: #7777ff; }
-    #friends_table .rarity { width:29%; font-size: small; line-height:1.5 }
-    #allies_table  .rarity { width:50%; font-size: small; line-height:1.5 }
+    #friends_table .rarity { width:29% }
+    #allies_table  .rarity { width:50% }
         .row:nth-child(even) .rarity  { background-color: #ffaaaa; }
         .row:nth-child(odd)  .rarity  { background-color: #ffcccc; }
-        .row .rarity.title { background-color: #ff7777; }
+        .row .rarity.title { background-color: #ff7777; font-size: small; line-height:1.5 }
 
 #friends_table .type.subdiv  { width: 12% } /* 'weapon_type', 'colour_type', 'move_type', */
 #allies_table  .type.subdiv  { width: 16% }

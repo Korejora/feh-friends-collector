@@ -461,15 +461,13 @@ tableau.row = class
                     item_div.title = stringy.get_origin_text(val); // allies.properties[key][val].text;
                     break;
                 case 'rarity':
-                    item_div.className += ' stars ';
-                    break;
                 case 'weapon_type':
-                    if(val.includes('tome')){item_div.className+=' tome ';}
-                    if(val.includes('dragon')){item_div.className+=' dragon ';}
-                    // fall;
                 case 'colour_type':
                 case 'move_type':
-                    // catch;
+                    if(key.includes('weapon'))
+                    {   if(val.includes('tome')){item_div.className+=' tome ';}
+                        if(val.includes('dragon')){item_div.className+=' dragon ';}
+                    }
                     item_div.className += " "+val+" ";
                     item_div.child_img = document.createElement('img');
                     item_div.child_img.onerror = function(){this.src = stringy.img_feh;};
@@ -513,8 +511,6 @@ tableau.row = class
                     display_name = stringy.get_origin_display(val); // allies.properties[key][val].display;
                     break;
                 case 'rarity':
-                    display_name = stringy.rar_num_to_star(val); // allies.properties[key][val];
-                    break;
                 case 'colour_type':
                 case 'weapon_type':
                 case 'move_type':
