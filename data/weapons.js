@@ -873,7 +873,7 @@ dat.weapons =
         weapon_type : 'lance',
         might : 16,
         range : 1,
-        text : "????",
+        text : "Enables counterattack regardless of distance if this unit is attacked.",
         effects : { },
         sp: 400,
         prerequisite : 'silver_lance',

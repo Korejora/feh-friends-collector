@@ -702,47 +702,48 @@ chars.camilla_spring = class camilla_spring extends allies.ally
 
 
 
-    /*
+
 chars.camus = class camus extends allies.ally
 {   constructor()
     {   super();
         this.tag = 'camus';
         this.name = "Camus";
         this.title = "Sable Knight";
-        this.text = "A knight who's devoted to his motherland, Grust. Wields the lance Gradivus."
+        this.text = "A knight who's devoted to his motherland, Grust. Wields the lance Gradivus.";
         this.summon = false;
      // this.obtained = #;
      // this.favourite;
         this.origin = 1;
-        this.minimum_rarity = #;
+        this.minimum_rarity = 3;
         this.colour_type = 'blue';
         this.weapon_type = 'lance';
         this.move_type = 'cavalry';
      // this.level = 40;
-     // this.rating = 10;
+     // this.rating = 155;
         this.base_stats =
         {   1 : null,
-            2 : { hp: 17, atk: 6, spd: 9, def: 3, res: 4 },
-            3 : { hp: 18, atk: 6, spd: 9, def: 4, res: 5 },
-            4 : { hp: 18, atk: 7, spd: 0, def: 4, res: 5 },
-            5 : { hp: 19, atk: 7, spd: 0, def: 5, res: 6 },
+            2 : null,
+            3 : { hp: 17, atk: 7, spd: 8, def: 6, res: 3 },
+            4 : { hp: 17, atk: 8, spd: 9, def: 6, res: 3 },
+            5 : { hp: 18, atk: 8, spd: 9, def: 7, res: 4 },
         };
         this.growth_points =
-                { hp:  6, atk: 6, spd: 9, def: 4, res: 6 };
+                { hp:  7, atk: 7, spd: 7, def: 7, res: 2 };
 
         this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'silver_axe', 'noatun' ],
+        {   weapons   : [ 'iron_lance', 'steel_lance', 'silver_lance', 'gradivus' ],
             assists   : [ null ],
-            specials  : [ 'night_sky', 'astra' ],
-            passive_a : [ null ],
-            passive_b : [ 'vantage_1', 'vantage_2', 'vantage_3' ],
-            passive_c : [ 'spur_res_1', 'spur_res_2', 'spur_res_3' ]
+            specials  : [ 'rising_thunder', 'growing_thunder' ],
+            passive_a : [ 'granis_shield' ],
+            passive_b : [ null ],
+            passive_c : [ 'spur_atk_1', 'spur_atk_2', 'goad_cavalry' ]
         };
-        this.early_passive = null;
+        this.early_passive = 'passive_c';
         this.late_passive =  null;
+        this.shield_passive = 'passive_a';
     }
 };
-    */
+
 
 
 
