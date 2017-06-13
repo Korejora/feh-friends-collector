@@ -73,6 +73,50 @@ let googly =
     {   gapi.auth2.getAuthInstance().signOut();
     } ,
 
+
+
+    clear_write : function(spreadsheet_ID, values)
+    {
+        if (!spreadsheet_ID)
+        {   console.log('no spreadsheet ID found! ..'); return;
+         // spreadsheet_ID = googly.spreadsheet_ID;
+        }
+
+        gapi.client.sheets.spreadsheets.values.clear
+        (   {   spreadsheetId: spreadsheet_ID,
+                range: 'A:Z'
+            }
+        ).then(
+        function(response)
+        {
+            gapi.client.sheets.spreadsheets.values.update
+            (   {   spreadsheetId: spreadsheet_ID,
+                    range: 'A:Z',
+                    valueInputOption: 'RAW',
+                    resource :
+                    {   "range": 'A:Z',
+                        "majorDimension":'ROWS',
+                        "values":values
+                    }
+                }
+            ).then(
+            function(response)
+            {
+                porter.googly_note(stringy.googly_info_roster_saved+" "+stringy.show_time(),'inform');
+            },
+            function(response)
+            {   console.log('Error: ' + response.result.error.message);
+            }     );
+        },
+        function(response)
+        {
+            let error_message = response.result.error.message;
+            console.log('Error: ' + response.result.error.message);
+            stringy.googly_do_error(error_message, 'write');
+        }     );
+
+    },
+
 };
 
 
