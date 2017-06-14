@@ -1213,7 +1213,7 @@ chars.cordelia_bride = class cordelia_bride extends allies.ally
 
         this.base_skills =
         {   weapons   : [ 'thunder', 'elthunder', 'cupid_arrow', 'cupid_arrow_plus' ],
-            assists   : [ 'rally_attack_speed' ],
+            assists   : [ 'rally_attack', 'rally_attack_speed' ],
             specials  : [ null ],
             passive_a : [ null ],
             passive_b : [ 'escape_route_1', 'escape_route_2', 'escape_route_3' ],
