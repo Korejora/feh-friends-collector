@@ -164,31 +164,22 @@ class subalter_basic extends selectable
 
         this.nature_setup();
 
-        this.deselection();
-
     }
 
     rarity_setup()
     {
-        this.rarity = new selectable({deselectable:true});
+        this.rarity = new divvy({parent:this.display});
         let rar = this.rarity;
-        rar.call_deselection = function() { alter.basic.deselection(); };
-
-        rar.container = new divvy({parent:this.display});
-        rar.container.add_child(rar.select);
-        rar.container.add_child(rar.display);
-
-        rar.display.add_text(" ");
+        rar.div.style.padding = '10px';
 
         rar.dropdown = document.createElement('select');
         rar.dropdown.className = 'dropdown';
         rar.dropdown.onchange = function alter_basic_rarity_onchange()
         {   alter.ally.set_rarity(rar.dropdown.value);
-            rar.rebuild();
-            rar.do_deselect();
+            rar.refresh();
             refreshment();
         };
-        rar.display.add_child(rar.dropdown);
+        rar.add_child(rar.dropdown);
 
         for (let i=5; i>=1; i--)
         {   let option = document.createElement('option');
@@ -196,10 +187,9 @@ class subalter_basic extends selectable
             rar.dropdown.appendChild(option);
         }
 
-        rar.rebuild = function()
+        rar.refresh = function()
         {
-            this.select.set_text(alter.ally.return_rarity_stars());
-            this.dropdown.value = this.select.div.innerText;
+            this.dropdown.value = alter.ally.return_rarity_stars();
 
             // disable rarities inappropriate for the new ally
             for ( let i=5; i>0; i-- )
@@ -215,21 +205,17 @@ class subalter_basic extends selectable
                     }
                 }
             }
-            this.do_deselect();
+
         };
     }
 
     nature_setup()
     {
-        this.nature = new selectable({deselectable:true});
+        this.nature = new divvy({parent:this.display});
         let nat = this.nature;
-        nat.call_deselection = function() { alter.basic.deselection(); };
+        nat.div.style.padding = '10px';
 
         nat.container = new divvy({parent:this.display});
-        nat.container.add_child(nat.select);
-        nat.container.add_child(nat.display);
-
-        nat.display.add_text(" ");
 
         nat.boondrop = document.createElement('select');
         nat.boondrop.className = 'dropdown';
@@ -241,7 +227,7 @@ class subalter_basic extends selectable
             nat.boondrop.appendChild(option);
         });
         nat.boondrop.onchange = function() { nat.resolve_input('boon'); };
-        nat.display.add_child(nat.boondrop);
+        nat.add_child(nat.boondrop);
 
         nat.banedrop = document.createElement('select');
         nat.banedrop.className = ' dropdown ';
@@ -253,7 +239,7 @@ class subalter_basic extends selectable
             nat.banedrop.appendChild(option);
         });
         nat.banedrop.onchange = function() { nat.resolve_input('bane'); };
-        nat.display.add_child(nat.banedrop);
+        nat.add_child(nat.banedrop);
 
         nat.resolve_input = function(bone)
         {   if(this[bone+'drop'].value == "neutral")
@@ -261,13 +247,11 @@ class subalter_basic extends selectable
                 this.banedrop.value = "neutral";
             }
             alter.ally.set_nature(this.boondrop.value, this.banedrop.value);
-            this.select.set_text(alter.ally.return_nature());
             tableau.rebuild();
         };
 
-        nat.rebuild = function()
+        nat.refresh = function()
         {
-            this.select.set_text(alter.ally.return_nature());
             if ( alter.ally.summon === false || alter.ally.rarity <= 2 )
             {   // do not change the nature of a non-summonable ally
                 this.boondrop.value = "neutral";
@@ -279,19 +263,28 @@ class subalter_basic extends selectable
             {   this.boondrop.disabled = false;
                 this.banedrop.disabled = false;
             }
-            this.do_deselect();
         };
 
     }
 
-    deselection()
-    {   this.rarity.do_deselect();
-        this.nature.do_deselect();
+    level_setup()
+    {
+        this.level = new selectable({deselectable:true});
+        let lvl = this.level;
+        lvl.call_deselection = function() { alter.basic.deselection(); };
+
+        lvl.container = new divvy({parent:this.display});
+        lvl.container.add_child(lvl.select);
+        lvl.container.add_child(lvl.display);
+
+        lvl.display.add_text(" ");
+
+
     }
 
     rebuild()
-    {   this.rarity.rebuild();
-        this.nature.rebuild();
+    {   this.rarity.refresh();
+        this.nature.refresh();
     }
 }
 
@@ -484,7 +477,7 @@ class subalter_inherited extends selectable // single
     {
         super({deselectable:true});
 
-        this.list = new divvy({ parent:this.display });
+        this.list = new divvy({ parent: this.display });
 
         this.adder = new divvy({ parent: this.display });
 
