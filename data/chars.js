@@ -226,6 +226,49 @@ chars.arthur = class arthur extends allies.ally
 
 
 
+chars.athena = class athena extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'athena';
+        this.name = "Athena";
+        this.title = "Borderland Sword";
+        this.text = "A foreign warrior with a straightforward personality. Speaks with an accent.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 1;
+        this.minimum_rarity = 5;
+        this.colour_type = 'red';
+        this.weapon_type = 'sword';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 156;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 17, atk: 7, spd: 10, def: 8, res: 5 },
+        };
+        this.growth_points =
+                { hp:  5, atk: 7, spd:  9, def: 5, res: 5 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_sword', 'steel_sword', 'wo_dao', 'wo_dao_plus' ],
+            assists   : [ null ],
+            specials  : [ 'new_moon', 'moonbow' ],
+            passive_a : [ 'armored_blow_1', 'sturdy_blow_1', 'sturdy_blow_2' ],
+            passive_b : [ null ],
+            passive_c : [ 'sword_exp_1', 'sword_exp_2', 'sword_exp_3' ],
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
+    }
+};
+
+
+
+
 chars.azama = class azama extends allies.ally
 {   constructor()
     {   super();
@@ -2822,6 +2865,49 @@ chars.karel = class karel extends allies.ally
 
 
 
+chars.katarina = class katarina extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'katarina';
+        this.name = "Katarina";
+        this.title = "Wayward One";
+        this.text = "Reserved and harboring a dark secret, this trainee tactician depends on others.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 1;
+        this.minimum_rarity = 5;
+        this.colour_type = 'red';
+        this.weapon_type = 'tome_red';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 147;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 17, atk: 6, spd: 8, def: 5, res: 8 },
+        };
+        this.growth_points =
+                { hp:  4, atk: 8, spd: 8, def: 1, res: 7 };
+
+        this.base_skills =
+        {   weapons   : [ 'fire', 'elfire', 'raudrowl', 'raudrowl_plus' ],
+            assists   : [ null ],
+            specials  : [ 'chilling_wind', 'glacies' ],
+            passive_a : [ 'death_blow_2', 'swift_sparrow_1', 'swift_sparrow_2' ],
+            passive_b : [ null ],
+            passive_c : [ 'atk_ploy_1', 'atk_ploy_2', 'atk_ploy_3' ],
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
+    }
+};
+
+
+
+
 chars.klein = class klein extends allies.ally
 {   constructor()
     {   super();
@@ -3377,6 +3463,49 @@ chars.lukas = class lukas extends allies.ally
         };
         this.early_passive = 'passive_b';
         this.late_passive =  'passive_a';
+    }
+};
+
+
+
+
+chars.luke = class luke extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'luke';
+        this.name = "Luke";
+        this.title = "Rowdy Squire";
+        this.text = "An aspiring knight of Altea. Flirtatious. Roderick's longtime friend and rival.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 1;
+        this.minimum_rarity = 5;
+        this.colour_type = 'red';
+        this.weapon_type = 'sword';
+        this.move_type = 'cavalry';
+     // this.level = 40;
+     // this.rating = 154;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 19, atk: 8, spd: 6, def: 8, res: 5 },
+        };
+        this.growth_points =
+                { hp:  7, atk: 8, spd: 6, def: 6, res: 3 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_sword', 'steel_sword', 'brave_sword', 'brave_sword_plus' ],
+            assists   : [ null ],
+            specials  : [ 'glowing_ember', 'bonfire' ],
+            passive_a : [ 'fire_boost_1', 'fire_boost_2', 'fire_boost_3' ],
+            passive_b : [ null ],
+            passive_c : [ 'panic_ploy_1', 'panic_ploy_2', 'panic_ploy_3' ]
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
     }
 };
 
@@ -4672,6 +4801,50 @@ chars.robin_green = class robin_green extends allies.ally
         };
         this.early_passive = 'passive_b';
         this.late_passive =  'passive_a';
+    }
+};
+
+
+
+
+chars.roderick = class roderick extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'roderick';
+        this.name = "Roderick";
+        this.title = "Steady Squire";
+        this.text = "An aspiring knight of Altea. Of calm demeanor. Luke's longtime friend and rival.";
+        this.summon = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 1;
+        this.minimum_rarity = 5;
+        this.colour_type = 'blue';
+        this.weapon_type = 'lance';
+        this.move_type = 'cavalry';
+     // this.level = 40;
+     // this.rating = 154;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 18, atk: 7, spd: 8, def: 6, res: 7 },
+        };
+        this.growth_points =
+                { hp:  6, atk: 7, spd: 8, def: 5, res: 4 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_lance', 'steel_lance', 'firesweep_lance', 'firesweep_lance_plus' ],
+            assists   : [ 'rally_defense', 'rally_defense_resistance' ],
+            specials  : [ null ],
+            passive_a : [ null ],
+            passive_b : [ 'drag_back' ],
+            passive_c : [ 'spur_def_1', 'drive_def_1', 'drive_def_2' ]
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
+        this.position_passive = 'passive_b';
     }
 };
 

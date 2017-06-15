@@ -784,6 +784,31 @@ dat.weapons =
         inherit : 'weapon_type'
     },
 
+    firesweep_lance :
+    {   tag : 'firesweep_lance',
+        name : "Firesweep Lance",
+        weapon_type : 'lance',
+        might : 11,
+        range : 1,
+        text : "Unit and enemies cannot use counterattacks.",
+        effects : { no_counter_self: true, no_counter_enemy: true },
+        sp: 200,
+        prerequisite : 'steel_lance',
+        inherit : 'weapon_type'
+    },
+    firesweep_lance_plus :
+    {   tag : 'firesweep_lance_plus',
+        name : "Firesweep Lance+",
+        weapon_type : 'lance',
+        might : 15,
+        range : 1,
+        text : "Unit and enemies cannot use counterattacks.",
+       effects : { no_counter_self: true, no_counter_enemy: true },
+        sp: 300,
+        prerequisite : 'firesweep_lance',
+        inherit : 'weapon_type'
+    },
+
     first_bite :
     {   tag : 'first_bite',
         name: "First Bite",

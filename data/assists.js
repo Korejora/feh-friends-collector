@@ -125,6 +125,16 @@ dat.assists =
         inherit : 'no_staff'
     },
 
+    rally_defense_resistance :
+    {   tag : 'rally_defense_resistance',
+        name : "Rally Defense Resistance",
+        range : 1,
+        effect : { rally : { def:4, res:4 } },
+        text : "Grants Def/Res+3 to an adjacent ally until the end of the turn.",
+        sp: 150,
+        inherit : 'no_staff'
+    },
+
     rally_resistance :
     {   tag : 'rally_resistance',
         name : "Rally Resistance",

@@ -368,6 +368,34 @@ dat.passive_a =
         inherit : 'all'
     },
 
+    fire_boost_1 :
+    {   tag : 'fire_boost_1',
+        name : "Fire Boost 1",
+        effects : { boost: { check:{thresh:'beat',current_hp:3}, atk:+2} },
+        text : "If unit has at least 3 more HP than enemy at the start of combat, unit receives Atk+2 during combat.",
+        sp : 50,
+        prerequisite: null,
+        inherit : 'all'
+    },
+    fire_boost_2 :
+    {   tag : 'fire_boost_2',
+        name : "Fire Boost 2",
+        effects : { boost: { check:{thresh:'beat',current_hp:3}, atk:+4} },
+        text : "If unit has at least 3 more HP than enemy at the start of combat, unit receives Atk+4 during combat.",
+        sp : 100,
+        prerequisite : 'fire_boost_1',
+        inherit : 'all'
+    },
+    fire_boost_3 :
+    {   tag : 'fire_boost_3',
+        name : "Fire Boost 3",
+        effects : { boost: { check:{thresh:'beat',current_hp:3}, atk:+6} },
+        text : "If unit has at least 3 more HP than enemy at the start of combat, unit receives Atk+6 during combat.",
+        sp : 200,
+        prerequisite : 'fire_boost_2',
+        inherit : 'all'
+    },
+
     fortress_def_1 :
     {   tag : 'fortress_def_1',
         name : "Fortress Def 1",
@@ -582,6 +610,25 @@ dat.passive_a =
         sp : 120,
         prerequisite: 'speed_plus_2',
         inherit : 'all'
+    },
+
+    sturdy_blow_1 :
+    {   tag : 'sturdy_blow_1',
+        name : "Sturdy Blow 1",
+        effects : { initiate : { def: +2 } },
+        text: "Grants Atk/Def+2 during combat if unit initiates the attack.",
+        sp : 120,
+        prerequisite: null,
+        inherit: 'no_staff'
+    },
+    sturdy_blow_2 :
+    {   tag : 'sturdy_blow_2',
+        name : "Sturdy Blow 2",
+        effects : { initiate : { def: +4 } },
+        text: "Grants Atk/Def+4 during combat if unit initiates the attack.",
+        sp : 240,
+        prerequisite: 'sturdy_blow_1',
+        inherit: 'no_staff'
     },
 
     svalinn_shield :
@@ -1605,6 +1652,34 @@ dat.passive_b =
 dat.passive_c =
 {
 
+    atk_ploy_1 :
+    {   tag : 'atk_ploy_1',
+    name : "Atk Ploy 1",
+    effects : { ploy: {atk:-3} },
+    text : "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Atk-3 until the end of foe's next action.",
+    sp: 60,
+    prerequisite : null,
+    inherit : 'all'
+    },
+    atk_ploy_2 :
+    {   tag : 'atk_ploy_2',
+    name : "Atk Ploy 2",
+    effects : { ploy: {atk:-4} },
+    text : "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Atk-4 until the end of foe's next action.",
+    sp: 120,
+    prerequisite : 'atk_ploy_1',
+    inherit : 'all'
+    },
+    atk_ploy_3 :
+    {   tag : 'atk_ploy_3',
+    name : "Atk Ploy 3",
+    effects : { ploy: {atk:-5} },
+    text : "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Atk-5 until the end of foe's next action.",
+    sp: 240,
+    prerequisite : 'atk_ploy_2',
+    inherit : 'all'
+    },
+
     axe_experience_1 :
     {   tag : 'axe_experience_1',
         name : "Axe Experience 1",
@@ -1715,6 +1790,25 @@ dat.passive_c =
         sp : 200,
         prerequisite: 'breath_of_life_2',
         inherit: 'all'
+    },
+
+    drive_def_1 :
+    {   tag : 'drive_def_1',
+        name : "Drive Def 1",
+        effects : { drive: {def:+2} },
+        text : "Grants allies within 2 spaces Def+2 during combat.",
+        sp: 120,
+        prerequisite : null,
+        inherit : 'all'
+    },
+    drive_def_2 :
+    {   tag : 'drive_def_2',
+        name : "Drive Def 2",
+        effects : { drive: {def:+3} },
+        text : "Grants allies within 2 spaces Def+3 during combat.",
+        sp: 240,
+        prerequisite : 'drive_def_1',
+        inherit : 'all'
     },
 
     fortify_armor :
@@ -1929,6 +2023,34 @@ dat.passive_c =
         inherit : 'all'
     },
 
+    panic_ploy_1 :
+    {   tag : 'panic_ploy_1',
+    name : "Panic Ploy 1",
+    effects : { ploy: 'panic' },
+    text : "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 5 or more lower than unit through foe's next action.",
+    sp: 60,
+    prerequisite : null,
+    inherit : 'all'
+    },
+    panic_ploy_2 :
+    {   tag : 'panic_ploy_2',
+    name : "Panic Ploy 2",
+    effects : { ploy: 'panic' },
+    text : "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 5 or more lower than unit through foe's next action.",
+    sp: 120,
+    prerequisite : 'panic_ploy_1',
+    inherit : 'all'
+    },
+    panic_ploy_3 :
+    {   tag : 'panic_ploy_3',
+    name : "Panic Ploy 3",
+    effects : { ploy: 'panic' },
+    text : "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 5 or more lower than unit through foe's next action.",
+    sp: 240,
+    prerequisite : 'panic_ploy_2',
+    inherit : 'all'
+    },
+
     savage_blow_1 :
     {   tag : 'savage_blow_1',
         name : "Savage Blow 1",
@@ -2086,6 +2208,34 @@ dat.passive_c =
         sp: 200,
         prerequisite : 'spur_spd_2',
         inherit : 'all'
+    },
+
+    sword_exp_1 :
+    {   tag : 'sword_exp_1',
+        name : "Bow Exp. 1",
+        effects : { bonus: 'sword' },
+        text: "If unit survives and uses a sword, unit gets 1.5x EXP. (If similar skill effects also used, only highest multiplier applies.)",
+        sp : 50,
+        prerequisite: null,
+        inherit: 'sword'
+    },
+    sword_exp_2 :
+    {   tag : 'sword_exp_2',
+        name : "Bow Exp. 2",
+        effects : { bonus: 'sword' },
+        text: "If unit survives, all sword users on team get 1.5x EXP. (If similar skill effects also used, only highest multipler applied.)",
+        sp : 100,
+        prerequisite: 'sword_exp_1',
+        inherit: 'sword'
+    },
+    sword_exp_3 :
+    {   tag : 'sword_exp_3',
+        name : "Bow Exp. 3",
+        effects : { bonus: 'sword' },
+        text: "If unit survives, all sword users on team get 2x EXP. (If similar skill effects also used, only highest multipler applied.)",
+        sp : 200,
+        prerequisite: 'sword_exp_2',
+        inherit: 'sword'
     },
 
     threaten_atk_1 :
