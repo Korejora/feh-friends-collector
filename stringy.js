@@ -6,10 +6,7 @@
 let stringy =
 {
     includes_any(string, array)
-    {   for( let i=0; i<array.length; i++ )
-        {   if (string.includes(array[i])) { return true; }
-        }
-        return false;
+    {   return array.some( function(entry){ return string.includes(entry); });
     },
 
     img_feh : 'images/feh_owl.png',
@@ -44,6 +41,7 @@ let stringy =
 
         spring : ['spring','bunny','(s)','(sf)'],
         bride : ['bride','bridal','(b)','(bb)'],
+        mask : ['mask', '(m)'],
     },
 
     find_img_path (type,key)
