@@ -3739,7 +3739,7 @@ chars.marth_mask = class marth_mask extends allies.ally
         this.subname = "🎭";
         this.title = "Enigmatic Blade";
         this.text = "A mysterious swordsman who hides his face behind a mask. Calls himself Marth.";
-        this.summon = true;
+        this.summon = false;
         this.special = true;
      // this.obtained = #;
      // this.favourite;
