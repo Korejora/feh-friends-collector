@@ -5,10 +5,12 @@ let chars = {};
 
 
 // 17-04-25 finished entry
-// 17-04-26 added ike, mist, soren, titania; updated clair, lukas
-// 17-05-15 added boey, celica, mae, genny; updated soren, titania
-// 17-05-30 added brides; updated mae, boey
-// 17-06-01 added special tag
+// 17-04-26 ike, mist, soren, titania; updated clair, lukas
+// 17-05-15 boey, celica, mae, genny; updated soren, titania
+// 17-05-30 brides; updated mae, boey
+// 17-06-01 special tag
+// 17-06-08 masked marth
+// 17-06-14 echoes of mystery
 
 
 
@@ -3723,6 +3725,49 @@ chars.marth = class marth extends allies.ally
         };
         this.early_passive = 'passive_c';
         this.late_passive =  'passive_b';
+    }
+};
+
+
+
+
+chars.marth_mask = class marth_mask extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'marth_mask';
+        this.name = "Marth";
+        this.subname = "🎭";
+        this.title = "Enigmatic Blade";
+        this.text = "A mysterious swordsman who hides his face behind a mask. Calls himself Marth.";
+        this.summon = true;
+        this.special = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 13;
+        this.minimum_rarity = 4;
+        this.colour_type = 'red';
+        this.weapon_type = 'sword';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 157;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : { hp: 18, atk: 8, spd: 10, def: 5, res: 3 },
+            5 : { hp: 19, atk: 7, spd: 10, def: 6, res: 4 },
+        };
+        this.growth_points =
+                { hp:  7, atk: 8, spd:  8, def: 5, res: 3 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'falchion' ],
+            assists   : [ null ],
+            specials  : [ null ],
+            passive_a : [ null ],
+            passive_b : [ null ],
+            passive_c : [ null ],
+        };
     }
 };
 
