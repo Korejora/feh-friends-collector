@@ -54,7 +54,7 @@ let friends =
             return friend;
 
         }
-        else { console.log('ERR_ALLY_CONSTRUCTOR_NOT_FOUND'); }
+        else { console.log('ERR_ALLY_CONSTRUCTOR_NOT_FOUND', pass); }
 
     },
 
@@ -394,6 +394,14 @@ let friends =
         if( name.includes("lon'qu"))
         {   // LON'QU YOUR NAME IS A PAIN
             return 'lonqu';
+        }
+
+        if( name.includes("marth"))
+        {   // masked marth
+            if (stringy.includes_any(name, stringy.suffixes.mask)) {return 'marth_mask';}
+            console.log("thought masked marth was found, but no proper suffix was found: ", friend.name);
+            console.log("assuming masked Marth..");
+            return 'marth_mask';
         }
 
         console.log("couldn't figure out which ally was meant by: ", friend.name);

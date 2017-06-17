@@ -434,7 +434,7 @@ dat.weapons =
         name: "Carrot Axe+",
         weapon_type : 'axe',
         might : 13,
-        range : 2,
+        range : 1,
         text : "If unit initiates attack, unit recovers 4 HP after the battle.",
         effects : { after : { init: { heal_self:4 } } },
         sp: 300,
@@ -1260,19 +1260,6 @@ dat.weapons =
         inherit : 'weapon_type'
     },
 
-    mystletainn :
-    {   tag : 'mystletainn',
-        name : "Mystletainn",
-        weapon_type : 'sword',
-        might : 16,
-        range : 1,
-        text : "Accelerates Special trigger (cooldown count-1).",
-        effects : { special : { cooldown : '-1' } },
-        sp: 400,
-        prerequisite : 'killing_edge',
-        inherit : 'exclusive'
-    },
-
     light_breath :
     {   tag : 'light_breath',
         name : "Light Breath",
@@ -1321,6 +1308,19 @@ dat.weapons =
         sp: 300,
         prerequisite : 'lightning_breath',
         inherit : 'dragon'
+    },
+
+    mystletainn :
+    {   tag : 'mystletainn',
+        name : "Mystletainn",
+        weapon_type : 'sword',
+        might : 16,
+        range : 1,
+        text : "Accelerates Special trigger (cooldown count-1).",
+        effects : { special : { cooldown : '-1' } },
+        sp: 400,
+        prerequisite : 'killing_edge',
+        inherit : 'exclusive'
     },
 
     naga :
