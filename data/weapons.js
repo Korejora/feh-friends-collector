@@ -1260,6 +1260,31 @@ dat.weapons =
         inherit : 'weapon_type'
     },
 
+    legions_axe :
+    {   tag : 'legions_axe',
+        name: "Legion's Axe",
+        weapon_type : 'axe',
+        might : 10,
+        range : 1,
+        text : "After combat, bonuses on targeted foe become penalties through its next action.",
+        effects : { bonus:'swap', penalty:'swap' },
+        sp: 200,
+        prerequisite : 'steel_axe',
+        inherit : 'weapon_type'
+    },
+    legions_axe_plus :
+    {   tag : 'legions_axe_plus',
+        name: "Legion's Axe+",
+        weapon_type : 'axe',
+        might : 14,
+        range : 1,
+        text : "After combat, bonuses on targeted foe become penalties through its next action.",
+        effects : { bonus:'swap', penalty:'swap' },
+        sp: 300,
+        prerequisite : 'legions_axe',
+        inherit : 'weapon_type'
+    },
+
     light_breath :
     {   tag : 'light_breath',
         name : "Light Breath",

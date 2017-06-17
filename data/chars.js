@@ -3039,6 +3039,49 @@ chars.laslow = class laslow extends allies.ally
 
 
 
+chars.legion = class legion extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'legion';
+        this.name = "Legion";
+        this.title = "Masked Maniac";
+        this.text = 'One of a group of assassins. Wears an odd mask, as do his many "brothers.""';
+        this.summon = false;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 1;
+        this.minimum_rarity = 3;
+        this.colour_type = 'green';
+        this.weapon_type = 'axe';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 157;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : { hp: 19, atk:  9, spd: 8, def: 4, res: 2 },
+            4 : { hp: 19, atk: 10, spd: 9, def: 4, res: 2 },
+            5 : { hp: 20, atk: 10, spd: 9, def: 5, res: 3 },
+        };
+        this.growth_points =
+                { hp:  8, atk: 8, spd: 8, def: 4, res: 3 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_axe', 'steel_axe', 'legions_axe', 'legions_axe_plus' ],
+            assists   : [ null ],
+            specials  : [ 'retribution', 'reprisal' ],
+            passive_a : [ 'fury_1', 'fury_2', 'fury_3' ],
+            passive_b : [ 'obstruct_1', 'obstruct_2', 'obstruct_3' ],
+            passive_c : [ null ],
+        };
+        this.early_passive = 'passive_a';
+        this.late_passive =  'passive_b';
+    }
+};
+
+
+
+
 chars.leo = class leo extends allies.ally
 {   constructor()
     {   super();
