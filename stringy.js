@@ -31,7 +31,7 @@ let stringy =
     suffixes :
     {
         robin_blue : ['(b)','blue','boy','(m)','(male)',' male'],
-        robin_green : ['(g)','green','girl','(f)','female'],
+        robin_green : ['(g)','green','girl','(f)','female','robinne'],
 
         corrin_dragon : ['dragon','(b)','blue','girl','(f)','female'],
         corrin_sword : ['sword','(r)','red','boy','(m)','(male)', ' male'],
