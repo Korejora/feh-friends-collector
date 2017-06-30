@@ -1184,6 +1184,49 @@ chars.clarine = class clarine extends allies.ally
 
 
 
+chars.clarisse = class clarisse extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'clarisse';
+        this.name = "Clarisse";
+        this.title = "Sniper in the Dark";
+        this.text = "One of a group of assassins plotting to kill Marth. Katarina's friend. Cruel and lacks manners, but yearns for a family.";
+        this.summon = false;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 1;
+        this.minimum_rarity = 3;
+        this.colour_type = 'grey';
+        this.weapon_type = 'bow';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 147;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : { hp: 17, atk: 6, spd: 7, def: 5, res: 4 },
+            4 : { hp: 17, atk: 7, spd: 8, def: 5, res: 4 },
+            5 : { hp: 18, atk: 7, spd: 8, def: 6, res: 5 },
+        };
+        this.growth_points =
+                { hp:  5, atk: 5, spd: 7, def: 4, res: 6 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_bow', 'steel_bow', 'claisses_bow', 'clarisses_bow_plus' ],
+            assists   : [ null ],
+            specials  : [ 'night_sky', 'glimmer' ],
+            passive_a : [ null ],
+            passive_b : [ 'poison_strike_1', 'poison_strike_2', 'poison_strike_3' ],
+            passive_c : [ 'threaten_def_1', 'threaten_def_2', 'threaten_def_3' ]
+        };
+        this.early_passive = 'passive_b';
+        this.late_passive =  'passive_c';
+    }
+};
+
+
+
+
 chars.cordelia = class cordelia extends allies.ally
 {   constructor()
     {   super();
@@ -2011,8 +2054,8 @@ chars.frederick = class frederick extends allies.ally
     {   super();
         this.tag = 'frederick';
         this.name = "Frederick";
-        this.title = "title";
-        this.text = "thelongdescriptiontextnotthetitle";
+        this.title = "Polite Knight";
+        this.text = "A knight who serves the royal house of Ylisse and helps lead Chrom's Shepherds.";
         this.summon = true;
      // this.obtained = #;
      // this.favourite;
@@ -2043,6 +2086,51 @@ chars.frederick = class frederick extends allies.ally
         };
         this.early_passive = 'passive_c';
         this.late_passive =  'passive_b';
+    }
+};
+
+
+
+
+chars.frederick_summer = class frederick_summer extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'frederick_summer';
+        this.name = "Frederick";
+        this.subname = '🏖';
+        this.title = "Horizon Watcher";
+        this.text = "A knight who serves the royal house of Ylisse. Collector of pebbles and shells on the beach.";
+        this.summon = true;
+        this.special = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 13;
+        this.minimum_rarity = 5;
+        this.colour_type = 'grey';
+        this.weapon_type = 'dagger';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 153;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 18, atk: 8, spd: 7, def: 6, res: 5 },
+        };
+        this.growth_points =
+                { hp:  6, atk: 7, spd: 7, def: 6, res: 2 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_dagger', 'steel_dagger', 'seashell', 'seashell_plus' ],
+            assists   : [ 'ardent_sacrifice' ],
+            specials  : [ null ],
+            passive_a : [ 'armored_blow_1', 'armored_blow_2', 'armored_blow_3' ],
+            passive_b : [ 'seal_atk_1', 'seal_atk_spd_1', 'seal_atk_spd_2' ],
+            passive_c : [ null ],
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
     }
 };
 
@@ -2086,6 +2174,51 @@ chars.gaius = class gaius extends allies.ally
         };
         this.early_passive = 'passive_b';
         this.late_passive =  'passive_a';
+    }
+};
+
+
+
+
+chars.gaius_summer = class gaius_summer extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'gaius_summer';
+        this.name = "Gaius";
+        this.subname = '🏖';
+        this.title = "Thief Exposed";
+        this.text = "A thief from Ylisse known for his sweet tooth. Usually secrets candy in his clothes, but can't when he's dressed like this.";
+        this.summon = true;
+        this.special = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 13;
+        this.minimum_rarity = 5;
+        this.colour_type = 'grey';
+        this.weapon_type = 'bow';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 148;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 17, atk: 8, spd: 9, def: 4, res: 6 },
+        };
+        this.growth_points =
+                { hp:  4, atk: 6, spd: 9, def: 3, res: 6 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_bow', 'steel_bow', 'refreshing_bolt', 'refreshing_bolt_plus' ],
+            assists   : [ null ],
+            specials  : [ 'night_sky', 'astra' ],
+            passive_a : [ null ],
+            passive_b : [ 'vantage_1', 'vantage_2', 'vantage_3' ],
+            passive_c : [ 'def_ploy_1', 'def_ploy_2', 'def_ploy_3' ],
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
     }
 };
 
@@ -4895,6 +5028,51 @@ chars.robin_green = class robin_green extends allies.ally
 
 
 
+chars.robin_summer = class robin_summer extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'robin_summer';
+        this.name = "Robin";
+        this.subname = "🏖";
+        this.title = "Seaside Tactician";
+        this.text = "A tactician of Ylisse and Chrom's close ally. Loves the strange creatures she finds on the beach.";
+        this.summon = true;
+        this.special = true;
+     // this.obtained = 2;
+     // this.favourite;
+        this.origin = 13;
+        this.minimum_rarity = 5;
+        this.colour_type = 'blue';
+        this.weapon_type = 'lance';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 158;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 18, atk: 8, spd: 8, def: 6, res: 7 },
+        };
+        this.growth_points =
+                { hp:  4, atk: 7, spd: 8, def: 6, res: 6 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_lance', 'steel_lance', 'deft_harpoon', 'deft_harpoon_plus' ],
+            assists   : [ 'reposition' ],
+            specials  : [ null ],
+            passive_a : [ 'defense_1', 'hp_def_1', 'hp_def_2' ],
+            passive_b : [ null ],
+            passive_c : [ 'lance_valor_1', 'lance_valor_2', 'lance_valor_3' ],
+        };
+        this.early_passive = null;
+        this.late_passive =  null;
+    }
+};
+
+
+
+
 chars.roderick = class roderick extends allies.ally
 {   constructor()
     {   super();
@@ -5835,6 +6013,51 @@ chars.tiki_awakening = class tiki_awakening extends allies.ally
             passive_a : [ 'defiant_atk_1', 'defiant_atk_2', 'defiant_atk_3' ],
             passive_b : [ null ],
             passive_c : [ 'spur_res_1', 'spur_res_2', 'spur_res_3' ]
+        };
+        this.early_passive = 'passive_a';
+        this.late_passive =  'passive_c';
+    }
+};
+
+
+
+
+chars.tiki_summer = class tiki_summer extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'tiki_summer';
+        this.name = "Tiki";
+        this.subname = "🏖";
+        this.title = "Summering Scion";
+        this.text = "Known as the Voice of the Divine Dragon. Has lived through thousands of summers, but usually doesn't need to worry about swimming gear.";
+        this.summon = true;
+        this.special = true;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 13;
+        this.minimum_rarity = 5;
+        this.colour_type = 'green';
+        this.weapon_type = 'axe';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 157;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : null,
+            5 : { hp: 18, atk: 8, spd: 6, def: 8, res: 7 },
+        };
+        this.growth_points =
+                { hp:  4, atk: 9, spd: 7, def: 7, res: 4 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_axe', 'steel_axe', 'melon_crusher', 'melon_crusher_plus' ],
+            assists   : [ null ],
+            specials  : [ 'daylight', 'sol' ],
+            passive_a : [ 'close_defense_1', 'close_defense_2', 'close_defense_3' ],
+            passive_b : [ null ],
+            passive_c : [ 'axe_valor_1', 'axe_valor_2', 'axe_valor_3' ]
         };
         this.early_passive = 'passive_a';
         this.late_passive =  'passive_c';
