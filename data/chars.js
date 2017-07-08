@@ -6110,6 +6110,49 @@ chars.titania = class titania extends allies.ally
 
 
 
+chars.tobin = class tobin extends allies.ally
+{   constructor()
+    {   super();
+        this.tag = 'tobin';
+        this.name = "Tobin";
+        this.title = "The Clueless One";
+        this.text = "Alm's childhood friend from Ram Village. Honest to a fault, and suffers for it.";
+        this.summon = false;
+     // this.obtained = #;
+     // this.favourite;
+        this.origin = 15;
+        this.minimum_rarity = 4;
+        this.colour_type = 'red';
+        this.weapon_type = 'sword';
+        this.move_type = 'infantry';
+     // this.level = 40;
+     // this.rating = 163;
+        this.base_stats =
+        {   1 : null,
+            2 : null,
+            3 : null,
+            4 : { hp: 17, atk: 7, spd: 5, def: 4, res: 3 },
+            5 : { hp: 18, atk: 7, spd: 5, def: 5, res: 4 },
+        };
+        this.growth_points =
+                { hp:  9, atk: 7, spd: 6, def: 9, res: 6 };
+
+        this.base_skills =
+        {   weapons   : [ 'iron_sword', 'steel_sword', 'armorslayer', 'armorslayer_plus' ],
+            assists   : [ 'pivot' ],
+            specials  : [ null ],
+            passive_a : [ 'attack_plus_1', 'attack_plus_2', 'attack_plus_3' ],
+            passive_b : [ 'seal_spd_1', 'seal_spd_2', 'seal_spd_3' ],
+            passive_c : [ null ]
+        };
+        this.early_passive = 'passive_a';
+        this.late_passive =  '';
+    }
+};
+
+
+
+
 chars.ursula = class ursula extends allies.ally
 {   constructor()
     {   super();
