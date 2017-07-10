@@ -5939,7 +5939,7 @@ chars.tiki_shadow = class tiki_shadow extends allies.ally
     {   super();
         this.tag = 'tiki_shadow';
         this.name = "Tiki";
-        this.subname = "🔥🐉";
+        this.subname = "🔥";
         this.title = "Dragon Scion";
         this.text = "A young Divine Dragon once put into a timeless sleep to keep her dragon impulses in check. Now longs for human company.";
         this.summon = true;
@@ -5983,7 +5983,7 @@ chars.tiki_awakening = class tiki_awakening extends allies.ally
     {   super();
         this.tag = 'tiki_awakening';
         this.name = "Tiki";
-        this.subname = "🗲🐲";
+        this.subname = "⚡️";
         this.title = "Naga's Voice";
         this.text = "Known as the Voice of the Divine Dragon. Has lived for ages. Once friends with Marth.";
         this.summon = true;
