@@ -135,7 +135,7 @@ dat.specials =
     {   tag : 'dragon_fang',
         name : "Dragon Fang",
         effects : { strike : { draconic:0.5 } },
-        text : "Grants +30% to Atk.",
+        text : "Grants +50% to Atk.",
         cooldown : 4,
         sp: 200,
         prerequisite : 'dragon_gaze',
