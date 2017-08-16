@@ -234,7 +234,7 @@ allies.ally = class ally
         for (let key in this.base_skills) // find all base skills
         {
             let skills = this.base_skills[key].slice();
-            let unlock_pattern = this.base_patterns[key];
+            let unlock_pattern = this.base_unlocks[key];
 
             while(skills.length > 0)
             {
