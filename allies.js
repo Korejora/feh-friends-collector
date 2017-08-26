@@ -71,19 +71,19 @@ allies.skills = ['weapons','assists','specials','passive_a','passive_b','passive
 
 allies.unlock_patterns =
 {
-    weapon : [ 1, 2, 3, 5 ], // [ null, c[0], c[1], c[2], null, c[3] ],
-    assist : [ 3, 4 ], // [ null, null, null, c[0], c[1], null ],
-    special : [ 3, 4, 5 ], // [ null, null, null, c[0], c[1], c[2] ]
+    weapon :  [ 1,2,3,  5 ],        // [ null, c[0], c[1], c[2], null, c[3] ],
+    assist :  [     3,4   ],        // [ null, null, null, c[0], c[1], null ],
+    special : [     3,4,5 ],        // [ null, null, null, c[0], c[1], c[2] ]
 
-    weapon_staff : [ 1, 3 ], // [ null, c[0], null, c[1], null, null ],
-    assist_staff : [ 1, 2, 4 ], // [ null, c[0], c[1], null, c[2], null ],
-    special_staff : [ 2, 3 ], // [ null, null, c[0], c[1], null, null ];
+    weapon_staff :  [ 1,  3     ],  // [ null, c[0], null, c[1], null, null ],
+    assist_staff :  [ 1,2,  4   ],  // [ null, c[0], c[1], null, c[2], null ],
+    special_staff : [   2,3     ],  // [ null, null, c[0], c[1], null, null ];
 
-    passive_early : [ 1, 2, 4 ], // [ null, c[0], c[1], null, c[2], null ]
-    passive_late : [ 3, 4, 5 ], // [ null, null, null, c[0], c[1], c[2] ]
-    passive_position : [ 3 ],
-    passive_range : [ 3 ],
-    passive_shield : [ 4 ],
+    passive_early : [ 1,2,  4   ],  // [ null, c[0], c[1], null, c[2], null ]
+    passive_late :  [     3,4,5 ],  // [ null, null, null, c[0], c[1], c[2] ]
+    passive_position :  [ 3 ],
+    passive_range :     [ 3 ],
+    passive_shield :      [ 4 ],
 
     default : [ 1, 2, 3, 4, 5 ]
 };
