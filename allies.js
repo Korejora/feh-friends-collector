@@ -85,7 +85,7 @@ allies.unlock_patterns =
     passive_range :     [ 3 ],
     passive_shield :      [ 4 ],
 
-    default : [ 1, 2, 3, 4, 5 ]
+    default : [ 1,2,3,4,5 ]
 };
 
 
