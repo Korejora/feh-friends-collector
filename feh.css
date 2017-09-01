@@ -221,6 +221,8 @@ img.icon
     margin:auto;
     border: 1px solid dimgrey;
     color: #444444;
+    overflow-y:auto;
+    max-height:480px;
 }
 
 .row
