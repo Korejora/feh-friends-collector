@@ -141,38 +141,9 @@ let friends =
 
     restore_friends_googly ()
     {   let spreadsheet_ID = porter.get_googly_spreadsheet_ID();
-        this.get_googly_then_read(spreadsheet_ID);
-    },
-
-    get_googly_then_read : function(spreadsheet_ID)
-    {
-        if (!spreadsheet_ID)
-        {   console.log('no spreadsheet ID found! ..'); return;
-         // spreadsheet_ID = googly.spreadsheet_ID;
-        }
-
-        gapi.client.sheets.spreadsheets.values.get
-        (   {   spreadsheetId: spreadsheet_ID,
-                range: 'A:Z',
-            }
-        ).then(function(response)
-        {
-            let rows = response.result.values;
-            if (rows && rows.length > 0)
-            {
-             // googly.rows = rows; // not currently used
-                friends.read_googly_then_restore(rows); // read
-            }
-            else
-            {   console.log('no data found.');
-                porter.googly_note(stringy.googly_warn_no_data, 'error');
-            }
-        },
-        function(response)
-        {   let error_message = response.result.error.message;
-            console.log('Error: ' + response.result.error.message);
-            stringy.googly_do_error(error_message, 'read');
-        }      );
+        // this reads the google spreadsheet then calls the friends function read_googly_rows_then_restore
+        googly.read_sheet_then_call_friends(spreadsheet_ID);
+        // this has to be a chain of functions calling each other to prevent race failure
     },
 
     read_googly_rows_then_restore (rows)

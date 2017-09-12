@@ -74,6 +74,37 @@ let googly =
     } ,
 
 
+    read_sheet_then_call_friends (spreadsheet_ID)
+    {
+        if (!spreadsheet_ID)
+        {   console.log('no spreadsheet ID found! ..'); return;
+         // spreadsheet_ID = googly.spreadsheet_ID;
+        }
+
+        gapi.client.sheets.spreadsheets.values.get
+        (   {   spreadsheetId: spreadsheet_ID,
+                range: 'A:Z',
+            }
+        ).then(function(response)
+        {
+            let rows = response.result.values;
+            if (rows && rows.length > 0)
+            {
+             // googly.rows = rows; // not currently used
+                friends.read_googly_rows_then_restore(rows); // read
+            }
+            else
+            {   console.log('no data found.');
+                porter.googly_note(stringy.googly_warn_no_data, 'error');
+            }
+        },
+        function(response)
+        {   let error_message = response.result.error.message;
+            console.log('Error: ' + response.result.error.message);
+            stringy.googly_do_error(error_message, 'read');
+        }      );
+    },
+
 
     clear_write : function(spreadsheet_ID, values)
     {
