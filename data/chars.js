@@ -1,6458 +1,6833 @@
-
-let chars = {};
-
-
-
-
-// 17-04-25 finished entry
-// 17-04-26 ike, mist, soren, titania; updated clair, lukas
-// 17-05-15 boey, celica, mae, genny; updated soren, titania
-// 17-05-30 brides; updated mae, boey
-// 17-06-01 special tag
-// 17-06-08 masked marth
-// 17-06-14 echoes of mystery
-
-
-
-
-chars.abel = class abel extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'abel';
-        this.name = "Abel";
-        this.title = "The Panther";
-        this.text = "Altean cavalier known for his sensibility. Rode with Cain in service of Marth.";
-        this.summon = true;
-     // this.obtained = -1;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 4;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 16, atk: 6, spd: 8, def: 8, res: 5 },
-            5 : { hp: 17, atk: 7, spd: 8, def: 8, res: 6 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 8, spd: 7, def: 4, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'brave_lance', 'brave_lance_plus' ],
-            assists   : [ null ],
-            specials  : [ 'holy_vestments', 'aegis' ],
-            passive_a : [ 'hp_plus_3', 'hp_plus_4', 'hp_plus_5' ],
-            passive_b : [ 'swordbreaker_1', 'swordbreaker_2', 'swordbreaker_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.alfonse = class alfonse extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'alfonse';
-        this.name = "Alfonse";
-        this.title = "Prince of Askr";
-        this.text = "A prince of Askr and member of the Order of Heroes. Kind and serious, and eager to maintain peace.";
-        this.summon = false;
-     // this.obtained = 8;
-     // this.favourite;
-        this.origin = 0;
-        this.minimum_rarity = 2;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : { hp: 17, atk: 8, spd: 4, def: 7, res: 3 },
-            3 : { hp: 18, atk: 8, spd: 5, def: 7, res: 4 },
-            4 : { hp: 18, atk: 9, spd: 5, def: 8, res: 4 },
-            5 : { hp: 19, atk: 9, spd: 6, def: 8, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 8, spd: 5, def: 7, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'folkvangr' ],
-            assists   : [ null ],
-            specials  : [ 'daylight', 'sol' ],
-            passive_a : [ 'death_blow_1', 'death_blow_2', 'death_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_atk_1', 'spur_atk_2', 'spur_atk_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.alm = class alm extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'alm';
-        this.name = "Alm";
-        this.title = "Hero of Prophecy";
-        this.text = "A brave but kind young warrior, raised by the hero Mycen in Ram Village. His left hand is marked with the Brand.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 15;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 21, atk: 9, spd: 6, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 7, spd: 7, def: 6, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'falchion' ],
-            assists   : [ null ],
-            specials  : [ 'dragon_gaze', 'draconic_aura' ],
-            passive_a : [ 'attack_plus_1', 'attack_plus_2', 'attack_plus_3' ],
-            passive_b : [ 'windsweep_1', 'windsweep_2', 'windsweep_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.anna = class anna extends allies.ally
-{   constructor()
-    {   super();
-        this.tag  = 'anna';
-        this.name = "Anna";
-        this.text = "A veteran fighter who leads the Order of Heroes. Alfonse and Sharena's commander.";
-        this.summon = false;
-     // this.obtained = 6;
-     // this.favourite;
-        this.origin = 0;
-        this.minimum_rarity = 2;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : { hp: 17, atk: 6, spd:  9, def: 3, res: 4 },
-            3 : { hp: 18, atk: 6, spd:  9, def: 4, res: 5 },
-            4 : { hp: 18, atk: 7, spd: 10, def: 4, res: 5 },
-            5 : { hp: 19, atk: 7, spd: 10, def: 5, res: 6 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 6, spd:  9, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'silver_axe', 'noatun' ],
-            assists   : [ null ],
-            specials  : [ 'night_sky', 'astra' ],
-            passive_a : [ null ],
-            passive_b : [ 'vantage_1', 'vantage_2', 'vantage_3' ],
-            passive_c : [ 'spur_res_1', 'spur_res_2', 'spur_res_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-chars.arthur = class arthur extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'arthur';
-        this.name = "Arthur";
-        this.title = "Hapless Hero";
-        this.text = "A sworn ally of justice with uncannily bad luck. One of Elise's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 18, atk: 7, spd: 6, def: 7, res: 4 },
-            4 : { hp: 18, atk: 8, spd: 6, def: 8, res: 4 },
-            5 : { hp: 19, atk: 8, spd: 7, def: 8, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 7, spd: 6, def: 6, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'emerald_axe', 'emerald_axe_plus' ],
-            assists   : [ 'swap' ],
-            specials  : [ null ],
-            passive_a : [ 'hp_plus_3', 'hp_plus_4', 'hp_plus_5' ],
-            passive_b : [ 'lancebreaker_1', 'lancebreaker_2', 'lancebreaker_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.athena = class athena extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'athena';
-        this.name = "Athena";
-        this.title = "Borderland Sword";
-        this.text = "A foreign warrior with a straightforward personality. Speaks with an accent.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 156;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 7, spd: 10, def: 8, res: 5 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 7, spd:  9, def: 5, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'wo_dao', 'wo_dao_plus' ],
-            assists   : [ null ],
-            specials  : [ 'new_moon', 'moonbow' ],
-            passive_a : [ 'armored_blow_1', 'sturdy_blow_1', 'sturdy_blow_2' ],
-            passive_b : [ null ],
-            passive_c : [ 'sword_exp_1', 'sword_exp_2', 'sword_exp_3' ],
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.azama = class azama extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'azama';
-        this.name = "Azama";
-        this.title = "Carefree Monk";
-        this.text = "A monk of Hoshido with a curious sense of humor. One of Hinoka's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'staff';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 18, atk: 3, spd: 6, def: 7, res: 5 },
-            4 : { hp: 18, atk: 3, spd: 7, def: 8, res: 5 },
-            5 : { hp: 19, atk: 4, spd: 7, def: 8, res: 6 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 4, spd: 5, def: 7, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'pain' ],
-            assists   : [ 'heal', 'reconcile', 'martyr' ],
-            specials  : [ 'imbue', 'solid_earth_balm' ],
-            passive_a : [ null ],
-            passive_b : [ null ],
-            passive_c : [ 'threaten_atk_1', 'threaten_atk_2', 'threaten_atk_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.azura = class azura extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'azura';
-        this.name = "Azura";
-        this.title = "Lady of the Lake";
-        this.text = "An enchanting princess raised in Hoshido who sings in battle to help her allies.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 10;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 5, spd: 7, def: 4, res: 6 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 8, spd: 8, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'sapphire_lance', 'sapphire_lance_plus' ],
-            assists   : [ 'sing' ],
-            specials  : [ null ],
-            passive_a : [ 'speed_plus_1', 'speed_plus_2', 'speed_plus_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'fortify_res_1', 'fortify_res_2', 'fortify_res_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.barst = class barst extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'barst';
-        this.name = "Barst";
-        this.title = "The Hatchet";
-        this.text = "Warrior of Talys who works for Ogma and has been a pirate and woodcutter.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 3;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 19, atk: 8, spd: 7, def: 5, res: 3 },
-            4 : { hp: 19, atk: 9, spd: 8, def: 5, res: 3 },
-            5 : { hp: 20, atk: 9, spd: 8, def: 6, res: 4 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 7, spd: 7, def: 7, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'brave_axe', 'brave_axe_plus' ],
-            assists   : [ 'reposition' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'knock_back' ],
-            passive_c : [ 'spur_atk_1', 'spur_atk_2', 'spur_atk_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.position_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.bartre = class bartre extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'bartre';
-        this.name = "Bartre";
-        this.title = "Fearless Warrior";
-        this.text = "An outpost warrior who went on a journey to find his beloved daughter, Fir.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 3;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 156;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 20, atk:  9, spd: 5, def: 6, res: 2 },
-            4 : { hp: 20, atk: 10, spd: 5, def: 7, res: 2 },
-            5 : { hp: 21, atk: 10, spd: 6, def: 7, res: 3 },
-        };
-        this.growth_points =
-                { hp:  8, atk:  7, spd: 7, def: 7, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'hammer', 'hammer_plus' ],
-            assists   : [ 'smite' ],
-            specials  : [ null ],
-            passive_a : [ 'fury_1', 'fury_2', 'fury_3' ],
-            passive_b : [ 'brash_assault_1', 'brash_assault_2', 'brash_assault_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.beruka = class beruka extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'beruka';
-        this.name = "Beruka";
-        this.title = "Quiet Assassin";
-        this.text = "Wyvern-riding assassin who seems devoid of emotion. One of Camilla's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 19, atk: 6, spd: 5, def: 8, res: 4 },
-            4 : { hp: 19, atk: 7, spd: 5, def: 9, res: 4 },
-            5 : { hp: 20, atk: 7, spd: 6, def: 9, res: 5 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 6, spd: 4, def: 9, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'killer_axe', 'killer_axe_plus' ],
-            assists   : [ null ],
-            specials  : [ 'night_sky', 'glimmer' ],
-            passive_a : [ 'defiant_def_1', 'defiant_def_2', 'defiant_def_3' ],
-            passive_b : [ 'lunge' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.position_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.boey = class boey extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'boey';
-        this.name = "Boey";
-        this.title = "Skillful Survivor";
-        this.text = "A mage from Novis who grew up dirt-poor. Of calm demeanor, but not great at magic.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 15;
-        this.minimum_rarity = 4;
-        this.colour_type = 'green';
-        this.weapon_type = 'tome_green';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 149;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 18, atk: 7, spd: 4, def: 8, res: 4 },
-            5 : { hp: 19, atk: 7, spd: 5, def: 8, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 6, spd: 6, def: 7, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'wind', 'elwind', 'gronnowl', 'gronnowl_plus' ],
-            assists   : [ null ],
-            specials  : [ 'glowing_ember', 'ignis' ],
-            passive_a : [ 'earth_boost_1', 'earth_boost_2', 'earth_boost_3' ],
-            passive_b : [ 'renewal_1', 'renewal_2', 'renewal_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.caeda = class caeda extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'caeda';
-        this.name = "Caeda";
-        this.title = "Talys's Heart";
-        this.text = "Princess of Talys who's as talented as she is charming. Marth's betrothed.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 156;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 16, atk: 5, spd: 9, def: 4, res: 10 },
-            5 : { hp: 17, atk: 6, spd: 9, def: 5, res: 10 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 5, spd: 9, def: 5, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'armorslayer', 'armorslayer_plus' ],
-            assists   : [ 'rally_speed' ],
-            specials  : [ null ],
-            passive_a : [ 'darting_blow_1', 'darting_blow_2', 'darting_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'fortify_res_1', 'fortify_res_2', 'fortify_flyers' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.caeda_bride = class caeda_bride extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'caeda_bride';
-        this.name = "Caeda";
-        this.subname = "💐";
-        this.title = "Talys's Bride";
-        this.text = "The charming princess of Talys. Has grand dreams of being a bride.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'tome_blue';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 16, atk: 7, spd: 9, def: 4, res: 8 },
-        };
-        this.growth_points =
-                { hp:  4, atk: 6, spd: 9, def: 3, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'thunder', 'elthunder', 'blessed_bouquet', 'blessed_bouquet_plus' ],
-            assists   : [ null ],
-            specials  : [ 'chilling_wind', 'iceberg' ],
-            passive_a : [ 'resistance_plus_1', 'attack_res_plus_1', 'attack_res_plus_2' ],
-            passive_b : [ null ],
-            passive_c : [ 'hone_spd_1', 'hone_spd_2', 'hone_spd_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.cain = class cain extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'cain';
-        this.name = "Cain";
-        this.title = "The Bull";
-        this.text = "Altean cavalier known for recklessness. Rode with Abel in service of Marth.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 154;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 17, atk: 8, spd: 5, def: 8, res: 5 },
-            5 : { hp: 18, atk: 8, spd: 6, def: 8, res: 6 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 7, spd: 8, def: 5, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'brave_sword', 'brave_sword_plus' ],
-            assists   : [ null ],
-            specials  : [ 'buckler', 'escutcheon' ],
-            passive_a : [ null ],
-            passive_b : [ 'wings_of_mercy_1', 'wings_of_mercy_2', 'wings_of_mercy_3' ],
-            passive_c : [ 'threaten_atk_1', 'threaten_atk_2', 'threaten_atk_3' ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.camilla = class camilla extends allies.ally
-{   constructor()
-    {   super();
-        this.tag  = 'camilla';
-        this.name = "Camilla";
-        this.title = "Bewitching Beauty";
-        this.text = "Princess of Nohr who dotes on her sibling Corrin and is merciless to foes.";
-        this.summon = true;
-     // this.obtained = 3;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 4;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-          2 : null,
-          3 : null,
-          4 : { hp: 17, atk: 8, spd: 8, def: 5, res: 6 },
-          5 : { hp: 18, atk: 8, spd: 8, def: 6, res: 7 },
-        };
-        this.growth_points =
-              { hp:  5, atk: 6, spd: 7, def: 6, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'brave_axe', 'brave_axe_plus' ],
-          assists   : [ null ],
-          specials  : [ 'dragon_gaze', 'draconic_aura' ],
-          passive_a : [ 'darting_blow_1', 'darting_blow_2', 'darting_blow_3' ],
-          passive_b : [ null ],
-          passive_c : [ 'savage_blow_1', 'savage_blow_2', 'savage_blow_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.camilla_spring = class camilla_spring extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'camilla_spring';
-        this.name = "Camilla";
-        this.subname = "🐇";
-        this.title = "Spring Princess";
-        this.text = "Princess of Nohr who dotes on her sibling Corrin. Loves her new outfit ever since Corrin said it was cute.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = 4;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 5;
-        this.colour_type = 'green';
-        this.weapon_type = 'tome_green';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 9, spd: 6, def: 8, res: 4 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 8, spd: 5, def: 6, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'wind', 'elwind', 'green_egg', 'green_egg_plus' ],
-            assists   : [ 'rally_attack' ],
-            specials  : [ null ],
-            passive_a : [ 'defiant_spd_1', 'defiant_spd_2', 'defiant_spd_3',  ],
-            passive_b : [ 'live_for_bounty' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.camus = class camus extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'camus';
-        this.name = "Camus";
-        this.title = "Sable Knight";
-        this.text = "A knight who's devoted to his motherland, Grust. Wields the lance Gradivus.";
-        this.summon = false;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 155;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 17, atk: 7, spd: 8, def: 6, res: 3 },
-            4 : { hp: 17, atk: 8, spd: 9, def: 6, res: 3 },
-            5 : { hp: 18, atk: 8, spd: 9, def: 7, res: 4 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 7, spd: 7, def: 7, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'silver_lance', 'gradivus' ],
-            assists   : [ null ],
-            specials  : [ 'rising_thunder', 'growing_thunder' ],
-            passive_a : [ 'granis_shield' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_atk_1', 'spur_atk_2', 'goad_cavalry' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  null;
-        this.shield_passive = 'passive_a';
-    }
-};
-
-
-
-
-chars.catria = class catria extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'catria';
-        this.name = "Catria";
-        this.title = "Middle Whitewing";
-        this.text = "The middle of three sisters who are pegasus knights for Macedon.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 10;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 16, atk: 6, spd:  9, def: 6, res: 5 },
-            4 : { hp: 16, atk: 7, spd: 10, def: 6, res: 5 },
-            5 : { hp: 17, atk: 7, spd: 10, def: 7, res: 6 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd:  7, def: 6, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'killer_lance', 'killer_lance_plus' ],
-            assists   : [ null ],
-            specials  : [ 'new_moon', 'luna' ],
-            passive_a : [ 'armored_blow_1', 'armored_blow_2', 'armored_blow_3' ],
-            passive_b : [ 'seal_atk_1', 'seal_atk_2', 'seal_atk_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.cecilia = class cecilia extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'cecilia';
-        this.name = "Cecilia";
-        this.title = "Etrurian General";
-        this.text = "Mage General of Etruria. Taught Roy and Lilina when they were young.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 1;
-        this.colour_type = 'green';
-        this.weapon_type = 'tome_green';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 144;
-        this.base_stats =
-        {   1 : { hp: 15, atk: 6, spd: 4, def: 3, res: 5 },
-            2 : { hp: 15, atk: 7, spd: 4, def: 3, res: 6 },
-            3 : { hp: 16, atk: 7, spd: 5, def: 4, res: 6 },
-            4 : { hp: 16, atk: 8, spd: 5, def: 4, res: 7 },
-            5 : { hp: 17, atk: 8, spd: 6, def: 5, res: 7 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 7, spd: 5, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'wind', 'elwind', 'gronnraven', 'gronnraven_plus' ],
-            assists   : [ 'rally_resistance' ],
-            specials  : [ null ],
-            passive_a : [ 'attack_plus_1', 'attack_plus_2', 'attack_plus_3' ],
-            passive_b : [ 'escape_route_1', 'escape_route_2', 'escape_route_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.celica = class celica extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'celica';
-        this.name = "Celica";
-        this.title = "Caring Princess";
-        this.text = "The princess of Zofia; trained as a priestess. Caring towards others, and dislikes fighting. Bears the Brand on her right hand.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 15;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'tome_red';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 8, spd: 7, def: 5, res: 7 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 8, def: 4, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'fire', 'elfire', 'bolganone', 'ragnarok' ],
-            assists   : [ null ],
-            specials  : [ 'rising_light', 'blazing_light' ],
-            passive_a : [ 'distant_def_1', 'distant_def_2', 'distant_def_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_def_1', 'spur_def_2', 'spur_def_3' ],
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.charlotte_bride = class charlotte_bride extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'charlotte_bride';
-        this.name = "Charlotte";
-        this.subname = "💐";
-        this.title = "Money Maiden";
-        this.text = "Nohrian border guard always on patrol, whether to find enemies to fight or a rich fellow to marry.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 20, atk: 10, spd: 8, def: 5, res: 4 },
-        };
-        this.growth_points =
-                { hp:  8, atk:  8, spd: 7, def: 5, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'thunder', 'elthunder', 'first_bite', 'first_bite_plus' ],
-            assists   : [ 'smite' ],
-            specials  : [ null ],
-            passive_a : [ 'wind_boost_1', 'wind_boost_2', 'wind_boost_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'threaten_atk_1', 'threaten_atk_2', 'threaten_atk_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.cherche = class cherche extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'cherche';
-        this.name = "Cherche";
-        this.title = "Wyvern Friend";
-        this.text = "Wyvern-riding fighter in Virion's noble house. Thinks her wyvern Minerva is adorable.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 3;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 19, atk:  9, spd: 5, def: 7, res: 2 },
-            4 : { hp: 19, atk: 10, spd: 5, def: 8, res: 2 },
-            5 : { hp: 20, atk: 10, spd: 6, def: 8, res: 3 },
-        };
-        this.growth_points =
-                { hp:  8, atk:  9, spd: 5, def: 7, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'hammer', 'hammer_plus' ],
-            assists   : [ 'pivot' ],
-            specials  : [ null ],
-            passive_a : [ 'attack_plus_1', 'attack_plus_2', 'attack_plus_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'fortify_def_1', 'fortify_def_2', 'fortify_def_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.chrom = class chrom extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'chrom';
-        this.name = "Chrom";
-        this.title = "Exalted Prince";
-        this.text = "A prince of Ylisse and descendant of the Hero-King. Leads the Shepherds.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 20, atk: 9, spd: 5, def: 7, res: 3 },
-            5 : { hp: 21, atk: 9, spd: 6, def: 7, res: 4 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 9, spd: 5, def: 7, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'falchion' ],
-            assists   : [ null ],
-            specials  : [ 'daylight', 'sol', 'aether' ],
-            passive_a : [ 'defiant_def_1', 'defiant_def_2', 'defiant_def_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_def_1', 'spur_def_2', 'spur_def_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.chrom_spring = class chrom_spring extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'chrom_spring';
-        this.name = "Chrom";
-        this.subname = "🐇";
-        this.title = "Spring Exalt";
-        this.text = "A prince of Ylisse and descendant of the Hero-King. Dressed to celebrate the spring festival.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 5;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 19, atk: 9, spd: 8, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 8, spd: 7, def: 6, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'iron_axe', 'carrot_axe', 'carrot_axe_plus' ],
-            assists   : [ 'shove' ],
-            specials  : [ null ],
-            passive_a : [ 'defense_plus_1', 'attack_def_plus_1', 'attack_def_plus_2' ],
-            passive_b : [ null ],
-            passive_c : [ 'axe_experience_1', 'axe_experience_2', 'axe_experience_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.clair = class clair extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'clair';
-        this.name = "Clair";
-        this.title = "Highborn Flier";
-        this.text = "A pegasus knight with the Deliverance. Clive's younger sister. Secretly loves Alm.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 15;
-        this.minimum_rarity = 4;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 10;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 17, atk: 6, spd: 8, def: 4, res: 9 },
-            5 : { hp: 18, atk: 7, spd: 8, def: 5, res: 9 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 5, spd: 9, def: 5, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'silver_lance', 'silver_lance_plus' ],
-            assists   : [ 'harsh_command' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'hit_and_run' ],
-            passive_c : [ 'spur_spd_1', 'spur_spd_2', 'spur_spd_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_c';
-        this.position_passive = 'passive_b';
-    }
-};
-
-
-
-
-chars.clarine = class clarine extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'clarine';
-        this.name = "Clarine";
-        this.title = "Refined Noble";
-        this.text = "Noble daughter of Count Reglay of Etruria. Fond of her brother, Klein. Has lived a privileged life.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 3;
-        this.colour_type = 'grey';
-        this.weapon_type = 'staff';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 144;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 15, atk: 5, spd: 8, def: 4, res: 6 },
-            4 : { hp: 15, atk: 5, spd: 9, def: 4, res: 7 },
-            5 : { hp: 16, atk: 6, spd: 9, def: 5, res: 7 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 5, spd: 7, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'fear' ],
-            assists   : [ 'heal', 'reconcile', 'martyr' ],
-            specials  : [ 'imbue', 'swift_winds_balm' ],
-            passive_a : [ 'resistance_plus_1', 'resistance_plus_2', 'resistance_plus_3' ],
-            passive_b : [ null ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.clarisse = class clarisse extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'clarisse';
-        this.name = "Clarisse";
-        this.title = "Sniper in the Dark";
-        this.text = "One of a group of assassins plotting to kill Marth. Katarina's friend. Cruel and lacks manners, but yearns for a family.";
-        this.summon = false;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 3;
-        this.colour_type = 'grey';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 17, atk: 6, spd: 7, def: 5, res: 4 },
-            4 : { hp: 17, atk: 7, spd: 8, def: 5, res: 4 },
-            5 : { hp: 18, atk: 7, spd: 8, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 5, spd: 7, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_bow', 'steel_bow', 'claisses_bow', 'clarisses_bow_plus' ],
-            assists   : [ null ],
-            specials  : [ 'night_sky', 'glimmer' ],
-            passive_a : [ null ],
-            passive_b : [ 'poison_strike_1', 'poison_strike_2', 'poison_strike_3' ],
-            passive_c : [ 'threaten_def_1', 'threaten_def_2', 'threaten_def_3' ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.cordelia = class cordelia extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'cordelia';
-        this.name = "Cordelia";
-        this.title = "Knight Paragon";
-        this.text = "The sole survivor of Ylisse's pegasus knights. Humble and supremely talented.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 4;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 17, atk: 9, spd: 9, def: 4, res: 5 },
-            5 : { hp: 18, atk: 9, spd: 9, def: 5, res: 6 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 8, spd: 8, def: 4, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'brave_lance', 'brave_lance_plus' ],
-            assists   : [ null ],
-            specials  : [ 'night_sky', 'astra', 'galeforce' ],
-            passive_a : [ 'triangle_adept_1', 'triangle_adept_2', 'triangle_adept_3' ],
-            passive_b : [ 'pass_1', 'pass_2', 'pass_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.cordelia_bride = class cordelia_bride extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'cordelia_bride';
-        this.name = "Cordelia";
-        this.subname = "💐";
-        this.title = "Perfect Bride";
-        this.text = "Pegasus knight of Ylisse who excels in all things, including being delightful. Hopes to marry her perfect match.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 5;
-        this.colour_type = 'grey';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 9, spd: 9, def: 4, res: 5 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 8, spd: 8, def: 3, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'thunder', 'elthunder', 'cupid_arrow', 'cupid_arrow_plus' ],
-            assists   : [ 'rally_attack', 'rally_attack_speed' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'escape_route_1', 'escape_route_2', 'escape_route_3' ],
-            passive_c : [ 'breath_of_life_1', 'breath_of_life_2', 'breath_of_life_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.corrin_dragon = class corrin_dragon extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'corrin_dragon';
-        this.name = "Corrin";
-        this.subname = '🐉';
-        this.title = "Fateful Princess";
-        this.text = "A Hoshidan princess raised in Nohr. Fights on her chosen path with the divine blade Yato.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'dragon_blue';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 18, atk: 7, spd: 5, def: 7, res: 5 },
-            4 : { hp: 18, atk: 8, spd: 5, def: 8, res: 5 },
-            5 : { hp: 19, atk: 8, spd: 6, def: 8, res: 6 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 5, spd: 9, def: 8, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'fire_breath', 'fire_breath_plus', 'dark_breath', 'dark_breath_plus' ],
-            assists   : [ null ],
-            specials  : [ 'dragon_gaze', 'draconic_aura' ],
-            passive_a : [ null ],
-            passive_b : [ 'seal_res_1', 'seal_res_2', 'seal_res_3' ],
-            passive_c : [ 'hone_atk_1', 'hone_atk_2', 'hone_atk_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.corrin_sword = class corrin_sword extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'corrin_sword';
-        this.name = "Corrin";
-        this.subname = '🌽';
-        this.title = "Fateful Prince";
-        this.text = "A Hoshidan prince raised in Nohr. Fights on his chosen path with the divine blade Yato.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 19, atk: 8, spd: 8, def: 5, res: 4 },
-            5 : { hp: 20, atk: 8, spd: 8, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 7, def: 6, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'yato' ],
-            assists   : [ null ],
-            specials  : [ 'dragon_gaze', 'dragon_fang' ],
-            passive_a : [ 'defense_plus_1', 'defense_plus_2', 'defense_plus_3' ],
-            passive_b : [ 'obstruct_1', 'obstruct_2', 'obstruct_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.donnel = class donnel extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'donnel';
-        this.name = "Donnel";
-        this.title = "Village Hero";
-        this.text = "A farm boy from a country village in the Halidom of Ylisse. Handy and hardy.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 1;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 162;
-        this.base_stats =
-        {   1 : { hp: 15, atk: 5, spd: 3, def: 4, res: 2 },
-            2 : { hp: 15, atk: 6, spd: 3, def: 5, res: 2 },
-            3 : { hp: 16, atk: 6, spd: 4, def: 5, res: 3 },
-            4 : { hp: 16, atk: 7, spd: 4, def: 6, res: 3 },
-            5 : { hp: 17, atk: 7, spd: 5, def: 6, res: 4 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 9, spd: 7, def: 8, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'brave_lance', 'brave_lance_plus' ],
-            assists   : [ 'reciprocal_aid' ],
-            specials  : [ null ],
-            passive_a : [ 'hp_plus_3', 'hp_plus_4', 'hp_plus_5' ],
-            passive_b : [ 'drag_back' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.position_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.draug = class draug extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'draug';
-        this.name = "Draug";
-        this.title = "Gentle Giant";
-        this.text = "An armored knight of Altea who served as Marth's shield. Very sincere.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 2;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'armor';
-     // this.level = 40;
-     // this.rating = 169;
-        this.base_stats =
-        {   1 : null,
-            2 : { hp: 22, atk: 7, spd: 4, def: 12, res: 1 },
-            3 : { hp: 23, atk: 7, spd: 5, def: 12, res: 2 },
-            4 : { hp: 23, atk: 8, spd: 5, def: 13, res: 2 },
-            5 : { hp: 24, atk: 8, spd: 6, def: 13, res: 3 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 6, spd: 8, def: 8, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'brave_sword', 'brave_sword_plus' ],
-            assists   : [ null ],
-            specials  : [ 'buckler', 'pavise' ],
-            passive_a : [ null ],
-            passive_b : [ 'lunge' ],
-            passive_c : [ 'spur_def_1', 'spur_def_2', 'ward_armor' ]
-        };
-        this.early_passive = 'passive_c';
-        this.position_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.effie = class effie extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'effie';
-        this.name = "Effie";
-        this.title = "Army of One";
-        this.text = "A gentle knight with great strength and devotion. One of Elise's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 4;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'armor';
-     // this.level = 40;
-     // this.rating = 168;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 21, atk: 12, spd: 4, def: 11, res: 3 },
-            5 : { hp: 22, atk: 12, spd: 5, def: 11, res: 4 },
-        };
-        this.growth_points =
-                { hp:  9, atk:  9, spd: 4, def:  6, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'silver_lance', 'silver_lance_plus' ],
-            assists   : [ 'smite' ],
-            specials  : [ null ],
-            passive_a : [ 'death_blow_1', 'death_blow_2', 'death_blow_3' ],
-            passive_b : [ 'wary_fighter_1', 'wary_fighter_2', 'wary_fighter_3' ],
-            passive_c : [ null ],
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.eirika = class eirika extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'eirika';
-        this.name = "Eirika";
-        this.title = "Restoration Lady";
-        this.text = "Princess of Renais. Ephraim's twin. Cares dearly for her brother. Her kindness has sometimes put her in danger.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 8;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 17, atk: 7, spd: 9, def: 6, res: 5 },
-            5 : { hp: 18, atk: 7, spd: 9, def: 7, res: 6 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 5, spd: 8, def: 5, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'sieglinde' ],
-            assists   : [ 'pivot' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'drag_back' ],
-            passive_c : [ 'hone_spd_1', 'hone_spd_2', 'hone_spd_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.position_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.eldigan = class eldigan extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'eldigan';
-        this.name = "Eldigan";
-        this.title = "Lionheart";
-        this.text = "Ruler of Nordion. Wields the Demon Sword in knightly devotion to any master. Older brother of Lachesis.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 4;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 154;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 19, atk: 8, spd: 5, def: 8, res: 6 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 7, spd: 5, def: 8, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'killing_edge', 'mystletainn' ],
-            assists   : [ null ],
-            specials  : [ 'rising_light', 'growing_light' ],
-            passive_a : [ 'fury_1', 'fury_2', 'fury_3' ],
-            passive_b : [ 'lunge' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.position_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.elise = class elise extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'elise';
-        this.name = "Elise";
-        this.title = "Budding Flower";
-        this.text = "Princess of Nohr who adores her siblings. A bit childish, but has a pure heart and keen eyes.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 5;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'staff';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 145;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 15, atk: 7, spd: 8, def: 4, res: 8 },
-        };
-        this.growth_points =
-                { hp:  3, atk: 7, spd: 7, def: 3, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'gravity' ],
-            assists   : [ 'heal', 'mend', 'recover' ],
-            specials  : [ 'imbue', 'kindled_fire_balm' ],
-            passive_a : [ null ],
-            passive_b : [ 'live_to_serve_1', 'live_to_serve_2', 'live_to_serve_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.eliwood = class eliwood extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'eliwood';
-        this.name = "Eliwood";
-        this.title = "Knight of Lycia";
-        this.text = "A sincere noble of Pherae. His friends Lyn and Hector serve him loyally.";
-        this.summon = true;
-     // this.obtained = 0;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 155;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 16, atk: 6, spd: 7, def: 5, res: 7 },
-            4 : { hp: 16, atk: 6, spd: 8, def: 5, res: 8 },
-            5 : { hp: 17, atk: 7, spd: 8, def: 6, res: 8 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 6, def: 4, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'durandal' ],
-            assists   : [ null ],
-            specials  : [ 'holy_vestments', 'sacred_cowl' ],
-            passive_a : [ null ],
-            passive_b : [ 'axebreaker_1', 'axebreaker_2', 'axebreaker_3' ],
-            passive_c : [ 'spur_res_1', 'spur_res_2', 'ward_cavalry' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.ephraim = class ephraim extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'ephraim';
-        this.name = "Ephraim";
-        this.title = "Restoration Lord";
-        this.text = "Prince of Renais. Eirika's twin. Cares deeply for his sister. His confidence has sometimes put him in danger.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 8;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 19, atk: 9, spd: 6, def: 8, res: 5 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 8, spd: 5, def: 7, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'heavy_spear', 'siegmund' ],
-            assists   : [ null ],
-            specials  : [ 'new_moon', 'moonbow' ],
-            passive_a : [ null ],
-            passive_b : [ 'seal_def_1', 'seal_def_2', 'seal_def_3' ],
-            passive_c : [ 'threaten_def_1', 'threaten_def_2', 'threaten_def_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.est = class est extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'est';
-        this.name = "Est";
-        this.title = "Junior Whitewing";
-        this.text = "Youngest of three sisters who are pegasus knights for Macedon.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 16, atk: 8, spd: 7, def: 4, res: 7 },
-            4 : { hp: 16, atk: 9, spd: 8, def: 4, res: 7 },
-            5 : { hp: 17, atk: 9, spd: 8, def: 5, res: 8 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 8, spd: 6, def: 5, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'heavy_spear', 'heavy_spear_plus' ],
-            assists   : [ 'shove' ],
-            specials  : [ null ],
-            passive_a : [ 'defiant_res_1', 'defiant_res_2', 'defiant_res_3' ],
-            passive_b : [ 'seal_spd_1', 'seal_spd_2', 'seal_spd_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.fae = class fae extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'fae';
-        this.name = "Fae";
-        this.title = "Divine Dragon";
-        this.text = "A surviving Divine Dragon with the nature of a child and very little life experience.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 4;
-        this.colour_type = 'green';
-        this.weapon_type = 'dragon_green';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 162;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 15, atk: 4, spd: 3, def: 6, res: 8 },
-            5 : { hp: 16, atk: 5, spd: 4, def: 6, res: 8 },
-        };
-        this.growth_points =
-                { hp: 10, atk: 9, spd: 7, def: 5, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'fire_breath', 'fire_breath_plus', 'light_breath', 'light_breath_plus' ],
-            assists   : [ 'draw_back' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'renewal_1', 'renewal_2', 'renewal_3' ],
-            passive_c : [ 'threaten_atk_1', 'threaten_atk_2', 'threaten_atk_3' ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.faye = class faye extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'faye';
-        this.name = "Faye";
-        this.title = "Devoted Heart";
-        this.text = "A young woman from Ram Village, and Alm's childhood friend. Her devotion to him stretches back to those days.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 15;
-        this.minimum_rarity = 5;
-        this.colour_type = 'grey';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 154;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 16, atk: 6, spd: 3, def: 4, res: 7 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 7, spd: 6, def: 6, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_bow', 'steel_bow', 'firesweep_bow', 'firesweep_bow_plus' ],
-            assists   : [ null ],
-            specials  : [ 'daylight', 'noontime' ],
-            passive_a : [ null ],
-            passive_b : [ 'wings_of_mercy_1', 'wings_of_mercy_2', 'wings_of_mercy_3' ],
-            passive_c : [ 'bow_exp_1', 'bow_exp_2', 'bow_exp_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-let feh = class feh extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'feh';
-        this.name = "「フェー」";
-        this.title = "Happy Owl";
-        this.text = "アスク王国特務機関の伝書ふくろう";
-        this.summon = true;
-     // this.obtained = #;
-        this.favourite = '❤';
-        this.fruit = '🍑';
-        this.origin = 0;
-        this.minimum_rarity = 5;
-        this.colour_type = 'grey';
-        this.weapon_type = 'heart';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : null,
-        };
-
-        this.base_skills =
-        {   weapons   : [ null ],
-            assists   : [ null ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ null ],
-            passive_c : [ null ],
-        };
-    }
-
-    return_nature() { return "❤"; }
-    set_rarity() { this.rarity = 5; }
-
-};
-
-
-
-
-chars.felicia = class felicia extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'felicia';
-        this.name = "Felicia";
-        this.title = "Maid Mayhem";
-        this.text = "A maid of Nohr who's eager to do good work yet often bungles. One of Corrin's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 1;
-        this.colour_type = 'grey';
-        this.weapon_type = 'dagger';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : { hp: 13, atk: 4, spd:  9, def: 1, res: 7 },
-            2 : { hp: 13, atk: 4, spd: 10, def: 1, res: 8 },
-            3 : { hp: 14, atk: 5, spd: 10, def: 2, res: 8 },
-            4 : { hp: 14, atk: 5, spd: 11, def: 2, res: 9 },
-            5 : { hp: 15, atk: 6, spd: 11, def: 3, res: 9 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 4, spd: 8, def: 3, res: 8 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_dagger', 'steel_dagger', 'silver_dagger', 'silver_dagger_plus' ],
-            assists   : [ null ],
-            specials  : [ 'chilling_wind', 'glacies' ],
-            passive_a : [ 'resistance_plus_1', 'resistance_plus_2', 'resistance_plus_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'breath_of_life_1', 'breath_of_life_2', 'breath_of_life_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.fir = class fir extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'fir';
-        this.name = "Fir";
-        this.title = "Sword Student";
-        this.text = "A woman who travels in search of the best swordplay opponents anywhere.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 18, atk: 5, spd:  9, def: 4, res: 6 },
-            4 : { hp: 18, atk: 5, spd: 10, def: 4, res: 6 },
-            5 : { hp: 19, atk: 6, spd: 10, def: 5, res: 7 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 5, spd: 8, def: 5, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'killing_edge', 'killing_edge_plus' ],
-            assists   : [ null ],
-            specials  : [ 'chilling_wind', 'glacies' ],
-            passive_a : [ 'speed_plus_1', 'speed_plus_2', 'speed_plus_3' ],
-            passive_b : [ 'pass_1', 'pass_2', 'pass_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.florina = class florina extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'florina';
-        this.name = "Florina";
-        this.title = "Lovely Flier";
-        this.text = "Youngest of three sisters who are Pegasus Knights of Ilia. Shy, gentle girl who loves animals.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 17, atk: 6, spd: 7, def: 5, res: 7 },
-            4 : { hp: 17, atk: 6, spd: 8, def: 5, res: 8 },
-            5 : { hp: 18, atk: 7, spd: 8, def: 6, res: 8 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 6, spd: 5, def: 5, res: 8 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'heavy_spear', 'heavy_spear_plus' ],
-            assists   : [ 'ardent_sacrifice' ],
-            specials  : [ null ],
-            passive_a : [ 'darting_blow_1', 'darting_blow_2', 'darting_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'breath_of_life_1', 'breath_of_life_2', 'breath_of_life_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.frederick = class frederick extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'frederick';
-        this.name = "Frederick";
-        this.title = "Polite Knight";
-        this.text = "A knight who serves the royal house of Ylisse and helps lead Chrom's Shepherds.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 3;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 153;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 18, atk: 8, spd: 5, def: 7, res: 3 },
-            4 : { hp: 18, atk: 9, spd: 5, def: 8, res: 3 },
-            5 : { hp: 19, atk: 9, spd: 6, def: 8, res: 4 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 8, spd: 5, def: 9, res: 1 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'hammer', 'hammer_plus' ],
-            assists   : [ null ],
-            specials  : [ 'new_moon', 'luna' ],
-            passive_a : [ null ],
-            passive_b : [ 'wings_of_mercy_1', 'wings_of_mercy_2', 'wings_of_mercy_3' ],
-            passive_c : [ 'fortify_def_1', 'fortify_def_2', 'fortify_def_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.frederick_summer = class frederick_summer extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'frederick_summer';
-        this.name = "Frederick";
-        this.subname = '🏖';
-        this.title = "Horizon Watcher";
-        this.text = "A knight who serves the royal house of Ylisse. Collector of pebbles and shells on the beach.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 5;
-        this.colour_type = 'grey';
-        this.weapon_type = 'dagger';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 153;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 18, atk: 8, spd: 7, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 7, def: 6, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_dagger', 'steel_dagger', 'seashell', 'seashell_plus' ],
-            assists   : [ 'ardent_sacrifice' ],
-            specials  : [ null ],
-            passive_a : [ 'armored_blow_1', 'armored_blow_2', 'armored_blow_3' ],
-            passive_b : [ 'seal_atk_1', 'seal_atk_spd_1', 'seal_atk_spd_2' ],
-            passive_c : [ null ],
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.gaius = class gaius extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'gaius';
-        this.name = "Gaius";
-        this.title = "Candy Stealer";
-        this.text = "Thief of Ylisse known for his nimble hands and sweet tooth. Hides sweets in his pocket.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 3;
-        this.colour_type = 'grey';
-        this.weapon_type = 'dagger';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 17, atk: 6, spd:  9, def: 4, res: 3 },
-            4 : { hp: 17, atk: 7, spd: 10, def: 4, res: 3 },
-            5 : { hp: 18, atk: 7, spd: 10, def: 5, res: 4 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 6, spd:  8, def: 4, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_dagger', 'steel_dagger', 'rogue_dagger', 'rogue_dagger_plus' ],
-            assists   : [ 'rally_speed' ],
-            specials  : [ null ],
-            passive_a : [ 'defiant_atk_1', 'defiant_atk_2', 'defiant_atk_3' ],
-            passive_b : [ 'pass_1', 'pass_2', 'pass_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.gaius_summer = class gaius_summer extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'gaius_summer';
-        this.name = "Gaius";
-        this.subname = '🏖';
-        this.title = "Thief Exposed";
-        this.text = "A thief from Ylisse known for his sweet tooth. Usually secrets candy in his clothes, but can't when he's dressed like this.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 5;
-        this.colour_type = 'grey';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 8, spd: 9, def: 4, res: 6 },
-        };
-        this.growth_points =
-                { hp:  4, atk: 6, spd: 9, def: 3, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_bow', 'steel_bow', 'refreshing_bolt', 'refreshing_bolt_plus' ],
-            assists   : [ null ],
-            specials  : [ 'night_sky', 'astra' ],
-            passive_a : [ null ],
-            passive_b : [ 'vantage_1', 'vantage_2', 'vantage_3' ],
-            passive_c : [ 'def_ploy_1', 'def_ploy_2', 'def_ploy_3' ],
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.genny = class genny extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'genny';
-        this.name = "Genny";
-        this.title = "Endearing Ally";
-        this.text = "A meek young cleric from Novis. Likes to write her own stories.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 15;
-        this.minimum_rarity = 5;
-        this.colour_type = 'grey';
-        this.weapon_type = 'staff';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 9, spd: 6, def: 4, res: 8 },
-        };
-        this.growth_points =
-                { hp:  3, atk: 8, spd: 5, def: 4, res: 8 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'gravity' ],
-            assists   : [ 'heal', 'mend', 'physic' ],
-            specials  : [ 'imbue', 'heavenly_light' ],
-            passive_a : [ null ],
-            passive_b : [ 'wrathful_staff_1', 'wrathful_staff_2', 'wrathful_staff_3' ],
-            passive_c : [ null ],
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.gordin = class gordin extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'gordin';
-        this.name = "Gordin";
-        this.title = "Altean Archer";
-        this.text = "Altean archer who is masterful with his bow. Looks younger than he actually is.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 3;
-        this.colour_type = 'grey';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 18, atk: 6, spd: 5, def: 7, res: 3 },
-            4 : { hp: 18, atk: 7, spd: 5, def: 8, res: 3 },
-            5 : { hp: 19, atk: 7, spd: 6, def: 8, res: 4 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 7, spd: 5, def: 7, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_bow', 'steel_bow', 'brave_bow', 'brave_bow_plus' ],
-            assists   : [ 'shove' ],
-            specials  : [ null ],
-            passive_a : [ 'attack_plus_1', 'attack_plus_2', 'attack_plus_3' ],
-            passive_b : [ 'vantage_1', 'vantage_2', 'vantage_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.gunter = class gunter extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'gunter';
-        this.name = "Gunter";
-        this.title = "Inveterate Soldier";
-        this.text = "Veteran knight of Nohr. One of Corrin's retainers. Extremely strict.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 1;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 150;
-        this.base_stats =
-        {   1 : { hp: 19, atk:  8, spd: 5, def:  9, res: 3 },
-            2 : { hp: 19, atk:  9, spd: 5, def: 10, res: 3 },
-            3 : { hp: 20, atk:  9, spd: 6, def: 10, res: 4 },
-            4 : { hp: 20, atk: 10, spd: 6, def: 11, res: 4 },
-            5 : { hp: 21, atk: 10, spd: 7, def: 11, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 6, spd: 4, def: 6, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'silver_axe', 'silver_axe_plus' ],
-            assists   : [ 'harsh_command' ],
-            specials  : [ null ],
-            passive_a : [ 'armored_blow_1', 'armored_blow_2', 'armored_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'hone_atk_1', 'hone_atk_2', 'hone_cavalry' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.gwendolyn = class gwendolyn extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'gwendolyn';
-        this.name = "Gwendolyn";
-        this.title = "Adorable Knight";
-        this.text = "Armored knight of Ostia. Intent on mastering defense, despite feeling awkward in the armor.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'armor';
-     // this.level = 40;
-     // this.rating = 169;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 22, atk: 7, spd: 4, def: 11, res: 5 },
-            4 : { hp: 22, atk: 8, spd: 4, def: 12, res: 5 },
-            5 : { hp: 23, atk: 8, spd: 5, def: 12, res: 6 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 6, spd: 5, def: 8, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'killer_axe', 'killer_lance_plus' ],
-            assists   : [ null ],
-            specials  : [ 'buckler', 'escutcheon' ],
-            passive_a : [ null ],
-            passive_b : [ 'drag_back' ],
-            passive_c : [ 'hone_atk_1', 'hone_atk_2', 'hone_armor' ]
-        };
-        this.early_passive = 'passive_c';
-        this.position_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.hana = class hana extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'hana';
-        this.name = "Hana";
-        this.title = "Focused Samurai";
-        this.text = "A noble who is skilled with the katana. One of Sakura's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 1;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : { hp: 16, atk: 7, spd:  8, def: 4, res: 2 },
-            2 : { hp: 16, atk: 8, spd:  9, def: 4, res: 2 },
-            3 : { hp: 17, atk: 8, spd:  9, def: 5, res: 3 },
-            4 : { hp: 17, atk: 9, spd: 10, def: 5, res: 3 },
-            5 : { hp: 18, atk: 9, spd: 10, def: 6, res: 4 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 8, spd:  8, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'armorslayer', 'armorslayer_plus' ],
-            assists   : [ 'rally_attack' ],
-            specials  : [ null ],
-            passive_a : [ 'life_and_death_1', 'life_and_death_2', 'life_and_death_3' ],
-            passive_b : [ 'obstruct_1', 'obstruct_2', 'obstruct_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.hawkeye = class hawkeye extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'hawkeye';
-        this.name = "Hawkeye";
-        this.title = "Desert Guardian";
-        this.text = "Guardian of the Nabata Desert and Arcadia, where dragons and humans live in harmony.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 4;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 20, atk: 9, spd: 4, def: 6, res: 5 },
-            5 : { hp: 21, atk: 9, spd: 5, def: 6, res: 6 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 7, spd: 4, def: 6, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'killer_axe', 'killer_axe_plus' ],
-            assists   : [ null ],
-            specials  : [ 'rising_light', 'growing_light' ],
-            passive_a : [ 'death_blow_1', 'death_blow_2', 'death_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'threaten_atk_1', 'threaten_atk_2', 'threaten_atk_3' ],
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.hector = class hector extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'hector';
-        this.name = "Hector";
-        this.title = "General of Ostia";
-        this.text = "Eliwood's friend and brother of the Marquess of Ostia. Prefers action to court formality.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 5;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'armor';
-     // this.level = 40;
-     // this.rating = 168;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 24, atk: 10, spd: 5, def: 11, res: 4 },
-        };
-        this.growth_points =
-                { hp:  9, atk: 8, spd: 5, def: 8, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'silver_axe', 'armads' ],
-            assists   : [ null ],
-            specials  : [ 'buckler', 'pavise' ],
-            passive_a : [ 'distant_counter' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_atk_2', 'spur_atk_3', 'goad_armor' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-        this.range_passive = 'passive_a';
-    }
-};
-
-
-
-
-chars.henry = class henry extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'henry';
-        this.name = "Henry";
-        this.title = "Twisted Mind";
-        this.text = "A dark mage of Plegia with a bright grin and a taste for the gruesome in battle.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'tome_red';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 18, atk: 5, spd: 4, def: 7, res: 5 },
-            4 : { hp: 18, atk: 6, spd: 4, def: 8, res: 5 },
-            5 : { hp: 19, atk: 6, spd: 5, def: 8, res: 6 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 4, spd: 4, def: 7, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'flux', 'ruin', 'raudrraven', 'raudrraven_plus' ],
-            assists   : [ null ],
-            specials  : [ 'glowing_ember', 'ignis' ],
-            passive_a : [ 'defiant_def_1', 'defiant_def_2', 'defiant_def_3' ],
-            passive_b : [ 'greentomebreaker_1', 'greentomebreaker_2', 'greentomebreaker_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.hinata = class hinata extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'hinata';
-        this.name = "Hinata";
-        this.title = "Wild Samurai";
-        this.text = "A coarse, yet caring, samurai of Hoshido. One of Takumi's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 20, atk: 7, spd: 4, def:  9, res: 2 },
-            4 : { hp: 20, atk: 8, spd: 4, def: 10, res: 2 },
-            5 : { hp: 21, atk: 8, spd: 5, def: 10, res: 3 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 7, spd: 5, def: 8, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'ruby_sword', 'ruby_sword_plus' ],
-            assists   : [ null ],
-            specials  : [ 'buckler', 'pavise' ],
-            passive_a : [ 'fury_1', 'fury_2', 'fury_3' ],
-            passive_b : [ 'brash_assault_1', 'brash_assault_2', 'brash_assault_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.hinoka = class hinoka extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'hinoka';
-        this.name = "Hinoka";
-        this.title = "Warrior Princess";
-        this.text = "Hoshidan princess who prefers battles over court life. Excels at watching over others.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 19, atk: 7, spd: 8, def: 6, res: 7 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 9, spd: 7, def: 5, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'brave_lance', 'brave_lance_plus' ],
-            assists   : [ null ],
-            specials  : [ 'rising_wind', 'blazing_wind' ],
-            passive_a : [ 'defiant_def_1', 'defiant_def_2', 'defiant_def_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'hone_spd_1', 'hone_spd_2', 'hone_flyers' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.ike = class ike extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'ike';
-        this.name = "Ike";
-        this.title = "Young Mercenary";
-        this.text = "A kindhearted byt stoic young man who has taken command of his father's mercenary band.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 9;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 18, atk: 9, spd: 7, def: 8, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 8, spd: 7, def: 7, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'ragnell' ],
-            assists   : [ null ],
-            specials  : [ 'new_moon', 'luna', 'aether' ],
-            passive_a : [ 'heavy_blade_1', 'heavy_blade_2', 'heavy_blade_3' ],
-            passive_b : [ 'swordbreaker_1', 'swordbreaker_2', 'swordbreaker_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.jaffar = class jaffar extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'jaffar';
-        this.name = "Jaffar";
-        this.title = "Angel of Death";
-        this.text = "An emotionless member of the Black Fang assassins. Known as the Angel of Death.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 5;
-        this.colour_type = 'grey';
-        this.weapon_type = 'dagger';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 7, spd: 9, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 5, spd: 7, def: 5, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_dagger', 'steel_dagger', 'silver_dagger', 'deathly_dagger' ],
-            assists   : [ null ],
-            specials  : [ 'night_sky', 'glimmer' ],
-            passive_a : [ 'life_and_death_1', 'life_and_death_2', 'life_and_death_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'threaten_spd_1', 'threaten_spd_2', 'threaten_spd_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.jagen = class jagen extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'jagen';
-        this.name = "Jagen";
-        this.title = "Veteran Knight";
-        this.text = "Veteran knight of Altea who protected Marth since he was young.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 19, atk: 7, spd: 6, def: 7, res: 10 },
-            4 : { hp: 19, atk: 8, spd: 6, def: 7, res: 11 },
-            5 : { hp: 20, atk: 8, spd: 7, def: 8, res: 11 },
-        };
-        this.growth_points =
-                { hp:  4, atk: 5, spd: 4, def: 4, res:  7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'silver_lance', 'silver_lance_plus' ],
-            assists   : [ null ],
-            specials  : [ 'holy_vestments', 'aegis' ],
-            passive_a : [ 'fury_1', 'fury_2', 'fury_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'fortify_res_1', 'fortify_res_2', 'fortify_cavalry' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.jakob = class jakob extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'jakob';
-        this.name = "Jakob";
-        this.title = "Devoted Servant";
-        this.text = "A butler of Nohr who's superb at his work yet dislikes serving anyone but his liege, Corrin.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 4;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'dagger';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 16, atk: 7, spd: 9, def: 5, res: 4 },
-            5 : { hp: 17, atk: 7, spd: 9, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 6, spd: 6, def: 5, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_dagger', 'steel_dagger', 'silver_dagger', 'silver_dagger_plus' ],
-            assists   : [ 'rally_resistance' ],
-            specials  : [ null ],
-            passive_a : [ 'defense_plus_1', 'defense_plus_2', 'defense_plus_3' ],
-            passive_b : [ 'renewal_1', 'renewal_2', 'renewal_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.jeorge = class jeorge extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'jeorge';
-        this.name = "Jeorge";
-        this.title = "Perfect Shot";
-        this.text = "Archanean archer thought to be the best on his continent. A skilled strategist.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 4;
-        this.colour_type = 'grey';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 17, atk: 8, spd: 8, def: 4, res: 4 },
-            5 : { hp: 18, atk: 8, spd: 8, def: 5, res: 5 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 7, spd: 7, def: 5, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_bow', 'steel_bow', 'silver_bow', 'parthia' ],
-            assists   : [ null ],
-            specials  : [ 'rising_flame', 'blazing_flame' ],
-            passive_a : [ null ],
-            passive_b : [ 'seal_atk_1', 'seal_atk_2', 'seal_atk_3' ],
-            passive_c : [ 'spur_spd_1', 'spur_spd_2', 'spur_spd_3' ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.julia = class julia extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'julia';
-        this.name = "Julia";
-        this.title = "Naga's Blood";
-        this.text = "Inheritor of the Book of Naga. Seliph’s half sister by a different father. Gentle, yet faces her destiny with strength.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 4;
-        this.minimum_rarity = 5;
-        this.colour_type = 'green';
-        this.weapon_type = 'tome_green';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 16, atk: 9, spd: 7, def: 4, res: 8 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 8, spd: 5, def: 2, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'wind', 'elwind', 'rexcalibur', 'naga' ],
-            assists   : [ null ],
-            specials  : [ 'dragon_gaze', 'dragon_fang' ],
-            passive_a : [ 'resistance_plus_1', 'resistance_plus_2', 'resistance_plus_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'breath_of_life_1', 'breath_of_life_2', 'breath_of_life_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.kagero = class kagero extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'kagero';
-        this.name = "Kagero";
-        this.title = "Honorable Ninja";
-        this.text = "A ninja of Hoshido who is ready to lay down her life for her liege. One of Ryoma's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 4;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'dagger';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 15, atk: 9, spd: 8, def: 4, res: 5 },
-            5 : { hp: 16, atk: 9, spd: 8, def: 5, res: 6 },
-        };
-        this.growth_points =
-                { hp:  3, atk: 8, spd: 7, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_dagger', 'steel_dagger', 'poison_dagger', 'poison_dagger_plus' ],
-            assists   : [ null ],
-            specials  : [ 'retribution', 'reprisal' ],
-            passive_a : [ 'warding_blow_1', 'warding_blow_2', 'warding_blow_3' ],
-            passive_b : [ 'daggerbreaker_1', 'daggerbreaker_2', 'daggerbreaker_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.karel = class karel extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'karel';
-        this.name = "Karel";
-        this.title = "Sword Demon";
-        this.text = "A vicious swordsman from a family devoted to mastering the blade. Known as the Sword Demon.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 19, atk: 8, spd: 9, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  9, atk: 6, spd: 8, def: 5, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'wo_dao', 'wo_dao_plus' ],
-            assists   : [ null ],
-            specials  : [ 'retribution', 'reprisal' ],
-            passive_a : [ 'defiant_atk_1', 'defiant_atk_2', 'defiant_atk_3' ],
-            passive_b : [ 'desperation_1', 'desperation_2', 'desperation_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.katarina = class katarina extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'katarina';
-        this.name = "Katarina";
-        this.title = "Wayward One";
-        this.text = "Reserved and harboring a dark secret, this trainee tactician depends on others.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'tome_red';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 6, spd: 8, def: 5, res: 8 },
-        };
-        this.growth_points =
-                { hp:  4, atk: 8, spd: 8, def: 1, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'fire', 'elfire', 'raudrowl', 'raudrowl_plus' ],
-            assists   : [ null ],
-            specials  : [ 'chilling_wind', 'glacies' ],
-            passive_a : [ 'death_blow_2', 'swift_sparrow_1', 'swift_sparrow_2' ],
-            passive_b : [ null ],
-            passive_c : [ 'atk_ploy_1', 'atk_ploy_2', 'atk_ploy_3' ],
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.klein = class klein extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'klein';
-        this.name = "Klein";
-        this.title = "Silver Nobleman";
-        this.text = "A young general of Etruria. Clarine's brother. Treats all as equals.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 4;
-        this.colour_type = 'grey';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 17, atk: 9, spd: 7, def: 4, res: 4 },
-            5 : { hp: 18, atk: 9, spd: 7, def: 5, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 6, spd: 8, def: 3, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_bow', 'steel_bow', 'brave_bow', 'brave_bow_plus' ],
-            assists   : [ null ],
-            specials  : [ 'chilling_wind', 'glacies' ],
-            passive_a : [ 'death_blow_1', 'death_blow_2', 'death_blow_3' ],
-            passive_b : [ 'quick_riposte_1', 'quick_riposte_2', 'quick_riposte_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.lachesis = class lachesis extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'lachesis';
-        this.name = "Lachesis";
-        this.title = "Lionheart's Sister";
-        this.text = "Lady of House Nordion. Adores her older brother, Eldigan, to the point that other men pale in comparison.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 4;
-        this.minimum_rarity = 4;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'staff';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 16, atk: 5, spd: 8, def: 4, res: 8 },
-            5 : { hp: 17, atk: 6, spd: 8, def: 5, res: 8 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 8, spd: 4, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'absorb' ],
-            assists   : [ 'heal', 'mend', 'physic' ],
-            specials  : [ 'imbue', 'solid_earth_balm' ],
-            passive_a : [ null ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_res_1', 'spur_res_2', 'spur_res_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.laslow = class laslow extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'laslow';
-        this.name = "Laslow";
-        this.title = "Dancing Duelist";
-        this.text = "A mysterious man with a flair for dancing and flirting. One of Xander's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 19, atk: 8, spd: 6, def: 5, res: 4 },
-            4 : { hp: 19, atk: 9, spd: 7, def: 5, res: 4 },
-            5 : { hp: 20, atk: 9, spd: 7, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 8, spd: 5, def: 7, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'silver_sword_plus' ],
-            assists   : [ null ],
-            specials  : [ 'daylight', 'noontime' ],
-            passive_a : [ null ],
-            passive_b : [ 'axebreaker_1', 'axebreaker_2', 'axebreaker_3' ],
-            passive_c : [ 'hone_spd_1', 'hone_spd_2', 'hone_spd_3' ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.legion = class legion extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'legion';
-        this.name = "Legion";
-        this.title = "Masked Maniac";
-        this.text = 'One of a group of assassins. Wears an odd mask, as do his many "brothers.""';
-        this.summon = false;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 3;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 19, atk:  9, spd: 8, def: 4, res: 2 },
-            4 : { hp: 19, atk: 10, spd: 9, def: 4, res: 2 },
-            5 : { hp: 20, atk: 10, spd: 9, def: 5, res: 3 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 8, spd: 8, def: 4, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'legions_axe', 'legions_axe_plus' ],
-            assists   : [ null ],
-            specials  : [ 'retribution', 'reprisal' ],
-            passive_a : [ 'fury_1', 'fury_2', 'fury_3' ],
-            passive_b : [ 'obstruct_1', 'obstruct_2', 'obstruct_3' ],
-            passive_c : [ null ],
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.leo = class leo extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'leo';
-        this.name = "Leo";
-        this.title = "Sorcerous Prince";
-        this.text = "A talented Nohrian prince who wields the divine tome Brynhildr.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'tome_red';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 145;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 7, spd: 5, def: 6, res: 8 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 6, spd: 4, def: 5, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'flux', 'ruin', 'fenrir', 'brynhildr' ],
-            assists   : [ null ],
-            specials  : [ 'rising_light', 'blazing_light' ],
-            passive_a : [ null ],
-            passive_b : [ 'quick_riposte_1', 'quick_riposte_2', 'quick_riposte_3' ],
-            passive_c : [ 'savage_blow_1', 'savage_blow_2', 'savage_blow_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.lilina = class lilina extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'lilina';
-        this.name = "Lilina";
-        this.title = "Delightful Noble";
-        this.text = "A noble of Ostia and daughter of Hector with a natural gift for magic. Roy's friend since childhood.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'tome_red';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 15, atk: 9, spd: 5, def: 3, res: 9 },
-            5 : { hp: 16, atk: 9, spd: 6, def: 4, res: 9 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 9, spd: 5, def: 3, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'fire', 'elfire', 'bolganone', 'bolganone_plus' ],
-            assists   : [ null ],
-            specials  : [ 'rising_flame', 'growing_flame' ],
-            passive_a : [ 'attack_plus_1', 'attack_plus_2', 'attack_plus_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_atk_1', 'spur_atk_2', 'spur_atk_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.linde = class linde extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'linde';
-        this.name = "Linde";
-        this.title = "Light Mage";
-        this.text = "Daughter of Pontifex Miloah from Archanea. Inherited the light tome Aura. Wants to avenge her father's death.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'tome_blue';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 16, atk: 9, spd: 10, def: 4, res: 5 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 8, spd:  8, def: 1, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'thunder', 'elthunder', 'thoron', 'aura' ],
-            assists   : [ 'ardent_sacrifice' ],
-            specials  : [ null ],
-            passive_a : [ 'speed_plus_1', 'speed_plus_2', 'speed_plus_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'fortify_res_1', 'fortify_res_2', 'fortify_res_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.lissa = class lissa extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'lissa';
-        this.name = "Lissa";
-        this.title = "Sprightly Cleric";
-        this.text = "Princess of Ylisse's royal house and Chrom's younger sister. Determined to prove herself.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 1;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'staff';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : { hp: 15, atk: 5, spd: 4, def: 4, res: 6 },
-            2 : { hp: 15, atk: 6, spd: 4, def: 4, res: 7 },
-            3 : { hp: 16, atk: 6, spd: 5, def: 5, res: 7 },
-            4 : { hp: 16, atk: 7, spd: 5, def: 5, res: 8 },
-            5 : { hp: 17, atk: 7, spd: 6, def: 6, res: 8 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 5, spd: 5, def: 6, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'gravity' ],
-            assists   : [ 'heal', 'reconcile', 'rehabilitate' ],
-            specials  : [ 'imbue', 'kindled_fire_balm' ],
-            passive_a : [ null ],
-            passive_b : [ 'renewal_1', 'renewal_2', 'renewal_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.lloyd = class lloyd extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'lloyd';
-        this.name = "Lloyd";
-        this.title = "White Wolf";
-        this.text = "A member of the Black Fang assassins. Delivers justice to those they deem criminals. Known as the White Wolf. Son of the group's leader.";
-        this.summon = false;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 16, atk: 7, spd: 8, def: 4, res: 7 },
-            4 : { hp: 16, atk: 8, spd: 9, def: 4, res: 7 },
-            5 : { hp: 17, atk: 8, spd: 9, def: 5, res: 8 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 7, spd: 8, def: 3, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'regal_blade' ],
-            assists   : [ null ],
-            specials  : [ 'chilling_wind', 'iceberg' ],
-            passive_a : [ null ],
-            passive_b : [ 'pass_1', 'pass_2', 'pass_3' ],
-            passive_c : [ 'threaten_atk_1', 'threaten_atk_2', 'threaten_atk_3' ],
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.lonqu = class lonqu extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'lonqu';
-        this.name = "Lon'qu";
-        this.title = "Solitary Blade";
-        this.text = "A skilled swordsman of Regna Ferox who is oddly skittish around women.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 18, atk: 6, spd: 10, def: 4, res: 4 },
-            4 : { hp: 18, atk: 7, spd: 11, def: 4, res: 4 },
-            5 : { hp: 19, atk: 7, spd: 11, def: 5, res: 5 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 6, spd:  9, def: 4, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'killing_edge', 'killing_edge_plus' ],
-            assists   : [ null ],
-            specials  : [ 'night_sky', 'glimmer' ],
-            passive_a : [ 'speed_plus_1', 'speed_plus_2', 'speed_plus_3' ],
-            passive_b : [ 'vantage_1', 'vantage_2', 'vantage_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.lucina = class lucina extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'lucina';
-        this.name = "Lucina";
-        this.title = "Future Witness";
-        this.text = "A princess and daughter of Chrom who traveled to her past to prevent apocalypse.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 19, atk: 8, spd: 10, def: 6, res: 4 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 8, spd:  8, def: 5, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'falchion' ],
-            assists   : [ null ],
-            specials  : [ 'new_moon', 'luna', 'aether' ],
-            passive_a : [ 'defiant_spd_1', 'defiant_spd_2', 'defiant_spd_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_atk_1', 'spur_atk_2', 'spur_atk_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.lucina_spring = class lucina_spring extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'lucina_spring';
-        this.name = "Lucina";
-        this.subname = "🐇";
-        this.title = "Spring Exalt";
-        this.text = "Daughter of Chrom. Future exalt of Ylisse. Curious about the old festival traditions of Ylisse.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'tome_blue';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 16, atk: 7, spd: 10, def: 5, res: 6 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 6, spd:  8, def: 4, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'thunder', 'elthunder', 'blue_egg', 'blue_egg_plus' ],
-            assists   : [ 'rally_speed' ],
-            specials  : [ null ],
-            passive_a : [ 'darting_blow_1', 'swift_sparrow_1', 'swift_sparrow_2' ],
-            passive_b : [ 'seal_res_1', 'seal_res_2', 'seal_res_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.lucius = class lucius extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'lucius';
-        this.name = "Lucius";
-        this.title = "The Light";
-        this.text = "A gentle cleric who serves Raven. Carries a heavy burden from a dark childhood.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 4;
-        this.colour_type = 'grey';
-        this.weapon_type = 'staff';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 17, atk: 5, spd: 8, def: 2, res: 9 },
-            5 : { hp: 18, atk: 6, spd: 8, def: 3, res: 9 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 8, spd: 6, def: 1, res: 8 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'pain' ],
-            assists   : [ 'heal', 'reconcile', 'martyr' ],
-            specials  : [ 'imbue', 'miracle' ],
-            passive_a : [ 'hp_plus_3', 'hp_plus_4', 'hp_plus_5' ],
-            passive_b : [ null ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.lukas = class lukas extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'lukas';
-        this.name = "Lukas";
-        this.title = "Sharp Soldier";
-        this.text = "A young noble fighting for the Deliverance. Strict, calm, and considerate.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 15;
-        this.minimum_rarity = 4;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 18, atk: 9, spd: 4, def: 10, res: 3 },
-            5 : { hp: 19, atk: 9, spd: 5, def: 10, res: 4 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 8, spd: 4, def:  9, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'killer_lance', 'killer_lance_plus' ],
-            assists   : [ null ],
-            specials  : [ 'holy_vestments', 'sacred_cowl' ],
-            passive_a : [ 'fortress_def_1', 'fortress_def_2', 'fortress_def_3' ],
-            passive_b : [ 'obstruct_1', 'obstruct_2', 'obstruct_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.luke = class luke extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'luke';
-        this.name = "Luke";
-        this.title = "Rowdy Squire";
-        this.text = "An aspiring knight of Altea. Flirtatious. Roderick's longtime friend and rival.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 154;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 19, atk: 8, spd: 6, def: 8, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 8, spd: 6, def: 6, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'brave_sword', 'brave_sword_plus' ],
-            assists   : [ null ],
-            specials  : [ 'glowing_ember', 'bonfire' ],
-            passive_a : [ 'fire_boost_1', 'fire_boost_2', 'fire_boost_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'panic_ploy_1', 'panic_ploy_2', 'panic_ploy_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.lyn = class lyn extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'lyn';
-        this.name = "Lyn";
-        this.title = "Lady of the Plains";
-        this.text = "A woman who grew up on the plains before learning she is the nobility of Caelin.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 18, atk: 6, spd: 11, def: 7, res: 5 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 6, spd:  8, def: 5, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'sol_katti' ],
-            assists   : [ null ],
-            specials  : [ 'night_sky', 'astra', 'galeforce' ],
-            passive_a : [ 'defiant_atk_1', 'defiant_atk_2', 'defiant_atk_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_spd_1', 'spur_spd_2', 'spur_spd_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.lyn_bride = class lyn_bride extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'lyn_bride';
-        this.name = "Lyn";
-        this.subname = "💐";
-        this.title = "Bride of the Plains";
-        this.text = "Noblewoman of Caelin. Eager to win the bridal tournament and nab the prize bouquet.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 5;
-        this.colour_type = 'grey';
-        this.weapon_type = 'staff';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 6, spd: 10, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 6, spd:  7, def: 4, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'candlelight' ],
-            assists   : [ 'heal', 'reconcile', 'rehabilitate' ],
-            specials  : [ 'imbue', 'swift_winds_balm' ],
-            passive_a : [ null ],
-            passive_b : [ 'dazzling_staff_1', 'dazzling_staff_2', 'dazzling_staff_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.mae = class mae extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'mae';
-        this.name = "Mae";
-        this.title = "Bundle of Energy";
-        this.text = "A mage from Novis and a dear friend of Celica. Always cheerful and energetic, but she has a tendency to get carried away.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 15;
-        this.minimum_rarity = 4;
-        this.colour_type = 'blue';
-        this.weapon_type = 'tome_blue';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 15, atk: 10, spd: 6, def: 2, res: 8 },
-            5 : { hp: 16, atk: 10, spd: 7, def: 3, res: 8 },
-        };
-        this.growth_points =
-                { hp:  5, atk:  8, spd: 7, def: 2, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'thunder', 'elthunder', 'blarowl', 'blarowl_plus' ],
-            assists   : [ 'draw_back' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'desperation_1', 'desperation_2', 'desperation_3' ],
-            passive_c : [ 'blue_tome_exp_1', 'blue_tome_exp_2', 'blue_tome_exp_3' ],
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.maria = class maria extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'maria';
-        this.name = "Maria";
-        this.title = "Minerva's Sister";
-        this.text = "Princess of Macedon. Younger sister of Minerva and Michalis, whom she loves dearly.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 4;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'staff';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 16, atk: 4, spd: 8, def: 3, res: 10 },
-            5 : { hp: 17, atk: 5, spd: 8, def: 4, res: 10 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 6, spd: 8, def: 3, res:  6 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'panic' ],
-            assists   : [ 'heal', 'mend', 'physic' ],
-            specials  : [ 'imbue', 'miracle' ],
-            passive_a : [ null ],
-            passive_b : [ null ],
-            passive_c : [ 'fortify_res_1', 'fortify_res_2', 'fortify_res_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.marth = class marth extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'marth';
-        this.name = "Marth";
-        this.title = "Altean Prince";
-        this.text = "Prince of Altea who fights for his homeland and deeply values his friends.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 18, atk: 7, spd: 8, def: 6, res: 5 },
-            5 : { hp: 19, atk: 7, spd: 8, def: 7, res: 6 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 8, def: 6, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'falchion' ],
-            assists   : [ 'pivot' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'escape_route_1', 'escape_route_2', 'escape_route_3' ],
-            passive_c : [ 'spur_spd_1', 'spur_spd_2', 'spur_spd_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.marth_mask = class marth_mask extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'marth_mask';
-        this.name = "Marth";
-        this.subname = "🎭";
-        this.title = "Enigmatic Blade";
-        this.text = "A mysterious swordsman who hides his face behind a mask. Calls himself Marth.";
-        this.summon = false;
-        this.special = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 18, atk: 8, spd: 10, def: 5, res: 3 },
-            5 : { hp: 19, atk: 7, spd: 10, def: 6, res: 4 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 8, spd:  8, def: 5, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'falchion' ],
-            assists   : [ null ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ null ],
-            passive_c : [ null ],
-        };
-    }
-};
-
-
-
-
-chars.matthew = class matthew extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'matthew';
-        this.name = "Matthew";
-        this.title = "Faithful Spy";
-        this.text = "Happy-go-lucky spy who's actually quite sly. Serves Hector, brother of the Marquess of Ostia.";
-        this.summon = true;
-     // this.obtained = 7;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 2;
-        this.colour_type = 'grey';
-        this.weapon_type = 'dagger';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : { hp: 15, atk: 5, spd:  9, def: 4, res: 3 },
-            3 : { hp: 16, atk: 5, spd:  9, def: 5, res: 4 },
-            4 : { hp: 16, atk: 6, spd: 10, def: 5, res: 4 },
-            5 : { hp: 17, atk: 6, spd: 10, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 5, spd: 7, def: 7, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_dagger', 'steel_dagger', 'rogue_dagger', 'rogue_dagger_plus' ],
-            assists   : [ 'reciprocal_aid' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'poison_strike_1', 'poison_strike_2', 'poison_strike_3' ],
-            passive_c : [ 'hone_spd_1', 'hone_spd_2', 'hone_spd_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.merric = class merric extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'merric';
-        this.name = "Merric";
-        this.title = "Wind Mage";
-        this.text = "Wind mage who studied in Khadein, known for its magical school. Marth's childhood friend.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 4;
-        this.colour_type = 'green';
-        this.weapon_type = 'tome_green';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 18, atk: 7, spd: 8, def: 5, res: 3 },
-            5 : { hp: 19, atk: 7, spd: 8, def: 6, res: 4 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 5, spd: 7, def: 6, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'wind', 'elwind', 'rexcalibur', 'excalibur' ],
-            assists   : [ null ],
-            specials  : [ 'rising_wind', 'growing_wind' ],
-            passive_a : [ 'hp_plus_3', 'hp_plus_4', 'hp_plus_5' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_res_1', 'spur_res_2', 'spur_res_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.michalis = class michalis extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'michalis';
-        this.name = "Michalis";
-        this.title = "Ambitious King";
-        this.text = "King of Macedon who had great ambitions for his country. Murdered his father. Brother to Minerva and Maria.";
-        this.summon = false;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 3;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 18, atk: 6, spd: 9, def: 4, res: 5 },
-            4 : { hp: 18, atk: 7, spd: 0, def: 4, res: 5 },
-            5 : { hp: 19, atk: 7, spd: 0, def: 5, res: 6 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 8, spd: 5, def: 8, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'silver_axe', 'hauteclere' ],
-            assists   : [ null ],
-            specials  : [ 'rising_thunder', 'blazing_thunder' ],
-            passive_a : [ 'iotes_shield' ],
-            passive_b : [ null ],
-            passive_c : [ 'threaten_def_1', 'threaten_def_2', 'threaten_def_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  null;
-        this.shield_passive = 'passive_a';
-    }
-};
-
-
-
-
-chars.minerva = class minerva extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'minerva';
-        this.name = "Minerva";
-        this.title = "Red Dragoon";
-        this.text = "Princess of Macedon who took up arms against her brother, Michalis.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 5;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 18, atk: 7, spd: 0, def: 5, res: 6 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 7, def: 7, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'silver_axe', 'hauteclere' ],
-            assists   : [ null ],
-            specials  : [ 'holy_vestments', 'sacred_cowl' ],
-            passive_a : [ 'life_and_death_1', 'life_and_death_2', 'life_and_death_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_def_1', 'spur_def_2', 'ward_flyers' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.mist = class mist extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'mist';
-        this.name = "Mist";
-        this.title = "Helpful Sister";
-        this.text = "Ike's younger sister. Active and cheerful, and takes care of the Greil Mercenaries.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 9;
-        this.minimum_rarity = 5;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'staff';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 8, spd: 6, def: 5, res: 8 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 5, spd: 6, def: 3, res: 8 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'slow' ],
-            assists   : [ 'heal', 'mend', 'recover' ],
-            specials  : [ 'imbue', 'miracle' ],
-            passive_a : [ null ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_res_1', 'spur_def_res_1', 'spur_def_res_2' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.narcian = class narcian extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'narcian';
-        this.name = "Narcian";
-        this.title = "Wyvern General";
-        this.text = "One of three Wyvern Generals of Bern. Conceited and vainglorious.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 2;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : { hp: 16, atk: 6, spd: 5, def: 7, res: 5 },
-            3 : { hp: 17, atk: 6, spd: 6, def: 7, res: 6 },
-            4 : { hp: 17, atk: 7, spd: 6, def: 8, res: 6 },
-            5 : { hp: 18, atk: 7, spd: 7, def: 8, res: 7 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 6, spd: 6, def: 7, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'emerald_axe', 'emerald_axe_plus' ],
-            assists   : [ null ],
-            specials  : [ 'retribution', 'vengeance' ],
-            passive_a : [ null ],
-            passive_b : [ 'lancebreaker_1', 'lancebreaker_2', 'lancebreaker_3' ],
-            passive_c : [ 'savage_blow_1', 'savage_blow_2', 'savage_blow_3' ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.navarre = class navarre extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'navarre';
-        this.name = "Navarre";
-        this.title = "Scarlet Sword";
-        this.text = "Skilled fighter known as the Scarlet Sword. Prefers his blade to do the talking.";
-        this.summon = false;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 17, atk: 6, spd: 10, def: 5, res: 4 },
-            4 : { hp: 17, atk: 7, spd: 11, def: 5, res: 4 },
-            5 : { hp: 18, atk: 7, spd: 11, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 7, spd: 8, def: 4, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'killing_edge', 'killing_edge_plus' ],
-            assists   : [ null ],
-            specials  : [ 'rising_wind', 'blazing_wind' ],
-            passive_a : [ null ],
-            passive_b : [ 'desperation_1', 'desperation_2', 'desperation_3' ],
-            passive_c : [ 'threaten_spd_1', 'threaten_spd_2', 'threaten_spd_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.niles = class niles extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'niles';
-        this.name = "Niles";
-        this.title = "Cruel to Be Kind";
-        this.text = "Nohrian scoundrel who wags his saucy tongue at everyone. One of Leo's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'grey';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 17, atk: 5, spd: 7, def: 3, res: 7 },
-            4 : { hp: 17, atk: 5, spd: 8, def: 3, res: 8 },
-            5 : { hp: 18, atk: 6, spd: 8, def: 4, res: 8 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 5, spd: 8, def: 2, res: 8 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_bow', 'steel_bow', 'killer_bow', 'killer_bow_plus' ],
-            assists   : [ null ],
-            specials  : [ 'chilling_wind', 'iceberg' ],
-            passive_a : [ 'warding_blow_1', 'warding_blow_2', 'warding_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_res_1', 'spur_res_2', 'spur_res_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.ninian = class ninian extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'ninian';
-        this.name = "Ninian";
-        this.title = "Oracle of Destiny";
-        this.text = "A young dancer who has a serene and mystical presence. Her dances are divine tributes.";
-        this.summon = true;
-     // this.obtained = 1;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'dragon_blue';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 149;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 16, atk: 5, spd: 7, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 5, spd: 8, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'fire_breath', 'fire_breath_plus', 'light_breath', 'light_breath_plus'],
-            assists   : [ 'dance' ],
-            specials  : [],
-            passive_a : [],
-            passive_b : [ 'escape_route_1', 'escape_route_2', 'escape_route_3'  ],
-            passive_c : [ 'fortify_def_1',  'fortify_def_2',  'fortify_dragons' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.nino = class nino extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'nino';
-        this.name = "Nino";
-        this.title = "Pious Mage";
-        this.text = "A kindhearted member of the Black Fang assassins. Longed to help her mother.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 3;
-        this.colour_type = 'green';
-        this.weapon_type = 'tome_green';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 15, atk: 6, spd:  9, def: 3, res: 6 },
-            4 : { hp: 15, atk: 7, spd: 10, def: 3, res: 6 },
-            5 : { hp: 16, atk: 7, spd: 10, def: 4, res: 7 },
-        };
-        this.growth_points =
-                { hp:  4, atk: 8, spd:  8, def: 3, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'wind', 'elwind', 'gronnblade', 'gronnblade_plus' ],
-            assists   : [ 'draw_back' ],
-            specials  : [ null ],
-            passive_a : [ 'resistance_plus_1', 'resistance_plus_2', 'resistance_plus_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'hone_atk_1', 'hone_atk_2', 'hone_atk_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.nowi = class nowi extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'nowi';
-        this.name = "Nowi";
-        this.title = "Eternal Youth";
-        this.text = "Manakete who travels with Chrom's group. Looks young but is truly over a thousand years old.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 4;
-        this.colour_type = 'blue';
-        this.weapon_type = 'dragon_blue';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 163;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 16, atk: 6, spd: 4, def: 6, res: 4 },
-            5 : { hp: 17, atk: 6, spd: 5, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  9, atk: 9, spd: 6, def: 7, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'fire_breath', 'fire_breath_plus', 'lightning_breath', 'lightning_breath_plus' ],
-            assists   : [ 'rally_defense' ],
-            specials  : [ null ],
-            passive_a : [ 'defense_plus_1', 'defense_plus_2', 'defense_plus_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'threaten_res_1', 'threaten_res_2', 'threaten_res_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.oboro = class oboro extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'oboro';
-        this.name = "Oboro";
-        this.title = "Fierce Fighter";
-        this.text = "Lance wielder who loves fashion and hates Nohr. One of Takumi's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 17, atk: 7, spd: 6, def: 8, res: 4 },
-            4 : { hp: 17, atk: 8, spd: 6, def: 9, res: 4 },
-            5 : { hp: 18, atk: 8, spd: 7, def: 9, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 5, def: 8, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'heavy_spear', 'heavy_spear_plus' ],
-            assists   : [ 'rally_defense' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'seal_def_1', 'seal_def_2', 'seal_def_3' ],
-            passive_c : [ 'threaten_res_1', 'threaten_res_2', 'threaten_res_3' ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.odin = class odin extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'odin';
-        this.name = "Odin";
-        this.title = "Potent Force";
-        this.text = "A mysterious man who tends to be overly theatrical. One of Leo's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'tome_blue';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 18, atk: 4, spd: 7, def: 5, res: 5 },
-            4 : { hp: 18, atk: 4, spd: 8, def: 6, res: 5 },
-            5 : { hp: 19, atk: 5, spd: 8, def: 6, res: 6 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 4, spd: 7, def: 5, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'thunder', 'elthunder', 'blarblade', 'blarblade_plus' ],
-            assists   : [ null ],
-            specials  : [ 'new_moon', 'moonbow' ],
-            passive_a : [ 'defiant_atk_1', 'defiant_atk_2', 'defiant_atk_3' ],
-            passive_b : [ 'redtomebreaker_1', 'redtomebreaker_2', 'redtomebreaker_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.ogma = class ogma extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'ogma';
-        this.name = "Ogma";
-        this.title = "Loyal Blade";
-        this.text = "A mercenary who was once a slave gladiator. Serves Princess Caeda of Talys.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 20, atk: 7, spd: 10, def: 5, res: 2 },
-            5 : { hp: 21, atk: 7, spd: 10, def: 6, res: 3 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 9, spd:  7, def: 6, res: 1 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'brave_sword', 'brave_sword_plus' ],
-            assists   : [ null ],
-            specials  : [ 'daylight', 'noontime' ],
-            passive_a : [ 'defiant_atk_1', 'defiant_atk_2', 'defiant_atk_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_atk_1', 'spur_atk_2', 'spur_atk_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.olivia = class olivia extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'olivia';
-        this.name = "Olivia";
-        this.title = "Blushing Beauty";
-        this.text = "A dancer who travels widely and is quite gifted, despite extreme shyness.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 1;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 150;
-        this.base_stats =
-        {   1 : { hp: 15, atk: 4, spd: 5, def: 3, res: 2 },
-            2 : { hp: 15, atk: 5, spd: 6, def: 3, res: 2 },
-            3 : { hp: 16, atk: 5, spd: 6, def: 4, res: 3 },
-            4 : { hp: 16, atk: 6, spd: 7, def: 4, res: 3 },
-            5 : { hp: 17, atk: 6, spd: 7, def: 5, res: 4 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 6, spd: 8, def: 6, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'silver_sword_plus' ],
-            assists   : [ 'dance' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'knock_back' ],
-            passive_c : [ 'hone_atk_1', 'hone_atk_2', 'hone_atk_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.position_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.olwen = class olwen extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'olwen';
-        this.name = "Olwen";
-        this.title = "Blue Mage Knight";
-        this.text = "A mage knight in Friege's army. Her ideals sometimes put her in opposition with her beloved brother, Reinhardt.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 5;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'tome_blue';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 144;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 17, atk: 7, spd: 8, def: 5, res: 6 },
-        };
-        this.growth_points =
-                { hp:  4, atk: 5, spd: 8, def: 3, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'thunder', 'elthunder', 'thoron', 'dire_thunder' ],
-            assists   : [ 'reposition' ],
-            specials  : [ null ],
-            passive_a : [ 'warding_blow_1', 'warding_blow_2', 'warding_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_res_1', 'spur_res_2', 'ward_cavalry' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.palla = class palla extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'palla';
-        this.name = "Palla";
-        this.title = "Eldest Whitewing";
-        this.text = "Eldest of three sisters who are pegasus knights for Macedon.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 17, atk: 6, spd: 8, def: 5, res: 6 },
-            4 : { hp: 17, atk: 7, spd: 9, def: 5, res: 6 },
-            5 : { hp: 18, atk: 7, spd: 9, def: 6, res: 7 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 7, spd: 6, def: 6, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'ruby_sword', 'ruby_sword_plus' ],
-            assists   : [ null ],
-            specials  : [ 'new_moon', 'moonbow' ],
-            passive_a : [ null ],
-            passive_b : [ 'wings_of_mercy_1', 'wings_of_mercy_2', 'wings_of_mercy_3' ],
-            passive_c : [ 'spur_spd_1', 'spur_spd_2', 'goad_flyers' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.peri = class peri extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'peri';
-        this.name = "Peri";
-        this.title = "Playful Slayer";
-        this.text = "A cavalier of Nohr who massacres foes with childlike glee. One of Xander's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 4;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 154;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 15, atk: 9, spd: 9, def: 5, res: 5 },
-            5 : { hp: 16, atk: 9, spd: 9, def: 6, res: 6 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 7, spd: 7, def: 4, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'killer_lance', 'killer_lance_plus' ],
-            assists   : [ null ],
-            specials  : [ 'night_sky', 'glimmer' ],
-            passive_a : [ 'resistance_plus_1', 'resistance_plus_2', 'resistance_plus_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'threaten_def_1', 'threaten_def_2', 'threaten_def_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.priscilla = class priscilla extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'priscilla';
-        this.name = "Priscilla";
-        this.title = "Delicate Princess";
-        this.text = "The daughter of Count Caerleon. Also Raven's sister. Poised and gentle, with a jealous streak.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 4;
-        this.colour_type = 'grey';
-        this.weapon_type = 'staff';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 145;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 16, atk: 7, spd: 6, def: 3, res: 8 },
-            5 : { hp: 17, atk: 7, spd: 7, def: 4, res: 8 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 6, spd: 6, def: 3, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'panic' ],
-            assists   : [ 'heal', 'reconcile', 'rehabilitate' ],
-            specials  : [ 'imbue', 'still_water_balm' ],
-            passive_a : [ null ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_def_1', 'spur_def_2', 'spur_def_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.raigh = class raigh extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'raigh';
-        this.name = "Raigh";
-        this.title = "Dark Child";
-        this.text = "Wielder of dark magic. A scornful loner with a troubled past as an orphan.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 2;
-        this.colour_type = 'red';
-        this.weapon_type = 'tome_red';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : { hp: 15, atk: 7, spd:  6, def: 3, res: 5 },
-            3 : { hp: 16, atk: 7, spd:  6, def: 4, res: 6 },
-            4 : { hp: 16, atk: 8, spd:  7, def: 4, res: 6 },
-            5 : { hp: 17, atk: 8, spd:  7, def: 5, res: 7 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 7, spd: 6, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'flux', 'ruin', 'raudrwolf', 'raudrwolf_plus' ],
-            assists   : [ 'rally_attack' ],
-            specials  : [ null ],
-            passive_a : [ 'hp_plus_3', 'hp_plus_4', 'hp_plus_5' ],
-            passive_b : [ 'seal_res_1', 'seal_res_2', 'seal_res_3' ],
-            passive_c : [ null ],
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.raven = class raven extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'raven';
-        this.name = "Raven";
-        this.title = "Peerless Fighter";
-        this.text = "A noble heir whose true name is Raymond. Works as a mercenary to enact revenge.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 4;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 18, atk: 8, spd: 9, def: 5, res: 4 },
-            5 : { hp: 19, atk: 8, spd: 9, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 8, spd: 8, def: 5, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'brave_axe', 'brave_axe_plus' ],
-            assists   : [ null ],
-            specials  : [ 'daylight', 'sol' ],
-            passive_a : [ 'defiant_spd_1', 'defiant_spd_2', 'defiant_spd_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'threaten_def_1', 'threaten_def_2', 'threaten_def_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.rebecca = class rebecca extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'rebecca';
-        this.name = "Rebecca";
-        this.title = "Wildflower";
-        this.text = "A girl who lives in a remote village and spends her time hunting. Kind and sociable.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 4;
-        this.colour_type = 'grey';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 17, atk: 7, spd: 8, def: 5, res: 4 },
-            5 : { hp: 18, atk: 7, spd: 8, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 6, spd: 8, def: 3, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_bow', 'steel_bow', 'silver_bow', 'silver_bow_plus' ],
-            assists   : [ 'ardent_sacrifice' ],
-            specials  : [ null ],
-            passive_a : [ 'darting_blow_1', 'darting_blow_2', 'darting_blow_3' ],
-            passive_b : [ 'seal_atk_1', 'seal_atk_2', 'seal_atk_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.reinhardt = class reinhardt extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'reinhardt';
-        this.name = "Reinhardt";
-        this.title = "Thunder's Fist";
-        this.text = "Formidable and admired mage knight in Friege's army. Ever ready to lend an ear to his younger sister, Olwen.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 5;
-        this.minimum_rarity = 4;
-        this.colour_type = 'blue';
-        this.weapon_type = 'tome_blue';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 145;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 15, atk: 8, spd: 5, def: 4, res: 8 },
-            5 : { hp: 16, atk: 8, spd: 6, def: 5, res: 8 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 4, def: 6, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'thunder', 'elthunder', 'thoron', 'dire_thunder' ],
-            assists   : [ null ],
-            specials  : [ 'rising_thunder', 'blazing_thunder' ],
-            passive_a : [ null ],
-            passive_b : [ 'vantage_1', 'vantage_2', 'vantage_3' ],
-            passive_c : [ 'spur_atk_1', 'spur_atk_2', 'goad_cavalry' ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.robin_blue = class robin_blue extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'robin_blue';
-        this.name = "Robin";
-        this.subname = "📘";
-        this.title = "High Deliverer";
-        this.text = "A tactician of Ylisse and Chrom's close ally. Lost memory of his life before meeting Chrom.";
-        this.summon = true;
-     // this.obtained = 2;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'tome_blue';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 149;
-        this.base_stats =
-        {   1 : null,
-            2 : { hp: 16, atk: 6, spd: 6, def: 5, res: 3 },
-            3 : { hp: 17, atk: 6, spd: 6, def: 6, res: 4 },
-            4 : { hp: 17, atk: 7, spd: 7, def: 6, res: 4 },
-            5 : { hp: 18, atk: 7, spd: 7, def: 7, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 6, spd: 6, def: 6, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'thunder', 'elthunder', 'blarraven', 'blarraven_plus' ],
-            assists   : [ null ],
-            specials  : [ 'glowing_ember', 'bonfire' ],
-            passive_a : [ 'defiant_spd_1', 'defiant_spd_2', 'defiant_spd_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_def_1', 'spur_def_2', 'spur_def_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.robin_green = class robin_green extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'robin_green';
-        this.name = "Robin";
-        this.subname = "📗";
-        this.title = "Mystery Tactician";
-        this.text = "A tactician of Ylisse and Chrom's close ally. Lost memory of her life before meeting Chrom.";
-        this.summon = false;
-     // this.obtained = 2;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 2;
-        this.colour_type = 'green';
-        this.weapon_type = 'tome_green';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 149;
-        this.base_stats =
-        {   1 : null,
-            2 : { hp: 16, atk: 6, spd: 6, def: 5, res: 3 },
-            3 : { hp: 17, atk: 6, spd: 6, def: 6, res: 4 },
-            4 : { hp: 17, atk: 7, spd: 7, def: 6, res: 4 },
-            5 : { hp: 18, atk: 7, spd: 7, def: 7, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 6, spd: 6, def: 6, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'wind', 'elwind', 'gronnwolf', 'gronnwolf_plus' ],
-            assists   : [ null ],
-            specials  : [ 'glowing_ember', 'ignis' ],
-            passive_a : [ 'defiant_res_1', 'defiant_res_2', 'defiant_res_3' ],
-            passive_b : [ 'bluetomebreaker_1', 'bluetomebreaker_2', 'bluetomebreaker_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.robin_summer = class robin_summer extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'robin_summer';
-        this.name = "Robin";
-        this.subname = "🏖";
-        this.title = "Seaside Tactician";
-        this.text = "A tactician of Ylisse and Chrom's close ally. Loves the strange creatures she finds on the beach.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = 2;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 18, atk: 8, spd: 8, def: 6, res: 7 },
-        };
-        this.growth_points =
-                { hp:  4, atk: 7, spd: 8, def: 6, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'deft_harpoon', 'deft_harpoon_plus' ],
-            assists   : [ 'reposition' ],
-            specials  : [ null ],
-            passive_a : [ 'defense_1', 'hp_def_1', 'hp_def_2' ],
-            passive_b : [ null ],
-            passive_c : [ 'lance_valor_1', 'lance_valor_2', 'lance_valor_3' ],
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.roderick = class roderick extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'roderick';
-        this.name = "Roderick";
-        this.title = "Steady Squire";
-        this.text = "An aspiring knight of Altea. Of calm demeanor. Luke's longtime friend and rival.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 154;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 18, atk: 7, spd: 8, def: 6, res: 7 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 8, def: 5, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'firesweep_lance', 'firesweep_lance_plus' ],
-            assists   : [ 'rally_defense', 'rally_defense_resistance' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'drag_back' ],
-            passive_c : [ 'spur_def_1', 'drive_def_1', 'drive_def_2' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-        this.position_passive = 'passive_b';
-    }
-};
-
-
-
-
-chars.roy = class roy extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'roy';
-        this.name = "Roy";
-        this.title = "Young Lion";
-        this.text = "The son of Eliwood, Marquess of Pherae and talented leader of its army.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 19, atk: 8, spd: 9, def: 5, res: 3 },
-            5 : { hp: 20, atk: 8, spd: 9, def: 6, res: 4 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 6, spd: 6, def: 5, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'binding_blade' ],
-            assists   : [ 'shove' ],
-            specials  : [ null ],
-            passive_a : [ 'triangle_adept_1', 'triangle_adept_2', 'triangle_adept_3' ],
-            passive_b : [ 'seal_def_1', 'seal_def_2', 'seal_def_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.ryoma = class ryoma extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'ryoma';
-        this.name = "Ryoma";
-        this.title = "Peerless Samurai";
-        this.text = "The eldest prince of Hoshido, who wields the legendary blade Raijinto.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 19, atk: 8, spd: 11, def: 5, res: 4 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 6, spd:  9, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'raijinto' ],
-            assists   : [ null ],
-            specials  : [ 'night_sky', 'astra' ],
-            passive_a : [ 'defiant_atk_1', 'defiant_atk_2', 'defiant_atk_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'hone_spd_1', 'hone_spd_2', 'hone_spd_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.saizo = class saizo extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'saizo';
-        this.name = "Saizo";
-        this.title = "Angry Ninja";
-        this.text = "A severe ninja of Hoshido. Has a twin brother named Kaze. One of Ryoma's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'dagger';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 16, atk: 6, spd: 7, def: 8, res: 2 },
-            4 : { hp: 16, atk: 7, spd: 8, def: 9, res: 2 },
-            5 : { hp: 17, atk: 7, spd: 8, def: 9, res: 3 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 6, spd: 8, def: 7, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_dagger', 'steel_dagger', 'smoke_dagger', 'smoke_dagger_plus' ],
-            assists   : [ 'harsh_command' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'poison_strike_1', 'poison_strike_2', 'poison_strike_3' ],
-            passive_c : [ 'spur_spd_1', 'spur_spd_2', 'spur_spd_3' ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.sakura = class sakura extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'sakura';
-        this.name = "Sakura";
-        this.title = "Loving Priestess";
-        this.text = "Princess of Hoshido who is a gentle healer. Struggles with her shyness.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 4;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'staff';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 16, atk: 5, spd: 8, def: 4, res: 8 },
-            5 : { hp: 17, atk: 6, spd: 8, def: 5, res: 8 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 6, spd: 6, def: 5, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'fear' ],
-            assists   : [ 'heal', 'mend', 'physic' ],
-            specials  : [ 'imbue', 'still_water_balm' ],
-            passive_a : [ null ],
-            passive_b : [ null ],
-            passive_c : [ 'fortify_def_1', 'fortify_def_2', 'fortify_def_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.sanaki = class sanaki extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'sanaki';
-        this.name = "Sanaki";
-        this.title = "Begnion's Apostle";
-        this.text = "Empress of Begnion. Known as the Apostle, voice of the goddess. Young but dutiful ruler.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 10;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'tome_red';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 16, atk: 9, spd: 7, def: 4, res: 8 },
-        };
-        this.growth_points =
-                { hp:  4, atk: 9, spd: 5, def: 2, res: 8 };
-
-        this.base_skills =
-        {   weapons   : [ 'fire', 'elfire', 'bolganone', 'cymbeline' ],
-            assists   : [ 'harsh_command' ],
-            specials  : [ null ],
-            passive_a : [ 'triangle_adept_1', 'triangle_adept_2', 'triangle_adept_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'hone_atk_1', 'hone_atk_2', 'hone_atk_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.selena = class selena extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'selena';
-        this.name = "Selena";
-        this.title = "Cutting Wit";
-        this.text = "A mysterious woman devoted to service. One of Camilla's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 17, atk: 5, spd: 8, def: 7, res: 5 },
-            4 : { hp: 17, atk: 5, spd: 9, def: 8, res: 5 },
-            5 : { hp: 18, atk: 6, spd: 9, def: 8, res: 6 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 5, spd: 8, def: 7, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'armorslayer', 'armorslayer_plus' ],
-            assists   : [ 'reposition' ],
-            specials  : [ null ],
-            passive_a : [ 'triangle_adept_1', 'triangle_adept_2', 'triangle_adept_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'threaten_spd_1', 'threaten_spd_2', 'threaten_spd_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.seliph = class seliph extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'seliph';
-        this.name = "Seliph";
-        this.title = "Heir of Light";
-        this.text = "Inheritor of the sacred sword Tyrfing. A savior in his time, but dislikes battle. Julia's half-brother.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 4;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 18, atk: 8, spd: 6, def: 8, res: 4 },
-            5 : { hp: 19, atk: 8, spd: 7, def: 8, res: 5 },
-        };
-        this.growth_points =
-                { hp:  9, atk: 8, spd: 4, def: 6, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'tyrfing' ],
-            assists   : [ 'rally_speed' ],
-            specials  : [ null ],
-            passive_a : [ 'hp_plus_3', 'hp_plus_4', 'hp_plus_5' ],
-            passive_b : [ 'brash_assault_1', 'brash_assault_2', 'brash_assault_3' ],
-            passive_c : [ null ],
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.serra = class serra extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'serra';
-        this.name = "Serra";
-        this.title = "Outspoken Cleric";
-        this.text = "Cleric who thinks less of others, more of herself. Serves Hector, brother of the Marquess of Ostia.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 3;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'staff';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 15, atk: 5, spd: 8, def: 3, res: 8 },
-            4 : { hp: 15, atk: 5, spd: 9, def: 3, res: 9 },
-            5 : { hp: 16, atk: 6, spd: 9, def: 4, res: 9 },
-        };
-        this.growth_points =
-                { hp:  4, atk: 7, spd: 6, def: 4, res: 7 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'absorb' ],
-            assists   : [ 'heal', 'mend', 'recover' ],
-            specials  : [ 'imbue', 'swift_winds_balm' ],
-            passive_a : [ null ],
-            passive_b : [ null ],
-            passive_c : [ 'hone_atk_1', 'hone_atk_2', 'hone_atk_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.setsuna = class setsuna extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'setsuna';
-        this.name = "Setsuna";
-        this.title = "Absent Archer";
-        this.text = "Hoshidan archer who is either fearless or daydreaming. One of Hinoka's retainers.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 17, atk: 5, spd: 8, def: 4, res: 5 },
-            4 : { hp: 17, atk: 6, spd: 9, def: 4, res: 5 },
-            5 : { hp: 18, atk: 6, spd: 9, def: 5, res: 6 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 6, spd: 9, def: 4, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_bow', 'steel_bow', 'assassins_bow', 'assassins_bow_plus' ],
-            assists   : [ 'reciprocal_aid' ],
-            specials  : [ null ],
-            passive_a : [ 'hp_plus_3', 'hp_plus_4', 'hp_plus_5' ],
-            passive_b : [ 'bowbreaker_1', 'bowbreaker_2', 'bowbreaker_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.shanna = class shanna extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'shanna';
-        this.name = "Shanna";
-        this.title = "Sprightly Flier";
-        this.text = "A trainee of the Pegasus Knights of Ilia. Cheerful and optimistic.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 10;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 16, atk: 7, spd: 8, def: 5, res: 6 },
-            4 : { hp: 16, atk: 8, spd: 9, def: 5, res: 6 },
-            5 : { hp: 17, atk: 8, spd: 9, def: 6, res: 7 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 6, spd: 8, def: 5, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'killer_lance', 'killer_lance_plus' ],
-            assists   : [ null ],
-            specials  : [ 'chilling_wind', 'iceberg' ],
-            passive_a : [ null ],
-            passive_b : [ 'desperation_1', 'desperation_2', 'desperation_3' ],
-            passive_c : [ 'threaten_spd_1', 'threaten_spd_2', 'threaten_spd_3' ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.sharena = class sharena extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'sharena';
-        this.name = "Sharena";
-        this.title = "Princess of Askr";
-        this.text = "A princess of Askr and Alfonse's sister. Cheerful and loves making friends— especially with Heroes.";
-        this.summon = false;
-     // this.obtained = 9;
-     // this.favourite;
-        this.origin = 0;
-        this.minimum_rarity = 2;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : null,
-            2 : { hp: 17, atk: 7, spd:  7, def: 5, res: 3 },
-            3 : { hp: 18, atk: 7, spd:  7, def: 6, res: 4 },
-            4 : { hp: 18, atk: 8, spd:  8, def: 6, res: 4 },
-            5 : { hp: 19, atk: 8, spd:  8, def: 7, res: 5 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 7, spd: 7, def: 6, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'silver_lance', 'fensalir' ],
-            assists   : [ 'rally_attack' ],
-            specials  : [ null ],
-            passive_a : [ 'speed_plus_1', 'speed_plus_2', 'speed_plus_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'fortify_def_1', 'fortify_def_2', 'fortify_def_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.sheena = class sheena extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'sheena';
-        this.name = "Sheena";
-        this.title = "Princess of Gra";
-        this.text = "Princess of Gra, a failing realm. Feels the heavy weight of her responsibility.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 4;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'armor';
-     // this.level = 40;
-     // this.rating = 169;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 20, atk: 8, spd: 5, def: 12, res: 6 },
-            5 : { hp: 21, atk: 8, spd: 6, def: 12, res: 7 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 6, spd: 5, def:  7, res: 8 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'killer_axe', 'killer_axe_plus' ],
-            assists   : [ null ],
-            specials  : [ 'buckler', 'escutcheon' ],
-            passive_a : [ 'svalinn_shield' ],
-            passive_b : [ null ],
-            passive_c : [ 'fortify_def_1', 'fortify_def_2', 'fortify_armor' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  null;
-        this.shield_passive = 'passive_a';
-    }
-};
-
-
-
-
-chars.sophia = class sophia extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'sophia';
-        this.name = "Sophia";
-        this.title = "Nabata Prophet";
-        this.text = "A shaman of Nabata who has lived a sheltered life away from other people. Sees the future.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 1;
-        this.colour_type = 'red';
-        this.weapon_type = 'tome_red';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 149;
-        this.base_stats =
-        {   1 : { hp: 16, atk: 7, spd: 2, def: 4, res: 5 },
-            2 : { hp: 16, atk: 8, spd: 2, def: 4, res: 6 },
-            3 : { hp: 17, atk: 8, spd: 3, def: 5, res: 6 },
-            4 : { hp: 17, atk: 9, spd: 3, def: 5, res: 7 },
-            5 : { hp: 18, atk: 9, spd: 4, def: 6, res: 7 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 3, def: 6, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'flux', 'ruin', 'fenrir', 'fenrir_plus' ],
-            assists   : [ null ],
-            specials  : [ 'dragon_gaze', 'dragon_fang' ],
-            passive_a : [ 'warding_blow_1', 'warding_blow_2', 'warding_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'fortify_res_1', 'fortify_res_2', 'fortify_res_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.soren = class soren extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'soren';
-        this.name = "Soren";
-        this.title = "Shrewd Strategist";
-        this.text = "An officer in the Greil Mercenaries. A coolheaded realist who has opened up to Ike.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 9;
-        this.minimum_rarity = 4;
-        this.colour_type = 'green';
-        this.weapon_type = 'tome_green';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 16, atk: 7, spd: 9, def: 3, res: 6 },
-            5 : { hp: 17, atk: 7, spd: 9, def: 4, res: 7 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 8, spd: 7, def: 2, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'wind', 'elwind', 'rexcalibur', 'rexcalibur_plus' ],
-            assists   : [ null ],
-            specials  : [ 'rising_wind', 'growing_wind' ],
-            passive_a : [ null ],
-            passive_b : [ 'watersweep_1', 'watersweep_2', 'watersweep_3' ],
-            passive_c : [ 'fortify_res_1', 'fortify_res_2', 'fortify_res_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.stahl = class stahl extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'stahl';
-        this.name = "Stahl";
-        this.title = "Viridian Knight";
-        this.text = "A kind but slightly scatterbrained knight who serves with the Shepherds.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 1;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 154;
-        this.base_stats =
-        {   1 : { hp: 17, atk: 5, spd: 5, def: 6, res: 3 },
-            2 : { hp: 17, atk: 6, spd: 5, def: 7, res: 3 },
-            3 : { hp: 18, atk: 6, spd: 6, def: 7, res: 4 },
-            4 : { hp: 18, atk: 7, spd: 6, def: 8, res: 4 },
-            5 : { hp: 19, atk: 7, spd: 7, def: 8, res: 5 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 7, spd: 5, def: 6, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'ruby_sword', 'ruby_sword_plus' ],
-            assists   : [ 'swap' ],
-            specials  : [ null ],
-            passive_a : [ 'defense_plus_1', 'defense_plus_2', 'defense_plus_3' ],
-            passive_b : [ 'obstruct_1', 'obstruct_2', 'obstruct_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.subaki = class subaki extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'subaki';
-        this.name = "Subaki";
-        this.title = "Perfect Expert";
-        this.text = "Sky Knight of Hoshido who aims for perfection. One of Sakura's retainers.";
-        this.summon = true;
-     // this.obtained = 5;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 1;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'flyer';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : { hp: 16, atk: 4, spd: 7, def: 7, res: 3 },
-            2 : { hp: 16, atk: 4, spd: 8, def: 8, res: 3 },
-            3 : { hp: 17, atk: 5, spd: 8, def: 8, res: 4 },
-            4 : { hp: 17, atk: 5, spd: 9, def: 9, res: 4 },
-            5 : { hp: 18, atk: 6, spd: 9, def: 9, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 5, spd: 8, def: 8, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'sapphire_lance', 'sapphire_lance_plus' ],
-            assists   : [ 'swap' ],
-            specials  : [ null ],
-            passive_a : [ 'resistance_plus_1', 'resistance_plus_2', 'resistance_plus_3' ],
-            passive_b : [ 'quick_riposte_1', 'quick_riposte_2', 'quick_riposte_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-chars.sully = class sully extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'sully';
-        this.name = "Sully";
-        this.title = "Crimson Knight";
-        this.text = "A member of the Shepherds who is serious about becoming a great knight.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 154;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            4 : { hp: 17, atk: 7, spd: 8, def: 6, res: 5 },
-            3 : { hp: 17, atk: 6, spd: 7, def: 6, res: 5 },
-            5 : { hp: 18, atk: 7, spd: 8, def: 7, res: 6 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 5, spd: 8, def: 4, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'sapphire_lance', 'sapphire_lance_plus' ],
-            assists   : [ 'draw_back' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'swordbreaker_1', 'swordbreaker_2', 'swordbreaker_3' ],
-            passive_c : [ 'spur_def_1', 'spur_def_2', 'spur_def_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.takumi = class takumi extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'takumi';
-        this.name = "Takumi";
-        this.title = "Wild Card";
-        this.text = "Prince of Hoshido who wields the divine bow Fujin Yumi. Prickly at times.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 5;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 18, atk: 8, spd: 7, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 8, def: 5, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_bow', 'steel_bow', 'silver_bow', 'fujin_yumi' ],
-            assists   : [ null ],
-            specials  : [ 'retribution', 'vengeance' ],
-            passive_a : [ 'close_counter' ],
-            passive_b : [ null ],
-            passive_c : [ 'threaten_spd_1', 'threaten_spd_2', 'threaten_spd_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.range_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.tharja = class tharja extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'tharja';
-        this.name = "Tharja";
-        this.title = "Dark Shadow";
-        this.text = "A mage from Plegia with a dark side and a possessive streak, especially with Robin.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'tome_red';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 148;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 16, atk: 8, spd: 8, def: 5, res: 4 },
-            5 : { hp: 17, atk: 8, spd: 8, def: 6, res: 5 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 7, spd: 8, def: 4, res: 3 };
-
-        this.base_skills =
-        {   weapons   : [ 'flux', 'ruin', 'raudrblade', 'raudrblade_plus' ],
-            assists   : [ null ],
-            specials  : [ 'retribution', 'vengeance' ],
-            passive_a : [ 'darting_blow_1', 'darting_blow_2', 'darting_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_res_1', 'spur_res_2', 'spur_res_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.tiki_shadow = class tiki_shadow extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'tiki_shadow';
-        this.name = "Tiki";
-        this.subname = "🔥";
-        this.title = "Dragon Scion";
-        this.text = "A young Divine Dragon once put into a timeless sleep to keep her dragon impulses in check. Now longs for human company.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1;
-        this.minimum_rarity = 5;
-        this.colour_type = 'red';
-        this.weapon_type = 'dragon_red';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 163;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 15, atk: 5, spd: 4, def: 8, res: 7 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 8, spd: 8, def: 7, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'fire_breath', 'fire_breath_plus', 'flametongue', 'flametongue_plus' ],
-            assists   : [ null ],
-            specials  : [ 'rising_flame', 'growing_flame' ],
-            passive_a : [ 'armored_blow_1', 'armored_blow_2', 'armored_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'breath_of_life_1', 'breath_of_life_2', 'breath_of_life_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-
-
-
-
-chars.tiki_awakening = class tiki_awakening extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'tiki_awakening';
-        this.name = "Tiki";
-        this.subname = "⚡️";
-        this.title = "Naga's Voice";
-        this.text = "Known as the Voice of the Divine Dragon. Has lived for ages. Once friends with Marth.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'dragon_red';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 17, atk: 6, spd: 5, def: 8, res: 6 },
-            4 : { hp: 17, atk: 7, spd: 5, def: 9, res: 6 },
-            5 : { hp: 18, atk: 7, spd: 6, def: 9, res: 7 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 9, spd: 4, def: 8, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'fire_breath', 'fire_breath_plus', 'lightning_breath', 'lightning_breath_plus' ],
-            assists   : [ null ],
-            specials  : [ 'glowing_ember', 'bonfire' ],
-            passive_a : [ 'defiant_atk_1', 'defiant_atk_2', 'defiant_atk_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_res_1', 'spur_res_2', 'spur_res_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.tiki_summer = class tiki_summer extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'tiki_summer';
-        this.name = "Tiki";
-        this.subname = "🏖";
-        this.title = "Summering Scion";
-        this.text = "Known as the Voice of the Divine Dragon. Has lived through thousands of summers, but usually doesn't need to worry about swimming gear.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 5;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 157;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 18, atk: 8, spd: 6, def: 8, res: 7 },
-        };
-        this.growth_points =
-                { hp:  4, atk: 9, spd: 7, def: 7, res: 4 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'melon_crusher', 'melon_crusher_plus' ],
-            assists   : [ null ],
-            specials  : [ 'daylight', 'sol' ],
-            passive_a : [ 'close_defense_1', 'close_defense_2', 'close_defense_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'axe_valor_1', 'axe_valor_2', 'axe_valor_3' ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_c';
-    }
-};
-
-
-
-
-chars.titania = class titania extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'titania';
-        this.name = "Titania";
-        this.title = "Mighty Mercenary";
-        this.text = "Deputy commander of the Greil Mercenaries. An idealistic former knight who values honor.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 9;
-        this.minimum_rarity = 4;
-        this.colour_type = 'green';
-        this.weapon_type = 'axe';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 154;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 17, atk: 5, spd: 8, def: 5, res: 8 },
-            5 : { hp: 18, atk: 6, spd: 8, def: 6, res: 8 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 6, spd: 8, def: 5, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_axe', 'steel_axe', 'emerald_axe', 'emerald_axe_plus' ],
-            assists   : [ 'reciprocal_aid' ],
-            specials  : [ 'night_sky', 'astra' ],
-            passive_a : [ 'armored_blow_1', 'armored_blow_2', 'armored_blow_3' ],
-            passive_b : [ 'guard_1', 'guard_2', 'guard_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.tobin = class tobin extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'tobin';
-        this.name = "Tobin";
-        this.title = "The Clueless One";
-        this.text = "Alm's childhood friend from Ram Village. Honest to a fault, and suffers for it.";
-        this.summon = false;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 15;
-        this.minimum_rarity = 4;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 163;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : { hp: 17, atk: 7, spd: 5, def: 4, res: 3 },
-            5 : { hp: 18, atk: 7, spd: 5, def: 5, res: 4 },
-        };
-        this.growth_points =
-                { hp:  9, atk: 7, spd: 6, def: 9, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'armorslayer', 'armorslayer_plus' ],
-            assists   : [ 'pivot' ],
-            specials  : [ null ],
-            passive_a : [ 'attack_plus_1', 'attack_plus_2', 'attack_plus_3' ],
-            passive_b : [ 'seal_spd_1', 'seal_spd_2', 'seal_spd_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_a';
-        this.late_passive =  '';
-    }
-};
-
-
-
-
-chars.ursula = class ursula extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'ursula';
-        this.name = "Ursula";
-        this.title = "Blue Crow";
-        this.text = "A cruel member of the Black Fang assassins. Lends her service only to someone truly perfect.";
-        this.summon = false;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 7;
-        this.minimum_rarity = 3;
-        this.colour_type = 'blue';
-        this.weapon_type = 'tome_blue';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 145;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 15, atk: 6, spd: 7, def: 3, res: 7 },
-            4 : { hp: 15, atk: 6, spd: 8, def: 3, res: 8 },
-            5 : { hp: 16, atk: 7, spd: 8, def: 4, res: 8 },
-        };
-        this.growth_points =
-                { hp:  5, atk: 6, spd: 7, def: 3, res: 6 };
-
-        this.base_skills =
-        {   weapons   : [ 'thunder', 'elthunder', 'blarwolf', 'blarwolf_plus' ],
-            assists   : [ null ],
-            specials  : [ 'rising_thunder', 'growing_thunder' ],
-            passive_a : [ 'death_blow_1', 'death_blow_2', 'death_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'threaten_res_1', 'threaten_res_2', 'threaten_res_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-/*
-chars.veronica = class veronica extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'veronica';
-        this.name = "Veronica";
-        this.title = "Emblian Princess";
-        this.text = "Imperial princess of the Emblian Empire. Uses Heroes against the Askran Kingdom."
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 0;
-        this.minimum_rarity = 0;
-        this.colour_type = 'green';
-        this.weapon_type = 'tome_green';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 10;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : null
-        };
-        this.growth_points =
-                { null };
-
-        this.base_skills =
-        {   weapons   : [ 'elivagar' ],
-            assists   : [ null ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ null ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  null;
-    }
-};
-*/
-
-
-
-
-chars.virion = class virion extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'virion';
-        this.name = "Virion";
-        this.title = "Elite Archer";
-        this.text = "Rightful ruler of Rosanne in Valm who has a tendency for wit and puffery.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 13;
-        this.minimum_rarity = 1;
-        this.colour_type = 'grey';
-        this.weapon_type = 'bow';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 158;
-        this.base_stats =
-        {   1 : { hp: 18, atk: 5, spd:  5, def: 5, res: 1 },
-            2 : { hp: 18, atk: 6, spd:  6, def: 5, res: 1 },
-            3 : { hp: 19, atk: 6, spd:  6, def: 6, res: 2 },
-            4 : { hp: 19, atk: 7, spd:  7, def: 6, res: 2 },
-            5 : { hp: 20, atk: 7, spd:  7, def: 7, res: 3 },
-        };
-        this.growth_points =
-                { hp:  8, atk: 7, spd: 7, def: 5, res: 1 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_bow', 'steel_bow', 'silver_bow', 'silver_bow_plus' ],
-            assists   : [ null ],
-            specials  : [ 'night_sky', 'astra' ],
-            passive_a : [ 'defiant_res_1', 'defiant_res_2', 'defiant_res_3' ],
-            passive_b : [ 'seal_spd_1', 'seal_spd_2', 'seal_spd_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
-    }
-};
-
-
-
-
-chars.wrys = class wrys extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'wrys';
-        this.name = "Wrys";
-        this.title = "Kindly Priest";
-        this.text = "Humble priest of Talys who likes a quiet life. Despises battle, preferring to heal allies.";
-        this.summon = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 1.1;
-        this.minimum_rarity = 1;
-        this.colour_type = 'colourless';
-        this.weapon_type = 'staff';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 147;
-        this.base_stats =
-        {   1 : { hp: 16, atk: 3, spd: 4, def: 3, res:  8 },
-            2 : { hp: 16, atk: 3, spd: 5, def: 3, res:  9 },
-            3 : { hp: 17, atk: 4, spd: 5, def: 4, res:  9 },
-            4 : { hp: 17, atk: 4, spd: 6, def: 4, res: 10 },
-            5 : { hp: 18, atk: 5, spd: 6, def: 5, res: 10 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 5, spd: 4, def: 4, res:  8 };
-
-        this.base_skills =
-        {   weapons   : [ 'assault', 'slow' ],
-            assists   : [ 'heal', 'reconcile', 'rehabilitate' ],
-            specials  : [ 'imbue', 'heavenly_light' ],
-            passive_a : [ null ],
-            passive_b : [ 'live_to_serve_1', 'live_to_serve_2', 'live_to_serve_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.xander = class xander extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'xander';
-        this.name = "Xander";
-        this.title = "Paragon Knight";
-        this.text = "Nohrian prince respected for his military prowess. Wields the divine blade Siegfried.";
-        this.summon = false;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'cavalry';
-     // this.level = 40;
-     // this.rating = 154;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 19, atk: 7, spd: 4, def: 8, res: 3 },
-            4 : { hp: 19, atk: 8, spd: 4, def: 9, res: 3 },
-            5 : { hp: 20, atk: 8, spd: 5, def: 9, res: 4 },
-        };
-        this.growth_points =
-                { hp:  7, atk: 7, spd: 5, def: 9, res: 2 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'siegfried' ],
-            assists   : [ null ],
-            specials  : [ 'rising_light', 'blazing_light' ],
-            passive_a : [ 'armored_blow_1', 'armored_blow_2', 'armored_blow_3' ],
-            passive_b : [ null ],
-            passive_c : [ 'spur_def_1', 'spur_def_2', 'spur_def_3' ]
-        };
-        this.early_passive = null;
-        this.late_passive =  'passive_c';
-        this.special_passive = 'passive_a'; // ?? learns as 1,2,5?
-        this.special_pattern = [ null, 'armored_blow_1', 'armored_blow_2', null, null, 'armored_blow_3' ];
-    }
-};
-
-
-
-
-chars.xander_spring = class xander_spring extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'xander_spring';
-        this.name = "Xander";
-        this.subname = "🐇";
-        this.title = "Spring Prince";
-        this.text = "Nohrian prince who normally wields the divine blade Siegfried but left it behind for the festival.";
-        this.summon = true;
-        this.special = true;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 14;
-        this.minimum_rarity = 5;
-        this.colour_type = 'blue';
-        this.weapon_type = 'lance';
-        this.move_type = 'infantry';
-     // this.level = 40;
-     // this.rating = 154;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : null,
-            4 : null,
-            5 : { hp: 18, atk: 6, spd: 6, def: 9, res: 7 },
-        };
-        this.growth_points =
-                { hp:  6, atk: 5, spd: 6, def: 8, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_lance', 'steel_lance', 'carrot_lance', 'carrot_lance_plus' ],
-            assists   : [ 'swap' ],
-            specials  : [ null ],
-            passive_a : [ null ],
-            passive_b : [ 'live_for_honor' ],
-            passive_c : [ 'fortify_def_1', 'fortify_def_2', 'fortify_def_3' ]
-        };
-        this.early_passive = 'passive_c';
-        this.late_passive =  'passive_b';
-    }
-};
-
-
-
-
-chars.zephiel = class zephiel extends allies.ally
-{   constructor()
-    {   super();
-        this.tag = 'zephiel';
-        this.name = "Zephiel";
-        this.title = "The Liberator";
-        this.text = "King of Bern. Once a kindhearted boy who became disillusioned with humanity. Wants his world to be ruled by dragons.";
-        this.summon = false;
-     // this.obtained = #;
-     // this.favourite;
-        this.origin = 6;
-        this.minimum_rarity = 3;
-        this.colour_type = 'red';
-        this.weapon_type = 'sword';
-        this.move_type = 'armor';
-     // this.level = 40;
-     // this.rating = 10;
-        this.base_stats =
-        {   1 : null,
-            2 : null,
-            3 : { hp: 24, atk: 8, spd: 2, def: 11, res: 4 },
-            4 : { hp: 24, atk: 9, spd: 2, def: 11, res: 4 },
-            5 : { hp: 25, atk: 9, spd: 3, def: 12, res: 5 },
-        };
-        this.growth_points =
-                { hp: 10, atk: 8, spd: 2, def:  8, res: 5 };
-
-        this.base_skills =
-        {   weapons   : [ 'iron_sword', 'steel_sword', 'silver_sword', 'eckesachs' ],
-            assists   : [ null ],
-            specials  : [ 'retribution', 'reprisal' ],
-            passive_a : [ 'life_and_death_1', 'life_and_death_2', 'life_and_death_3' ],
-            passive_b : [ 'wary_fighter_1', 'wary_fighter_2', 'wary_fighter_3' ],
-            passive_c : [ null ]
-        };
-        this.early_passive = 'passive_b';
-        this.late_passive =  'passive_a';
+let chars =
+{
+    "abel__the_panther":
+    {   "tag": "abel__the_panther",
+        "name": "Abel",
+        "epithet": "The Panther",
+        "description": "Altean cavalier known for his sensibility. Rode with Cain in service of Marth.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 6, 8, 8, 5 ],
+            "5": [ 17, 7, 8, 8, 6 ]
+        },
+        "growth_points": [ 6, 8, 7, 4, 5 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Brave Lance", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "4", "-" ],
+            [ "Brave Lance+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Holy Vestments", "3", "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.", "100", "4", "-" ],
+            [ "Aegis", "3", "Reduces damage inflicted by attacks from foes 2 spaces away by 50%.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "HP +3", "Grants +3 to max HP.", "40", "-" ],
+            [ "HP +4", "Grants +4 to max HP.", "80", "4" ],
+            [ "HP +5", "Grants +5 to max HP.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Swordbreaker 1", "If unit's HP ≥ 90% in combat against a sword user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
+            [ "Swordbreaker 2", "If unit's HP ≥ 70% in combat against a sword user, unit makes a follow-up attack and foe cannot.", "100", "-" ],
+            [ "Swordbreaker 3", "If unit's HP ≥ 50% in combat against a sword user, unit makes a follow-up attack and foe cannot.", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "alfonse__prince_of_askr":
+    {   "tag": "alfonse__prince_of_askr",
+        "name": "Alfonse",
+        "epithet": "Prince of Askr",
+        "description": "A prince of Askr and member of the Order of Heroes. Kind and serious, and eager to maintain peace.",
+        "origin": "Fire Emblem Heroes",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 2 ],
+        "base_stats":
+        {   "2": [ 17, 8, 4, 7, 3 ],
+            "3": [ 18, 8, 5, 7, 4 ],
+            "4": [ 18, 9, 5, 8, 4 ],
+            "5": [ 19, 9, 6, 8, 5 ]
+        },
+        "growth_points": [ 7, 8, 5, 7, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "2", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "2" ],
+            [ "Silver Sword", "11", "1", "-", "200", "-", "3" ],
+            [ "Fólkvangr", "16", "1", "Grants Atk+5 at start of turn if unit's HP ≤ 50%.", "400", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Daylight", "4", "Heal 30% of damage dealt.", "100", "2", "-" ],
+            [ "Sol", "4", "Heal 50% of damage dealt.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Death Blow 1", "Grants Atk+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Death Blow 2", "Grants Atk+4 during combat if unit initiates the attack.", "100", "2" ],
+            [ "Death Blow 3", "Grants Atk+6 during combat if unit initiates the attack.", "200", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Atk 1", "Grants adjacent allies Atk+2 during combat.", "50", "3" ],
+            [ "Spur Atk 2", "Grants adjacent allies Atk+3 during combat.", "100", "4" ],
+            [ "Spur Atk 3", "Grants adjacent allies Atk+4 during combat.", "200", "5" ]
+        ]
+    },
+    "alm__hero_of_prophecy":
+    {   "tag": "alm__hero_of_prophecy",
+        "name": "Alm",
+        "epithet": "Hero of Prophecy",
+        "description": "A brave but kind young warrior, raised by the hero Mycen in Ram Village. His left hand is marked with the Brand.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 21, 9, 6, 6, 5 ]
+        },
+        "growth_points": [ 7, 7, 7, 6, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
+            [ "Falchion", "16", "1", "Effective against dragons. ", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Dragon Gaze", "4", "Grants +30% to Atk.", "100", "5", "-" ],
+            [ "Draconic Aura", "3", "Grants +30% to Atk.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Attack +1", "Grants Atk+1.", "30", "-" ],
+            [ "Attack +2", "Grants Atk+2.", "60", "-" ],
+            [ "Attack +3", "Grants Atk+3.", "120", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Windsweep 1", "If unit initiates attack, no follow-up occurs. Against foe with sword, lance, axe, bow, or dagger, if unit’s Spd - foe’s Spd ≥ 5, foe can’t counterattack.", "60", "-" ],
+            [ "Windsweep 2", "If unit initiates attack, no follow-up occurs. Against foe with sword, lance, axe, bow, or dagger, if unit’s Spd - foe’s Spd ≥ 3, foe can’t counterattack.", "120", "-" ],
+            [ "Windsweep 3", "If unit initiates attack, no follow-up occurs. Against foe with sword, lance, axe, bow, or dagger, if unit’s Spd - foe’s Spd ≥ 1, foe can’t counterattack.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "amelia__rose_of_the_war":
+    {   "tag": "amelia__rose_of_the_war",
+        "name": "Amelia",
+        "epithet": "Rose of the War",
+        "description": "A young soldier from a small village in Grado. She is honest and sincere.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Armored",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 19, 6, 8, 9, 4 ]
+        },
+        "growth_points": [ 9, 9, 8, 8, 5 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Slaying Axe", "10", "1", "Accelerates Special trigger (cooldown count-1).", "200", "-", "-" ],
+            [ "Slaying Axe+", "14", "1", "Accelerates Special trigger (cooldown count-1).", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Holy Vestments", "3", "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.", "100", "5", "-" ],
+            [ "Sacred Cowl", "2", "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Earth Boost 1", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Def+2 during combat.", "50", "-" ],
+            [ "Earth Boost 2", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Def+4 during combat.", "100", "-" ],
+            [ "Earth Boost 3", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Def+6 during combat.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Armor March 1", "If unit has 100% HP and an adjacent armored ally at start of turn, unit and any such allies can move 1 extra space. (That turn only; does not stack.)", "60", "-" ],
+            [ "Armor March 2", "If unit has ≥ 50% HP and an adjacent armored ally at start of turn, unit and any such allies can move 1 extra space. (That turn only; does not stack.)", "120", "-" ],
+            [ "Armor March 3", "If unit has an adjacent armored ally at the start of turn, unit and any such allies can move 1 extra space. (That turn only; does not stack.)", "240", "5" ]
+        ]
+    },
+    "anna__commander":
+    {   "tag": "anna__commander",
+        "name": "Anna",
+        "epithet": "Commander",
+        "description": "A veteran fighter who leads the Order of Heroes. Alfonse and Sharena's commander.",
+        "origin": "Fire Emblem Heroes",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 2 ],
+        "base_stats":
+        {   "2": [ 17, 6, 9, 3, 4 ],
+            "3": [ 18, 6, 9, 4, 5 ],
+            "4": [ 18, 7, 10, 4, 5 ],
+            "5": [ 19, 7, 10, 5, 6 ]
+        },
+        "growth_points": [ 6, 6, 9, 4, 6 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "2", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "2" ],
+            [ "Silver Axe", "11", "1", "-", "200", "-", "3" ],
+            [ "Nóatún", "16", "1", "Unit may move adjacent to any ally when HP ≤ 40%", "400", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "2", "-" ],
+            [ "Astra", "5", "Grants +150% to damage dealt.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Vantage 1", "Unit counterattacks first when attacked at HP ≤ 25%.", "50", "3" ],
+            [ "Vantage 2", "Unit counterattacks first when attacked at HP ≤ 50%.", "100", "4" ],
+            [ "Vantage 3", "Unit counterattacks first when attacked at HP ≤ 75%.", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Res 1", "Grants adjacent allies Res+2 during combat.", "50", "-" ],
+            [ "Spur Res 2", "Grants adjacent allies Res+3 during combat.", "100", "2" ],
+            [ "Spur Res 3", "Grants adjacent allies Res+4 during combat.", "200", "4" ]
+        ]
+    },
+    "arthur__hapless_hero":
+    {   "tag": "arthur__hapless_hero",
+        "name": "Arthur",
+        "epithet": "Hapless Hero",
+        "description": "A sworn ally of justice with uncannily bad luck. One of Elise's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 18, 7, 6, 7, 4 ],
+            "4": [ 18, 8, 6, 8, 4 ],
+            "5": [ 19, 8, 7, 8, 5 ]
+        },
+        "growth_points": [ 7, 7, 6, 6, 5 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "3", "-" ],
+            [ "Emerald Axe", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "4", "3" ],
+            [ "Emerald Axe+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Swap", "1", "Swap places with an adjacent ally.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "HP +3", "Grants +3 to max HP.", "40", "-" ],
+            [ "HP +4", "Grants +4 to max HP.", "80", "3" ],
+            [ "HP +5", "Grants +5 to max HP.", "160", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Lancebreaker 1", "If unit's HP ≥ 90% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "50", "3" ],
+            [ "Lancebreaker 2", "If unit's HP ≥ 70% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "100", "4" ],
+            [ "Lancebreaker 3", "If unit's HP ≥ 50% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "athena__borderland_sword":
+    {   "tag": "athena__borderland_sword",
+        "name": "Athena",
+        "epithet": "Borderland Sword",
+        "description": "A foreign warrior with a straightforward personality. Speaks with an accent.",
+        "origin": "Fire Emblem: New Mystery of the Emblem",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 6, 10, 8, 4 ],
+            "5": [ 17, 7, 10, 8, 5 ]
+        },
+        "growth_points": [ 5, 7, 9, 5, 5 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Wo Dao", "9", "1", "Grants +10 to damage when Special triggers.", "200", "4", "-" ],
+            [ "Wo Dao+", "13", "1", "Grants +10 to damage when Special triggers.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "4", "-" ],
+            [ "Moonbow", "2", "Resolve combat as if foe suffered Def/Res-30%.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Armored Blow 1", "Grants Def+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Sturdy Blow 1", "Grants Atk/Def+2 during combat if unit initiates combat.", "120", "4" ],
+            [ "Sturdy Blow 2", "Grants Atk/Def+4 during combat if unit initiates combat.", "240", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C": []
+    },
+    "azama__carefree_monk":
+    {   "tag": "azama__carefree_monk",
+        "name": "Azama",
+        "epithet": "Carefree Monk",
+        "description": "A monk of Hoshido with a curious sense of humor. One of Hinoka's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 18, 3, 6, 7, 5 ],
+            "4": [ 18, 3, 7, 8, 5 ],
+            "5": [ 19, 4, 7, 8, 6 ]
+        },
+        "growth_points": [ 7, 4, 5, 7, 5 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "3" ],
+            [ "Pain", "3", "2", "Inflicts 10 damage on targeted foe after combat.", "150", "-", "3" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "3", "-" ],
+            [ "Reconcile", "1", "Restores 7 HP each to target and this unit.", "100", "3", "-" ],
+            [ "Martyr", "1", "Restores HP=7+ this unit's suffered damage. Unit heals HP=half suffered damage. Slows Special trigger (cooldown count+1).", "200", "-", "4" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "-", "3" ],
+            [ "Solid-Earth Balm", "1", "When healing an ally with a staff, grants all allies Def+4 for 1 turn.", "150", "-", "3" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Threaten Atk 1", "Inflicts Atk-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "3" ],
+            [ "Threaten Atk 2", "Inflicts Atk-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "4" ],
+            [ "Threaten Atk 3", "Inflicts Atk-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "azura__lady_of_the_lake":
+    {   "tag": "azura__lady_of_the_lake",
+        "name": "Azura",
+        "epithet": "Lady of the Lake",
+        "description": "An enchanting princess raised in Hoshido who sings in battle to help her allies.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 5, 7, 4, 6 ]
+        },
+        "growth_points": [ 5, 8, 8, 4, 6 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Sapphire Lance", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "-", "-" ],
+            [ "Sapphire Lance+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Sing", "1", "Enables target to take another action. Cannot be used on units with Sing or Dance.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Speed +1", "Grants Spd+1.", "30", "-" ],
+            [ "Speed +2", "Grants Spd+2.", "60", "-" ],
+            [ "Speed +3", "Grants Spd+3.", "120", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Fortify Res 1", "Grants adjacent allies Res+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Res 2", "Grants adjacent allies Res+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Fortify Res 3", "Grants adjacent allies Res+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "barst__the_hatchet":
+    {   "tag": "barst__the_hatchet",
+        "name": "Barst",
+        "epithet": "The Hatchet",
+        "description": "Warrior of Talys who works for Ogma and has been a pirate and woodcutter.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 19, 8, 7, 5, 3 ],
+            "4": [ 19, 9, 8, 5, 3 ],
+            "5": [ 20, 9, 8, 6, 4 ]
+        },
+        "growth_points": [ 8, 7, 7, 7, 2 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "3", "-" ],
+            [ "Brave Axe", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "4", "3" ],
+            [ "Brave Axe+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Reposition", "1", "Moves adjacent ally to opposite side of unit.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Knock Back", "If unit initiates attack, foe is moved 1 space away after combat.", "150", "3" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Atk 1", "Grants adjacent allies Atk+2 during combat.", "50", "-" ],
+            [ "Spur Atk 2", "Grants adjacent allies Atk+3 during combat.", "100", "3" ],
+            [ "Spur Atk 3", "Grants adjacent allies Atk+4 during combat.", "200", "4" ]
+        ]
+    },
+    "bartre__fearless_warrior":
+    {   "tag": "bartre__fearless_warrior",
+        "name": "Bartre",
+        "epithet": "Fearless Warrior",
+        "description": "An outpost warrior who went on a journey to find his beloved daughter, Fir.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 20, 9, 5, 6, 2 ],
+            "4": [ 20, 10, 5, 7, 2 ],
+            "5": [ 21, 10, 6, 7, 3 ]
+        },
+        "growth_points": [ 9, 8, 5, 8, 1 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "3", "-" ],
+            [ "Hammer", "8", "1", "Effective against armored units. ", "200", "4", "3" ],
+            [ "Hammer+", "12", "1", "Effective against armored units. ", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Smite", "1", "Push adjacent ally 2 spaces farther away.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Fury 1", "Grants Atk/Spd/Def/Res+1. Unit takes 2 damage after combat.", "50", "3" ],
+            [ "Fury 2", "Grants Atk/Spd/Def/Res+2. Unit takes 4 damage after combat.", "100", "4" ],
+            [ "Fury 3", "Grants Atk/Spd/Def/Res+3. Unit takes 6 damage after combat.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Brash Assault 1", "Unit automatically makes a follow-up when at HP ≤ 30% and attacking a foe that can counter.", "50", "-" ],
+            [ "Brash Assault 2", "Unit automatically makes a follow-up when at HP ≤ 40% and attacking a foe that can counter.", "100", "3" ],
+            [ "Brash Assault 3", "Unit automatically makes a follow-up when at HP ≤ 50% and attacking a foe that can counter.", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "berkut__prideful_prince":
+    {   "tag": "berkut__prideful_prince",
+        "name": "Berkut",
+        "epithet": "Prideful Prince",
+        "description": "First in line to the Rigelian throne. Prideful, but loves Rinea with all his heart.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Cavalry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 18, 7, 4, 6, 6 ],
+            "4": [ 18, 8, 4, 7, 6 ],
+            "5": [ 19, 8, 5, 7, 7 ]
+        },
+        "growth_points": [ 7, 8, 4, 7, 4 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "-" ],
+            [ "Berkut's Lance", "10", "1", "Grants Res+4 when the unit is under attack.", "200", "4", "3" ],
+            [ "Berkut's Lance+", "14", "1", "Grants Res+4 when the unit is under attack.", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Flame", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "3" ],
+            [ "Blazing Flame", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Water Boost 1", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Res+2 during combat.", "50", "-" ],
+            [ "Water Boost 2", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Res+4 during combat.", "100", "4" ],
+            [ "Water Boost 3", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Res+6 during combat.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Res 1", "Grants adjacent allies Res+2 during combat.", "50", "-" ],
+            [ "Spur Res 2", "Grants adjacent allies Res+3 during combat.", "100", "-" ],
+            [ "Ward Cavalry", "Grants cavalry allies within 2 spaces Def/Res+4 during combat.", "200", "4" ]
+        ]
+    },
+    "beruka__quiet_assassin":
+    {   "tag": "beruka__quiet_assassin",
+        "name": "Beruka",
+        "epithet": "Quiet Assassin",
+        "description": "Wyvern-riding assassin who seems devoid of emotion. One of Camilla's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 19, 6, 5, 8, 4 ],
+            "4": [ 19, 7, 5, 9, 4 ],
+            "5": [ 20, 7, 6, 9, 5 ]
+        },
+        "growth_points": [ 8, 6, 4, 9, 4 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "3", "-" ],
+            [ "Killer Axe", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "3" ],
+            [ "Killer Axe+", "11", "1", "Accelerates Special trigger (cooldown count-1).", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "4", "3" ],
+            [ "Glimmer", "3", "Grants +50% to damage dealt.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Def 1", "Grants Def+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Def 2", "Grants Def+5 at start of turn if unit's HP ≤ 50%.", "80", "3" ],
+            [ "Defiant Def 3", "Grants Def+7 at start of turn if unit's HP ≤ 50%.", "160", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Lunge", "If unit initiates attack, after combat, unit and targeted foe swap places.", "150", "3" ]
+        ],
+        "base_passive_C": []
+    },
+    "boey__skillful_survivor":
+    {   "tag": "boey__skillful_survivor",
+        "name": "Boey",
+        "epithet": "Skillful Survivor",
+        "description": "A mage from Novis who grew up dirt-poor. Of calm demeanor, but not great at magic.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "green_tome",
+        "colour": "Green",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 18, 7, 4, 8, 4 ],
+            "5": [ 19, 7, 5, 8, 5 ]
+        },
+        "growth_points": [ 7, 6, 6, 7, 2 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "-", "-" ],
+            [ "Gronnowl", "6", "2", "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.", "200", "4", "-" ],
+            [ "Gronnowl+", "10", "2", "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Glowing Ember", "4", "Boosts damage dealt by 50% of unit's Def.", "100", "4", "-" ],
+            [ "Ignis", "4", "Boosts damage dealt by 80% of unit's Def.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Earth Boost 1", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Def+2 during combat.", "50", "-" ],
+            [ "Earth Boost 2", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Def+4 during combat.", "100", "-" ],
+            [ "Earth Boost 3", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Def+6 during combat.", "200", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Renewal 1", "At the start of every fourth turn, restores 10 HP.", "60", "-" ],
+            [ "Renewal 2", "At the start of every third turn, restores 10 HP.", "120", "4" ],
+            [ "Renewal 3", "At the start of every second turn, restores 10 HP.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "caeda__talyss_heart":
+    {   "tag": "caeda__talyss_heart",
+        "name": "Caeda",
+        "epithet": "Talys's Heart",
+        "description": "Princess of Talys who's as talented as she is charming. Marth's betrothed.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 5, 9, 4, 10 ],
+            "5": [ 17, 6, 9, 5, 10 ]
+        },
+        "growth_points": [ 5, 5, 9, 5, 7 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Armorslayer", "8", "1", "Effective against armored units. ", "200", "4", "-" ],
+            [ "Armorslayer+", "12", "1", "Effective against armored units. ", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Speed", "1", "Grants Spd+4 to an adjacent ally until the end of the turn.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Darting Blow 1", "Grants Spd+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Darting Blow 2", "Grants Spd+4 during combat if unit initiates the attack.", "100", "4" ],
+            [ "Darting Blow 3", "Grants Spd+6 during combat if unit initiates the attack.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Fortify Res 1", "Grants adjacent allies Res+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Res 2", "Grants adjacent allies Res+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Fortify Fliers", "Grants adjacent flying allies Def/Res+6 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "caeda__talyss_bride":
+    {   "tag": "caeda__talyss_bride",
+        "name": "Caeda",
+        "epithet": "Talys's Bride",
+        "subname": "💐",
+        "description": "The charming princess of Talys. Has grand dreams of being a bride.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "blue_tome",
+        "colour": "Blue",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 16, 7, 9, 4, 8 ]
+        },
+        "growth_points": [ 4, 6, 9, 3, 6 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
+            [ "Blessed Bouquet", "9", "2", "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.", "200", "-", "-" ],
+            [ "Blessed Bouquet+", "12", "2", "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "5", "-" ],
+            [ "Iceberg", "3", "Boosts damage dealt by 50% of unit's Res.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Resistance +1", "Grants Res+1.", "30", "-" ],
+            [ "Attack Res +1", "Grants Atk/Res+1.", "80", "-" ],
+            [ "Attack Res +2", "Grants Atk/Res+2.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Hone Spd 1", "Grants adjacent allies Spd+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Spd 2", "Grants adjacent allies Spd+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Hone Spd 3", "Grants adjacent allies Spd+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "cain__the_bull":
+    {   "tag": "cain__the_bull",
+        "name": "Cain",
+        "epithet": "The Bull",
+        "description": "Altean cavalier known for recklessness. Rode with Abel in service of Marth.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 8, 5, 8, 5 ],
+            "5": [ 18, 8, 6, 8, 6 ]
+        },
+        "growth_points": [ 7, 7, 8, 5, 3 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Brave Sword", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "4", "-" ],
+            [ "Brave Sword+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Buckler", "3", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "100", "4", "-" ],
+            [ "Escutcheon", "2", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Wings of Mercy 1", "Enables unit to warp adjacent to any ally with HP ≤ 30%.", "60", "-" ],
+            [ "Wings of Mercy 2", "Enables unit to warp adjacent to any ally with HP ≤ 40%.", "120", "-" ],
+            [ "Wings of Mercy 3", "Enables unit to warp adjacent to any ally with HP ≤ 50%.", "240", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Threaten Atk 1", "Inflicts Atk-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Atk 2", "Inflicts Atk-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "4" ],
+            [ "Threaten Atk 3", "Inflicts Atk-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "camilla__bewitching_beauty":
+    {   "tag": "camilla__bewitching_beauty",
+        "name": "Camilla",
+        "epithet": "Bewitching Beauty",
+        "description": "Princess of Nohr who dotes on her sibling Corrin and is merciless to foes.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 8, 8, 5, 6 ],
+            "5": [ 18, 8, 8, 6, 7 ]
+        },
+        "growth_points": [ 5, 6, 7, 6, 7 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Brave Axe", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "4", "-" ],
+            [ "Brave Axe+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Dragon Gaze", "4", "Grants +30% to Atk.", "100", "4", "-" ],
+            [ "Draconic Aura", "3", "Grants +30% to Atk.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Darting Blow 1", "Grants Spd+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Darting Blow 2", "Grants Spd+4 during combat if unit initiates the attack.", "100", "4" ],
+            [ "Darting Blow 3", "Grants Spd+6 during combat if unit initiates the attack.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Savage Blow 1", "If unit initiates attack, foes within 2 spaces of target take 3 damage after combat.", "50", "-" ],
+            [ "Savage Blow 2", "If unit initiates attack, foes within 2 spaces of target take 5 damage after combat.", "100", "-" ],
+            [ "Savage Blow 3", "If unit initiates attack, foes within 2 spaces of target take 7 damage after combat.", "200", "4" ]
+        ]
+    },
+    "camilla__spring_princess":
+    {   "tag": "camilla__spring_princess",
+        "name": "Camilla",
+        "epithet": "Spring Princess",
+        "subname": "🐇",
+        "description": "Princess of Nohr who dotes on her sibling Corrin. Loves her new outfit ever since Corrin said it was cute.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "green_tome",
+        "colour": "Green",
+        "weapon": "Tome",
+        "move_type": "Flying",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 9, 6, 8, 4 ]
+        },
+        "growth_points": [ 6, 8, 5, 6, 3 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "-", "-" ],
+            [ "Green Egg", "7", "2", "If unit initiates attack, unit recovers 4 HP after the battle.", "200", "-", "-" ],
+            [ "Green Egg+", "11", "2", "If unit initiates attack, unit recovers 4 HP after the battle.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Rally Attack", "1", "Grants Atk+4 to an adjacent ally until the end of the turn.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Defiant Spd 1", "Grants Spd+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Spd 2", "Grants Spd+5 at start of turn if unit's HP ≤ 50%.", "80", "-" ],
+            [ "Defiant Spd 3", "Grants Spd+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Live for Bounty", "If unit survives, get 1.5x shards/crystals from a Training Tower map. (If similar skill effects also used, only highest multiplier applied.)", "100", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "camus__sable_knight":
+    {   "tag": "camus__sable_knight",
+        "name": "Camus",
+        "epithet": "Sable Knight",
+        "description": "A knight who's devoted to his motherland, Grust. Wields the lance Gradivus.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Cavalry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 7, 8, 6, 3 ],
+            "4": [ 17, 8, 9, 6, 3 ],
+            "5": [ 18, 8, 9, 7, 4 ]
+        },
+        "growth_points": [ 7, 7, 7, 7, 2 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "-" ],
+            [ "Silver Lance", "11", "1", "-", "200", "4", "3" ],
+            [ "Gradivus", "16", "1", "Enables counterattack regardless of distance if this unit is attacked.", "400", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Thunder", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "3" ],
+            [ "Growing Thunder", "5", "Before combat this unit initiates, foes in a wide area around target take damage equal to (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Grani's Shield", "Neutralizes \"effective against\" bonuses.", "200", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Atk 1", "Grants adjacent allies Atk+2 during combat.", "50", "-" ],
+            [ "Spur Atk 2", "Grants adjacent allies Atk+3 during combat.", "100", "-" ],
+            [ "Goad Cavalry", "Grants cavalry allies within 2 spaces Spd/Atk+4 during combat.", "200", "4" ]
+        ]
+    },
+    "catria__middle_whitewing":
+    {   "tag": "catria__middle_whitewing",
+        "name": "Catria",
+        "epithet": "Middle Whitewing",
+        "description": "The middle of three sisters who are pegasus knights for Macedon.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "3": [ 16, 6, 9, 6, 5 ],
+            "4": [ 16, 7, 10, 6, 5 ],
+            "5": [ 17, 7, 10, 7, 6 ]
+        },
+        "growth_points": [ 6, 7, 7, 6, 5 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "-" ],
+            [ "Killer Lance", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "3" ],
+            [ "Killer Lance+", "11", "1", "Accelerates Special trigger (cooldown count-1).", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "4", "-" ],
+            [ "Luna", "3", "Resolve combat as if foe suffered Def/Res-50%.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Armored Blow 1", "Grants Def+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Armored Blow 2", "Grants Def+4 during combat if unit initiates the attack.", "100", "-" ],
+            [ "Armored Blow 3", "Grants Def+6 during combat if unit initiates the attack.", "200", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Seal Atk 1", "After combat, foe suffers Atk-3 through its next action.", "40", "-" ],
+            [ "Seal Atk 2", "After combat, foe suffers Atk-5 through its next action.", "80", "4" ],
+            [ "Seal Atk 3", "After combat, foe suffers Atk-7 through its next action.", "160", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "cecilia__etrurian_general":
+    {   "tag": "cecilia__etrurian_general",
+        "name": "Cecilia",
+        "epithet": "Etrurian General",
+        "description": "Mage General of Etruria. Taught Roy and Lilina when they were young.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "green_tome",
+        "colour": "Green",
+        "weapon": "Tome",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 15, 6, 4, 3, 5 ],
+            "2": [ 15, 7, 4, 3, 6 ],
+            "3": [ 16, 7, 5, 4, 6 ],
+            "4": [ 16, 8, 5, 4, 7 ],
+            "5": [ 17, 8, 6, 5, 7 ]
+        },
+        "growth_points": [ 5, 7, 5, 4, 6 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "1", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "3", "2" ],
+            [ "Gronnraven", "7", "2", "Grants weapon advantage vs. colorless foes.", "200", "4", "3" ],
+            [ "Gronnraven+", "11", "2", "Grants weapon advantage vs. colorless foes.", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Resistance", "1", "Grants Res+4 to an adjacent ally until the end of the turn.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Attack +1", "Grants Atk+1.", "30", "3" ],
+            [ "Attack +2", "Grants Atk+2.", "60", "4" ],
+            [ "Attack +3", "Grants Atk+3.", "120", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Escape Route 1", "Enables unit whose own HP is ≤ 30% to warp adjacent to any ally.", "60", "1" ],
+            [ "Escape Route 2", "Enables unit whose own HP is ≤ 40% to warp adjacent to any ally.", "120", "2" ],
+            [ "Escape Route 3", "Enables unit whose own HP is ≤ 50% to warp adjacent to any ally.", "240", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "celica__caring_princess":
+    {   "tag": "celica__caring_princess",
+        "name": "Celica",
+        "epithet": "Caring Princess",
+        "description": "The princess of Zofia; trained as a priestess. Caring towards others, and dislikes fighting. Bears the Brand on her right hand.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "red_tome",
+        "colour": "Red",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 8, 7, 5, 7 ]
+        },
+        "growth_points": [ 6, 7, 8, 4, 3 ],
+        "base_weapons":
+        [   [ "Fire", "4", "2", "-", "50", "-", "-" ],
+            [ "Elfire", "6", "2", "-", "100", "-", "-" ],
+            [ "Bolganone", "9", "2", "-", "200", "-", "-" ],
+            [ "Ragnarok", "14", "2", "If unit has 100% HP at the start of combat, unit receives Atk/Spd +5. If attacking, unit will receive 5 damage after combat.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Light", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "5", "-" ],
+            [ "Blazing Light", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).", "300", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Distant Def 1", "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+2 during combat.", "60", "-" ],
+            [ "Distant Def 2", "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+4 during combat.", "120", "-" ],
+            [ "Distant Def 3", "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+6 during combat.", "240", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Spur Def 2", "Grants adjacent allies Def+3 during combat.", "100", "-" ],
+            [ "Spur Def 3", "Grants adjacent allies Def+4 during combat.", "200", "5" ]
+        ]
+    },
+    "charlotte__money_maiden":
+    {   "tag": "charlotte__money_maiden",
+        "name": "Charlotte",
+        "epithet": "Money Maiden",
+        "subname": "💐",
+        "description": "Nohrian border guard always on patrol, whether to find enemies to fight or a rich fellow to marry.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 20, 10, 8, 5, 4 ]
+        },
+        "growth_points": [ 8, 8, 7, 5, 3 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "First Bite", "10", "1", "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.", "200", "-", "-" ],
+            [ "First Bite+", "14", "1", "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Smite", "1", "Push adjacent ally 2 spaces farther away.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Wind Boost 1", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Spd+2 during combat.", "50", "-" ],
+            [ "Wind Boost 2", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Spd+4 during combat.", "100", "-" ],
+            [ "Wind Boost 3", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Spd+6 during combat.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Threaten Atk 1", "Inflicts Atk-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Atk 2", "Inflicts Atk-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "-" ],
+            [ "Threaten Atk 3", "Inflicts Atk-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "cherche__wyvern_friend":
+    {   "tag": "cherche__wyvern_friend",
+        "name": "Cherche",
+        "epithet": "Wyvern Friend",
+        "description": "Wyvern-riding fighter in Virion's noble house. Thinks her wyvern Minerva is adorable.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 19, 9, 5, 7, 2 ],
+            "4": [ 19, 10, 5, 8, 2 ],
+            "5": [ 20, 10, 6, 8, 3 ]
+        },
+        "growth_points": [ 8, 9, 5, 7, 2 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "3", "-" ],
+            [ "Hammer", "8", "1", "Effective against armored units. ", "200", "4", "3" ],
+            [ "Hammer+", "12", "1", "Effective against armored units. ", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Pivot", "1", "Unit moves to opposite side of adjacent ally.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Attack +1", "Grants Atk+1.", "30", "-" ],
+            [ "Attack +2", "Grants Atk+2.", "60", "3" ],
+            [ "Attack +3", "Grants Atk+3.", "120", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Fortify Def 1", "Grants adjacent allies Def+2 through their next actions at the start of each turn.", "50", "3" ],
+            [ "Fortify Def 2", "Grants adjacent allies Def+3 through their next actions at the start of each turn.", "100", "4" ],
+            [ "Fortify Def 3", "Grants adjacent allies Def+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "chrom__exalted_prince":
+    {   "tag": "chrom__exalted_prince",
+        "name": "Chrom",
+        "epithet": "Exalted Prince",
+        "description": "A prince of Ylisse and descendant of the Hero-King. Leads the Shepherds.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 20, 9, 5, 7, 3 ],
+            "5": [ 21, 9, 6, 7, 4 ]
+        },
+        "growth_points": [ 8, 9, 5, 7, 2 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
+            [ "Falchion", "16", "1", "Effective against dragons. ", "400", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Daylight", "4", "Heal 30% of damage dealt.", "100", "4", "-" ],
+            [ "Sol", "4", "Heal 50% of damage dealt.", "200", "-", "4" ],
+            [ "Aether", "5", "Resolve combat as if foe suffered Def/Res-50%. Unit recovers HP=half damage dealt.", "500", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Def 1", "Grants Def+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Def 2", "Grants Def+5 at start of turn if unit's HP ≤ 50%.", "80", "-" ],
+            [ "Defiant Def 3", "Grants Def+7 at start of turn if unit's HP ≤ 50%.", "160", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Spur Def 2", "Grants adjacent allies Def+3 during combat.", "100", "4" ],
+            [ "Spur Def 3", "Grants adjacent allies Def+4 during combat.", "200", "5" ]
+        ]
+    },
+    "chrom__spring_exalt":
+    {   "tag": "chrom__spring_exalt",
+        "name": "Chrom",
+        "epithet": "Spring Exalt",
+        "subname": "🐇",
+        "description": "A prince of Ylisse and descendant of the Hero-King. Dressed to celebrate the spring festival.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 19, 9, 8, 6, 5 ]
+        },
+        "growth_points": [ 7, 8, 7, 6, 3 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Carrot Axe", "9", "1", "If unit initiates attack, unit recovers 4 HP after the battle.", "200", "-", "-" ],
+            [ "Carrot Axe+", "13", "1", "If unit initiates attack, unit recovers 4 HP after the battle.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Shove", "1", "Push adjacent ally 1 space farther away.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Defense +1", "Grants Def+1.", "30", "-" ],
+            [ "Attack Def +1", "Grants Atk/Def+1.", "80", "-" ],
+            [ "Attack Def +2", "Grants Atk/Def+2.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Axe Experience 1", "If unit survives, unit gets 1.5x EXP. (If similar skill effects also used, only highest multiplier applied.)", "30", "-" ],
+            [ "Axe Experience 2", "If unit survives, all axe users on team get 1.5x EXP. (If similar skill effects also used, only highest multiplier applied.)", "60", "-" ],
+            [ "Axe Experience 3", "If unit survives, all axe users on team get 2x EXP. (If similar skill effects also used, only highest multiplier applied.)", "120", "5" ]
+        ]
+    },
+    "clair__highborn_flier":
+    {   "tag": "clair__highborn_flier",
+        "name": "Clair",
+        "epithet": "Highborn Flier",
+        "description": "A pegasus knight with the Deliverance. Clive's younger sister. Secretly loves Alm.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 6, 8, 4, 9 ],
+            "5": [ 18, 7, 8, 5, 9 ]
+        },
+        "growth_points": [ 5, 5, 9, 5, 7 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Lance", "11", "1", "-", "200", "4", "-" ],
+            [ "Silver Lance+", "15", "1", "-", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Harsh Command", "1", "Converts penalties on target into bonuses.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Hit and Run", "If unit initiates attack, unit retreats 1 space after battle.", "150", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Spd 1", "Grants adjacent allies Spd+2 during combat.", "50", "-" ],
+            [ "Spur Spd 2", "Grants adjacent allies Spd+3 during combat.", "100", "4" ],
+            [ "Spur Spd 3", "Grants adjacent allies Spd+4 during combat.", "200", "5" ]
+        ]
+    },
+    "clarine__refined_noble":
+    {   "tag": "clarine__refined_noble",
+        "name": "Clarine",
+        "epithet": "Refined Noble",
+        "description": "Noble daughter of Count Reglay of Etruria. Fond of her brother, Klein. Has lived a privileged life.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 15, 5, 8, 4, 6 ],
+            "4": [ 15, 5, 9, 4, 7 ],
+            "5": [ 16, 6, 9, 5, 7 ]
+        },
+        "growth_points": [ 5, 5, 7, 4, 6 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
+            [ "Fear", "5", "2", "After combat, inflicts Atk-6 on targeted foe through its next action.", "150", "-", "3" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
+            [ "Reconcile", "1", "Restores 7 HP each to target and this unit.", "100", "3", "-" ],
+            [ "Martyr", "1", "Restores HP=7+ this unit's suffered damage. Unit heals HP=half suffered damage. Slows Special trigger (cooldown count+1).", "200", "5", "4" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "3", "-" ],
+            [ "Swift-Winds Balm", "1", "When healing an ally with a staff, grants all allies Spd+4 for 1 turn.", "150", "5", "3" ]
+        ],
+        "base_passive_A":
+        [   [ "Resistance +1", "Grants Res+1.", "30", "3" ],
+            [ "Resistance +2", "Grants Res+2.", "60", "4" ],
+            [ "Resistance +3", "Grants Res+3.", "120", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C": []
+    },
+    "clarisse__sniper_in_the_dark":
+    {   "tag": "clarisse__sniper_in_the_dark",
+        "name": "Clarisse",
+        "epithet": "Sniper in the Dark",
+        "description": "One of a group of assassins plotting to kill Marth. Katarina's friend. Cruel and lacks manners, but yearns for a family.",
+        "origin": "Fire Emblem: New Mystery of the Emblem",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 6, 7, 5, 4 ],
+            "4": [ 17, 7, 8, 5, 4 ],
+            "5": [ 18, 7, 8, 6, 5 ]
+        },
+        "growth_points": [ 5, 7, 8, 5, 3 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "3", "-" ],
+            [ "Clarisse's Bow", "7", "2", "After this unit attacks, foes within 2 spaces of target suffer Atk/Spd-5 through their next actions. Effective against flying units. ", "200", "4", "3" ],
+            [ "Clarisse's Bow+", "11", "2", "After this unit attacks, foes within 2 spaces of target suffer Atk/Spd-5 through their next actions. Effective against flying units. ", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "4", "3" ],
+            [ "Glimmer", "3", "Grants +50% to damage dealt.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Poison Strike 1", "Inflicts 4 damage to foe after any combat this unit initiates.", "60", "-" ],
+            [ "Poison Strike 2", "Inflicts 7 damage to foe after any combat this unit initiates.", "120", "3" ],
+            [ "Poison Strike 3", "Inflicts 10 damage to foe after any combat this unit initiates.", "240", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Threaten Def 1", "Inflicts Def-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "3" ],
+            [ "Threaten Def 2", "Inflicts Def-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "4" ],
+            [ "Threaten Def 3", "Inflicts Def-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "clive__idealistic_knight":
+    {   "tag": "clive__idealistic_knight",
+        "name": "Clive",
+        "epithet": "Idealistic Knight",
+        "description": "Former leader of the Deliverance and Clair's brother. Idealistic and focused on the good of the kingdom.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Cavalry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 18, 9, 5, 8, 3 ],
+            "5": [ 19, 9, 6, 8, 4 ]
+        },
+        "growth_points": [ 8, 7, 5, 7, 3 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Lance", "11", "1", "-", "200", "4", "-" ],
+            [ "Silver Lance+", "15", "1", "-", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Buckler", "3", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "100", "4", "-" ],
+            [ "Escutcheon", "2", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Defense +1", "Grants Def+1.", "30", "-" ],
+            [ "Defense +2", "Grants Def+2.", "60", "-" ],
+            [ "Defense +3", "Grants Def+3.", "120", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Hit and Run", "If unit initiates attack, unit retreats 1 space after battle.", "150", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "cordelia__knight_paragon":
+    {   "tag": "cordelia__knight_paragon",
+        "name": "Cordelia",
+        "epithet": "Knight Paragon",
+        "description": "The sole survivor of Ylisse's pegasus knights. Humble and supremely talented.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 9, 9, 4, 5 ],
+            "5": [ 18, 9, 9, 5, 6 ]
+        },
+        "growth_points": [ 6, 8, 8, 4, 5 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Brave Lance", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "4", "-" ],
+            [ "Brave Lance+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "4", "-" ],
+            [ "Astra", "5", "Grants +150% to damage dealt.", "200", "-", "4" ],
+            [ "Galeforce", "5", "If this unit initiates an attack, it can take another action after combat. (Once per turn only.)", "500", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Triangle Adept 1", "Gives Atk+10% if weapon-triangle advantage, Atk-10% if disadvantage.", "50", "-" ],
+            [ "Triangle Adept 2", "Gives Atk+15% if weapon-triangle advantage, Atk-15% if disadvantage.", "100", "4" ],
+            [ "Triangle Adept 3", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Pass 1", "Units can pass through foes if its own HP ≥ 75%.", "50", "-" ],
+            [ "Pass 2", "Units can pass through foes if its own HP ≥ 50%.", "100", "-" ],
+            [ "Pass 3", "Units can pass through foes if its own HP ≥ 25%.", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "cordelia__perfect_bride":
+    {   "tag": "cordelia__perfect_bride",
+        "name": "Cordelia",
+        "epithet": "Perfect Bride",
+        "subname": "💐",
+        "description": "Pegasus knight of Ylisse who excels in all things, including being delightful. Hopes to marry her perfect match.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 9, 9, 4, 5 ]
+        },
+        "growth_points": [ 5, 8, 8, 3, 4 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Cupid Arrow", "8", "2", "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates. Effective against fliers. ", "200", "-", "-" ],
+            [ "Cupid Arrow+", "12", "2", "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates. Effective against fliers. ", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Rally Attack", "1", "Grants Atk+4 to an adjacent ally until the end of the turn.", "150", "5", "-" ],
+            [ "Rally Attack Speed", "1", "Grants Atk/Spd+3 to an adjacent ally until the end of the turn.", "300", "-", "5" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Escape Route 1", "Enables unit whose own HP is ≤ 30% to warp adjacent to any ally.", "60", "-" ],
+            [ "Escape Route 2", "Enables unit whose own HP is ≤ 40% to warp adjacent to any ally.", "120", "-" ],
+            [ "Escape Route 3", "Enables unit whose own HP is ≤ 50% to warp adjacent to any ally.", "240", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Breath of Life 1", "If unit initiates attack, adjacent allies recover 3 HP after combat.", "50", "-" ],
+            [ "Breath of Life 2", "If unit initiates attack, adjacent allies recover 5 HP after combat.", "100", "-" ],
+            [ "Breath of Life 3", "If unit initiates attack, adjacent allies recover 7 HP after combat.", "200", "5" ]
+        ]
+    },
+    "corrin__fateful_princess":
+    {   "tag": "corrin__fateful_princess",
+        "name": "Corrin",
+        "epithet": "Fateful Princess",
+        "subname": "🐉",
+        "description": "A Hoshidan princess raised in Nohr. Fights on her chosen path with the divine blade Yato.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "blue_dragonstone",
+        "colour": "Blue",
+        "weapon": "Dragon",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 18, 7, 5, 7, 5 ],
+            "4": [ 18, 8, 5, 8, 5 ],
+            "5": [ 19, 8, 6, 8, 6 ]
+        },
+        "growth_points": [ 6, 5, 9, 8, 3 ],
+        "base_weapons":
+        [   [ "Fire Breath", "6", "1", "-", "50", "-", "-" ],
+            [ "Fire Breath+", "8", "1", "-", "100", "3", "-" ],
+            [ "Dark Breath", "9", "1", "After this unit attacks, foes within 2 spaces of target suffer Atk/Spd-5 through their next actions.", "200", "4", "3" ],
+            [ "Dark Breath+", "13", "1", "After this unit attacks, foes within 2 spaces of target suffer Atk/Spd-5 through their next actions.", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Dragon Gaze", "4", "Grants +30% to Atk.", "100", "4", "3" ],
+            [ "Draconic Aura", "3", "Grants +30% to Atk.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Seal Res 1", "After combat, foe suffers Res-3 through its next action.", "40", "3" ],
+            [ "Seal Res 2", "After combat, foe suffers Res-5 through its next action.", "80", "4" ],
+            [ "Seal Res 3", "After combat, foe suffers Res-7 through its next action.", "160", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Hone Atk 1", "Grants adjacent allies Atk+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Atk 2", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "100", "3" ],
+            [ "Hone Atk 3", "Grants adjacent allies Atk+4 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "corrin__novice_vacationer":
+    {   "tag": "corrin__novice_vacationer",
+        "name": "Corrin",
+        "epithet": "Novice Vacationer",
+        "subname": "🌅",
+        "description": "A Hoshidan princess raised in Nohr. She won a ticket to a tropical island in a lottery.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "blue_tome",
+        "colour": "Blue",
+        "weapon": "Tome",
+        "move_type": "Flying",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 7, 8, 5, 7 ]
+        },
+        "growth_points": [ 4, 7, 8, 4, 5 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
+            [ "Sealife Tome", "8", "2", "Grants allies within 2 spaces Atk/Spd+1 during combat.", "200", "-", "-" ],
+            [ "Sealife Tome+", "12", "2", "Grants allies within 2 spaces Atk/Spd+1 during combat.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Dragon Gaze", "4", "Grants +30% to Atk.", "100", "5", "-" ],
+            [ "Dragon Fang", "4", "Grants +50% to Atk.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Darting Blow 1", "Grants Spd+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Swift Strike 1", "If unit initiates combat, unit granted Spd/Res+2 during battle.", "120", "-" ],
+            [ "Swift Strike 2", "If unit initiates combat, unit granted Spd/Res+4 during battle.", "240", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Fortify Res 1", "Grants adjacent allies Res+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Res 2", "Grants adjacent allies Res+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Fortify Fliers", "Grants adjacent flying allies Def/Res+6 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "corrin__fateful_prince":
+    {   "tag": "corrin__fateful_prince",
+        "name": "Corrin",
+        "epithet": "Fateful Prince",
+        "subname": "🌽",
+        "description": "A Hoshidan prince raised in Nohr. Fights on his chosen path with the divine blade Yato.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 19, 8, 8, 5, 4 ],
+            "5": [ 20, 8, 8, 6, 5 ]
+        },
+        "growth_points": [ 6, 7, 7, 6, 5 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
+            [ "Yato", "16", "1", "Grants Spd+4 during combat if unit initiates attack.", "400", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Dragon Gaze", "4", "Grants +30% to Atk.", "100", "4", "-" ],
+            [ "Dragon Fang", "4", "Grants +50% to Atk.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Defense +1", "Grants Def+1.", "30", "-" ],
+            [ "Defense +2", "Grants Def+2.", "60", "-" ],
+            [ "Defense +3", "Grants Def+3.", "120", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Obstruct 1", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 90%. (No effect on foes with a Pass skill.)", "50", "-" ],
+            [ "Obstruct 2", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 70%. (No effect on foes with a Pass skill.)", "100", "4" ],
+            [ "Obstruct 3", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 50%. (No effect on foes with a Pass skill.)", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "delthea__free_spirit":
+    {   "tag": "delthea__free_spirit",
+        "name": "Delthea",
+        "epithet": "Free Spirit",
+        "description": "A naturally talented mage who hates training and hard work. Has a brother, Luthier.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "blue_tome",
+        "colour": "Blue",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 16, 10, 8, 3, 7 ]
+        },
+        "growth_points": [ 4, 8, 8, 1, 7 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
+            [ "Thoron", "9", "2", "-", "200", "-", "-" ],
+            [ "Dark Aura", "14", "2", "Grants adjacent allies who use swords, axes, lances, or dragonstones Atk+6 through their next actions at the start of each turn.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Miracle", "5", "If HP &gt; 1, survive a lethal attack with 1 HP remaining.", "200", "5", "-" ]
+        ],
+        "base_passive_A":
+        [   [ "Death Blow 1", "Grants Atk+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Death Blow 2", "Grants Atk+4 during combat if unit initiates the attack.", "100", "-" ],
+            [ "Death Blow 3", "Grants Atk+6 during combat if unit initiates the attack.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Atk 1", "Grants adjacent allies Atk+2 during combat.", "50", "-" ],
+            [ "Drive Atk 1", "Grants allies within 2 spaces Atk+2 during combat.", "120", "-" ],
+            [ "Drive Atk 2", "Grants allies within 2 spaces Atk+3 during combat.", "240", "5" ]
+        ]
+    },
+    "donnel__village_hero":
+    {   "tag": "donnel__village_hero",
+        "name": "Donnel",
+        "epithet": "Village Hero",
+        "description": "A farm boy from a country village in the Halidom of Ylisse. Handy and hardy.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 15, 5, 3, 4, 2 ],
+            "2": [ 15, 6, 3, 5, 2 ],
+            "3": [ 16, 6, 4, 5, 3 ],
+            "4": [ 16, 7, 4, 6, 3 ],
+            "5": [ 17, 7, 5, 6, 4 ]
+        },
+        "growth_points": [ 8, 9, 7, 8, 5 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "1", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "2" ],
+            [ "Brave Lance", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "4", "3" ],
+            [ "Brave Lance+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Reciprocal Aid", "1", "Swap HP with adjacent ally (neither unit can go above their max HP).", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "HP +3", "Grants +3 to max HP.", "40", "1" ],
+            [ "HP +4", "Grants +4 to max HP.", "80", "2" ],
+            [ "HP +5", "Grants +5 to max HP.", "160", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Drag Back", "If unit initiates attack, the unit moves 1 space away after combat. Foe moves into unit's previous space.", "150", "3" ]
+        ],
+        "base_passive_C": []
+    },
+    "draug__gentle_giant":
+    {   "tag": "draug__gentle_giant",
+        "name": "Draug",
+        "epithet": "Gentle Giant",
+        "description": "An armored knight of Altea who served as Marth's shield. Very sincere.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Armored",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "2": [ 22, 7, 4, 12, 1 ],
+            "3": [ 23, 7, 5, 12, 2 ],
+            "4": [ 23, 8, 5, 13, 2 ],
+            "5": [ 24, 8, 6, 13, 3 ]
+        },
+        "growth_points": [ 8, 6, 8, 8, 3 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "2", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "2" ],
+            [ "Brave Sword", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "4", "3" ],
+            [ "Brave Sword+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Buckler", "3", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "100", "4", "3" ],
+            [ "Pavise", "3", "Reduces damage inflicted by attacks from adjacent foes by 50%.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Lunge", "If unit initiates attack, after combat, unit and targeted foe swap places.", "150", "3" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Spur Def 2", "Grants adjacent allies Def+3 during combat.", "100", "2" ],
+            [ "Ward Armor", "Grants armored allies within 2 spaces Def/Res+4 during combat.", "200", "4" ]
+        ]
+    },
+    "effie__army_of_one":
+    {   "tag": "effie__army_of_one",
+        "name": "Effie",
+        "epithet": "Army of One",
+        "description": "A gentle knight with great strength and devotion. One of Elise's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Armored",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 21, 12, 4, 11, 3 ],
+            "5": [ 22, 12, 5, 11, 4 ]
+        },
+        "growth_points": [ 9, 9, 4, 6, 5 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Lance", "11", "1", "-", "200", "4", "-" ],
+            [ "Silver Lance+", "15", "1", "-", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Smite", "1", "Push adjacent ally 2 spaces farther away.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Death Blow 1", "Grants Atk+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Death Blow 2", "Grants Atk+4 during combat if unit initiates the attack.", "100", "4" ],
+            [ "Death Blow 3", "Grants Atk+6 during combat if unit initiates the attack.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Wary Fighter 1", "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 90%.", "60", "-" ],
+            [ "Wary Fighter 2", "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 70%.", "120", "-" ],
+            [ "Wary Fighter 3", "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 50%.", "240", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "eirika__restoration_lady":
+    {   "tag": "eirika__restoration_lady",
+        "name": "Eirika",
+        "epithet": "Restoration Lady",
+        "description": "Princess of Renais. Ephraim's twin. Cares dearly for her brother. Her kindness has sometimes put her in danger.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 7, 9, 6, 5 ],
+            "5": [ 18, 7, 9, 7, 6 ]
+        },
+        "growth_points": [ 7, 5, 8, 5, 6 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
+            [ "Sieglinde", "16", "1", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "400", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Pivot", "1", "Unit moves to opposite side of adjacent ally.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Drag Back", "If unit initiates attack, the unit moves 1 space away after combat. Foe moves into unit's previous space.", "150", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Hone Spd 1", "Grants adjacent allies Spd+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Spd 2", "Grants adjacent allies Spd+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Hone Spd 3", "Grants adjacent allies Spd+4 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "eldigan__lionheart":
+    {   "tag": "eldigan__lionheart",
+        "name": "Eldigan",
+        "epithet": "Lionheart",
+        "description": "Ruler of Nordion. Wields the Demon Sword in knightly devotion to any master. Older brother of Lachesis.",
+        "origin": "Fire Emblem: Genealogy of the Holy War",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 19, 8, 5, 8, 6 ]
+        },
+        "growth_points": [ 8, 7, 5, 8, 2 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Killing Edge", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "-", "-" ],
+            [ "Mystletainn", "16", "1", "Accelerates Special trigger (cooldown count-1).", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Light", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "-", "-" ],
+            [ "Growing Light", "5", "Before combat this unit initiates, foes in a wide area near target take damage equal to (unit's Atk - foe's Def or Res).", "300", "5", "-" ]
+        ],
+        "base_passive_A":
+        [   [ "Fury 1", "Grants Atk/Spd/Def/Res+1. Unit takes 2 damage after combat.", "50", "-" ],
+            [ "Fury 2", "Grants Atk/Spd/Def/Res+2. Unit takes 4 damage after combat.", "100", "-" ],
+            [ "Fury 3", "Grants Atk/Spd/Def/Res+3. Unit takes 6 damage after combat.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Lunge", "If unit initiates attack, after combat, unit and targeted foe swap places.", "150", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "elise__budding_flower":
+    {   "tag": "elise__budding_flower",
+        "name": "Elise",
+        "epithet": "Budding Flower",
+        "description": "Princess of Nohr who adores her siblings. A bit childish, but has a pure heart and keen eyes.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 15, 8, 8, 4, 8 ]
+        },
+        "growth_points": [ 3, 7, 7, 3, 7 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
+            [ "Gravity", "6", "2", "After any combat, prevents foe from moving more than 1 space through its next action.", "150", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
+            [ "Mend", "1", "Restores 10 HP.", "100", "-", "-" ],
+            [ "Recover", "1", "Restores 15 HP. Slows Special trigger (cooldown count +1).", "200", "5", "-" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "-", "-" ],
+            [ "Kindled-Fire Balm", "1", "When healing an ally with a staff, grants all allies Atk+4 for 1 turn.", "150", "5", "-" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Live to Serve 1", "When healing allies with a staff, unit also recovers 50% of the HP restored.", "40", "-" ],
+            [ "Live to Serve 2", "When healing allies with a staff, unit also recovers 75% of the HP restored.", "80", "-" ],
+            [ "Live to Serve 3", "When healing allies with a staff, unit also recovers the same amount.", "160", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "elise__tropical_flower":
+    {   "tag": "elise__tropical_flower",
+        "name": "Elise",
+        "epithet": "Tropical Flower",
+        "subname": "🌅",
+        "description": "A Nohrian princess who loves her siblings and has matured a little by taking a solo trip to a tropical island.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "green_tome",
+        "colour": "Green",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 10, 8, 3, 6 ]
+        },
+        "growth_points": [ 4, 8, 8, 3, 5 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "-", "-" ],
+            [ "Hibiscus Tome", "8", "2", "Grants allies within 2 spaces Atk/Spd+1 during combat.", "200", "-", "-" ],
+            [ "Hibiscus Tome+", "12", "2", "Grants allies within 2 spaces Atk/Spd+1 during combat.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Rally Attack", "1", "Grants Atk+4 to an adjacent ally until the end of the turn.", "150", "5", "-" ],
+            [ "Rally Attack Resistance", "1", "Grants Atk/Res+3 to an adjacent ally until the end of the turn.", "300", "-", "5" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Speed +1", "Grants Spd+1.", "30", "-" ],
+            [ "Spd Res 1", "Grants Spd/Res+1.", "80", "-" ],
+            [ "Spd Res 2", "Grants Spd/Res+2.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "G Tome Valor 1", "If unit survives and uses a green tome, unit gets 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "30", "-" ],
+            [ "G Tome Valor 2", "If unit survives, all green tome users on team get 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "60", "-" ],
+            [ "G Tome Valor 3", "If unit survives, all green tome users on team get 2x SP. (If similar skill effects also used, only highest multiplier applied.)", "120", "5" ]
+        ]
+    },
+    "eliwood__knight_of_lycia":
+    {   "tag": "eliwood__knight_of_lycia",
+        "name": "Eliwood",
+        "epithet": "Knight of Lycia",
+        "description": "A sincere noble of Pherae. His friends Lyn and Hector serve him loyally.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 16, 6, 7, 5, 7 ],
+            "4": [ 16, 6, 8, 5, 8 ],
+            "5": [ 17, 7, 8, 6, 8 ]
+        },
+        "growth_points": [ 6, 7, 6, 4, 7 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "3" ],
+            [ "Durandal", "16", "1", "Grants Atk+4 during combat if unit initiates attack.", "400", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Holy Vestments", "3", "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.", "100", "4", "3" ],
+            [ "Sacred Cowl", "2", "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Axebreaker 1", "If unit's HP ≥ 90% in combat against an axe user, unit makes a follow-up attack and foe cannot.", "50", "3" ],
+            [ "Axebreaker 2", "If unit's HP ≥ 70% in combat against an axe user, unit makes a follow-up attack and foe cannot.", "100", "4" ],
+            [ "Axebreaker 3", "If unit's HP ≥ 50% in combat against an axe user, unit makes a follow-up attack and foe cannot.", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Res 1", "Grants adjacent allies Res+2 during combat.", "50", "-" ],
+            [ "Spur Res 2", "Grants adjacent allies Res+3 during combat.", "100", "3" ],
+            [ "Ward Cavalry", "Grants cavalry allies within 2 spaces Def/Res+4 during combat.", "200", "4" ]
+        ]
+    },
+    "ephraim__restoration_lord":
+    {   "tag": "ephraim__restoration_lord",
+        "name": "Ephraim",
+        "epithet": "Restoration Lord",
+        "description": "Prince of Renais. Eirika's twin. Cares deeply for his sister. His confidence has sometimes put him in danger.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 19, 9, 6, 8, 5 ]
+        },
+        "growth_points": [ 8, 8, 5, 7, 3 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Heavy Spear", "8", "1", "Effective against armored units. ", "200", "-", "-" ],
+            [ "Siegmund", "16", "1", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "5", "-" ],
+            [ "Moonbow", "2", "Resolve combat as if foe suffered Def/Res-30%.", "200", "-", "5" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Seal Def 1", "After combat, foe suffers Def-3 through its next action.", "40", "-" ],
+            [ "Seal Def 2", "After combat, foe suffers Def-5 through its next action.", "80", "-" ],
+            [ "Seal Def 3", "After combat, foe suffers Def-7 through its next action.", "160", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Threaten Def 1", "Inflicts Def-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Def 2", "Inflicts Def-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "-" ],
+            [ "Threaten Def 3", "Inflicts Def-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "est__junior_whitewing":
+    {   "tag": "est__junior_whitewing",
+        "name": "Est",
+        "epithet": "Junior Whitewing",
+        "description": "Youngest of three sisters who are pegasus knights for Macedon.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 16, 8, 7, 4, 7 ],
+            "4": [ 16, 9, 8, 4, 7 ],
+            "5": [ 17, 9, 8, 5, 8 ]
+        },
+        "growth_points": [ 5, 8, 6, 5, 7 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "-" ],
+            [ "Heavy Spear", "8", "1", "Effective against armored units. ", "200", "4", "3" ],
+            [ "Heavy Spear+", "12", "1", "Effective against armored units. ", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Shove", "1", "Push adjacent ally 1 space farther away.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Defiant Res 1", "Grants Res+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Res 2", "Grants Res+5 at start of turn if unit's HP ≤ 50%.", "80", "3" ],
+            [ "Defiant Res 3", "Grants Res+7 at start of turn if unit's HP ≤ 50%.", "160", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Seal Spd 1", "After combat, foe suffers Spd-3 through its next action.", "40", "3" ],
+            [ "Seal Spd 2", "After combat, foe suffers Spd-5 through its next action.", "80", "4" ],
+            [ "Seal Spd 3", "After combat, foe suffers Spd-7 through its next action.", "160", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "fae__divine_dragon":
+    {   "tag": "fae__divine_dragon",
+        "name": "Fae",
+        "epithet": "Divine Dragon",
+        "description": "A surviving Divine Dragon with the nature of a child and very little life experience.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "green_dragonstone",
+        "colour": "Green",
+        "weapon": "Dragon",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 15, 4, 3, 6, 8 ],
+            "5": [ 16, 5, 4, 6, 8 ]
+        },
+        "growth_points": [ 10, 9, 7, 5, 6 ],
+        "base_weapons":
+        [   [ "Fire Breath", "6", "1", "-", "50", "-", "-" ],
+            [ "Fire Breath+", "8", "1", "-", "100", "-", "-" ],
+            [ "Light Breath", "9", "1", "Grants adjacent allies Def/Res+4 through their next actions after any combat this unit initiates.", "200", "4", "-" ],
+            [ "Light Breath+", "13", "1", "Grants adjacent allies Def/Res+4 through their next actions after any combat this unit initiates.", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Draw Back", "1", "Unit moves 1 space away from target ally, who moves to unit's former position.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Renewal 1", "At the start of every fourth turn, restores 10 HP.", "60", "-" ],
+            [ "Renewal 2", "At the start of every third turn, restores 10 HP.", "120", "-" ],
+            [ "Renewal 3", "At the start of every second turn, restores 10 HP.", "240", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Threaten Atk 1", "Inflicts Atk-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Atk 2", "Inflicts Atk-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "4" ],
+            [ "Threaten Atk 3", "Inflicts Atk-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "faye__devoted_heart":
+    {   "tag": "faye__devoted_heart",
+        "name": "Faye",
+        "epithet": "Devoted Heart",
+        "description": "A young woman from Ram Village, and Alm's childhood friend. Her devotion to him stretches back to those days.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 16, 6, 3, 4, 7 ]
+        },
+        "growth_points": [ 8, 7, 6, 6, 7 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Firesweep Bow", "7", "2", "Effective against fliers. ", "200", "-", "-" ],
+            [ "Firesweep Bow+", "11", "2", "Effective against fliers. ", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Daylight", "4", "Heal 30% of damage dealt.", "100", "5", "-" ],
+            [ "Noontime", "3", "Heal 30% of damage dealt.", "200", "-", "5" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Wings of Mercy 1", "Enables unit to warp adjacent to any ally with HP ≤ 30%.", "60", "-" ],
+            [ "Wings of Mercy 2", "Enables unit to warp adjacent to any ally with HP ≤ 40%.", "120", "-" ],
+            [ "Wings of Mercy 3", "Enables unit to warp adjacent to any ally with HP ≤ 50%.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "felicia__maid_mayhem":
+    {   "tag": "felicia__maid_mayhem",
+        "name": "Felicia",
+        "epithet": "Maid Mayhem",
+        "description": "A maid of Nohr who's eager to do good work yet often bungles. One of Corrin's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "dagger",
+        "colour": "Colorless",
+        "weapon": "Dagger",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 13, 4, 9, 1, 7 ],
+            "2": [ 13, 4, 10, 1, 8 ],
+            "3": [ 14, 5, 10, 2, 8 ],
+            "4": [ 14, 5, 11, 2, 9 ],
+            "5": [ 15, 6, 11, 3, 9 ]
+        },
+        "growth_points": [ 5, 4, 8, 3, 8 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "1", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "3", "2" ],
+            [ "Silver Dagger", "7", "2", "After combat, inflicts Def/Res-5 on foe through its next action.", "200", "4", "3" ],
+            [ "Silver Dagger+", "10", "2", "After combat, inflicts Def/Res-7 on foe through its next action.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "4", "3" ],
+            [ "Glacies", "4", "Boosts damage dealt by 80% of unit's Res.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Resistance +1", "Grants Res+1.", "30", "3" ],
+            [ "Resistance +2", "Grants Res+2.", "60", "4" ],
+            [ "Resistance +3", "Grants Res+3.", "120", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Breath of Life 1", "If unit initiates attack, adjacent allies recover 3 HP after combat.", "50", "1" ],
+            [ "Breath of Life 2", "If unit initiates attack, adjacent allies recover 5 HP after combat.", "100", "2" ],
+            [ "Breath of Life 3", "If unit initiates attack, adjacent allies recover 7 HP after combat.", "200", "4" ]
+        ]
+    },
+    "fir__sword_student":
+    {   "tag": "fir__sword_student",
+        "name": "Fir",
+        "epithet": "Sword Student",
+        "description": "A woman who travels in search of the best swordplay opponents anywhere.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 18, 5, 9, 4, 6 ],
+            "4": [ 18, 5, 10, 4, 7 ],
+            "5": [ 19, 6, 10, 5, 7 ]
+        },
+        "growth_points": [ 6, 5, 8, 5, 7 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "-" ],
+            [ "Killing Edge", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "3" ],
+            [ "Killing Edge+", "11", "1", "Accelerates Special trigger (cooldown count-1).", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "4", "3" ],
+            [ "Glacies", "4", "Boosts damage dealt by 80% of unit's Res.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Speed +1", "Grants Spd+1.", "30", "-" ],
+            [ "Speed +2", "Grants Spd+2.", "60", "3" ],
+            [ "Speed +3", "Grants Spd+3.", "120", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Pass 1", "Units can pass through foes if its own HP ≥ 75%.", "50", "3" ],
+            [ "Pass 2", "Units can pass through foes if its own HP ≥ 50%.", "100", "4" ],
+            [ "Pass 3", "Units can pass through foes if its own HP ≥ 25%.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "florina__lovely_flier":
+    {   "tag": "florina__lovely_flier",
+        "name": "Florina",
+        "epithet": "Lovely Flier",
+        "description": "Youngest of three sisters who are Pegasus Knights of Ilia. Shy, gentle girl who loves animals.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 6, 7, 5, 7 ],
+            "4": [ 17, 6, 8, 5, 8 ],
+            "5": [ 18, 7, 8, 6, 8 ]
+        },
+        "growth_points": [ 7, 6, 5, 5, 8 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "-" ],
+            [ "Heavy Spear", "8", "1", "Effective against armored units. ", "200", "4", "3" ],
+            [ "Heavy Spear+", "12", "1", "Effective against armored units. ", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Ardent Sacrifice", "1", "Heals adjacent ally 10 HP. Unit loses 10 HP (but cannot reach 0 this way).", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Darting Blow 1", "Grants Spd+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Darting Blow 2", "Grants Spd+4 during combat if unit initiates the attack.", "100", "3" ],
+            [ "Darting Blow 3", "Grants Spd+6 during combat if unit initiates the attack.", "200", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Breath of Life 1", "If unit initiates attack, adjacent allies recover 3 HP after combat.", "50", "3" ],
+            [ "Breath of Life 2", "If unit initiates attack, adjacent allies recover 5 HP after combat.", "100", "4" ],
+            [ "Breath of Life 3", "If unit initiates attack, adjacent allies recover 7 HP after combat.", "200", "5" ]
+        ]
+    },
+    "frederick__polite_knight":
+    {   "tag": "frederick__polite_knight",
+        "name": "Frederick",
+        "epithet": "Polite Knight",
+        "description": "A knight who serves the royal house of Ylisse and helps lead Chrom's Shepherds.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 18, 8, 5, 7, 3 ],
+            "4": [ 18, 9, 5, 8, 3 ],
+            "5": [ 19, 9, 6, 8, 4 ]
+        },
+        "growth_points": [ 7, 8, 5, 9, 1 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "3", "-" ],
+            [ "Hammer", "8", "1", "Effective against armored units. ", "200", "4", "3" ],
+            [ "Hammer+", "12", "1", "Effective against armored units. ", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "4", "3" ],
+            [ "Luna", "3", "Resolve combat as if foe suffered Def/Res-50%.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Wings of Mercy 1", "Enables unit to warp adjacent to any ally with HP ≤ 30%.", "60", "3" ],
+            [ "Wings of Mercy 2", "Enables unit to warp adjacent to any ally with HP ≤ 40%.", "120", "4" ],
+            [ "Wings of Mercy 3", "Enables unit to warp adjacent to any ally with HP ≤ 50%.", "240", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Fortify Def 1", "Grants adjacent allies Def+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Def 2", "Grants adjacent allies Def+3 through their next actions at the start of each turn.", "100", "3" ],
+            [ "Fortify Def 3", "Grants adjacent allies Def+4 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "frederick__horizon_watcher":
+    {   "tag": "frederick__horizon_watcher",
+        "name": "Frederick",
+        "epithet": "Horizon Watcher",
+        "subname": "🌅",
+        "description": "A knight who serves the royal house of Ylisse. Collector of pebbles and shells on the beach.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "dagger",
+        "colour": "Colorless",
+        "weapon": "Dagger",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 18, 8, 7, 6, 5 ]
+        },
+        "growth_points": [ 6, 7, 7, 6, 2 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "-", "-" ],
+            [ "Seashell", "7", "2", "Foe takes Def/Res-5 until end of foe's next action. If unit has 100% HP at start of combat, Atk/Spd/Def/Res+2. If attacking, unit gets 2 damage after.", "200", "-", "-" ],
+            [ "Seashell+", "10", "2", "Foe takes Def/Res-7 until end of foe's next action. If unit has 100% HP at start of combat, Atk/Spd/Def/Res+2. If attacking, unit gets 2 damage after.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Ardent Sacrifice", "1", "Heals adjacent ally 10 HP. Unit loses 10 HP (but cannot reach 0 this way).", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Armored Blow 1", "Grants Def+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Armored Blow 2", "Grants Def+4 during combat if unit initiates the attack.", "100", "-" ],
+            [ "Armored Blow 3", "Grants Def+6 during combat if unit initiates the attack.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Seal Spd 1", "After combat, foe suffers Spd-3 through its next action.", "40", "-" ],
+            [ "Seal Atk Spd 1", "After combat, inflicts Atk/Spd-3 on foe through its next action.", "100", "-" ],
+            [ "Seal Atk Spd 2", "After combat, inflicts Atk/Spd-5 on foe through its next action.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "gaius__candy_stealer":
+    {   "tag": "gaius__candy_stealer",
+        "name": "Gaius",
+        "epithet": "Candy Stealer",
+        "description": "Thief of Ylisse known for his nimble hands and sweet tooth. Hides sweets in his pocket.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "dagger",
+        "colour": "Colorless",
+        "weapon": "Dagger",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 6, 9, 4, 3 ],
+            "4": [ 17, 7, 10, 4, 3 ],
+            "5": [ 18, 7, 10, 5, 4 ]
+        },
+        "growth_points": [ 7, 6, 8, 4, 3 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "3", "-" ],
+            [ "Rogue Dagger", "4", "2", "After combat, inflicts Def/Res-3 on foe through its next action. Grants unit Def/Res+3 for 1 turn.", "200", "4", "3" ],
+            [ "Rogue Dagger+", "7", "2", "After combat, inflicts Def/Res-5 on foe through its next action. Grants unit Def/Res+5 for 1 turn.", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Speed", "1", "Grants Spd+4 to an adjacent ally until the end of the turn.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Defiant Atk 1", "Grants Atk+3 at start of turn if unit's HP ≤ 50%.", "40", "3" ],
+            [ "Defiant Atk 2", "Grants Atk+5 at start of turn if unit's HP ≤ 50%.", "80", "4" ],
+            [ "Defiant Atk 3", "Grants Atk+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Pass 1", "Units can pass through foes if its own HP ≥ 75%.", "50", "-" ],
+            [ "Pass 2", "Units can pass through foes if its own HP ≥ 50%.", "100", "3" ],
+            [ "Pass 3", "Units can pass through foes if its own HP ≥ 25%.", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "gaius__thief_exposed":
+    {   "tag": "gaius__thief_exposed",
+        "name": "Gaius",
+        "epithet": "Thief Exposed",
+        "subname": "🌅",
+        "description": "A thief from Ylisse known for his sweet tooth. Usually secrets candy in his clothes, but can't when he's dressed like this.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 8, 9, 4, 6 ]
+        },
+        "growth_points": [ 4, 6, 9, 3, 6 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Refreshing Bolt", "8", "2", "If unit has 100% HP at start of combat, unit gets Atk/Spd/Def/Res+2. If attacking, unit will take 2 damage after combat. Effective against fliers. ", "200", "-", "-" ],
+            [ "Refreshing Bolt+", "12", "2", "If unit has 100% HP at start of combat, unit gets Atk/Spd/Def/Res+2. If attacking, unit will take 2 damage after combat. Effective against fliers. ", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "5", "-" ],
+            [ "Astra", "5", "Grants +150% to damage dealt.", "200", "-", "5" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Vantage 1", "Unit counterattacks first when attacked at HP ≤ 25%.", "50", "-" ],
+            [ "Vantage 2", "Unit counterattacks first when attacked at HP ≤ 50%.", "100", "-" ],
+            [ "Vantage 3", "Unit counterattacks first when attacked at HP ≤ 75%.", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Def Ploy 1", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Def-3 until the end of foe's next action.", "60", "-" ],
+            [ "Def Ploy 2", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Def-4 until the end of foe's next action.", "120", "-" ],
+            [ "Def Ploy 3", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Def-5 until the end of foe's next action.", "240", "5" ]
+        ]
+    },
+    "genny__endearing_ally":
+    {   "tag": "genny__endearing_ally",
+        "name": "Genny",
+        "epithet": "Endearing Ally",
+        "description": "A meek young cleric from Novis. Likes to write her own stories.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 9, 6, 4, 8 ]
+        },
+        "growth_points": [ 3, 8, 5, 4, 8 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
+            [ "Gravity", "6", "2", "After any combat, prevents foe from moving more than 1 space through its next action.", "150", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
+            [ "Mend", "1", "Restores 10 HP.", "100", "-", "-" ],
+            [ "Physic", "2", "Restores 8 HP. Rng: 2.", "200", "5", "-" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "-", "-" ],
+            [ "Heavenly Light", "2", "When healing an ally with a staff, all other allies recover 10 HP.", "150", "5", "-" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Wrathful Staff 1", "If unit has 100% HP at the start of combat, damage from their staff will be calculated the same as other weapons.", "60", "-" ],
+            [ "Wrathful Staff 2", "If unit has ≥ 50% HP at the start of combat, damage from their staff will be calculated the same as other weapons.", "120", "-" ],
+            [ "Wrathful Staff 3", "Damage from unit's staff will be calculated the same as other weapons.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "gordin__altean_archer":
+    {   "tag": "gordin__altean_archer",
+        "name": "Gordin",
+        "epithet": "Altean Archer",
+        "description": "Altean archer who is masterful with his bow. Looks younger than he actually is.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 18, 6, 5, 7, 3 ],
+            "4": [ 18, 7, 5, 8, 3 ],
+            "5": [ 19, 7, 6, 8, 4 ]
+        },
+        "growth_points": [ 7, 7, 5, 7, 2 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "3", "-" ],
+            [ "Brave Bow", "4", "2", "Spd-5. Effective against flying units. ", "200", "4", "3" ],
+            [ "Brave Bow+", "7", "2", "Spd-5. Effective against flying units. ", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Shove", "1", "Push adjacent ally 1 space farther away.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Attack +1", "Grants Atk+1.", "30", "-" ],
+            [ "Attack +2", "Grants Atk+2.", "60", "3" ],
+            [ "Attack +3", "Grants Atk+3.", "120", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Vantage 1", "Unit counterattacks first when attacked at HP ≤ 25%.", "50", "3" ],
+            [ "Vantage 2", "Unit counterattacks first when attacked at HP ≤ 50%.", "100", "4" ],
+            [ "Vantage 3", "Unit counterattacks first when attacked at HP ≤ 75%.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "gray__wry_comrade":
+    {   "tag": "gray__wry_comrade",
+        "name": "Gray",
+        "epithet": "Wry Comrade",
+        "description": "Alm's childhood friend from Ram Village. Worldly and competent.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 7, 6, 6, 3 ]
+        },
+        "growth_points": [ 8, 9, 8, 7, 5 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Zanbato", "10", "1", "Effective against cavalry units. ", "200", "-", "-" ],
+            [ "Zanbato+", "14", "1", "Effective against cavalry units. ", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Swap", "1", "Swap places with an adjacent ally.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Wind Boost 1", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Spd+2 during combat.", "50", "-" ],
+            [ "Wind Boost 2", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Spd+4 during combat.", "100", "-" ],
+            [ "Wind Boost 3", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Spd+6 during combat.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Sword Valor 1", "If unit survives and uses a sword, unit gets 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "30", "-" ],
+            [ "Sword Valor 2", "If unit survives, all sword users on team get 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "60", "-" ],
+            [ "Sword Valor 3", "If unit survives, all sword users on team get 2x SP. (If similar skill effects also used, only highest multiplier applied.)", "120", "5" ]
+        ]
+    },
+    "gunter__inveterate_soldier":
+    {   "tag": "gunter__inveterate_soldier",
+        "name": "Gunter",
+        "epithet": "Inveterate Soldier",
+        "description": "Veteran knight of Nohr. One of Corrin's retainers. Extremely strict.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 19, 8, 5, 9, 3 ],
+            "2": [ 19, 9, 5, 10, 3 ],
+            "3": [ 20, 9, 6, 10, 4 ],
+            "4": [ 20, 10, 6, 11, 4 ],
+            "5": [ 21, 10, 7, 11, 5 ]
+        },
+        "growth_points": [ 6, 6, 4, 6, 2 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "1", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "3", "2" ],
+            [ "Silver Axe", "11", "1", "-", "200", "4", "3" ],
+            [ "Silver Axe+", "15", "1", "-", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Harsh Command", "1", "Converts penalties on target into bonuses.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Armored Blow 1", "Grants Def+2 during combat if unit initiates the attack.", "50", "3" ],
+            [ "Armored Blow 2", "Grants Def+4 during combat if unit initiates the attack.", "100", "4" ],
+            [ "Armored Blow 3", "Grants Def+6 during combat if unit initiates the attack.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Hone Atk 1", "Grants adjacent allies Atk+2 through their next actions at the start of each turn.", "50", "1" ],
+            [ "Hone Atk 2", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "100", "2" ],
+            [ "Hone Cavalry", "Grants adjacent cavalry allies Atk/Spd+6 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "gwendolyn__adorable_knight":
+    {   "tag": "gwendolyn__adorable_knight",
+        "name": "Gwendolyn",
+        "epithet": "Adorable Knight",
+        "description": "Armored knight of Ostia. Intent on mastering defense, despite feeling awkward in the armor.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Armored",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 22, 7, 4, 11, 5 ],
+            "4": [ 22, 8, 4, 12, 5 ],
+            "5": [ 23, 8, 5, 12, 6 ]
+        },
+        "growth_points": [ 8, 6, 5, 8, 6 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "-" ],
+            [ "Killer Lance", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "3" ],
+            [ "Killer Lance+", "11", "1", "Accelerates Special trigger (cooldown count-1).", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Buckler", "3", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "100", "4", "3" ],
+            [ "Escutcheon", "2", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Drag Back", "If unit initiates attack, the unit moves 1 space away after combat. Foe moves into unit's previous space.", "150", "3" ]
+        ],
+        "base_passive_C":
+        [   [ "Hone Atk 1", "Grants adjacent allies Atk+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Atk 2", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "100", "3" ],
+            [ "Hone Armor", "Grants adjacent armored allies Atk/Spd+6 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "hana__focused_samurai":
+    {   "tag": "hana__focused_samurai",
+        "name": "Hana",
+        "epithet": "Focused Samurai",
+        "description": "A noble who is skilled with the katana. One of Sakura's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 16, 7, 8, 4, 2 ],
+            "2": [ 16, 8, 9, 4, 2 ],
+            "3": [ 17, 8, 9, 5, 3 ],
+            "4": [ 17, 9, 10, 5, 3 ],
+            "5": [ 18, 9, 10, 6, 4 ]
+        },
+        "growth_points": [ 5, 8, 8, 4, 6 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "1", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "2" ],
+            [ "Armorslayer", "8", "1", "Effective against armored units. ", "200", "4", "3" ],
+            [ "Armorslayer+", "12", "1", "Effective against armored units. ", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Attack", "1", "Grants Atk+4 to an adjacent ally until the end of the turn.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Life and Death 1", "Grants Atk/Spd+3. Inflicts Def/Res-3.", "50", "3" ],
+            [ "Life and Death 2", "Grants Atk/Spd+4. Inflicts Def/Res-4.", "100", "4" ],
+            [ "Life and Death 3", "Grants Atk/Spd+5. Inflicts Def/Res-5.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Obstruct 1", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 90%. (No effect on foes with a Pass skill.)", "50", "1" ],
+            [ "Obstruct 2", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 70%. (No effect on foes with a Pass skill.)", "100", "2" ],
+            [ "Obstruct 3", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 50%. (No effect on foes with a Pass skill.)", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "hawkeye__desert_guardian":
+    {   "tag": "hawkeye__desert_guardian",
+        "name": "Hawkeye",
+        "epithet": "Desert Guardian",
+        "description": "Guardian of the Nabata Desert and Arcadia, where dragons and humans live in harmony.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 20, 9, 4, 6, 5 ],
+            "5": [ 21, 9, 5, 6, 6 ]
+        },
+        "growth_points": [ 7, 7, 4, 6, 7 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Killer Axe", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "3" ],
+            [ "Killer Axe+", "11", "1", "Accelerates Special trigger (cooldown count-1).", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Light", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "-" ],
+            [ "Growing Light", "5", "Before combat this unit initiates, foes in a wide area near target take damage equal to (unit's Atk - foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Death Blow 1", "Grants Atk+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Death Blow 2", "Grants Atk+4 during combat if unit initiates the attack.", "100", "4" ],
+            [ "Death Blow 3", "Grants Atk+6 during combat if unit initiates the attack.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Threaten Atk 1", "Inflicts Atk-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Atk 2", "Inflicts Atk-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "-" ],
+            [ "Threaten Atk 3", "Inflicts Atk-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "hector__general_of_ostia":
+    {   "tag": "hector__general_of_ostia",
+        "name": "Hector",
+        "epithet": "General of Ostia",
+        "description": "Eliwood's friend and brother of the Marquess of Ostia. Prefers action to court formality.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Armored",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 24, 10, 5, 11, 4 ]
+        },
+        "growth_points": [ 9, 8, 5, 8, 3 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Axe", "11", "1", "-", "200", "-", "-" ],
+            [ "Armads", "16", "1", "Unit makes a guaranteed follow-up attack when attacked at HP ≥ 80%.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Buckler", "3", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "100", "5", "-" ],
+            [ "Pavise", "3", "Reduces damage inflicted by attacks from adjacent foes by 50%.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Distant Counter", "Enables unit to counterattack regardless of distance to attacker.", "300", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Atk 1", "Grants adjacent allies Atk+2 during combat.", "50", "-" ],
+            [ "Spur Atk 2", "Grants adjacent allies Atk+3 during combat.", "100", "-" ],
+            [ "Goad Armor", "Grants armored allies within 2 spaces Spd/Atk+4 during combat.", "200", "5" ]
+        ]
+    },
+    "henry__twisted_mind":
+    {   "tag": "henry__twisted_mind",
+        "name": "Henry",
+        "epithet": "Twisted Mind",
+        "description": "A dark mage of Plegia with a bright grin and a taste for the gruesome in battle.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "red_tome",
+        "colour": "Red",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 18, 5, 4, 7, 5 ],
+            "4": [ 18, 6, 4, 8, 5 ],
+            "5": [ 19, 6, 5, 8, 6 ]
+        },
+        "growth_points": [ 8, 4, 4, 7, 5 ],
+        "base_weapons":
+        [   [ "Flux", "4", "2", "-", "50", "-", "-" ],
+            [ "Ruin", "6", "2", "-", "100", "3", "-" ],
+            [ "Rauðrraven", "7", "2", "Grants weapon advantage vs. colorless foes.", "200", "4", "3" ],
+            [ "Rauðrraven+", "11", "2", "Grants weapon advantage vs. colorless foes.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Glowing Ember", "4", "Boosts damage dealt by 50% of unit's Def.", "100", "4", "3" ],
+            [ "Ignis", "4", "Boosts damage dealt by 80% of unit's Def.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Def 1", "Grants Def+3 at start of turn if unit's HP ≤ 50%.", "40", "3" ],
+            [ "Defiant Def 2", "Grants Def+5 at start of turn if unit's HP ≤ 50%.", "80", "4" ],
+            [ "Defiant Def 3", "Grants Def+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "G Tomebreaker 1", "If unit's HP ≥ 90% in combat against a green tome user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
+            [ "G Tomebreaker 2", "If unit's HP ≥ 70% in combat against a green tome user, unit makes a follow-up attack and foe cannot.", "100", "3" ],
+            [ "G Tomebreaker 3", "If unit's HP ≥ 50% in combat against a green tome user, unit makes a follow-up attack and foe cannot.", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "hinata__wild_samurai":
+    {   "tag": "hinata__wild_samurai",
+        "name": "Hinata",
+        "epithet": "Wild Samurai",
+        "description": "A coarse, yet caring, samurai of Hoshido. One of Takumi's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 20, 7, 4, 9, 2 ],
+            "4": [ 20, 8, 4, 10, 2 ],
+            "5": [ 21, 8, 5, 10, 3 ]
+        },
+        "growth_points": [ 8, 7, 5, 8, 3 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "1", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "2" ],
+            [ "Ruby Sword", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "4", "3" ],
+            [ "Ruby Sword+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Buckler", "3", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "100", "4", "3" ],
+            [ "Pavise", "3", "Reduces damage inflicted by attacks from adjacent foes by 50%.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Fury 1", "Grants Atk/Spd/Def/Res+1. Unit takes 2 damage after combat.", "50", "1" ],
+            [ "Fury 2", "Grants Atk/Spd/Def/Res+2. Unit takes 4 damage after combat.", "100", "2" ],
+            [ "Fury 3", "Grants Atk/Spd/Def/Res+3. Unit takes 6 damage after combat.", "200", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Brash Assault 1", "Unit automatically makes a follow-up when at HP ≤ 30% and attacking a foe that can counter.", "50", "3" ],
+            [ "Brash Assault 2", "Unit automatically makes a follow-up when at HP ≤ 40% and attacking a foe that can counter.", "100", "4" ],
+            [ "Brash Assault 3", "Unit automatically makes a follow-up when at HP ≤ 50% and attacking a foe that can counter.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "hinoka__warrior_princess":
+    {   "tag": "hinoka__warrior_princess",
+        "name": "Hinoka",
+        "epithet": "Warrior Princess",
+        "description": "Hoshidan princess who prefers battles over court life. Excels at watching over others.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 19, 7, 8, 6, 7 ]
+        },
+        "growth_points": [ 6, 9, 7, 5, 4 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Brave Lance", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "-", "-" ],
+            [ "Brave Lance+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "5", "-" ],
+            [ "Blazing Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5x (unit's Atk minus foe's Def or Res).", "300", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Def 1", "Grants Def+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Def 2", "Grants Def+5 at start of turn if unit's HP ≤ 50%.", "80", "-" ],
+            [ "Defiant Def 3", "Grants Def+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Hone Spd 1", "Grants adjacent allies Spd+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Spd 2", "Grants adjacent allies Spd+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Hone Fliers", "Grants adjacent flying allies Atk/Spd+6 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "ike__young_mercenary":
+    {   "tag": "ike__young_mercenary",
+        "name": "Ike",
+        "epithet": "Young Mercenary",
+        "description": "A kindhearted but stoic young man who has taken command of his father's mercenary band.",
+        "origin": "Fire Emblem: Path of Radiance",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 18, 9, 7, 8, 5 ]
+        },
+        "growth_points": [ 7, 8, 7, 7, 2 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
+            [ "Ragnell", "16", "1", "Enables counterattack regardless of distance if this unit is attacked.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "5", "-" ],
+            [ "Luna", "3", "Resolve combat as if foe suffered Def/Res-50%.", "200", "-", "5" ],
+            [ "Aether", "5", "Resolve combat as if foe suffered Def/Res-50%. Unit recovers HP=half damage dealt.", "500", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Heavy Blade 1", "If unit's Atk - foe's Atk ≥ 5, unit gains Special cooldown charge +1 per attack. (If using other similar skill, only highest value applied.)", "60", "-" ],
+            [ "Heavy Blade 2", "If unit's Atk - foe's Atk ≥ 3, unit gains Special cooldown charge +1 per attack. (If using other similar skill, only highest value applied.)", "120", "-" ],
+            [ "Heavy Blade 3", "If unit's Atk - foe's Atk ≥ 1, unit gains Special cooldown charge +1 per attack. (If using other similar skill, only highest value applied.)", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Swordbreaker 1", "If unit's HP ≥ 90% in combat against a sword user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
+            [ "Swordbreaker 2", "If unit's HP ≥ 70% in combat against a sword user, unit makes a follow-up attack and foe cannot.", "100", "-" ],
+            [ "Swordbreaker 3", "If unit's HP ≥ 50% in combat against a sword user, unit makes a follow-up attack and foe cannot.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "ike__brave_mercenary":
+    {   "tag": "ike__brave_mercenary",
+        "name": "Ike",
+        "epithet": "Brave Mercenary",
+        "subname": "🥇",
+        "description": "A kindhearted but stoic young man who has taken command of his father's mercenary band. Wields the axe of his father, Greil.",
+        "origin": "Fire Emblem: Path of Radiance",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 10, 6, 9, 5 ]
+        },
+        "growth_points": [ 8, 8, 6, 8, 3 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Axe", "11", "1", "-", "200", "-", "-" ],
+            [ "Urvan", "16", "1", "Accelerates Special trigger (cooldown count-1). If unit receives consecutive attacks, damage from second attack onward reduced by 80%.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "5", "-" ],
+            [ "Luna", "3", "Resolve combat as if foe suffered Def/Res-50%.", "200", "-", "5" ],
+            [ "Aether", "5", "Resolve combat as if foe suffered Def/Res-50%. Unit recovers HP=half damage dealt.", "500", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Steady Stance 1", "Grants Def+2 during combat when this unit is attacked.", "50", "-" ],
+            [ "Steady Stance 2", "Grants Def+4 during combat when this unit is attacked.", "100", "-" ],
+            [ "Steady Breath", "If attacked, unit granted Def+4 during combat; also gains Special cooldown charge +1. (If using other similar skill, only highest value applied.)", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Beorc's Blessing", "Effective against flying and cavalry units. Foe's bonuses (from skills like Fortify, Rally, etc.) are nullified during combat. (Skill cannot be inherited.)", "300", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Threaten Def 1", "Inflicts Def-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Def 2", "Inflicts Def-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "-" ],
+            [ "Threaten Def 3", "Inflicts Def-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "innes__regal_strategician":
+    {   "tag": "innes__regal_strategician",
+        "name": "Innes",
+        "epithet": "Regal Strategician",
+        "description": "The prince of Frelia. Tana's brother. He's brash and arrogant, but good at heart.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 16, 9, 8, 4, 7 ]
+        },
+        "growth_points": [ 5, 7, 8, 1, 7 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Silver Bow", "9", "2", "Effective against flying units. ", "200", "-", "-" ],
+            [ "Nidhogg", "14", "2", "Effective against flying units. ", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "5", "-" ],
+            [ "Iceberg", "3", "Boosts damage dealt by 50% of unit's Res.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Fortress Res 1", "Grants Res+3. Inflicts Atk-3.", "40", "-" ],
+            [ "Fortress Res 2", "Grants Res+4. Inflicts Atk-3.", "80", "-" ],
+            [ "Fortress Res 3", "Grants Res+5. Inflicts Atk-3.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Cancel Affinity 1", "Any weapon triangle affinity granted by unit's skills is negated. Also negates any weapon triangle affinity granted by foe's skills.", "50", "-" ],
+            [ "Cancel Affinity 2", "Any weapon triangle affinity granted by unit's skills is negated. If affinity disadvantage exists, weapon triangle affinity granted by foe's skills is negated.", "100", "-" ],
+            [ "Cancel Affinity 3", "Any weapon triangle affinity granted by unit's skills is negated. If affinity disadvantage exists, weapon triangle affinity granted by foe's skills is reversed.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "jaffar__angel_of_death":
+    {   "tag": "jaffar__angel_of_death",
+        "name": "Jaffar",
+        "epithet": "Angel of Death",
+        "description": "An emotionless member of the Black Fang assassins. Known as the Angel of Death.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "dagger",
+        "colour": "Colorless",
+        "weapon": "Dagger",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 7, 9, 6, 5 ]
+        },
+        "growth_points": [ 7, 5, 7, 5, 4 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "-", "-" ],
+            [ "Silver Dagger", "7", "2", "After combat, inflicts Def/Res-5 on foe through its next action.", "200", "-", "-" ],
+            [ "Deathly Dagger", "11", "2", "After combat, inflicts Def/Res-7 on foe through its next action. If unit initiated combat, 7 damage to foe after battle.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "-", "-" ],
+            [ "Glimmer", "3", "Grants +50% to damage dealt.", "200", "5", "-" ]
+        ],
+        "base_passive_A":
+        [   [ "Life and Death 1", "Grants Atk/Spd+3. Inflicts Def/Res-3.", "50", "-" ],
+            [ "Life and Death 2", "Grants Atk/Spd+4. Inflicts Def/Res-4.", "100", "-" ],
+            [ "Life and Death 3", "Grants Atk/Spd+5. Inflicts Def/Res-5.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Threaten Spd 1", "Inflicts Spd-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Spd 2", "Inflicts Spd-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "-" ],
+            [ "Threaten Spd 3", "Inflicts Spd-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "jagen__veteran_knight":
+    {   "tag": "jagen__veteran_knight",
+        "name": "Jagen",
+        "epithet": "Veteran Knight",
+        "description": "Veteran knight of Altea who protected Marth since he was young.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 19, 7, 6, 7, 10 ],
+            "4": [ 19, 8, 6, 7, 11 ],
+            "5": [ 20, 8, 7, 8, 11 ]
+        },
+        "growth_points": [ 4, 5, 4, 4, 7 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "-" ],
+            [ "Silver Lance", "11", "1", "-", "200", "4", "3" ],
+            [ "Silver Lance+", "15", "1", "-", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Holy Vestments", "3", "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.", "100", "4", "3" ],
+            [ "Aegis", "3", "Reduces damage inflicted by attacks from foes 2 spaces away by 50%.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Fury 1", "Grants Atk/Spd/Def/Res+1. Unit takes 2 damage after combat.", "50", "3" ],
+            [ "Fury 2", "Grants Atk/Spd/Def/Res+2. Unit takes 4 damage after combat.", "100", "4" ],
+            [ "Fury 3", "Grants Atk/Spd/Def/Res+3. Unit takes 6 damage after combat.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Fortify Res 1", "Grants adjacent allies Res+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Res 2", "Grants adjacent allies Res+3 through their next actions at the start of each turn.", "100", "3" ],
+            [ "Fortify Cavalry", "Grants adjacent cavalry allies Def/Res+6 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "jakob__devoted_servant":
+    {   "tag": "jakob__devoted_servant",
+        "name": "Jakob",
+        "epithet": "Devoted Servant",
+        "description": "A butler of Nohr who's superb at his work yet dislikes serving anyone but his liege, Corrin.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "dagger",
+        "colour": "Colorless",
+        "weapon": "Dagger",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 7, 9, 5, 4 ],
+            "5": [ 17, 7, 9, 6, 5 ]
+        },
+        "growth_points": [ 6, 6, 6, 5, 5 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "-", "-" ],
+            [ "Silver Dagger", "7", "2", "After combat, inflicts Def/Res-5 on foe through its next action.", "200", "4", "-" ],
+            [ "Silver Dagger+", "10", "2", "After combat, inflicts Def/Res-7 on foe through its next action.", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Resistance", "1", "Grants Res+4 to an adjacent ally until the end of the turn.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Defense +1", "Grants Def+1.", "30", "-" ],
+            [ "Defense +2", "Grants Def+2.", "60", "-" ],
+            [ "Defense +3", "Grants Def+3.", "120", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Renewal 1", "At the start of every fourth turn, restores 10 HP.", "60", "-" ],
+            [ "Renewal 2", "At the start of every third turn, restores 10 HP.", "120", "4" ],
+            [ "Renewal 3", "At the start of every second turn, restores 10 HP.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "jeorge__perfect_shot":
+    {   "tag": "jeorge__perfect_shot",
+        "name": "Jeorge",
+        "epithet": "Perfect Shot",
+        "description": "Archanean archer thought to be the best on his continent. A skilled strategist.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 8, 8, 4, 4 ],
+            "5": [ 18, 8, 8, 5, 5 ]
+        },
+        "growth_points": [ 5, 7, 7, 5, 4 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Silver Bow", "9", "2", "Effective against flying units. ", "200", "4", "-" ],
+            [ "Parthia", "14", "2", "Effective against flying units. ", "400", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Flame", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "-" ],
+            [ "Blazing Flame", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Seal Atk 1", "After combat, foe suffers Atk-3 through its next action.", "40", "-" ],
+            [ "Seal Atk 2", "After combat, foe suffers Atk-5 through its next action.", "80", "-" ],
+            [ "Seal Atk 3", "After combat, foe suffers Atk-7 through its next action.", "160", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Spd 1", "Grants adjacent allies Spd+2 during combat.", "50", "-" ],
+            [ "Spur Spd 2", "Grants adjacent allies Spd+3 during combat.", "100", "4" ],
+            [ "Spur Spd 3", "Grants adjacent allies Spd+4 during combat.", "200", "5" ]
+        ]
+    },
+    "julia__nagas_blood":
+    {   "tag": "julia__nagas_blood",
+        "name": "Julia",
+        "epithet": "Naga's Blood",
+        "description": "Inheritor of the Book of Naga. Seliph’s half sister by a different father. Gentle, yet faces her destiny with strength.",
+        "origin": "Fire Emblem: Genealogy of the Holy War",
+        "weapon_type": "green_tome",
+        "colour": "Green",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 16, 9, 7, 4, 8 ]
+        },
+        "growth_points": [ 6, 8, 5, 2, 7 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "-", "-" ],
+            [ "Rexcalibur", "9", "2", "-", "200", "-", "-" ],
+            [ "Naga", "14", "2", "Effective against dragons. ", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Dragon Gaze", "4", "Grants +30% to Atk.", "100", "5", "-" ],
+            [ "Dragon Fang", "4", "Grants +50% to Atk.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Resistance +1", "Grants Res+1.", "30", "-" ],
+            [ "Resistance +2", "Grants Res+2.", "60", "-" ],
+            [ "Resistance +3", "Grants Res+3.", "120", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Breath of Life 1", "If unit initiates attack, adjacent allies recover 3 HP after combat.", "50", "-" ],
+            [ "Breath of Life 2", "If unit initiates attack, adjacent allies recover 5 HP after combat.", "100", "-" ],
+            [ "Breath of Life 3", "If unit initiates attack, adjacent allies recover 7 HP after combat.", "200", "5" ]
+        ]
+    },
+    "kagero__honorable_ninja":
+    {   "tag": "kagero__honorable_ninja",
+        "name": "Kagero",
+        "epithet": "Honorable Ninja",
+        "description": "A ninja of Hoshido who is ready to lay down her life for her liege. One of Ryoma's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "dagger",
+        "colour": "Colorless",
+        "weapon": "Dagger",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 15, 9, 8, 4, 5 ],
+            "5": [ 16, 9, 8, 5, 6 ]
+        },
+        "growth_points": [ 3, 8, 7, 4, 6 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "-", "-" ],
+            [ "Poison Dagger", "2", "2", "Effective against infantry units. ", "200", "4", "-" ],
+            [ "Poison Dagger+", "5", "2", "Effective against infantry units. ", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Retribution", "3", "Grants bonus to damage dealt equal to 30% of damage suffered.", "100", "4", "-" ],
+            [ "Reprisal", "2", "Grants bonus to damage dealt equal to 30% of damage suffered.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Warding Blow 1", "Grants Res+2 during combat if unit initiates attack.", "50", "-" ],
+            [ "Warding Blow 2", "Grants Res+4 during combat if unit initiates attack.", "100", "4" ],
+            [ "Warding Blow 3", "Grants Res+6 during combat if unit initiates attack.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Daggerbreaker 1", "If unit's HP ≥ 90% in combat against a dagger user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
+            [ "Daggerbreaker 2", "If unit's HP ≥ 70% in combat against a dagger user, unit makes a follow-up attack and foe cannot.", "100", "-" ],
+            [ "Daggerbreaker 3", "If unit's HP ≥ 50% in combat against a dagger user, unit makes a follow-up attack and foe cannot.", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "karel__sword_demon":
+    {   "tag": "karel__sword_demon",
+        "name": "Karel",
+        "epithet": "Sword Demon",
+        "description": "A vicious swordsman from a family devoted to mastering the blade. Known as the Sword Demon.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 19, 8, 9, 6, 5 ]
+        },
+        "growth_points": [ 9, 6, 8, 5, 3 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Wo Dao", "9", "1", "Grants +10 to damage when Special triggers.", "200", "-", "-" ],
+            [ "Wo Dao+", "13", "1", "Grants +10 to damage when Special triggers.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Retribution", "3", "Grants bonus to damage dealt equal to 30% of damage suffered.", "100", "5", "-" ],
+            [ "Reprisal", "2", "Grants bonus to damage dealt equal to 30% of damage suffered.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Atk 1", "Grants Atk+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Atk 2", "Grants Atk+5 at start of turn if unit's HP ≤ 50%.", "80", "-" ],
+            [ "Defiant Atk 3", "Grants Atk+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Desperation 1", "If unit initiates combat with HP ≤ 25%, follow-up attacks occur immediately after unit's attack.", "50", "-" ],
+            [ "Desperation 2", "If unit initiates combat with HP ≤ 50%, follow-up attacks occur immediately after unit's attack.", "100", "-" ],
+            [ "Desperation 3", "If unit initiates combat with HP ≤ 75%, follow-up attacks occur immediately after unit's attack.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "katarina__wayward_one":
+    {   "tag": "katarina__wayward_one",
+        "name": "Katarina",
+        "epithet": "Wayward One",
+        "description": "Reserved and harboring a dark secret, this trainee tactician depends on others.",
+        "origin": "Fire Emblem: New Mystery of the Emblem",
+        "weapon_type": "red_tome",
+        "colour": "Red",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 6, 8, 5, 8 ]
+        },
+        "growth_points": [ 4, 8, 8, 1, 7 ],
+        "base_weapons":
+        [   [ "Fire", "4", "2", "-", "50", "-", "-" ],
+            [ "Elfire", "6", "2", "-", "100", "-", "-" ],
+            [ "Rauðrowl", "6", "2", "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.", "200", "-", "-" ],
+            [ "Rauðrowl+", "10", "2", "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "5", "-" ],
+            [ "Glacies", "4", "Boosts damage dealt by 80% of unit's Res.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Death Blow 1", "Grants Atk+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Swift Sparrow 1", "If unit initiates combat, unit granted Atk/Spd+2 during battle.", "120", "-" ],
+            [ "Swift Sparrow 2", "If unit initiates combat, unit granted Atk/Spd+4 during battle.", "240", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Atk Ploy 1", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Atk-3 until the end of foe's next action.", "60", "-" ],
+            [ "Atk Ploy 2", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Atk-4 until the end of foe's next action.", "120", "-" ],
+            [ "Atk Ploy 3", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Atk-5 until the end of foe's next action.", "240", "5" ]
+        ]
+    },
+    "klein__silver_nobleman":
+    {   "tag": "klein__silver_nobleman",
+        "name": "Klein",
+        "epithet": "Silver Nobleman",
+        "description": "A young general of Etruria. Clarine's brother. Treats all as equals.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 9, 7, 4, 4 ],
+            "5": [ 18, 9, 7, 5, 5 ]
+        },
+        "growth_points": [ 6, 6, 8, 3, 5 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Brave Bow", "4", "2", "Spd-5. Effective against flying units. ", "200", "4", "-" ],
+            [ "Brave Bow+", "7", "2", "Spd-5. Effective against flying units. ", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "4", "-" ],
+            [ "Glacies", "4", "Boosts damage dealt by 80% of unit's Res.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Death Blow 1", "Grants Atk+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Death Blow 2", "Grants Atk+4 during combat if unit initiates the attack.", "100", "-" ],
+            [ "Death Blow 3", "Grants Atk+6 during combat if unit initiates the attack.", "200", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Quick Riposte 1", "Unit automatically makes a follow-up attack if attacked at HP ≥ 90%.", "60", "-" ],
+            [ "Quick Riposte 2", "Unit automatically makes a follow-up attack if attacked at HP ≥ 80%.", "120", "4" ],
+            [ "Quick Riposte 3", "Unit automatically makes a follow-up attack if attacked at HP ≥ 70%.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "lachesis__lionhearts_sister":
+    {   "tag": "lachesis__lionhearts_sister",
+        "name": "Lachesis",
+        "epithet": "Lionheart's Sister",
+        "description": "Lady of House Nordion. Adores her older brother, Eldigan, to the point that other men pale in comparison.",
+        "origin": "Fire Emblem: Genealogy of the Holy War",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 5, 8, 4, 8 ],
+            "5": [ 17, 6, 8, 5, 8 ]
+        },
+        "growth_points": [ 6, 8, 4, 4, 6 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
+            [ "Absorb", "4", "2", "Recovers HP=50% of damage dealt.", "150", "-", "4" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
+            [ "Mend", "1", "Restores 10 HP.", "100", "4", "-" ],
+            [ "Physic", "2", "Restores 8 HP. Rng: 2.", "200", "5", "4" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "4", "-" ],
+            [ "Solid-Earth Balm", "1", "When healing an ally with a staff, grants all allies Def+4 for 1 turn.", "150", "5", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Res 1", "Grants adjacent allies Res+2 during combat.", "50", "-" ],
+            [ "Spur Res 2", "Grants adjacent allies Res+3 during combat.", "100", "4" ],
+            [ "Spur Res 3", "Grants adjacent allies Res+4 during combat.", "200", "5" ]
+        ]
+    },
+    "laslow__dancing_duelist":
+    {   "tag": "laslow__dancing_duelist",
+        "name": "Laslow",
+        "epithet": "Dancing Duelist",
+        "description": "A mysterious man with a flair for dancing and flirting. One of Xander's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 19, 8, 6, 5, 4 ],
+            "4": [ 19, 9, 7, 5, 4 ],
+            "5": [ 20, 9, 7, 6, 5 ]
+        },
+        "growth_points": [ 7, 8, 5, 7, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "3" ],
+            [ "Silver Sword+", "15", "1", "-", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Daylight", "4", "Heal 30% of damage dealt.", "100", "4", "3" ],
+            [ "Noontime", "3", "Heal 30% of damage dealt.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Axebreaker 1", "If unit's HP ≥ 90% in combat against an axe user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
+            [ "Axebreaker 2", "If unit's HP ≥ 70% in combat against an axe user, unit makes a follow-up attack and foe cannot.", "100", "3" ],
+            [ "Axebreaker 3", "If unit's HP ≥ 50% in combat against an axe user, unit makes a follow-up attack and foe cannot.", "200", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Hone Spd 1", "Grants adjacent allies Spd+2 through their next actions at the start of each turn.", "50", "3" ],
+            [ "Hone Spd 2", "Grants adjacent allies Spd+3 through their next actions at the start of each turn.", "100", "4" ],
+            [ "Hone Spd 3", "Grants adjacent allies Spd+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "legion__masked_maniac":
+    {   "tag": "legion__masked_maniac",
+        "name": "Legion",
+        "epithet": "Masked Maniac",
+        "description": "One of a group of assassins. Wears an odd mask, as do his many \"brothers.\"",
+        "origin": "Fire Emblem: New Mystery of the Emblem",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 19, 9, 8, 4, 2 ],
+            "4": [ 19, 10, 9, 4, 2 ],
+            "5": [ 20, 10, 9, 5, 3 ]
+        },
+        "growth_points": [ 8, 8, 8, 4, 3 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "3", "-" ],
+            [ "Legion's Axe", "10", "1", "After combat, bonuses on targeted foe become penalties through its next action.", "200", "4", "3" ],
+            [ "Legion's Axe+", "14", "1", "After combat, bonuses on targeted foe become penalties through its next action.", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Retribution", "3", "Grants bonus to damage dealt equal to 30% of damage suffered.", "100", "4", "3" ],
+            [ "Reprisal", "2", "Grants bonus to damage dealt equal to 30% of damage suffered.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Fury 1", "Grants Atk/Spd/Def/Res+1. Unit takes 2 damage after combat.", "50", "-" ],
+            [ "Fury 2", "Grants Atk/Spd/Def/Res+2. Unit takes 4 damage after combat.", "100", "4" ],
+            [ "Fury 3", "Grants Atk/Spd/Def/Res+3. Unit takes 6 damage after combat.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Obstruct 1", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 90%. (No effect on foes with a Pass skill.)", "50", "-" ],
+            [ "Obstruct 2", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 70%. (No effect on foes with a Pass skill.)", "100", "3" ],
+            [ "Obstruct 3", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 50%. (No effect on foes with a Pass skill.)", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "leo__sorcerous_prince":
+    {   "tag": "leo__sorcerous_prince",
+        "name": "Leo",
+        "epithet": "Sorcerous Prince",
+        "description": "A talented Nohrian prince who wields the divine tome Brynhildr.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "red_tome",
+        "colour": "Red",
+        "weapon": "Tome",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 7, 5, 6, 8 ]
+        },
+        "growth_points": [ 6, 6, 4, 5, 6 ],
+        "base_weapons":
+        [   [ "Flux", "4", "2", "-", "50", "-", "-" ],
+            [ "Ruin", "6", "2", "-", "100", "-", "-" ],
+            [ "Fenrir", "9", "2", "-", "200", "-", "-" ],
+            [ "Brynhildr", "14", "2", "If unit initiates attack, restricts foe's next-turn movement to 1 space or less.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Light", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "5", "-" ],
+            [ "Blazing Light", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).", "300", "-", "5" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Quick Riposte 1", "Unit automatically makes a follow-up attack if attacked at HP ≥ 90%.", "60", "-" ],
+            [ "Quick Riposte 2", "Unit automatically makes a follow-up attack if attacked at HP ≥ 80%.", "120", "-" ],
+            [ "Quick Riposte 3", "Unit automatically makes a follow-up attack if attacked at HP ≥ 70%.", "240", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Savage Blow 1", "If unit initiates attack, foes within 2 spaces of target take 3 damage after combat.", "50", "-" ],
+            [ "Savage Blow 2", "If unit initiates attack, foes within 2 spaces of target take 5 damage after combat.", "100", "-" ],
+            [ "Savage Blow 3", "If unit initiates attack, foes within 2 spaces of target take 7 damage after combat.", "200", "5" ]
+        ]
+    },
+    "leo__seashores_prince":
+    {   "tag": "leo__seashores_prince",
+        "name": "Leo",
+        "epithet": "Seashore's Prince",
+        "subname": "🌅",
+        "description": "A suntan-despising Nohrian prince who wields the divine tome Brynhildr. Loves red summer produce.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "red_tome",
+        "colour": "Red",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 18, 8, 5, 6, 7 ]
+        },
+        "growth_points": [ 5, 7, 6, 1, 9 ],
+        "base_weapons":
+        [   [ "Flux", "4", "2", "-", "50", "-", "-" ],
+            [ "Ruin", "6", "2", "-", "100", "-", "-" ],
+            [ "Tomato Tome", "8", "2", "Grants allies within 2 spaces Atk/Spd+1 during combat.", "200", "-", "-" ],
+            [ "Tomato Tome+", "12", "2", "Grants allies within 2 spaces Atk/Spd+1 during combat.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "5", "-" ],
+            [ "Iceberg", "3", "Boosts damage dealt by 50% of unit's Res.", "200", "-", "5" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Seal Res 1", "After combat, foe suffers Res-3 through its next action.", "40", "-" ],
+            [ "Seal Res 2", "After combat, foe suffers Res-5 through its next action.", "80", "-" ],
+            [ "Seal Res 3", "After combat, foe suffers Res-7 through its next action.", "160", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Atk Ploy 1", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Atk-3 until the end of foe's next action.", "60", "-" ],
+            [ "Atk Ploy 2", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Atk-4 until the end of foe's next action.", "120", "-" ],
+            [ "Atk Ploy 3", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Atk-5 until the end of foe's next action.", "240", "5" ]
+        ]
+    },
+    "leon__true_of_heart":
+    {   "tag": "leon__true_of_heart",
+        "name": "Leon",
+        "epithet": "True of Heart",
+        "description": "A handsome but narcissistic Zofian archer. Adores his friend Valbar.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 8, 5, 8, 4 ],
+            "5": [ 17, 8, 6, 8, 5 ]
+        },
+        "growth_points": [ 6, 8, 7, 6, 1 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Slaying Bow", "8", "2", "Effective against flying units. ", "200", "4", "-" ],
+            [ "Slaying Bow+", "12", "2", "Effective against flying units. ", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Glowing Ember", "4", "Boosts damage dealt by 50% of unit's Def.", "100", "4", "-" ],
+            [ "Ignis", "4", "Boosts damage dealt by 80% of unit's Def.", "200", "5", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Speed +1", "Grants Spd+1.", "30", "-" ],
+            [ "Speed +2", "Grants Spd+2.", "60", "-" ],
+            [ "Speed +3", "Grants Spd+3.", "120", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Guard 1", "If unit's HP is 100% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "50", "-" ],
+            [ "Guard 2", "If unit's HP is ≥ 90% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "100", "4" ],
+            [ "Guard 3", "If unit's HP is ≥ 80% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "lilina__delightful_noble":
+    {   "tag": "lilina__delightful_noble",
+        "name": "Lilina",
+        "epithet": "Delightful Noble",
+        "description": "A noble of Ostia and daughter of Hector with a natural gift for magic. Roy's friend since childhood.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "red_tome",
+        "colour": "Red",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 15, 9, 5, 3, 9 ],
+            "5": [ 16, 9, 6, 4, 9 ]
+        },
+        "growth_points": [ 5, 9, 5, 3, 6 ],
+        "base_weapons":
+        [   [ "Fire", "4", "2", "-", "50", "-", "-" ],
+            [ "Elfire", "6", "2", "-", "100", "-", "-" ],
+            [ "Bolganone", "9", "2", "-", "200", "4", "-" ],
+            [ "Bolganone+", "13", "2", "-", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Flame", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "-" ],
+            [ "Growing Flame", "5", "Before combat this unit initiates, foes in a wide area around target take damage equal to (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Attack +1", "Grants Atk+1.", "30", "-" ],
+            [ "Attack +2", "Grants Atk+2.", "60", "4" ],
+            [ "Attack +3", "Grants Atk+3.", "120", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Atk 1", "Grants adjacent allies Atk+2 during combat.", "50", "-" ],
+            [ "Spur Atk 2", "Grants adjacent allies Atk+3 during combat.", "100", "-" ],
+            [ "Spur Atk 3", "Grants adjacent allies Atk+4 during combat.", "200", "4" ]
+        ]
+    },
+    "linde__light_mage":
+    {   "tag": "linde__light_mage",
+        "name": "Linde",
+        "epithet": "Light Mage",
+        "description": "Daughter of Pontifex Miloah from Archanea. Inherited the light tome Aura. Wants to avenge her father's death.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "blue_tome",
+        "colour": "Blue",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 16, 9, 10, 4, 5 ]
+        },
+        "growth_points": [ 5, 8, 8, 1, 6 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
+            [ "Thoron", "9", "2", "-", "200", "-", "-" ],
+            [ "Aura", "14", "2", "Restores 5 HP to adjacent allies after any combat this unit initiates.", "400", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Ardent Sacrifice", "1", "Heals adjacent ally 10 HP. Unit loses 10 HP (but cannot reach 0 this way).", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Speed +1", "Grants Spd+1.", "30", "-" ],
+            [ "Speed +2", "Grants Spd+2.", "60", "-" ],
+            [ "Speed +3", "Grants Spd+3.", "120", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Fortify Res 1", "Grants adjacent allies Res+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Res 2", "Grants adjacent allies Res+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Fortify Res 3", "Grants adjacent allies Res+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "lissa__sprightly_cleric":
+    {   "tag": "lissa__sprightly_cleric",
+        "name": "Lissa",
+        "epithet": "Sprightly Cleric",
+        "description": "Princess of Ylisse's royal house and Chrom's younger sister. Determined to prove herself.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 15, 5, 4, 4, 6 ],
+            "2": [ 15, 6, 4, 4, 7 ],
+            "3": [ 16, 6, 5, 5, 7 ],
+            "4": [ 16, 7, 5, 5, 8 ],
+            "5": [ 17, 7, 6, 6, 8 ]
+        },
+        "growth_points": [ 6, 5, 5, 6, 6 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "1" ],
+            [ "Gravity", "6", "2", "After any combat, prevents foe from moving more than 1 space through its next action.", "150", "-", "3" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "1", "-" ],
+            [ "Reconcile", "1", "Restores 7 HP each to target and this unit.", "100", "3", "2" ],
+            [ "Rehabilitate", "1", "Restores 7 HP or more the further below 50% the target's HP is. Slows special trigger (cooldown count+1).", "200", "-", "4" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "4", "2" ],
+            [ "Kindled-Fire Balm", "1", "When healing an ally with a staff, grants all allies Atk+4 for 1 turn.", "150", "-", "3" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Renewal 1", "At the start of every fourth turn, restores 10 HP.", "60", "3" ],
+            [ "Renewal 2", "At the start of every third turn, restores 10 HP.", "120", "4" ],
+            [ "Renewal 3", "At the start of every second turn, restores 10 HP.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "lloyd__white_wolf":
+    {   "tag": "lloyd__white_wolf",
+        "name": "Lloyd",
+        "epithet": "White Wolf",
+        "description": "A member of the Black Fang assassins. Delivers justice to those they deem criminals. Known as the White Wolf. Son of the group's leader.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 16, 7, 8, 4, 7 ],
+            "4": [ 16, 8, 9, 4, 7 ],
+            "5": [ 17, 8, 9, 5, 8 ]
+        },
+        "growth_points": [ 7, 7, 8, 3, 6 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "3" ],
+            [ "Regal Blade", "16", "1", "If foe's HP is 100% when combat starts, unit receives Atk/Spd+2 during combat.", "400", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "4", "3" ],
+            [ "Iceberg", "3", "Boosts damage dealt by 50% of unit's Res.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Pass 1", "Units can pass through foes if its own HP ≥ 75%.", "50", "-" ],
+            [ "Pass 2", "Units can pass through foes if its own HP ≥ 50%.", "100", "-" ],
+            [ "Pass 3", "Units can pass through foes if its own HP ≥ 25%.", "200", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Threaten Atk 1", "Inflicts Atk-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Atk 2", "Inflicts Atk-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "4" ],
+            [ "Threaten Atk 3", "Inflicts Atk-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "lonqu__solitary_blade":
+    {   "tag": "lonqu__solitary_blade",
+        "name": "Lon'qu",
+        "epithet": "Solitary Blade",
+        "description": "A skilled swordsman of Regna Ferox who is oddly skittish around women.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 18, 6, 10, 4, 4 ],
+            "4": [ 18, 7, 11, 4, 4 ],
+            "5": [ 19, 7, 11, 5, 5 ]
+        },
+        "growth_points": [ 8, 6, 9, 4, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "-" ],
+            [ "Killing Edge", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "3" ],
+            [ "Killing Edge+", "11", "1", "Accelerates Special trigger (cooldown count-1).", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "4", "3" ],
+            [ "Glimmer", "3", "Grants +50% to damage dealt.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Speed +1", "Grants Spd+1.", "30", "3" ],
+            [ "Speed +2", "Grants Spd+2.", "60", "4" ],
+            [ "Speed +3", "Grants Spd+3.", "120", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Vantage 1", "Unit counterattacks first when attacked at HP ≤ 25%.", "50", "-" ],
+            [ "Vantage 2", "Unit counterattacks first when attacked at HP ≤ 50%.", "100", "3" ],
+            [ "Vantage 3", "Unit counterattacks first when attacked at HP ≤ 75%.", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "lucina__future_witness":
+    {   "tag": "lucina__future_witness",
+        "name": "Lucina",
+        "epithet": "Future Witness",
+        "description": "A princess and daughter of Chrom who traveled to her past to prevent apocalypse.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 19, 8, 10, 6, 4 ]
+        },
+        "growth_points": [ 7, 8, 8, 5, 3 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
+            [ "Falchion", "16", "1", "Effective against dragons. ", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "5", "-" ],
+            [ "Luna", "3", "Resolve combat as if foe suffered Def/Res-50%.", "200", "-", "5" ],
+            [ "Aether", "5", "Resolve combat as if foe suffered Def/Res-50%. Unit recovers HP=half damage dealt.", "500", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Spd 1", "Grants Spd+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Spd 2", "Grants Spd+5 at start of turn if unit's HP ≤ 50%.", "80", "-" ],
+            [ "Defiant Spd 3", "Grants Spd+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Atk 1", "Grants adjacent allies Atk+2 during combat.", "50", "-" ],
+            [ "Spur Atk 2", "Grants adjacent allies Atk+3 during combat.", "100", "-" ],
+            [ "Spur Atk 3", "Grants adjacent allies Atk+4 during combat.", "200", "5" ]
+        ]
+    },
+    "lucina__brave_princess":
+    {   "tag": "lucina__brave_princess",
+        "name": "Lucina",
+        "epithet": "Brave Princess",
+        "subname": "🥇",
+        "description": "A princess and the daughter of Chrom with a strong sense of justice. Fights in similar garb to her beloved father.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 8, 10, 8, 4 ]
+        },
+        "growth_points": [ 7, 8, 8, 5, 3 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Lance", "11", "1", "-", "200", "-", "-" ],
+            [ "Geirskögul", "16", "1", "Grants Def+3. Grants allies with sword, lance, axe, bow, or dagger within 2 spaces Atk/Spd+3 during combat.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Daylight", "4", "Heal 30% of damage dealt.", "100", "5", "-" ],
+            [ "Sol", "4", "Heal 50% of damage dealt.", "200", "-", "5" ],
+            [ "Aether", "5", "Resolve combat as if foe suffered Def/Res-50%. Unit recovers HP=half damage dealt.", "500", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Armored Blow 1", "Grants Def+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Sturdy Blow 1", "Grants Atk/Def+2 during combat if unit initiates combat.", "120", "-" ],
+            [ "Sturdy Blow 2", "Grants Atk/Def+4 during combat if unit initiates combat.", "240", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Spd 1", "Grants adjacent allies Spd+2 during combat.", "50", "-" ],
+            [ "Drive Spd 1", "Grants allies within 2 spaces Spd+2 during combat.", "120", "-" ],
+            [ "Drive Spd 2", "Grants allies within 2 spaces Spd+3 during combat.", "240", "5" ]
+        ]
+    },
+    "lucina__spring_exalt":
+    {   "tag": "lucina__spring_exalt",
+        "name": "Lucina",
+        "epithet": "Spring Exalt",
+        "subname": "🐇",
+        "description": "Daughter of Chrom. Future exalt of Ylisse. Curious about the old festival traditions of Ylisse.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "blue_tome",
+        "colour": "Blue",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 16, 7, 10, 5, 6 ]
+        },
+        "growth_points": [ 5, 6, 8, 4, 5 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
+            [ "Blue Egg", "7", "2", "If unit initiates attack, unit recovers 4 HP after the battle.", "200", "-", "-" ],
+            [ "Blue Egg+", "11", "2", "If unit initiates attack, unit recovers 4 HP after the battle.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Rally Speed", "1", "Grants Spd+4 to an adjacent ally until the end of the turn.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Darting Blow 1", "Grants Spd+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Swift Sparrow 1", "If unit initiates combat, unit granted Atk/Spd+2 during battle.", "120", "-" ],
+            [ "Swift Sparrow 2", "If unit initiates combat, unit granted Atk/Spd+4 during battle.", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Seal Res 1", "After combat, foe suffers Res-3 through its next action.", "40", "-" ],
+            [ "Seal Res 2", "After combat, foe suffers Res-5 through its next action.", "80", "-" ],
+            [ "Seal Res 3", "After combat, foe suffers Res-7 through its next action.", "160", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "lucius__the_light":
+    {   "tag": "lucius__the_light",
+        "name": "Lucius",
+        "epithet": "The Light",
+        "description": "A gentle cleric who serves Raven. Carries a heavy burden from a dark childhood.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 5, 8, 2, 9 ],
+            "5": [ 18, 6, 8, 3, 9 ]
+        },
+        "growth_points": [ 5, 8, 6, 1, 8 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
+            [ "Pain", "3", "2", "Inflicts 10 damage on targeted foe after combat.", "150", "-", "4" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
+            [ "Reconcile", "1", "Restores 7 HP each to target and this unit.", "100", "4", "-" ],
+            [ "Martyr", "1", "Restores HP=7+ this unit's suffered damage. Unit heals HP=half suffered damage. Slows Special trigger (cooldown count+1).", "200", "5", "4" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "4", "-" ],
+            [ "Miracle", "5", "If HP &gt; 1, survive a lethal attack with 1 HP remaining.", "200", "5", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "HP +3", "Grants +3 to max HP.", "40", "-" ],
+            [ "HP +4", "Grants +4 to max HP.", "80", "4" ],
+            [ "HP +5", "Grants +5 to max HP.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C": []
+    },
+    "lukas__sharp_soldier":
+    {   "tag": "lukas__sharp_soldier",
+        "name": "Lukas",
+        "epithet": "Sharp Soldier",
+        "description": "A young noble fighting for the Deliverance. Strict, calm, and considerate.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 18, 9, 4, 10, 3 ],
+            "5": [ 19, 9, 5, 10, 4 ]
+        },
+        "growth_points": [ 8, 8, 4, 9, 2 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Killer Lance", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "-" ],
+            [ "Killer Lance+", "11", "1", "Accelerates Special trigger (cooldown count-1).", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Holy Vestments", "3", "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.", "100", "4", "-" ],
+            [ "Sacred Cowl", "2", "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Fortress Def 1", "Grants Def+3. Inflicts Atk-3.", "40", "-" ],
+            [ "Fortress Def 2", "Grants Def+4. Inflicts Atk-3.", "80", "4" ],
+            [ "Fortress Def 3", "Grants Def+5. Inflicts Atk-3.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Obstruct 1", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 90%. (No effect on foes with a Pass skill.)", "50", "-" ],
+            [ "Obstruct 2", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 70%. (No effect on foes with a Pass skill.)", "100", "-" ],
+            [ "Obstruct 3", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 50%. (No effect on foes with a Pass skill.)", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "luke__rowdy_squire":
+    {   "tag": "luke__rowdy_squire",
+        "name": "Luke",
+        "epithet": "Rowdy Squire",
+        "description": "An aspiring knight of Altea. Flirtatious. Roderick's longtime friend and rival.",
+        "origin": "Fire Emblem: New Mystery of the Emblem",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 19, 8, 6, 8, 5 ]
+        },
+        "growth_points": [ 7, 8, 6, 6, 3 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Brave Sword", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "-", "-" ],
+            [ "Brave Sword+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Glowing Ember", "4", "Boosts damage dealt by 50% of unit's Def.", "100", "5", "-" ],
+            [ "Bonfire", "3", "Boosts damage dealt by 50% of unit's Def.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Fire Boost 1", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Atk+2 during combat.", "50", "-" ],
+            [ "Fire Boost 2", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Atk+4 during combat.", "100", "-" ],
+            [ "Fire Boost 3", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Atk+6 during combat.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Panic Ploy 1", "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 5 or more lower than unit through foe's next action.", "60", "-" ],
+            [ "Panic Ploy 2", "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 3 or more lower than unit through foe's next action.", "120", "-" ],
+            [ "Panic Ploy 3", "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 1 or more lower than unit through foe's next action.", "240", "5" ]
+        ]
+    },
+    "lyn__lady_of_the_plains":
+    {   "tag": "lyn__lady_of_the_plains",
+        "name": "Lyn",
+        "epithet": "Lady of the Plains",
+        "description": "A woman who grew up on the plains before learning she is the nobility of Caelin.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 18, 6, 11, 7, 5 ]
+        },
+        "growth_points": [ 5, 6, 8, 5, 7 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
+            [ "Sol Katti", "16", "1", "If wielder initiates attack at HP ≤ 50%, any follow-up occurs immediately.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "5", "-" ],
+            [ "Astra", "5", "Grants +150% to damage dealt.", "200", "-", "5" ],
+            [ "Galeforce", "5", "If this unit initiates an attack, it can take another action after combat. (Once per turn only.)", "500", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Atk 1", "Grants Atk+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Atk 2", "Grants Atk+5 at start of turn if unit's HP ≤ 50%.", "80", "-" ],
+            [ "Defiant Atk 3", "Grants Atk+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Spd 1", "Grants adjacent allies Spd+2 during combat.", "50", "-" ],
+            [ "Spur Spd 2", "Grants adjacent allies Spd+3 during combat.", "100", "-" ],
+            [ "Spur Spd 3", "Grants adjacent allies Spd+4 during combat.", "200", "5" ]
+        ]
+    },
+    "lyn__brave_lady":
+    {   "tag": "lyn__brave_lady",
+        "name": "Lyn",
+        "epithet": "Brave Lady",
+        "subname": "🥇",
+        "description": "A woman who grew up on the plains. Uses the bow, like her father, Hassar.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 16, 7, 9, 5, 6 ]
+        },
+        "growth_points": [ 5, 8, 8, 2, 6 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Silver Bow", "9", "2", "Effective against flying units. ", "200", "-", "-" ],
+            [ "Mulagir", "14", "2", "Effective against flying units. Grants Spd+3. If foe is magic user, foe's bonuses (from skills like Fortify, Rally, etc.) are nullified during combat.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Dragon Gaze", "4", "Grants +30% to Atk.", "100", "5", "-" ],
+            [ "Draconic Aura", "3", "Grants +30% to Atk.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Death Blow 1", "Grants Atk+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Swift Sparrow 1", "If unit initiates combat, unit granted Atk/Spd+2 during battle.", "120", "-" ],
+            [ "Swift Sparrow 2", "If unit initiates combat, unit granted Atk/Spd+4 during battle.", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Sacae's Blessing", "If foe has sword, lance, or axe, foe cannot counterattack. (Skill cannot be inherited.)", "300", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Atk Smoke 1", "After combat, inflicts Atk-3 on foes within 2 spaces of target through their next actions.", "60", "-" ],
+            [ "Atk Smoke 2", "After combat, inflicts Atk-5 on foes within 2 spaces of target through their next actions.", "120", "-" ],
+            [ "Atk Smoke 3", "After combat, inflicts Atk-7 on foes within 2 spaces of target through their next actions.", "240", "5" ]
+        ]
+    },
+    "lyn__bride_of_the_plains":
+    {   "tag": "lyn__bride_of_the_plains",
+        "name": "Lyn",
+        "epithet": "Bride of the Plains",
+        "subname": "💐",
+        "description": "Noblewoman of Caelin. Eager to win the bridal tournament and nab the prize bouquet.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 6, 10, 6, 5 ]
+        },
+        "growth_points": [ 6, 6, 7, 4, 5 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
+            [ "Candlelight", "7", "2", "After combat, foe inflicted with status preventing them from counterattacking.", "150", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
+            [ "Reconcile", "1", "Restores 7 HP each to target and this unit.", "100", "-", "-" ],
+            [ "Rehabilitate", "1", "Restores 7 HP or more the further below 50% the target's HP is. Slows special trigger (cooldown count+1).", "200", "5", "-" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "-", "-" ],
+            [ "Swift-Winds Balm", "1", "When healing an ally with a staff, grants all allies Spd+4 for 1 turn.", "150", "5", "-" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Dazzling Staff 1", "If unit has 100% HP at the start of combat, the enemy cannot counterattack.", "60", "-" ],
+            [ "Dazzling Staff 2", "If unit has ≥ 50% HP at the start of combat, the enemy cannot counterattack.", "120", "-" ],
+            [ "Dazzling Staff 3", "The enemy cannot counterattack.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "mae__bundle_of_energy":
+    {   "tag": "mae__bundle_of_energy",
+        "name": "Mae",
+        "epithet": "Bundle of Energy",
+        "description": "A mage from Novis and a dear friend of Celica. Always cheerful and energetic, but she has a tendency to get carried away.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "blue_tome",
+        "colour": "Blue",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 15, 10, 6, 2, 8 ],
+            "5": [ 16, 10, 7, 3, 8 ]
+        },
+        "growth_points": [ 5, 8, 7, 2, 6 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
+            [ "Blárowl", "6", "2", "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.", "200", "4", "-" ],
+            [ "Blárowl+", "10", "2", "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Draw Back", "1", "Unit moves 1 space away from target ally, who moves to unit's former position.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Desperation 1", "If unit initiates combat with HP ≤ 25%, follow-up attacks occur immediately after unit's attack.", "50", "-" ],
+            [ "Desperation 2", "If unit initiates combat with HP ≤ 50%, follow-up attacks occur immediately after unit's attack.", "100", "4" ],
+            [ "Desperation 3", "If unit initiates combat with HP ≤ 75%, follow-up attacks occur immediately after unit's attack.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "maria__minervas_sister":
+    {   "tag": "maria__minervas_sister",
+        "name": "Maria",
+        "epithet": "Minerva's Sister",
+        "description": "Princess of Macedon. Younger sister of Minerva and Michalis, whom she loves dearly.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 4, 8, 3, 10 ],
+            "5": [ 17, 5, 8, 4, 10 ]
+        },
+        "growth_points": [ 5, 6, 8, 3, 6 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
+            [ "Panic", "7", "2", "After combat, bonuses on targeted foe become penalties through its next action.", "150", "-", "4" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
+            [ "Mend", "1", "Restores 10 HP.", "100", "4", "-" ],
+            [ "Physic", "2", "Restores 8 HP. Rng: 2.", "200", "5", "4" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "4", "-" ],
+            [ "Miracle", "5", "If HP &gt; 1, survive a lethal attack with 1 HP remaining.", "200", "5", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Fortify Res 1", "Grants adjacent allies Res+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Res 2", "Grants adjacent allies Res+3 through their next actions at the start of each turn.", "100", "4" ],
+            [ "Fortify Res 3", "Grants adjacent allies Res+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "marth__altean_prince":
+    {   "tag": "marth__altean_prince",
+        "name": "Marth",
+        "epithet": "Altean Prince",
+        "subname": null,
+        "description": "Prince of Altea who fights for his homeland and deeply values his friends.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 18, 7, 8, 6, 5 ],
+            "5": [ 19, 7, 8, 7, 6 ]
+        },
+        "growth_points": [ 6, 7, 8, 6, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
+            [ "Falchion", "16", "1", "Effective against dragons. ", "400", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Pivot", "1", "Unit moves to opposite side of adjacent ally.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Escape Route 1", "Enables unit whose own HP is ≤ 30% to warp adjacent to any ally.", "60", "-" ],
+            [ "Escape Route 2", "Enables unit whose own HP is ≤ 40% to warp adjacent to any ally.", "120", "4" ],
+            [ "Escape Route 3", "Enables unit whose own HP is ≤ 50% to warp adjacent to any ally.", "240", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Spd 1", "Grants adjacent allies Spd+2 during combat.", "50", "-" ],
+            [ "Spur Spd 2", "Grants adjacent allies Spd+3 during combat.", "100", "-" ],
+            [ "Spur Spd 3", "Grants adjacent allies Spd+4 during combat.", "200", "4" ]
+        ]
+    },
+    "marth__enigmatic_blade":
+    {   "tag": "marth__enigmatic_blade",
+        "name": "Marth",
+        "epithet": "Enigmatic Blade",
+        "subname": "🎭",
+        "description": "A mysterious swordsman who hides his face behind a mask. Calls himself Marth.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 18, 8, 10, 5, 3 ],
+            "5": [ 19, 8, 10, 6, 4 ]
+        },
+        "growth_points": [ 7, 8, 8, 5, 3 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
+            [ "Falchion", "16", "1", "Effective against dragons. ", "400", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B": [],
+        "base_passive_C": []
+    },
+    "mathilda__legendary_knight":
+    {   "tag": "mathilda__legendary_knight",
+        "name": "Mathilda",
+        "epithet": "Legendary Knight",
+        "description": "A paladin of the Deliverance and Clive's betrothed. Strong as a demon, yet gentle to her love.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 15, 6, 8, 6, 8 ],
+            "5": [ 16, 7, 8, 7, 8 ]
+        },
+        "growth_points": [ 5, 6, 7, 4, 8 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Ridersbane", "10", "1", "Effective against cavalry units. ", "200", "4", "-" ],
+            [ "Ridersbane+", "14", "1", "Effective against cavalry units. ", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Resistance", "1", "Grants Res+4 to an adjacent ally until the end of the turn.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Cancel Affinity 1", "Any weapon triangle affinity granted by unit's skills is negated. Also negates any weapon triangle affinity granted by foe's skills.", "50", "-" ],
+            [ "Cancel Affinity 2", "Any weapon triangle affinity granted by unit's skills is negated. If affinity disadvantage exists, weapon triangle affinity granted by foe's skills is negated.", "100", "4" ],
+            [ "Cancel Affinity 3", "Any weapon triangle affinity granted by unit's skills is negated. If affinity disadvantage exists, weapon triangle affinity granted by foe's skills is reversed.", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Hone Atk 1", "Grants adjacent allies Atk+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Atk 2", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Hone Atk 3", "Grants adjacent allies Atk+4 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "matthew__faithful_spy":
+    {   "tag": "matthew__faithful_spy",
+        "name": "Matthew",
+        "epithet": "Faithful Spy",
+        "description": "Happy-go-lucky spy who's actually quite sly. Serves Hector, brother of the Marquess of Ostia.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "dagger",
+        "colour": "Colorless",
+        "weapon": "Dagger",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "2": [ 15, 5, 9, 4, 3 ],
+            "3": [ 16, 5, 9, 5, 4 ],
+            "4": [ 16, 6, 10, 5, 4 ],
+            "5": [ 17, 6, 10, 6, 5 ]
+        },
+        "growth_points": [ 7, 5, 7, 7, 2 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "2", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "3", "2" ],
+            [ "Rogue Dagger", "4", "2", "After combat, inflicts Def/Res-3 on foe through its next action. Grants unit Def/Res+3 for 1 turn.", "200", "4", "3" ],
+            [ "Rogue Dagger+", "7", "2", "After combat, inflicts Def/Res-5 on foe through its next action. Grants unit Def/Res+5 for 1 turn.", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Reciprocal Aid", "1", "Swap HP with adjacent ally (neither unit can go above their max HP).", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Poison Strike 1", "Inflicts 4 damage to foe after any combat this unit initiates.", "60", "3" ],
+            [ "Poison Strike 2", "Inflicts 7 damage to foe after any combat this unit initiates.", "120", "4" ],
+            [ "Poison Strike 3", "Inflicts 10 damage to foe after any combat this unit initiates.", "240", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Hone Spd 1", "Grants adjacent allies Spd+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Spd 2", "Grants adjacent allies Spd+3 through their next actions at the start of each turn.", "100", "2" ],
+            [ "Hone Spd 3", "Grants adjacent allies Spd+4 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "merric__wind_mage":
+    {   "tag": "merric__wind_mage",
+        "name": "Merric",
+        "epithet": "Wind Mage",
+        "description": "Wind mage who studied in Khadein, known for its magical school. Marth's childhood friend.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "green_tome",
+        "colour": "Green",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 18, 7, 8, 5, 3 ],
+            "5": [ 19, 7, 8, 6, 4 ]
+        },
+        "growth_points": [ 7, 5, 7, 6, 3 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "-", "-" ],
+            [ "Rexcalibur", "9", "2", "-", "200", "4", "-" ],
+            [ "Excalibur", "14", "2", "Effective against flying units. ", "400", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "-" ],
+            [ "Growing Wind", "5", "Before combat this unit initiates, foes in a wide area near target take damage equal to (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "HP +3", "Grants +3 to max HP.", "40", "-" ],
+            [ "HP +4", "Grants +4 to max HP.", "80", "4" ],
+            [ "HP +5", "Grants +5 to max HP.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Res 1", "Grants adjacent allies Res+2 during combat.", "50", "-" ],
+            [ "Spur Res 2", "Grants adjacent allies Res+3 during combat.", "100", "-" ],
+            [ "Spur Res 3", "Grants adjacent allies Res+4 during combat.", "200", "4" ]
+        ]
+    },
+    "michalis__ambitious_king":
+    {   "tag": "michalis__ambitious_king",
+        "name": "Michalis",
+        "epithet": "Ambitious King",
+        "description": "King of Macedon who had great ambitions for his country. Murdered his father. Brother to Minerva and Maria.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Flying",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 18, 7, 6, 8, 3 ],
+            "4": [ 18, 8, 6, 9, 3 ],
+            "5": [ 19, 8, 7, 9, 4 ]
+        },
+        "growth_points": [ 7, 8, 5, 8, 3 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "3", "-" ],
+            [ "Silver Axe", "11", "1", "-", "200", "4", "3" ],
+            [ "Hauteclere", "16", "1", "Accelerates Special trigger (cooldown count-1).", "400", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Thunder", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "3" ],
+            [ "Blazing Thunder", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Iote's Shield", "Neutralizes \"effective against\" bonuses.", "200", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Threaten Def 1", "Inflicts Def-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Def 2", "Inflicts Def-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "3" ],
+            [ "Threaten Def 3", "Inflicts Def-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "minerva__red_dragoon":
+    {   "tag": "minerva__red_dragoon",
+        "name": "Minerva",
+        "epithet": "Red Dragoon",
+        "description": "Princess of Macedon who took up arms against her brother, Michalis.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 18, 7, 9, 8, 5 ]
+        },
+        "growth_points": [ 6, 7, 7, 7, 4 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Axe", "11", "1", "-", "200", "-", "-" ],
+            [ "Hauteclere", "16", "1", "Accelerates Special trigger (cooldown count-1).", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Holy Vestments", "3", "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.", "100", "5", "-" ],
+            [ "Sacred Cowl", "2", "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Life and Death 1", "Grants Atk/Spd+3. Inflicts Def/Res-3.", "50", "-" ],
+            [ "Life and Death 2", "Grants Atk/Spd+4. Inflicts Def/Res-4.", "100", "-" ],
+            [ "Life and Death 3", "Grants Atk/Spd+5. Inflicts Def/Res-5.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Spur Def 2", "Grants adjacent allies Def+3 during combat.", "100", "-" ],
+            [ "Ward Fliers", "Grants flying allies within 2 spaces Def/Res+4 during combat.", "200", "5" ]
+        ]
+    },
+    "mist__helpful_sister":
+    {   "tag": "mist__helpful_sister",
+        "name": "Mist",
+        "epithet": "Helpful Sister",
+        "description": "Ike's younger sister. Active and cheerful, and takes care of the Greil Mercenaries.",
+        "origin": "Fire Emblem: Path of Radiance",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 8, 6, 5, 8 ]
+        },
+        "growth_points": [ 6, 5, 6, 3, 8 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
+            [ "Slow", "5", "2", "After any combat, inflicts Spd-6 on foe through its next action.", "150", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
+            [ "Mend", "1", "Restores 10 HP.", "100", "-", "-" ],
+            [ "Recover", "1", "Restores 15 HP. Slows Special trigger (cooldown count +1).", "200", "5", "-" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "-", "-" ],
+            [ "Miracle", "5", "If HP &gt; 1, survive a lethal attack with 1 HP remaining.", "200", "5", "-" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Res 1", "Grants adjacent allies Res+2 during combat.", "50", "-" ],
+            [ "Spur Def Res 1", "Grants adjacent allies Def/Res +2 during combat", "120", "-" ],
+            [ "Spur Def Res 2", "Grants adjacent allies Def/Res +3 during combat.", "240", "5" ]
+        ]
+    },
+    "narcian__wyvern_general":
+    {   "tag": "narcian__wyvern_general",
+        "name": "Narcian",
+        "epithet": "Wyvern General",
+        "description": "One of three Wyvern Generals of Bern. Conceited and vainglorious.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Flying",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 2, 4 ],
+        "base_stats":
+        {   "2": [ 16, 6, 5, 7, 5 ],
+            "3": [ 17, 6, 6, 7, 6 ],
+            "4": [ 17, 7, 6, 8, 6 ],
+            "5": [ 18, 7, 7, 8, 7 ]
+        },
+        "growth_points": [ 7, 6, 6, 7, 5 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "2", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "3", "2" ],
+            [ "Emerald Axe", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "4", "3" ],
+            [ "Emerald Axe+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Retribution", "3", "Grants bonus to damage dealt equal to 30% of damage suffered.", "100", "-", "3" ],
+            [ "Vengeance", "3", "Grants bonus to damage dealt equal to 50% of damage suffered.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Lancebreaker 1", "If unit's HP ≥ 90% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
+            [ "Lancebreaker 2", "If unit's HP ≥ 70% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "100", "2" ],
+            [ "Lancebreaker 3", "If unit's HP ≥ 50% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "200", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Savage Blow 1", "If unit initiates attack, foes within 2 spaces of target take 3 damage after combat.", "50", "3" ],
+            [ "Savage Blow 2", "If unit initiates attack, foes within 2 spaces of target take 5 damage after combat.", "100", "4" ],
+            [ "Savage Blow 3", "If unit initiates attack, foes within 2 spaces of target take 7 damage after combat.", "200", "5" ]
+        ]
+    },
+    "navarre__scarlet_sword":
+    {   "tag": "navarre__scarlet_sword",
+        "name": "Navarre",
+        "epithet": "Scarlet Sword",
+        "description": "Skilled fighter known as the Scarlet Sword. Prefers his blade to do the talking.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 6, 10, 5, 4 ],
+            "4": [ 17, 7, 11, 5, 4 ],
+            "5": [ 18, 7, 11, 6, 5 ]
+        },
+        "growth_points": [ 7, 7, 8, 4, 5 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "-" ],
+            [ "Killing Edge", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "3" ],
+            [ "Killing Edge+", "11", "1", "Accelerates Special trigger (cooldown count-1).", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "3" ],
+            [ "Blazing Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5x (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Desperation 1", "If unit initiates combat with HP ≤ 25%, follow-up attacks occur immediately after unit's attack.", "50", "3" ],
+            [ "Desperation 2", "If unit initiates combat with HP ≤ 50%, follow-up attacks occur immediately after unit's attack.", "100", "4" ],
+            [ "Desperation 3", "If unit initiates combat with HP ≤ 75%, follow-up attacks occur immediately after unit's attack.", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Threaten Spd 1", "Inflicts Spd-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Spd 2", "Inflicts Spd-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "3" ],
+            [ "Threaten Spd 3", "Inflicts Spd-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "niles__cruel_to_be_kind":
+    {   "tag": "niles__cruel_to_be_kind",
+        "name": "Niles",
+        "epithet": "Cruel to Be Kind",
+        "description": "Nohrian scoundrel who wags his saucy tongue at everyone. One of Leo's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 5, 7, 3, 7 ],
+            "4": [ 17, 5, 8, 3, 8 ],
+            "5": [ 18, 6, 8, 4, 8 ]
+        },
+        "growth_points": [ 5, 5, 8, 2, 8 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "3", "-" ],
+            [ "Killer Bow", "5", "2", "Effective against flying units. ", "200", "4", "3" ],
+            [ "Killer Bow+", "9", "2", "Effective against flying units. ", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "4", "3" ],
+            [ "Iceberg", "3", "Boosts damage dealt by 50% of unit's Res.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Warding Blow 1", "Grants Res+2 during combat if unit initiates attack.", "50", "-" ],
+            [ "Warding Blow 2", "Grants Res+4 during combat if unit initiates attack.", "100", "3" ],
+            [ "Warding Blow 3", "Grants Res+6 during combat if unit initiates attack.", "200", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Res 1", "Grants adjacent allies Res+2 during combat.", "50", "3" ],
+            [ "Spur Res 2", "Grants adjacent allies Res+3 during combat.", "100", "4" ],
+            [ "Spur Res 3", "Grants adjacent allies Res+4 during combat.", "200", "5" ]
+        ]
+    },
+    "ninian__oracle_of_destiny":
+    {   "tag": "ninian__oracle_of_destiny",
+        "name": "Ninian",
+        "epithet": "Oracle of Destiny",
+        "description": "A young dancer who has a serene and mystical presence. Her dances are divine tributes.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "blue_dragonstone",
+        "colour": "Blue",
+        "weapon": "Dragon",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 16, 5, 7, 6, 5 ]
+        },
+        "growth_points": [ 8, 5, 8, 4, 6 ],
+        "base_weapons":
+        [   [ "Fire Breath", "6", "1", "-", "50", "-", "-" ],
+            [ "Fire Breath+", "8", "1", "-", "100", "-", "-" ],
+            [ "Light Breath", "9", "1", "Grants adjacent allies Def/Res+4 through their next actions after any combat this unit initiates.", "200", "-", "-" ],
+            [ "Light Breath+", "13", "1", "Grants adjacent allies Def/Res+4 through their next actions after any combat this unit initiates.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Dance", "1", "Enables target to take another action. Cannot be used on units with Sing or Dance.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Escape Route 1", "Enables unit whose own HP is ≤ 30% to warp adjacent to any ally.", "60", "-" ],
+            [ "Escape Route 2", "Enables unit whose own HP is ≤ 40% to warp adjacent to any ally.", "120", "-" ],
+            [ "Escape Route 3", "Enables unit whose own HP is ≤ 50% to warp adjacent to any ally.", "240", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Fortify Def 1", "Grants adjacent allies Def+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Def 2", "Grants adjacent allies Def+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Fortify Dragons", "Grants adjacent Dragon allies Def/Res+6 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "nino__pious_mage":
+    {   "tag": "nino__pious_mage",
+        "name": "Nino",
+        "epithet": "Pious Mage",
+        "description": "A kindhearted member of the Black Fang assassins. Longed to help her mother.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "green_tome",
+        "colour": "Green",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 15, 6, 9, 3, 6 ],
+            "4": [ 15, 7, 10, 3, 6 ],
+            "5": [ 16, 7, 10, 4, 7 ]
+        },
+        "growth_points": [ 4, 8, 8, 3, 5 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "3", "-" ],
+            [ "Gronnblade", "9", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "200", "4", "3" ],
+            [ "Gronnblade+", "13", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Draw Back", "1", "Unit moves 1 space away from target ally, who moves to unit's former position.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Resistance +1", "Grants Res+1.", "30", "-" ],
+            [ "Resistance +2", "Grants Res+2.", "60", "3" ],
+            [ "Resistance +3", "Grants Res+3.", "120", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Hone Atk 1", "Grants adjacent allies Atk+2 through their next actions at the start of each turn.", "50", "3" ],
+            [ "Hone Atk 2", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "100", "4" ],
+            [ "Hone Atk 3", "Grants adjacent allies Atk+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "nowi__eternal_youth":
+    {   "tag": "nowi__eternal_youth",
+        "name": "Nowi",
+        "epithet": "Eternal Youth",
+        "description": "Manakete who travels with Chrom's group. Looks young but is truly over a thousand years old.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "blue_dragonstone",
+        "colour": "Blue",
+        "weapon": "Dragon",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 6, 4, 6, 4 ],
+            "5": [ 17, 6, 5, 6, 5 ]
+        },
+        "growth_points": [ 9, 9, 6, 7, 6 ],
+        "base_weapons":
+        [   [ "Fire Breath", "6", "1", "-", "50", "-", "-" ],
+            [ "Fire Breath+", "8", "1", "-", "100", "-", "-" ],
+            [ "Lightning Breath", "7", "1", "Enables counterattack regardless of attacker's range. Slows Special trigger (cooldown count+1).", "200", "4", "-" ],
+            [ "Lightning Breath+", "11", "1", "Enables counterattack regardless of attacker's range. Slows Special trigger (cooldown count+1).", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Defense", "1", "Grants Def+4 to an adjacent ally until the end of the turn.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Defense +1", "Grants Def+1.", "30", "-" ],
+            [ "Defense +2", "Grants Def+2.", "60", "4" ],
+            [ "Defense +3", "Grants Def+3.", "120", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Threaten Res 1", "Inflicts Res-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Res 2", "Inflicts Res-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "-" ],
+            [ "Threaten Res 3", "Inflicts Res-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "oboro__fierce_fighter":
+    {   "tag": "oboro__fierce_fighter",
+        "name": "Oboro",
+        "epithet": "Fierce Fighter",
+        "description": "Lance wielder who loves fashion and hates Nohr. One of Takumi's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 7, 6, 8, 4 ],
+            "4": [ 17, 8, 6, 9, 4 ],
+            "5": [ 18, 8, 7, 9, 5 ]
+        },
+        "growth_points": [ 6, 7, 5, 8, 5 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "-" ],
+            [ "Heavy Spear", "8", "1", "Effective against armored units. ", "200", "4", "3" ],
+            [ "Heavy Spear+", "12", "1", "Effective against armored units. ", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Defense", "1", "Grants Def+4 to an adjacent ally until the end of the turn.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Seal Def 1", "After combat, foe suffers Def-3 through its next action.", "40", "-" ],
+            [ "Seal Def 2", "After combat, foe suffers Def-5 through its next action.", "80", "3" ],
+            [ "Seal Def 3", "After combat, foe suffers Def-7 through its next action.", "160", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Threaten Res 1", "Inflicts Res-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "3" ],
+            [ "Threaten Res 2", "Inflicts Res-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "4" ],
+            [ "Threaten Res 3", "Inflicts Res-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "odin__potent_force":
+    {   "tag": "odin__potent_force",
+        "name": "Odin",
+        "epithet": "Potent Force",
+        "description": "A mysterious man who tends to be overly theatrical. One of Leo's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "blue_tome",
+        "colour": "Blue",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 18, 4, 7, 5, 5 ],
+            "4": [ 18, 4, 8, 6, 5 ],
+            "5": [ 19, 5, 8, 6, 6 ]
+        },
+        "growth_points": [ 7, 4, 7, 5, 5 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "3", "-" ],
+            [ "Blárblade", "9", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "200", "4", "3" ],
+            [ "Blárblade+", "13", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "4", "3" ],
+            [ "Moonbow", "2", "Resolve combat as if foe suffered Def/Res-30%.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Atk 1", "Grants Atk+3 at start of turn if unit's HP ≤ 50%.", "40", "3" ],
+            [ "Defiant Atk 2", "Grants Atk+5 at start of turn if unit's HP ≤ 50%.", "80", "4" ],
+            [ "Defiant Atk 3", "Grants Atk+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "R Tomebreaker 1", "If unit's HP ≥ 90% in combat against a red tome user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
+            [ "R Tomebreaker 2", "If unit's HP ≥ 70% in combat against a red tome user, unit makes a follow-up attack and foe cannot.", "100", "3" ],
+            [ "R Tomebreaker 3", "If unit's HP ≥ 50% in combat against a red tome user, unit makes a follow-up attack and foe cannot.", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "ogma__loyal_blade":
+    {   "tag": "ogma__loyal_blade",
+        "name": "Ogma",
+        "epithet": "Loyal Blade",
+        "description": "A mercenary who was once a slave gladiator. Serves Princess Caeda of Talys.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 20, 7, 10, 5, 2 ],
+            "5": [ 21, 7, 10, 6, 3 ]
+        },
+        "growth_points": [ 8, 9, 7, 6, 1 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Brave Sword", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "4", "-" ],
+            [ "Brave Sword+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Daylight", "4", "Heal 30% of damage dealt.", "100", "4", "-" ],
+            [ "Noontime", "3", "Heal 30% of damage dealt.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Atk 1", "Grants Atk+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Atk 2", "Grants Atk+5 at start of turn if unit's HP ≤ 50%.", "80", "-" ],
+            [ "Defiant Atk 3", "Grants Atk+7 at start of turn if unit's HP ≤ 50%.", "160", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Atk 1", "Grants adjacent allies Atk+2 during combat.", "50", "-" ],
+            [ "Spur Atk 2", "Grants adjacent allies Atk+3 during combat.", "100", "4" ],
+            [ "Spur Atk 3", "Grants adjacent allies Atk+4 during combat.", "200", "5" ]
+        ]
+    },
+    "olivia__blushing_beauty":
+    {   "tag": "olivia__blushing_beauty",
+        "name": "Olivia",
+        "epithet": "Blushing Beauty",
+        "description": "A dancer who travels widely and is quite gifted, despite extreme shyness.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 15, 4, 5, 3, 2 ],
+            "2": [ 15, 5, 6, 3, 2 ],
+            "3": [ 16, 5, 6, 4, 3 ],
+            "4": [ 16, 6, 7, 4, 3 ],
+            "5": [ 17, 6, 7, 5, 4 ]
+        },
+        "growth_points": [ 5, 6, 8, 6, 6 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "1", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "2" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "3" ],
+            [ "Silver Sword+", "15", "1", "-", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Dance", "1", "Enables target to take another action. Cannot be used on units with Sing or Dance.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Knock Back", "If unit initiates attack, foe is moved 1 space away after combat.", "150", "3" ]
+        ],
+        "base_passive_C":
+        [   [ "Hone Atk 1", "Grants adjacent allies Atk+2 through their next actions at the start of each turn.", "50", "1" ],
+            [ "Hone Atk 2", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "100", "2" ],
+            [ "Hone Atk 3", "Grants adjacent allies Atk+4 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "olwen__blue_mage_knight":
+    {   "tag": "olwen__blue_mage_knight",
+        "name": "Olwen",
+        "epithet": "Blue Mage Knight",
+        "description": "A mage knight in Friege's army. Her ideals sometimes put her in opposition with her beloved brother, Reinhardt.",
+        "origin": "Fire Emblem: Thracia 776",
+        "weapon_type": "blue_tome",
+        "colour": "Blue",
+        "weapon": "Tome",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 7, 8, 5, 6 ]
+        },
+        "growth_points": [ 4, 5, 8, 3, 7 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
+            [ "Thoron", "9", "2", "-", "200", "-", "-" ],
+            [ "Dire Thunder", "9", "2", "Spd-5. Attack twice when initiating combat.", "400", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Reposition", "1", "Moves adjacent ally to opposite side of unit.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Warding Blow 1", "Grants Res+2 during combat if unit initiates attack.", "50", "-" ],
+            [ "Warding Blow 2", "Grants Res+4 during combat if unit initiates attack.", "100", "-" ],
+            [ "Warding Blow 3", "Grants Res+6 during combat if unit initiates attack.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Res 1", "Grants adjacent allies Res+2 during combat.", "50", "-" ],
+            [ "Spur Res 2", "Grants adjacent allies Res+3 during combat.", "100", "-" ],
+            [ "Ward Cavalry", "Grants cavalry allies within 2 spaces Def/Res+4 during combat.", "200", "5" ]
+        ]
+    },
+    "palla__eldest_whitewing":
+    {   "tag": "palla__eldest_whitewing",
+        "name": "Palla",
+        "epithet": "Eldest Whitewing",
+        "description": "Eldest of three sisters who are pegasus knights for Macedon.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 6, 8, 5, 6 ],
+            "4": [ 17, 7, 9, 5, 6 ],
+            "5": [ 18, 7, 9, 6, 7 ]
+        },
+        "growth_points": [ 7, 7, 6, 6, 5 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "-" ],
+            [ "Ruby Sword", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "4", "3" ],
+            [ "Ruby Sword+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "4", "3" ],
+            [ "Moonbow", "2", "Resolve combat as if foe suffered Def/Res-30%.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Wings of Mercy 1", "Enables unit to warp adjacent to any ally with HP ≤ 30%.", "60", "-" ],
+            [ "Wings of Mercy 2", "Enables unit to warp adjacent to any ally with HP ≤ 40%.", "120", "4" ],
+            [ "Wings of Mercy 3", "Enables unit to warp adjacent to any ally with HP ≤ 50%.", "240", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Spd 1", "Grants adjacent allies Spd+2 during combat.", "50", "-" ],
+            [ "Spur Spd 2", "Grants adjacent allies Spd+3 during combat.", "100", "3" ],
+            [ "Goad Fliers", "Grants flying allies within 2 spaces Spd/Atk+4 during combat.", "200", "4" ]
+        ]
+    },
+    "peri__playful_slayer":
+    {   "tag": "peri__playful_slayer",
+        "name": "Peri",
+        "epithet": "Playful Slayer",
+        "description": "A cavalier of Nohr who massacres foes with childlike glee. One of Xander's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 15, 9, 9, 5, 5 ],
+            "5": [ 16, 9, 9, 6, 6 ]
+        },
+        "growth_points": [ 5, 7, 7, 4, 7 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Killer Lance", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "-" ],
+            [ "Killer Lance+", "11", "1", "Accelerates Special trigger (cooldown count-1).", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "4", "-" ],
+            [ "Glimmer", "3", "Grants +50% to damage dealt.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Resistance +1", "Grants Res+1.", "30", "-" ],
+            [ "Resistance +2", "Grants Res+2.", "60", "4" ],
+            [ "Resistance +3", "Grants Res+3.", "120", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Threaten Def 1", "Inflicts Def-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Def 2", "Inflicts Def-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "-" ],
+            [ "Threaten Def 3", "Inflicts Def-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "priscilla__delicate_princess":
+    {   "tag": "priscilla__delicate_princess",
+        "name": "Priscilla",
+        "epithet": "Delicate Princess",
+        "description": "The daughter of Count Caerleon. Also Raven's sister. Poised and gentle, with a jealous streak.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 7, 6, 3, 8 ],
+            "5": [ 17, 7, 7, 4, 8 ]
+        },
+        "growth_points": [ 5, 6, 6, 3, 7 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
+            [ "Panic", "7", "2", "After combat, bonuses on targeted foe become penalties through its next action.", "150", "-", "4" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
+            [ "Reconcile", "1", "Restores 7 HP each to target and this unit.", "100", "4", "-" ],
+            [ "Rehabilitate", "1", "Restores 7 HP or more the further below 50% the target's HP is. Slows special trigger (cooldown count+1).", "200", "5", "4" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "4", "-" ],
+            [ "Still-Water Balm", "1", "When healing an ally with a staff, grants all allies Res+4 for 1 turn.", "150", "5", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Spur Def 2", "Grants adjacent allies Def+3 during combat.", "100", "4" ],
+            [ "Spur Def 3", "Grants adjacent allies Def+4 during combat.", "200", "5" ]
+        ]
+    },
+    "raigh__dark_child":
+    {   "tag": "raigh__dark_child",
+        "name": "Raigh",
+        "epithet": "Dark Child",
+        "description": "Wielder of dark magic. A scornful loner with a troubled past as an orphan.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "red_tome",
+        "colour": "Red",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "2": [ 15, 7, 6, 3, 5 ],
+            "3": [ 16, 7, 6, 4, 6 ],
+            "4": [ 16, 8, 7, 4, 6 ],
+            "5": [ 17, 8, 7, 5, 7 ]
+        },
+        "growth_points": [ 5, 7, 6, 4, 6 ],
+        "base_weapons":
+        [   [ "Flux", "4", "2", "-", "50", "2", "-" ],
+            [ "Ruin", "6", "2", "-", "100", "3", "2" ],
+            [ "Rauðrwolf", "6", "2", "Effective against cavalry units. ", "200", "4", "3" ],
+            [ "Rauðrwolf+", "10", "2", "Effective against cavalry units. ", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Attack", "1", "Grants Atk+4 to an adjacent ally until the end of the turn.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "HP +3", "Grants +3 to max HP.", "40", "3" ],
+            [ "HP +4", "Grants +4 to max HP.", "80", "4" ],
+            [ "HP +5", "Grants +5 to max HP.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Seal Res 1", "After combat, foe suffers Res-3 through its next action.", "40", "-" ],
+            [ "Seal Res 2", "After combat, foe suffers Res-5 through its next action.", "80", "2" ],
+            [ "Seal Res 3", "After combat, foe suffers Res-7 through its next action.", "160", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "raven__peerless_fighter":
+    {   "tag": "raven__peerless_fighter",
+        "name": "Raven",
+        "epithet": "Peerless Fighter",
+        "description": "A noble heir whose true name is Raymond. Works as a mercenary to enact revenge.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 18, 8, 9, 5, 4 ],
+            "5": [ 19, 8, 9, 6, 5 ]
+        },
+        "growth_points": [ 6, 8, 8, 5, 4 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Brave Axe", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "4", "-" ],
+            [ "Brave Axe+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Daylight", "4", "Heal 30% of damage dealt.", "100", "4", "-" ],
+            [ "Sol", "4", "Heal 50% of damage dealt.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Spd 1", "Grants Spd+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Spd 2", "Grants Spd+5 at start of turn if unit's HP ≤ 50%.", "80", "-" ],
+            [ "Defiant Spd 3", "Grants Spd+7 at start of turn if unit's HP ≤ 50%.", "160", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Threaten Def 1", "Inflicts Def-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Def 2", "Inflicts Def-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "4" ],
+            [ "Threaten Def 3", "Inflicts Def-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "rebecca__wildflower":
+    {   "tag": "rebecca__wildflower",
+        "name": "Rebecca",
+        "epithet": "Wildflower",
+        "description": "A girl who lives in a remote village and spends her time hunting. Kind and sociable.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 7, 8, 5, 4 ],
+            "5": [ 18, 7, 8, 6, 5 ]
+        },
+        "growth_points": [ 5, 6, 8, 3, 6 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Silver Bow", "9", "2", "Effective against flying units. ", "200", "4", "-" ],
+            [ "Silver Bow+", "13", "2", "Effective against flying units. ", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Ardent Sacrifice", "1", "Heals adjacent ally 10 HP. Unit loses 10 HP (but cannot reach 0 this way).", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Darting Blow 1", "Grants Spd+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Darting Blow 2", "Grants Spd+4 during combat if unit initiates the attack.", "100", "-" ],
+            [ "Darting Blow 3", "Grants Spd+6 during combat if unit initiates the attack.", "200", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Seal Atk 1", "After combat, foe suffers Atk-3 through its next action.", "40", "-" ],
+            [ "Seal Atk 2", "After combat, foe suffers Atk-5 through its next action.", "80", "4" ],
+            [ "Seal Atk 3", "After combat, foe suffers Atk-7 through its next action.", "160", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "reinhardt__thunders_fist":
+    {   "tag": "reinhardt__thunders_fist",
+        "name": "Reinhardt",
+        "epithet": "Thunder's Fist",
+        "description": "Formidable and admired mage knight in Friege's army. Ever ready to lend an ear to his younger sister, Olwen.",
+        "origin": "Fire Emblem: Thracia 776",
+        "weapon_type": "blue_tome",
+        "colour": "Blue",
+        "weapon": "Tome",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 15, 8, 5, 4, 8 ],
+            "5": [ 16, 8, 6, 5, 8 ]
+        },
+        "growth_points": [ 6, 7, 4, 6, 4 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
+            [ "Thoron", "9", "2", "-", "200", "4", "-" ],
+            [ "Dire Thunder", "9", "2", "Spd-5. Attack twice when initiating combat.", "400", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Thunder", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "-" ],
+            [ "Blazing Thunder", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Vantage 1", "Unit counterattacks first when attacked at HP ≤ 25%.", "50", "-" ],
+            [ "Vantage 2", "Unit counterattacks first when attacked at HP ≤ 50%.", "100", "-" ],
+            [ "Vantage 3", "Unit counterattacks first when attacked at HP ≤ 75%.", "200", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Atk 1", "Grants adjacent allies Atk+2 during combat.", "50", "-" ],
+            [ "Spur Atk 2", "Grants adjacent allies Atk+3 during combat.", "100", "4" ],
+            [ "Goad Cavalry", "Grants cavalry allies within 2 spaces Spd/Atk+4 during combat.", "200", "5" ]
+        ]
+    },
+    "robin__mystery_tactician":
+    {   "tag": "robin__mystery_tactician",
+        "name": "Robin",
+        "epithet": "Mystery Tactician",
+        "subname": "📗",
+        "description": "A tactician of Ylisse and Chrom's close ally. Lost memory of her life before meeting Chrom.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "green_tome",
+        "colour": "Green",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 2, 3 ],
+        "base_stats":
+        {   "2": [ 16, 6, 6, 5, 3 ],
+            "3": [ 17, 6, 6, 6, 4 ],
+            "4": [ 17, 7, 7, 6, 4 ],
+            "5": [ 18, 7, 7, 7, 5 ]
+        },
+        "growth_points": [ 6, 6, 6, 6, 4 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "2", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "3", "2" ],
+            [ "Gronnwolf", "6", "2", "Effective against cavalry units. ", "200", "-", "3" ],
+            [ "Gronnwolf+", "10", "2", "Effective against cavalry units. ", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Glowing Ember", "4", "Boosts damage dealt by 50% of unit's Def.", "100", "-", "3" ],
+            [ "Ignis", "4", "Boosts damage dealt by 80% of unit's Def.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Res 1", "Grants Res+3 at start of turn if unit's HP ≤ 50%.", "40", "3" ],
+            [ "Defiant Res 2", "Grants Res+5 at start of turn if unit's HP ≤ 50%.", "80", "4" ],
+            [ "Defiant Res 3", "Grants Res+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "B Tomebreaker 1", "If unit's HP ≥ 90% in combat against a blue tome user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
+            [ "B Tomebreaker 2", "If unit's HP ≥ 70% in combat against a blue tome user, unit makes a follow-up attack and foe cannot.", "100", "2" ],
+            [ "B Tomebreaker 3", "If unit's HP ≥ 50% in combat against a blue tome user, unit makes a follow-up attack and foe cannot.", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "robin__seaside_tactician":
+    {   "tag": "robin__seaside_tactician",
+        "name": "Robin",
+        "epithet": "Seaside Tactician",
+        "subname": "🌅",
+        "description": "A tactician of Ylisse and Chrom's close ally. Loves the strange creatures she finds on the beach.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 18, 8, 8, 6, 7 ]
+        },
+        "growth_points": [ 4, 7, 8, 6, 6 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Deft Harpoon", "10", "1", "If unit has 100% HP at start of combat, unit gets Atk/Spd/Def/Res+2. If attacking, unit will take 2 damage after combat.", "200", "-", "-" ],
+            [ "Deft Harpoon+", "14", "1", "If unit has 100% HP at start of combat, unit gets Atk/Spd/Def/Res+2. If attacking, unit will take 2 damage after combat.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Reposition", "1", "Moves adjacent ally to opposite side of unit.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Defense +1", "Grants Def+1.", "30", "-" ],
+            [ "HP Def 1", "Grants HP+3, Def+1.", "100", "-" ],
+            [ "HP Def 2", "Grants HP+4, Def+2.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Lance Valor 1", "If unit survives and uses a lance, unit gets 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "30", "-" ],
+            [ "Lance Valor 2", "If unit survives, all lance users on team get 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "60", "-" ],
+            [ "Lance Valor 3", "If unit survives, all lance users on team get 2x SP. (If similar skill effects also used, only highest multiplier applied.)", "120", "5" ]
+        ]
+    },
+    "robin__high_deliverer":
+    {   "tag": "robin__high_deliverer",
+        "name": "Robin",
+        "epithet": "High Deliverer",
+        "subname": "📘",
+        "description": "A tactician of Ylisse and Chrom's close ally. Lost memory of his life before meeting Chrom.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "blue_tome",
+        "colour": "Blue",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 6, 6, 6, 4 ],
+            "4": [ 17, 7, 7, 6, 4 ],
+            "5": [ 18, 7, 7, 7, 5 ]
+        },
+        "growth_points": [ 6, 6, 6, 6, 4 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "3", "-" ],
+            [ "Blárraven", "7", "2", "Grants weapon advantage vs. colorless foes.", "200", "4", "3" ],
+            [ "Blárraven+", "11", "2", "Grants weapon advantage vs. colorless foes.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Glowing Ember", "4", "Boosts damage dealt by 50% of unit's Def.", "100", "4", "3" ],
+            [ "Bonfire", "3", "Boosts damage dealt by 50% of unit's Def.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Spd 1", "Grants Spd+3 at start of turn if unit's HP ≤ 50%.", "40", "3" ],
+            [ "Defiant Spd 2", "Grants Spd+5 at start of turn if unit's HP ≤ 50%.", "80", "4" ],
+            [ "Defiant Spd 3", "Grants Spd+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Spur Def 2", "Grants adjacent allies Def+3 during combat.", "100", "3" ],
+            [ "Spur Def 3", "Grants adjacent allies Def+4 during combat.", "200", "4" ]
+        ]
+    },
+    "roderick__steady_squire":
+    {   "tag": "roderick__steady_squire",
+        "name": "Roderick",
+        "epithet": "Steady Squire",
+        "description": "An aspiring knight of Altea. Of calm demeanor. Luke's longtime friend and rival.",
+        "origin": "Fire Emblem: New Mystery of the Emblem",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 7, 8, 5, 6 ],
+            "5": [ 18, 7, 8, 6, 7 ]
+        },
+        "growth_points": [ 6, 7, 8, 5, 4 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Firesweep Lance", "11", "1", "Unit and enemies cannot use counterattacks.", "200", "4", "-" ],
+            [ "Firesweep Lance+", "15", "1", "Unit and enemies cannot use counterattacks.", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Defense", "1", "Grants Def+4 to an adjacent ally until the end of the turn.", "150", "4", "-" ],
+            [ "Rally Defense Resistance", "1", "Grants Def/Res+3 to an adjacent ally until the end of the turn.", "300", "-", "4" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Drag Back", "If unit initiates attack, the unit moves 1 space away after combat. Foe moves into unit's previous space.", "150", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Drive Def 1", "Grants allies within 2 spaces Def+2 during combat.", "120", "4" ],
+            [ "Drive Def 2", "Grants allies within 2 spaces Def+3 during combat.", "240", "5" ]
+        ]
+    },
+    "roy__young_lion":
+    {   "tag": "roy__young_lion",
+        "name": "Roy",
+        "epithet": "Young Lion",
+        "description": "The son of Eliwood, Marquess of Pherae and talented leader of its army.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 19, 8, 9, 5, 3 ],
+            "5": [ 20, 8, 9, 6, 4 ]
+        },
+        "growth_points": [ 7, 6, 6, 5, 7 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
+            [ "Binding Blade", "16", "1", "Grants Def/Res+2 when this unit is attacked.", "400", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Shove", "1", "Push adjacent ally 1 space farther away.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Triangle Adept 1", "Gives Atk+10% if weapon-triangle advantage, Atk-10% if disadvantage.", "50", "-" ],
+            [ "Triangle Adept 2", "Gives Atk+15% if weapon-triangle advantage, Atk-15% if disadvantage.", "100", "-" ],
+            [ "Triangle Adept 3", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Seal Def 1", "After combat, foe suffers Def-3 through its next action.", "40", "-" ],
+            [ "Seal Def 2", "After combat, foe suffers Def-5 through its next action.", "80", "4" ],
+            [ "Seal Def 3", "After combat, foe suffers Def-7 through its next action.", "160", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "roy__brave_lion":
+    {   "tag": "roy__brave_lion",
+        "name": "Roy",
+        "epithet": "Brave Lion",
+        "subname": "🥇",
+        "description": "The son of Eliwood, Marquess of Pherae. Has immense respect for his father and wields his weapon, Durandal.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 16, 8, 8, 7, 7 ]
+        },
+        "growth_points": [ 6, 7, 8, 5, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
+            [ "Blazing Durandal", "16", "1", "Grants Atk+3. If unit's Atk &gt; foe's, unit gains Special cooldown charge +1. (If using other similar skill, only highest value applied.)", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "5", "-" ],
+            [ "Astra", "5", "Grants +150% to damage dealt.", "200", "-", "5" ],
+            [ "Galeforce", "5", "If this unit initiates an attack, it can take another action after combat. (Once per turn only.)", "500", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Darting Blow 1", "Grants Spd+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Steady Blow 1", "If unit initiates combat, unit granted Spd/Def+2 during battle.", "120", "-" ],
+            [ "Steady Blow 2", "If unit initiates combat, unit granted Spd/Def+4 during battle.", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Desperation 1", "If unit initiates combat with HP ≤ 25%, follow-up attacks occur immediately after unit's attack.", "50", "-" ],
+            [ "Desperation 2", "If unit initiates combat with HP ≤ 50%, follow-up attacks occur immediately after unit's attack.", "100", "-" ],
+            [ "Desperation 3", "If unit initiates combat with HP ≤ 75%, follow-up attacks occur immediately after unit's attack.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "ryoma__peerless_samurai":
+    {   "tag": "ryoma__peerless_samurai",
+        "name": "Ryoma",
+        "epithet": "Peerless Samurai",
+        "description": "The eldest prince of Hoshido, who wields the legendary blade Raijinto.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 19, 8, 11, 5, 4 ]
+        },
+        "growth_points": [ 6, 8, 7, 6, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
+            [ "Raijinto", "16", "1", "Enables counterattack regardless of distance if this unit is attacked.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "5", "-" ],
+            [ "Astra", "5", "Grants +150% to damage dealt.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Atk 1", "Grants Atk+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Atk 2", "Grants Atk+5 at start of turn if unit's HP ≤ 50%.", "80", "-" ],
+            [ "Defiant Atk 3", "Grants Atk+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Hone Spd 1", "Grants adjacent allies Spd+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Spd 2", "Grants adjacent allies Spd+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Hone Spd 3", "Grants adjacent allies Spd+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "saber__driven_mercenary":
+    {   "tag": "saber__driven_mercenary",
+        "name": "Saber",
+        "epithet": "Driven Mercenary",
+        "description": "A mercenary who will take on any job...if he's paid enough. His identity is a mystery but his skills are unquestionable.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 18, 7, 9, 8, 5 ]
+        },
+        "growth_points": [ 6, 7, 7, 7, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Slaying Edge", "10", "1", "Accelerates Special trigger (cooldown count-1).", "200", "-", "-" ],
+            [ "Slaying Edge+", "14", "1", "Accelerates Special trigger (cooldown count-1).", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Holy Vestments", "3", "Reduces damage inflicted by attacks from foes 2 spaces away by 30%.", "100", "-", "-" ],
+            [ "Aegis", "3", "Reduces damage inflicted by attacks from foes 2 spaces away by 50%.", "200", "5", "-" ]
+        ],
+        "base_passive_A":
+        [   [ "HP +3", "Grants +3 to max HP.", "40", "-" ],
+            [ "HP Spd 1", "Grants HP+3, Spd+1.", "100", "-" ],
+            [ "HP Spd 2", "Grants HP+4, Spd+2.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Shield Pulse 1", "If unit's Special triggers based on a foe's attack, Special cooldown count-1 at start of turn 1.", "60", "-" ],
+            [ "Shield Pulse 2", "If unit's Special triggers based on a foe's attack, Special cooldown count-1 at start of turn 1. Unit takes 5 less damage when Special triggers.", "120", "-" ],
+            [ "Shield Pulse 3", "If unit's Special triggers based on a foe's attack, Special cooldown count-2 at start of turn 1. Unit takes 5 less damage when Special triggers.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "saizo__angry_ninja":
+    {   "tag": "saizo__angry_ninja",
+        "name": "Saizo",
+        "epithet": "Angry Ninja",
+        "description": "A severe ninja of Hoshido. Has a twin brother named Kaze. One of Ryoma's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "dagger",
+        "colour": "Colorless",
+        "weapon": "Dagger",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 16, 6, 7, 8, 2 ],
+            "4": [ 16, 6, 8, 9, 2 ],
+            "5": [ 17, 7, 8, 9, 3 ]
+        },
+        "growth_points": [ 5, 6, 8, 7, 2 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "3", "-" ],
+            [ "Smoke Dagger", "6", "2", "After combat, inflicts Def/Res-4 on foes within 2 spaces of target through their next actions.", "200", "4", "3" ],
+            [ "Smoke Dagger+", "9", "2", "After combat, inflicts Def/Res-6 on foes within 2 spaces of target through their next actions.", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Harsh Command", "1", "Converts penalties on target into bonuses.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Poison Strike 1", "Inflicts 4 damage to foe after any combat this unit initiates.", "60", "-" ],
+            [ "Poison Strike 2", "Inflicts 7 damage to foe after any combat this unit initiates.", "120", "3" ],
+            [ "Poison Strike 3", "Inflicts 10 damage to foe after any combat this unit initiates.", "240", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Spd 1", "Grants adjacent allies Spd+2 during combat.", "50", "3" ],
+            [ "Spur Spd 2", "Grants adjacent allies Spd+3 during combat.", "100", "4" ],
+            [ "Spur Spd 3", "Grants adjacent allies Spd+4 during combat.", "200", "5" ]
+        ]
+    },
+    "sakura__loving_priestess":
+    {   "tag": "sakura__loving_priestess",
+        "name": "Sakura",
+        "epithet": "Loving Priestess",
+        "description": "Princess of Hoshido who is a gentle healer. Struggles with her shyness.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 5, 8, 4, 8 ],
+            "5": [ 17, 6, 8, 5, 8 ]
+        },
+        "growth_points": [ 5, 6, 6, 5, 6 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
+            [ "Fear", "5", "2", "After combat, inflicts Atk-6 on targeted foe through its next action.", "150", "-", "4" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
+            [ "Mend", "1", "Restores 10 HP.", "100", "4", "-" ],
+            [ "Physic", "2", "Restores 8 HP. Rng: 2.", "200", "5", "4" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "4", "-" ],
+            [ "Still-Water Balm", "1", "When healing an ally with a staff, grants all allies Res+4 for 1 turn.", "150", "5", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Fortify Def 1", "Grants adjacent allies Def+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Def 2", "Grants adjacent allies Def+3 through their next actions at the start of each turn.", "100", "4" ],
+            [ "Fortify Def 3", "Grants adjacent allies Def+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "sanaki__begnions_apostle":
+    {   "tag": "sanaki__begnions_apostle",
+        "name": "Sanaki",
+        "epithet": "Begnion's Apostle",
+        "description": "Empress of Begnion. Known as the Apostle, voice of the goddess. Young but dutiful ruler.",
+        "origin": "Fire Emblem: Radiant Dawn",
+        "weapon_type": "red_tome",
+        "colour": "Red",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 16, 9, 7, 4, 8 ]
+        },
+        "growth_points": [ 4, 9, 5, 2, 8 ],
+        "base_weapons":
+        [   [ "Fire", "4", "2", "-", "50", "-", "-" ],
+            [ "Elfire", "6", "2", "-", "100", "-", "-" ],
+            [ "Bolganone", "9", "2", "-", "200", "-", "-" ],
+            [ "Cymbeline", "14", "2", "Grants adjacent allies Atk+4 through their next actions after any combat this unit initiates.", "400", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Harsh Command", "1", "Converts penalties on target into bonuses.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Triangle Adept 1", "Gives Atk+10% if weapon-triangle advantage, Atk-10% if disadvantage.", "50", "-" ],
+            [ "Triangle Adept 2", "Gives Atk+15% if weapon-triangle advantage, Atk-15% if disadvantage.", "100", "-" ],
+            [ "Triangle Adept 3", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Hone Atk 1", "Grants adjacent allies Atk+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Atk 2", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Hone Atk 3", "Grants adjacent allies Atk+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "selena__cutting_wit":
+    {   "tag": "selena__cutting_wit",
+        "name": "Selena",
+        "epithet": "Cutting Wit",
+        "description": "A mysterious woman devoted to service. One of Camilla's retainers. Snarky.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 5, 8, 7, 5 ],
+            "4": [ 17, 5, 9, 8, 5 ],
+            "5": [ 18, 6, 9, 8, 6 ]
+        },
+        "growth_points": [ 5, 5, 8, 7, 6 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "-" ],
+            [ "Armorslayer", "8", "1", "Effective against armored units. ", "200", "4", "3" ],
+            [ "Armorslayer+", "12", "1", "Effective against armored units. ", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Reposition", "1", "Moves adjacent ally to opposite side of unit.", "150", "-", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Triangle Adept 1", "Gives Atk+10% if weapon-triangle advantage, Atk-10% if disadvantage.", "50", "3" ],
+            [ "Triangle Adept 2", "Gives Atk+15% if weapon-triangle advantage, Atk-15% if disadvantage.", "100", "4" ],
+            [ "Triangle Adept 3", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Threaten Spd 1", "Inflicts Spd-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Spd 2", "Inflicts Spd-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "3" ],
+            [ "Threaten Spd 3", "Inflicts Spd-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "seliph__heir_of_light":
+    {   "tag": "seliph__heir_of_light",
+        "name": "Seliph",
+        "epithet": "Heir of Light",
+        "description": "Inheritor of the sacred sword Tyrfing. A savior in his time, but dislikes battle. Julia's half-brother.",
+        "origin": "Fire Emblem: Genealogy of the Holy War",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 18, 8, 6, 8, 4 ],
+            "5": [ 19, 8, 7, 8, 5 ]
+        },
+        "growth_points": [ 9, 8, 4, 6, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
+            [ "Tyrfing", "16", "1", "Grants Def+4 in battle if unit's HP ≤ 50%.", "400", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Speed", "1", "Grants Spd+4 to an adjacent ally until the end of the turn.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "HP +3", "Grants +3 to max HP.", "40", "-" ],
+            [ "HP +4", "Grants +4 to max HP.", "80", "-" ],
+            [ "HP +5", "Grants +5 to max HP.", "160", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Brash Assault 1", "Unit automatically makes a follow-up when at HP ≤ 30% and attacking a foe that can counter.", "50", "-" ],
+            [ "Brash Assault 2", "Unit automatically makes a follow-up when at HP ≤ 40% and attacking a foe that can counter.", "100", "4" ],
+            [ "Brash Assault 3", "Unit automatically makes a follow-up when at HP ≤ 50% and attacking a foe that can counter.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "serra__outspoken_cleric":
+    {   "tag": "serra__outspoken_cleric",
+        "name": "Serra",
+        "epithet": "Outspoken Cleric",
+        "description": "Cleric who thinks less of others, more of herself. Serves Hector, brother of the Marquess of Ostia.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 15, 5, 8, 3, 8 ],
+            "4": [ 15, 5, 9, 3, 9 ],
+            "5": [ 16, 6, 9, 4, 9 ]
+        },
+        "growth_points": [ 4, 7, 6, 4, 7 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
+            [ "Absorb", "4", "2", "Recovers HP=50% of damage dealt.", "150", "-", "3" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
+            [ "Mend", "1", "Restores 10 HP.", "100", "3", "-" ],
+            [ "Recover", "1", "Restores 15 HP. Slows Special trigger (cooldown count +1).", "200", "-", "4" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "4", "-" ],
+            [ "Swift-Winds Balm", "1", "When healing an ally with a staff, grants all allies Spd+4 for 1 turn.", "150", "-", "3" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Hone Atk 1", "Grants adjacent allies Atk+2 through their next actions at the start of each turn.", "50", "3" ],
+            [ "Hone Atk 2", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "100", "4" ],
+            [ "Hone Atk 3", "Grants adjacent allies Atk+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "seth__silver_knight":
+    {   "tag": "seth__silver_knight",
+        "name": "Seth",
+        "epithet": "Silver Knight",
+        "description": "A young commander of Renais. He's calm, composed, and skilled.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 8, 6, 8, 4 ],
+            "5": [ 18, 8, 7, 8, 5 ]
+        },
+        "growth_points": [ 5, 7, 7, 7, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Ruby Sword", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "4", "-" ],
+            [ "Ruby Sword+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Swap", "1", "Swap places with an adjacent ally.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Fortress Def 1", "Grants Def+3. Inflicts Atk-3.", "40", "-" ],
+            [ "Fortress Def 2", "Grants Def+4. Inflicts Atk-3.", "80", "-" ],
+            [ "Fortress Def 3", "Grants Def+5. Inflicts Atk-3.", "160", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Seal Atk 1", "After combat, foe suffers Atk-3 through its next action.", "40", "-" ],
+            [ "Seal Atk Def 1", "After combat, inflicts Atk/Def-3 on foe through its next action.", "100", "4" ],
+            [ "Seal Atk Def 2", "After combat, inflicts Atk/Def-5 on foe through its next action.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "setsuna__absent_archer":
+    {   "tag": "setsuna__absent_archer",
+        "name": "Setsuna",
+        "epithet": "Absent Archer",
+        "description": "Hoshidan archer who is either fearless or daydreaming. One of Hinoka's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 5, 8, 4, 5 ],
+            "4": [ 17, 6, 9, 4, 5 ],
+            "5": [ 18, 6, 9, 5, 6 ]
+        },
+        "growth_points": [ 5, 6, 9, 4, 4 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "3", "-" ],
+            [ "Assassin's Bow", "7", "2", "Effective against flying units. ", "200", "4", "3" ],
+            [ "Assassin's Bow+", "11", "2", "Effective against flying units. ", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Reciprocal Aid", "1", "Swap HP with adjacent ally (neither unit can go above their max HP).", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "HP +3", "Grants +3 to max HP.", "40", "3" ],
+            [ "HP +4", "Grants +4 to max HP.", "80", "4" ],
+            [ "HP +5", "Grants +5 to max HP.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Bowbreaker 1", "If unit's HP ≥ 90% in combat against a bow user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
+            [ "Bowbreaker 2", "If unit's HP ≥ 70% in combat against a bow user, unit makes a follow-up attack and foe cannot.", "100", "3" ],
+            [ "Bowbreaker 3", "If unit's HP ≥ 50% in combat against a bow user, unit makes a follow-up attack and foe cannot.", "200", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "shanna__sprightly_flier":
+    {   "tag": "shanna__sprightly_flier",
+        "name": "Shanna",
+        "epithet": "Sprightly Flier",
+        "description": "A trainee of the Pegasus Knights of Ilia. Cheerful and optimistic.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 16, 7, 8, 5, 6 ],
+            "4": [ 16, 8, 9, 5, 6 ],
+            "5": [ 17, 8, 9, 6, 7 ]
+        },
+        "growth_points": [ 6, 6, 8, 5, 6 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "-" ],
+            [ "Killer Lance", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "3" ],
+            [ "Killer Lance+", "11", "1", "Accelerates Special trigger (cooldown count-1).", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "4", "3" ],
+            [ "Iceberg", "3", "Boosts damage dealt by 50% of unit's Res.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Desperation 1", "If unit initiates combat with HP ≤ 25%, follow-up attacks occur immediately after unit's attack.", "50", "-" ],
+            [ "Desperation 2", "If unit initiates combat with HP ≤ 50%, follow-up attacks occur immediately after unit's attack.", "100", "3" ],
+            [ "Desperation 3", "If unit initiates combat with HP ≤ 75%, follow-up attacks occur immediately after unit's attack.", "200", "4" ]
+        ],
+        "base_passive_C":
+        [   [ "Threaten Spd 1", "Inflicts Spd-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "3" ],
+            [ "Threaten Spd 2", "Inflicts Spd-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "4" ],
+            [ "Threaten Spd 3", "Inflicts Spd-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "sharena__princess_of_askr":
+    {   "tag": "sharena__princess_of_askr",
+        "name": "Sharena",
+        "epithet": "Princess of Askr",
+        "description": "A princess of Askr and Alfonse's sister. Cheerful and loves making friends— especially with Heroes.",
+        "origin": "Fire Emblem Heroes",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 2 ],
+        "base_stats":
+        {   "2": [ 17, 7, 7, 5, 3 ],
+            "3": [ 18, 7, 7, 6, 4 ],
+            "4": [ 18, 8, 8, 6, 4 ],
+            "5": [ 19, 8, 8, 7, 5 ]
+        },
+        "growth_points": [ 7, 7, 7, 6, 4 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "2", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "2" ],
+            [ "Silver Lance", "11", "1", "-", "200", "-", "3" ],
+            [ "Fensalir", "16", "1", "Inflicts Atk-4 on foes within 2 spaces through their next actions at the start of each turn.", "400", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Attack", "1", "Grants Atk+4 to an adjacent ally until the end of the turn.", "150", "2", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Speed +1", "Grants Spd+1.", "30", "1" ],
+            [ "Speed +2", "Grants Spd+2.", "60", "2" ],
+            [ "Speed +3", "Grants Spd+3.", "120", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Fortify Def 1", "Grants adjacent allies Def+2 through their next actions at the start of each turn.", "50", "3" ],
+            [ "Fortify Def 2", "Grants adjacent allies Def+3 through their next actions at the start of each turn.", "100", "4" ],
+            [ "Fortify Def 3", "Grants adjacent allies Def+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "sheena__princess_of_gra":
+    {   "tag": "sheena__princess_of_gra",
+        "name": "Sheena",
+        "epithet": "Princess of Gra",
+        "description": "Princess of Gra, a failing realm. Feels the heavy weight of her responsibility.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Armored",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 20, 8, 5, 12, 6 ],
+            "5": [ 21, 8, 6, 12, 7 ]
+        },
+        "growth_points": [ 7, 6, 5, 7, 8 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Killer Axe", "7", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "-" ],
+            [ "Killer Axe+", "11", "1", "Accelerates Special trigger (cooldown count-1).", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Buckler", "3", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "100", "4", "-" ],
+            [ "Escutcheon", "2", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Svalinn Shield", "Neutralizes \"effective against\" bonuses.", "200", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Fortify Def 1", "Grants adjacent allies Def+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Def 2", "Grants adjacent allies Def+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Fortify Armor", "Grants adjacent armor allies Def/Res+6 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "sonya__vengeful_mage":
+    {   "tag": "sonya__vengeful_mage",
+        "name": "Sonya",
+        "epithet": "Vengeful Mage",
+        "description": "A mage hired by Grieth. Cool but flamboyant. Vowed vengeance upon her father, Jedah.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "green_tome",
+        "colour": "Green",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 7, 7, 5, 8 ]
+        },
+        "growth_points": [ 5, 8, 7, 1, 7 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "-", "-" ],
+            [ "Rexcalibur", "9", "2", "-", "200", "-", "-" ],
+            [ "Dark Excalibur", "14", "2", "Grants +10 to damage when special triggers.", "400", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "5", "-" ],
+            [ "Moonbow", "2", "Resolve combat as if foe suffered Def/Res-30%.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Warding Blow 1", "Grants Res+2 during combat if unit initiates attack.", "50", "-" ],
+            [ "Mirror Strike 1", "Grants Atk/Res+2 during combat if unit initiates combat.", "120", "-" ],
+            [ "Mirror Strike 2", "Grants Atk/Res+4 during combat if unit initiates combat.", "240", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Res Ploy 1", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Res-3 until the end of foe's next action.", "60", "-" ],
+            [ "Res Ploy 2", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Res-4 until the end of foe's next action.", "120", "-" ],
+            [ "Res Ploy 3", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Res-5 until the end of foe's next action.", "240", "5" ]
+        ]
+    },
+    "sophia__nabata_prophet":
+    {   "tag": "sophia__nabata_prophet",
+        "name": "Sophia",
+        "epithet": "Nabata Prophet",
+        "description": "A shaman of Nabata who has lived a sheltered life away from other people. Sees the future.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "red_tome",
+        "colour": "Red",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 16, 7, 2, 4, 5 ],
+            "2": [ 16, 8, 2, 4, 6 ],
+            "3": [ 17, 8, 3, 5, 6 ],
+            "4": [ 17, 9, 3, 5, 7 ],
+            "5": [ 18, 9, 4, 6, 7 ]
+        },
+        "growth_points": [ 6, 7, 3, 6, 6 ],
+        "base_weapons":
+        [   [ "Flux", "4", "2", "-", "50", "1", "-" ],
+            [ "Ruin", "6", "2", "-", "100", "3", "2" ],
+            [ "Fenrir", "9", "2", "-", "200", "4", "3" ],
+            [ "Fenrir+", "13", "2", "-", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Dragon Gaze", "4", "Grants +30% to Atk.", "100", "4", "3" ],
+            [ "Dragon Fang", "4", "Grants +50% to Atk.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Warding Blow 1", "Grants Res+2 during combat if unit initiates attack.", "50", "3" ],
+            [ "Warding Blow 2", "Grants Res+4 during combat if unit initiates attack.", "100", "4" ],
+            [ "Warding Blow 3", "Grants Res+6 during combat if unit initiates attack.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Fortify Res 1", "Grants adjacent allies Res+2 through their next actions at the start of each turn.", "50", "1" ],
+            [ "Fortify Res 2", "Grants adjacent allies Res+3 through their next actions at the start of each turn.", "100", "2" ],
+            [ "Fortify Res 3", "Grants adjacent allies Res+4 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "soren__shrewd_strategist":
+    {   "tag": "soren__shrewd_strategist",
+        "name": "Soren",
+        "epithet": "Shrewd Strategist",
+        "description": "An officer in the Greil Mercenaries. A coolheaded realist who has opened up to Ike.",
+        "origin": "Fire Emblem: Path of Radiance",
+        "weapon_type": "green_tome",
+        "colour": "Green",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 7, 9, 3, 6 ],
+            "5": [ 17, 7, 9, 4, 7 ]
+        },
+        "growth_points": [ 5, 8, 7, 2, 6 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "-", "-" ],
+            [ "Rexcalibur", "9", "2", "-", "200", "4", "-" ],
+            [ "Rexcalibur+", "13", "2", "-", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "-" ],
+            [ "Growing Wind", "5", "Before combat this unit initiates, foes in a wide area near target take damage equal to (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Watersweep 1", "If unit initiates attack, no follow-up occurs. Against foe with magic, staff or dragonstone, if unit’s Spd - foe’s Spd ≥ 5, foe can’t counterattack.", "60", "-" ],
+            [ "Watersweep 2", "If unit initiates attack, no follow-up occurs. Against foe with magic, staff or dragonstone, if unit’s Spd - foe’s Spd ≥ 3, foe can’t counterattack.", "120", "4" ],
+            [ "Watersweep 3", "If unit initiates attack, no follow-up occurs. Against foe with magic, staff or dragonstone, if unit’s Spd - foe’s Spd ≥ 1, foe can’t counterattack.", "240", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Fortify Res 1", "Grants adjacent allies Res+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Res 2", "Grants adjacent allies Res+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Fortify Res 3", "Grants adjacent allies Res+4 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "stahl__viridian_knight":
+    {   "tag": "stahl__viridian_knight",
+        "name": "Stahl",
+        "epithet": "Viridian Knight",
+        "description": "A kind but slightly scatterbrained knight who serves with the Shepherds.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 17, 5, 5, 6, 3 ],
+            "2": [ 17, 6, 5, 7, 3 ],
+            "3": [ 18, 6, 6, 7, 4 ],
+            "4": [ 18, 7, 6, 8, 4 ],
+            "5": [ 19, 7, 7, 8, 5 ]
+        },
+        "growth_points": [ 8, 7, 5, 6, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "1", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "2" ],
+            [ "Ruby Sword", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "4", "3" ],
+            [ "Ruby Sword+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Swap", "1", "Swap places with an adjacent ally.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Defense +1", "Grants Def+1.", "30", "1" ],
+            [ "Defense +2", "Grants Def+2.", "60", "2" ],
+            [ "Defense +3", "Grants Def+3.", "120", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Obstruct 1", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 90%. (No effect on foes with a Pass skill.)", "50", "3" ],
+            [ "Obstruct 2", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 70%. (No effect on foes with a Pass skill.)", "100", "4" ],
+            [ "Obstruct 3", "Prevents foes from moving through adjacent spaces while this unit's HP ≥ 50%. (No effect on foes with a Pass skill.)", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "subaki__perfect_expert":
+    {   "tag": "subaki__perfect_expert",
+        "name": "Subaki",
+        "epithet": "Perfect Expert",
+        "description": "Sky Knight of Hoshido who aims for perfection. One of Sakura's retainers.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 16, 4, 7, 7, 3 ],
+            "2": [ 16, 4, 8, 8, 3 ],
+            "3": [ 17, 5, 8, 8, 4 ],
+            "4": [ 17, 5, 9, 9, 4 ],
+            "5": [ 18, 6, 9, 9, 5 ]
+        },
+        "growth_points": [ 6, 5, 8, 8, 4 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "1", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "2" ],
+            [ "Sapphire Lance", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "4", "3" ],
+            [ "Sapphire Lance+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Swap", "1", "Swap places with an adjacent ally.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Resistance +1", "Grants Res+1.", "30", "1" ],
+            [ "Resistance +2", "Grants Res+2.", "60", "2" ],
+            [ "Resistance +3", "Grants Res+3.", "120", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Quick Riposte 1", "Unit automatically makes a follow-up attack if attacked at HP ≥ 90%.", "60", "3" ],
+            [ "Quick Riposte 2", "Unit automatically makes a follow-up attack if attacked at HP ≥ 80%.", "120", "4" ],
+            [ "Quick Riposte 3", "Unit automatically makes a follow-up attack if attacked at HP ≥ 70%.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "sully__crimson_knight":
+    {   "tag": "sully__crimson_knight",
+        "name": "Sully",
+        "epithet": "Crimson Knight",
+        "description": "A member of the Shepherds who is serious about becoming a great knight.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 6, 7, 6, 5 ],
+            "4": [ 17, 7, 8, 6, 5 ],
+            "5": [ 18, 7, 8, 7, 6 ]
+        },
+        "growth_points": [ 7, 5, 8, 4, 6 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "1", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "2" ],
+            [ "Sapphire Lance", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "4", "3" ],
+            [ "Sapphire Lance+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "-", "5" ]
+        ],
+        "base_support":
+        [   [ "Draw Back", "1", "Unit moves 1 space away from target ally, who moves to unit's former position.", "150", "4", "3" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Swordbreaker 1", "If unit's HP ≥ 90% in combat against a sword user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
+            [ "Swordbreaker 2", "If unit's HP ≥ 70% in combat against a sword user, unit makes a follow-up attack and foe cannot.", "100", "4" ],
+            [ "Swordbreaker 3", "If unit's HP ≥ 50% in combat against a sword user, unit makes a follow-up attack and foe cannot.", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Spur Def 2", "Grants adjacent allies Def+3 during combat.", "100", "-" ],
+            [ "Spur Def 3", "Grants adjacent allies Def+4 during combat.", "200", "4" ]
+        ]
+    },
+    "takumi__wild_card":
+    {   "tag": "takumi__wild_card",
+        "name": "Takumi",
+        "epithet": "Wild Card",
+        "description": "Prince of Hoshido who wields the divine bow Fujin Yumi. Prickly at times.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 18, 8, 7, 6, 5 ]
+        },
+        "growth_points": [ 6, 7, 8, 5, 2 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Silver Bow", "9", "2", "Effective against flying units. ", "200", "-", "-" ],
+            [ "Fujin Yumi", "14", "2", "Effective against flying units. ", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Retribution", "3", "Grants bonus to damage dealt equal to 30% of damage suffered.", "100", "5", "-" ],
+            [ "Vengeance", "3", "Grants bonus to damage dealt equal to 50% of damage suffered.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Close Counter", "Enables unit to counterattack regardless of distance to attacker.", "300", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Threaten Spd 1", "Inflicts Spd-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Spd 2", "Inflicts Spd-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "-" ],
+            [ "Threaten Spd 3", "Inflicts Spd-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "tana__winged_princess":
+    {   "tag": "tana__winged_princess",
+        "name": "Tana",
+        "epithet": "Winged Princess",
+        "description": "The princess of Frelia. Innes's sister. Somewhat naive, but cheery and very sociable.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 17, 8, 10, 6, 6 ]
+        },
+        "growth_points": [ 5, 8, 8, 5, 5 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Heavy Spear", "8", "1", "Effective against armored units. ", "200", "-", "-" ],
+            [ "Vidofnir", "16", "1", "If unit is attacked by foe using sword, axe or lance, unit receives Def+7 during combat.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "5", "-" ],
+            [ "Moonbow", "2", "Resolve combat as if foe suffered Def/Res-30%.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Speed +1", "Grants Spd+1.", "30", "-" ],
+            [ "Spd Def 1", "Grants Spd/Def+1.", "80", "-" ],
+            [ "Spd Def 2", "Grants Spd/Def+2.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Guidance 1", "If unit has 100% HP, infantry and armored allies within 2 spaces can move to a space adjacent to unit.", "60", "-" ],
+            [ "Guidance 2", "If unit has ≥ 50% HP, infantry and armored allies within 2 spaces can move to a space adjacent to unit.", "120", "-" ],
+            [ "Guidance 3", "Infantry and armored allies within 2 spaces can move to a space adjacent to unit.", "240", "5" ]
+        ]
+    },
+    "tharja__dark_shadow":
+    {   "tag": "tharja__dark_shadow",
+        "name": "Tharja",
+        "epithet": "Dark Shadow",
+        "description": "A mage from Plegia with a dark side and a possessive streak, especially with Robin.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "red_tome",
+        "colour": "Red",
+        "weapon": "Tome",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 16, 8, 8, 5, 4 ],
+            "5": [ 17, 8, 8, 6, 5 ]
+        },
+        "growth_points": [ 6, 7, 8, 4, 3 ],
+        "base_weapons":
+        [   [ "Flux", "4", "2", "-", "50", "-", "-" ],
+            [ "Ruin", "6", "2", "-", "100", "-", "-" ],
+            [ "Rauðrblade", "9", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "200", "4", "-" ],
+            [ "Rauðrblade+", "13", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Retribution", "3", "Grants bonus to damage dealt equal to 30% of damage suffered.", "100", "4", "-" ],
+            [ "Vengeance", "3", "Grants bonus to damage dealt equal to 50% of damage suffered.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Darting Blow 1", "Grants Spd+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Darting Blow 2", "Grants Spd+4 during combat if unit initiates the attack.", "100", "-" ],
+            [ "Darting Blow 3", "Grants Spd+6 during combat if unit initiates the attack.", "200", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Res 1", "Grants adjacent allies Res+2 during combat.", "50", "-" ],
+            [ "Spur Res 2", "Grants adjacent allies Res+3 during combat.", "100", "4" ],
+            [ "Spur Res 3", "Grants adjacent allies Res+4 during combat.", "200", "5" ]
+        ]
+    },
+    "tiki__nagas_voice":
+    {   "tag": "tiki__nagas_voice",
+        "name": "Tiki",
+        "epithet": "Naga's Voice",
+        "subname": "🐲",
+        "description": "Known as the Voice of the Divine Dragon. Has lived for ages. Once friends with Marth.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "red_dragonstone",
+        "colour": "Red",
+        "weapon": "Dragon",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 6, 5, 8, 6 ],
+            "4": [ 17, 7, 5, 9, 6 ],
+            "5": [ 18, 7, 6, 9, 7 ]
+        },
+        "growth_points": [ 6, 9, 4, 8, 4 ],
+        "base_weapons":
+        [   [ "Fire Breath", "6", "1", "-", "50", "-", "-" ],
+            [ "Fire Breath+", "8", "1", "-", "100", "3", "-" ],
+            [ "Lightning Breath", "7", "1", "Enables counterattack regardless of attacker's range. Slows Special trigger (cooldown count+1).", "200", "4", "3" ],
+            [ "Lightning Breath+", "11", "1", "Enables counterattack regardless of attacker's range. Slows Special trigger (cooldown count+1).", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Glowing Ember", "4", "Boosts damage dealt by 50% of unit's Def.", "100", "4", "3" ],
+            [ "Bonfire", "3", "Boosts damage dealt by 50% of unit's Def.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Atk 1", "Grants Atk+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
+            [ "Defiant Atk 2", "Grants Atk+5 at start of turn if unit's HP ≤ 50%.", "80", "3" ],
+            [ "Defiant Atk 3", "Grants Atk+7 at start of turn if unit's HP ≤ 50%.", "160", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Res 1", "Grants adjacent allies Res+2 during combat.", "50", "3" ],
+            [ "Spur Res 2", "Grants adjacent allies Res+3 during combat.", "100", "4" ],
+            [ "Spur Res 3", "Grants adjacent allies Res+4 during combat.", "200", "5" ]
+        ]
+    },
+    "tiki__summering_scion":
+    {   "tag": "tiki__summering_scion",
+        "name": "Tiki",
+        "epithet": "Summering Scion",
+        "subname": "🌅",
+        "description": "Known as the Voice of the Divine Dragon. Has lived through thousands of summers, but usually doesn't need to worry about swimming gear.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 18, 8, 6, 8, 7 ]
+        },
+        "growth_points": [ 4, 9, 7, 7, 4 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Melon Crusher", "10", "1", "If unit has 100% HP at start of combat, unit gets Atk/Spd/Def/Res+2. If attacking, unit will take 2 damage after combat.", "200", "-", "-" ],
+            [ "Melon Crusher+", "14", "1", "If unit has 100% HP at start of combat, unit gets Atk/Spd/Def/Res+2. If attacking, unit will take 2 damage after combat.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Daylight", "4", "Heal 30% of damage dealt.", "100", "5", "-" ],
+            [ "Sol", "4", "Heal 50% of damage dealt.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Close Def 1", "If unit is attacked by foe using sword, axe, lance, or dragonstone, unit receives Def/Res+2 during combat.", "60", "-" ],
+            [ "Close Def 2", "If unit is attacked by foe using sword, axe, lance, or dragonstone, unit receives Def/Res+4 during combat.", "120", "-" ],
+            [ "Close Def 3", "If unit is attacked by foe using sword, axe, lance, or dragonstone, unit receives Def/Res+6 during combat.", "240", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Axe Valor 1", "If unit survives and uses an axe, unit gets 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "30", "-" ],
+            [ "Axe Valor 2", "If unit survives, all axe users on team get 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "60", "-" ],
+            [ "Axe Valor 3", "If unit survives, all axe users on team get 2x SP. (If similar skill effects also used, only highest multiplier applied.)", "120", "5" ]
+        ]
+    },
+    "tiki__dragon_scion":
+    {   "tag": "tiki__dragon_scion",
+        "name": "Tiki",
+        "epithet": "Dragon Scion",
+        "subname": "🐉",
+        "description": "A young Divine Dragon once put into a timeless sleep to keep her dragon impulses in check. Now longs for human company.",
+        "origin": "Fire Emblem: Mystery of the Emblem",
+        "weapon_type": "red_dragonstone",
+        "colour": "Red",
+        "weapon": "Dragon",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 15, 5, 4, 8, 7 ]
+        },
+        "growth_points": [ 8, 8, 8, 7, 6 ],
+        "base_weapons":
+        [   [ "Fire Breath", "6", "1", "-", "50", "-", "-" ],
+            [ "Fire Breath+", "8", "1", "-", "100", "-", "-" ],
+            [ "Flametongue", "11", "1", "-", "200", "-", "-" ],
+            [ "Flametongue+", "15", "1", "-", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Flame", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "5", "-" ],
+            [ "Growing Flame", "5", "Before combat this unit initiates, foes in a wide area around target take damage equal to (unit's Atk minus foe's Def or Res).", "300", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Armored Blow 1", "Grants Def+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Armored Blow 2", "Grants Def+4 during combat if unit initiates the attack.", "100", "-" ],
+            [ "Armored Blow 3", "Grants Def+6 during combat if unit initiates the attack.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Breath of Life 1", "If unit initiates attack, adjacent allies recover 3 HP after combat.", "50", "-" ],
+            [ "Breath of Life 2", "If unit initiates attack, adjacent allies recover 5 HP after combat.", "100", "-" ],
+            [ "Breath of Life 3", "If unit initiates attack, adjacent allies recover 7 HP after combat.", "200", "5" ]
+        ]
+    },
+    "titania__mighty_mercenary":
+    {   "tag": "titania__mighty_mercenary",
+        "name": "Titania",
+        "epithet": "Mighty Mercenary",
+        "description": "Deputy commander of the Greil Mercenaries. An idealistic former knight who values honor.",
+        "origin": "Fire Emblem: Path of Radiance",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 5, 8, 5, 8 ],
+            "5": [ 18, 6, 8, 6, 8 ]
+        },
+        "growth_points": [ 5, 6, 8, 5, 6 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Emerald Axe", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "4", "-" ],
+            [ "Emerald Axe+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Reciprocal Aid", "1", "Swap HP with adjacent ally (neither unit can go above their max HP).", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Armored Blow 1", "Grants Def+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Armored Blow 2", "Grants Def+4 during combat if unit initiates the attack.", "100", "-" ],
+            [ "Armored Blow 3", "Grants Def+6 during combat if unit initiates the attack.", "200", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Guard 1", "If unit's HP is 100% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "50", "-" ],
+            [ "Guard 2", "If unit's HP is ≥ 90% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "100", "4" ],
+            [ "Guard 3", "If unit's HP is ≥ 80% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "tobin__the_clueless_one":
+    {   "tag": "tobin__the_clueless_one",
+        "name": "Tobin",
+        "epithet": "The Clueless One",
+        "description": "Alm's childhood friend from Ram Village. Honest to a fault, and suffers for it.",
+        "origin": "Fire Emblem Echoes: Shadows of Valentia",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 4, 5 ],
+        "base_stats":
+        {   "4": [ 17, 7, 5, 4, 3 ],
+            "5": [ 18, 7, 5, 5, 4 ]
+        },
+        "growth_points": [ 9, 7, 6, 9, 6 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Armorslayer", "8", "1", "Effective against armored units. ", "200", "4", "-" ],
+            [ "Armorslayer+", "12", "1", "Effective against armored units. ", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Pivot", "1", "Unit moves to opposite side of adjacent ally.", "150", "4", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Attack +1", "Grants Atk+1.", "30", "-" ],
+            [ "Attack +2", "Grants Atk+2.", "60", "-" ],
+            [ "Attack +3", "Grants Atk+3.", "120", "4" ]
+        ],
+        "base_passive_B":
+        [   [ "Seal Spd 1", "After combat, foe suffers Spd-3 through its next action.", "40", "-" ],
+            [ "Seal Spd 2", "After combat, foe suffers Spd-5 through its next action.", "80", "4" ],
+            [ "Seal Spd 3", "After combat, foe suffers Spd-7 through its next action.", "160", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "ursula__blue_crow":
+    {   "tag": "ursula__blue_crow",
+        "name": "Ursula",
+        "epithet": "Blue Crow",
+        "description": "A cruel member of the Black Fang assassins. Lends her service only to someone truly perfect.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "blue_tome",
+        "colour": "Blue",
+        "weapon": "Tome",
+        "move_type": "Cavalry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 15, 6, 7, 3, 7 ],
+            "4": [ 15, 6, 8, 3, 8 ],
+            "5": [ 16, 7, 8, 4, 8 ]
+        },
+        "growth_points": [ 5, 6, 7, 3, 6 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "3", "-" ],
+            [ "Blárwolf", "6", "2", "Effective against cavalry units. ", "200", "4", "3" ],
+            [ "Blárwolf+", "10", "2", "Effective against cavalry units. ", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Thunder", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "3" ],
+            [ "Growing Thunder", "5", "Before combat this unit initiates, foes in a wide area around target take damage equal to (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Death Blow 1", "Grants Atk+2 during combat if unit initiates the attack.", "50", "3" ],
+            [ "Death Blow 2", "Grants Atk+4 during combat if unit initiates the attack.", "100", "4" ],
+            [ "Death Blow 3", "Grants Atk+6 during combat if unit initiates the attack.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Threaten Res 1", "Inflicts Res-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
+            [ "Threaten Res 2", "Inflicts Res-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "3" ],
+            [ "Threaten Res 3", "Inflicts Res-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "valter__dark_moonstone":
+    {   "tag": "valter__dark_moonstone",
+        "name": "Valter",
+        "epithet": "Dark Moonstone",
+        "description": "One of Grado's six generals. Cruelty intoxicates him. Known as Moonstone.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Flying",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 17, 7, 8, 7, 3 ],
+            "4": [ 17, 8, 9, 7, 3 ],
+            "5": [ 18, 8, 9, 8, 4 ]
+        },
+        "growth_points": [ 7, 7, 6, 8, 3 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "3", "-" ],
+            [ "Silver Lance", "11", "1", "-", "200", "4", "3" ],
+            [ "Cursed Lance", "16", "1", "Grants Atk/Spd+2 and accelerates Special trigger (cooldown count-1). Unit takes 4 damage after combat.", "400", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "4", "3" ],
+            [ "Luna", "3", "Resolve combat as if foe suffered Def/Res-50%.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Darting Blow 1", "Grants Spd+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Darting Blow 2", "Grants Spd+4 during combat if unit initiates the attack.", "100", "-" ],
+            [ "Darting Blow 3", "Grants Spd+6 during combat if unit initiates the attack.", "200", "4" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Panic Ploy 1", "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 5 or more lower than unit through foe's next action.", "60", "-" ],
+            [ "Panic Ploy 2", "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 3 or more lower than unit through foe's next action.", "120", "4" ],
+            [ "Panic Ploy 3", "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 1 or more lower than unit through foe's next action.", "240", "5" ]
+        ]
+    },
+    "virion__elite_archer":
+    {   "tag": "virion__elite_archer",
+        "name": "Virion",
+        "epithet": "Elite Archer",
+        "description": "Rightful ruler of Rosanne in Valm who has a tendency for wit and puffery.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "bow",
+        "colour": "Colorless",
+        "weapon": "Bow",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 18, 5, 5, 5, 1 ],
+            "2": [ 18, 6, 6, 5, 1 ],
+            "3": [ 19, 6, 6, 6, 2 ],
+            "4": [ 19, 7, 7, 6, 2 ],
+            "5": [ 20, 7, 7, 7, 3 ]
+        },
+        "growth_points": [ 8, 7, 7, 5, 1 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "1", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "3", "2" ],
+            [ "Silver Bow", "9", "2", "Effective against flying units. ", "200", "4", "3" ],
+            [ "Silver Bow+", "13", "2", "Effective against flying units. ", "300", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "4", "3" ],
+            [ "Astra", "5", "Grants +150% to damage dealt.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Defiant Res 1", "Grants Res+3 at start of turn if unit's HP ≤ 50%.", "40", "3" ],
+            [ "Defiant Res 2", "Grants Res+5 at start of turn if unit's HP ≤ 50%.", "80", "4" ],
+            [ "Defiant Res 3", "Grants Res+7 at start of turn if unit's HP ≤ 50%.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Seal Spd 1", "After combat, foe suffers Spd-3 through its next action.", "40", "1" ],
+            [ "Seal Spd 2", "After combat, foe suffers Spd-5 through its next action.", "80", "2" ],
+            [ "Seal Spd 3", "After combat, foe suffers Spd-7 through its next action.", "160", "4" ]
+        ],
+        "base_passive_C": []
+    },
+    "wrys__kindly_priest":
+    {   "tag": "wrys__kindly_priest",
+        "name": "Wrys",
+        "epithet": "Kindly Priest",
+        "description": "Humble priest of Talys who likes a quiet life. Despises battle, preferring to heal allies.",
+        "origin": "Fire Emblem: Shadow Dragon and the Blade of Light",
+        "weapon_type": "staff",
+        "colour": "Colorless",
+        "weapon": "Staff",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "1": [ 16, 3, 4, 3, 8 ],
+            "2": [ 16, 3, 5, 3, 9 ],
+            "3": [ 17, 4, 5, 4, 9 ],
+            "4": [ 17, 4, 6, 4, 10 ],
+            "5": [ 18, 5, 6, 5, 10 ]
+        },
+        "growth_points": [ 7, 5, 4, 4, 8 ],
+        "base_weapons":
+        [   [ "Assault", "10", "2", "-", "50", "-", "1" ],
+            [ "Slow", "5", "2", "After any combat, inflicts Spd-6 on foe through its next action.", "150", "-", "3" ]
+        ],
+        "base_support":
+        [   [ "Heal", "1", "Restores 5 HP.", "-", "1", "-" ],
+            [ "Reconcile", "1", "Restores 7 HP each to target and this unit.", "100", "3", "2" ],
+            [ "Rehabilitate", "1", "Restores 7 HP or more the further below 50% the target's HP is. Slows special trigger (cooldown count+1).", "200", "-", "4" ]
+        ],
+        "base_special":
+        [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "4", "2" ],
+            [ "Heavenly Light", "2", "When healing an ally with a staff, all other allies recover 10 HP.", "150", "-", "3" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Live to Serve 1", "When healing allies with a staff, unit also recovers 50% of the HP restored.", "40", "3" ],
+            [ "Live to Serve 2", "When healing allies with a staff, unit also recovers 75% of the HP restored.", "80", "4" ],
+            [ "Live to Serve 3", "When healing allies with a staff, unit also recovers the same amount.", "160", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "xander__paragon_knight":
+    {   "tag": "xander__paragon_knight",
+        "name": "Xander",
+        "epithet": "Paragon Knight",
+        "description": "Nohrian prince respected for his military prowess. Wields the divine blade Siegfried.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Cavalry",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 19, 7, 4, 8, 3 ],
+            "4": [ 19, 8, 4, 9, 3 ],
+            "5": [ 20, 8, 5, 9, 4 ]
+        },
+        "growth_points": [ 7, 7, 5, 9, 2 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "3" ],
+            [ "Siegfried", "16", "1", "Enables counterattack regardless of distance if this unit is attacked.", "400", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Light", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "3" ],
+            [ "Blazing Light", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Armored Blow 1", "Grants Def+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Armored Blow 2", "Grants Def+4 during combat if unit initiates the attack.", "100", "-" ],
+            [ "Armored Blow 3", "Grants Def+6 during combat if unit initiates the attack.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Spur Def 2", "Grants adjacent allies Def+3 during combat.", "100", "4" ],
+            [ "Spur Def 3", "Grants adjacent allies Def+4 during combat.", "200", "5" ]
+        ]
+    },
+    "xander__student_swimmer":
+    {   "tag": "xander__student_swimmer",
+        "name": "Xander",
+        "epithet": "Student Swimmer",
+        "subname": "🌅",
+        "description": "A Nohrian prince who wields the divine sword Siegfried but can't swim. Clings to his Lilith water toy.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "axe",
+        "colour": "Green",
+        "weapon": "Axe",
+        "move_type": "Infantry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 19, 8, 6, 8, 6 ]
+        },
+        "growth_points": [ 7, 7, 7, 9, 1 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Lilith Floatie", "10", "1", "Grants allies within 2 spaces Atk/Spd+1 during combat.", "200", "-", "-" ],
+            [ "Lilith Floatie+", "14", "1", "Grants allies within 2 spaces Atk/Spd+1 during combat.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Glowing Ember", "4", "Boosts damage dealt by 50% of unit's Def.", "100", "5", "-" ],
+            [ "Bonfire", "3", "Boosts damage dealt by 50% of unit's Def.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Fire Boost 1", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Atk+2 during combat.", "50", "-" ],
+            [ "Fire Boost 2", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Atk+4 during combat.", "100", "-" ],
+            [ "Fire Boost 3", "If unit has at least 3 more HP than enemy at the start of combat, unit receives Atk+6 during combat.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Infantry Pulse 1", "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 5 fewer HP than unit. (Effects will stack with similar skills.)", "60", "-" ],
+            [ "Infantry Pulse 2", "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 3 fewer HP than unit. (Effects will stack with similar skills.)", "120", "-" ],
+            [ "Infantry Pulse 3", "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 1 fewer HP than unit. (Effects will stack with similar skills.)", "240", "5" ]
+        ]
+    },
+    "xander__spring_prince":
+    {   "tag": "xander__spring_prince",
+        "name": "Xander",
+        "epithet": "Spring Prince",
+        "subname": "🐇",
+        "description": "Nohrian prince who normally wields the divine blade Siegfried but left it behind for the festival.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "lance",
+        "colour": "Blue",
+        "weapon": "Lance",
+        "move_type": "Cavalry",
+        "limited": true,
+        "summon": true,
+        "rarities": [ 5 ],
+        "base_stats":
+        {   "5": [ 18, 6, 6, 9, 7 ]
+        },
+        "growth_points": [ 6, 5, 6, 8, 5 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Carrot Lance", "9", "1", "If unit initiates attack, unit recovers 4 HP after the battle.", "200", "-", "-" ],
+            [ "Carrot Lance+", "13", "1", "If unit initiates attack, unit recovers 4 HP after the battle.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Swap", "1", "Swap places with an adjacent ally.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Live for Honor", "If unit survives, get 1.5x normal badges from a Training Tower map. (If similar skill effects also used, only highest multiplier applied.)", "100", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Fortify Def 1", "Grants adjacent allies Def+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Fortify Def 2", "Grants adjacent allies Def+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Fortify Def 3", "Grants adjacent allies Def+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
+    "zephiel__the_liberator":
+    {   "tag": "zephiel__the_liberator",
+        "name": "Zephiel",
+        "epithet": "The Liberator",
+        "description": "King of Bern. Once a kindhearted boy who became disillusioned with humanity. Wants his world to be ruled by dragons.",
+        "origin": "Fire Emblem: The Binding Blade",
+        "weapon_type": "sword",
+        "colour": "Red",
+        "weapon": "Sword",
+        "move_type": "Armored",
+        "limited": true,
+        "summon": false,
+        "rarities": [ 3, 4 ],
+        "base_stats":
+        {   "3": [ 24, 8, 2, 11, 4 ],
+            "4": [ 24, 9, 2, 12, 4 ],
+            "5": [ 25, 9, 3, 12, 5 ]
+        },
+        "growth_points": [ 10, 8, 2, 8, 5 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "3" ],
+            [ "Eckesachs", "16", "1", "Inflicts Def-4 on foes within 2 spaces through their next actions at the start of each turn.", "400", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Retribution", "3", "Grants bonus to damage dealt equal to 30% of damage suffered.", "100", "4", "3" ],
+            [ "Reprisal", "2", "Grants bonus to damage dealt equal to 30% of damage suffered.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Life and Death 1", "Grants Atk/Spd+3. Inflicts Def/Res-3.", "50", "-" ],
+            [ "Life and Death 2", "Grants Atk/Spd+4. Inflicts Def/Res-4.", "100", "4" ],
+            [ "Life and Death 3", "Grants Atk/Spd+5. Inflicts Def/Res-5.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Wary Fighter 1", "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 90%.", "60", "-" ],
+            [ "Wary Fighter 2", "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 70%.", "120", "-" ],
+            [ "Wary Fighter 3", "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 50%.", "240", "4" ]
+        ],
+        "base_passive_C": []
     }
 };

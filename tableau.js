@@ -29,12 +29,12 @@ let tableau =
         { key : 'def', display : 'DEF', parent_div : 'stat' },
         { key : 'res', display : 'RES', parent_div : 'stat' },
 
-        { key:'weapon',    display:'Weapon',    parent_div:'skill', container: dat.weapons },
-        { key:'assist',    display:'Assist',    parent_div:'skill', container: dat.assists },
-        { key:'special'  , display:'Special',   parent_div:'skill', container: dat.specials },
-        { key:'passive_a', display:'Passive A', parent_div:'skill', container: dat.passive_a },
-        { key:'passive_b', display:'Passive B', parent_div:'skill', container: dat.passive_b },
-        { key:'passive_c', display:'Passive C', parent_div:'skill', container: dat.passive_c }
+        { key:'weapons',   display:'Weapon',    parent_div:'skill' },
+        { key:'support',   display:'Support',   parent_div:'skill' },
+        { key:'special'  , display:'Special',   parent_div:'skill' },
+        { key:'passive_A', display:'Passive A', parent_div:'skill' },
+        { key:'passive_B', display:'Passive B', parent_div:'skill' },
+        { key:'passive_C', display:'Passive C', parent_div:'skill' }
     ],
 
     setup_friends_table : function()
@@ -217,16 +217,14 @@ tableau.setup = function tableau_setup()
 
 
 
+    this.feh_row = new tableau.row(allies.feh);
+    this.feh_row.build_items();
 
     this.setup_friends_table();
     this.setup_allies_table();
 
-    sw.friends.do_select(); // start tables in collection mode
+    sw.allies.do_select(); // start tables in collection mode
     fo.include.do_select(); // start filters in include mode
-
-    this.feh_row = new this.row(allies.feh);
-    this.feh_row.build_items();
-
 
 };
 
@@ -263,6 +261,7 @@ tableau.table = class
     rebuild_title_row ()
     {
         this.title_row = new tableau.row();
+        this.title_row.div.className += ' title_row ';
         this.div.appendChild(this.title_row.div);
 
         let that = this;
@@ -308,6 +307,7 @@ tableau.table = class
         if(this == tableau.active_table) { this.hide(); }
 
         let rows = this.rows;
+        this.div.appendChild(tableau.feh_row.div);
         for ( let i = 0;  i < rows.length;  i++)
         {   this.div.appendChild(rows[i].div);
         }
@@ -402,7 +402,7 @@ tableau.row = class
     constructor(ally)
     {
         this.ally = ally;
-        if (ally && ally.gone_home) { return 0; }
+        // if (ally && ally.is_home()) { return 0; } // shouldn't these still be constructed?
         this.div = document.createElement('div');
         this.div.className += ' row ';
 
@@ -430,7 +430,7 @@ tableau.row = class
         tableau.row_properties.forEach( function(property)
         {
             let key = property.key;
-            let val = that.ally[key]; // property value
+            // let val = that.ally[key]; // property value FIXME: deprecated
 
             let item_div = document.createElement('div');
             that.itemdivs.push(item_div);
@@ -442,12 +442,13 @@ tableau.row = class
             // add info to the div.className
             switch(key)
             {
-                case 'name': // nosummon so it knows to italicize the name
-                    item_div.className += that.ally.summon ? "" : " nosummon ";
-                    if (that.ally.text) {item_div.title = that.ally.text;}
+                case 'name': // limited so it knows to italicize the name
+                    item_div.className += that.ally.is_limited() ? " limited " : "";
+                    // if (that.ally.text) {item_div.title = that.ally.text;}
+                    item_div.title = that.ally.get_description();
                     item_div.onmousedown = function(){ that.name_click(); };
                     item_div.className += " click_item noselect ";
-                    if (that.ally.home) { item_div.className += " strike "; }
+                    if (that.ally.is_home()) { item_div.className += " strike "; }
                     break;
                 case 'favourite':
                     item_div.onmousedown = function(){ that.favourite_click(); };
@@ -458,25 +459,38 @@ tableau.row = class
                     item_div.className += " click_item noselect ";
                     break;
                 case 'origin':
-                    item_div.title = stringy.get_origin_text(val); // allies.properties[key][val].text;
+                    item_div.title = that.ally.get_origin_text();
                     break;
                 case 'rarity':
-                case 'weapon_type':
-                case 'colour_type':
-                case 'move_type':
-                    if(key.includes('weapon'))
-                    {   if(val.includes('tome')){item_div.className+=' tome ';}
-                        if(val.includes('dragon')){item_div.className+=' dragon ';}
-                    }
-                    item_div.className += " "+val+" ";
+                    item_div.className += " " + 'rarity' + " ";
                     item_div.child_img = document.createElement('img');
                     item_div.child_img.onerror = function(){this.src = stringy.img_feh;};
-                    item_div.child_img.src = stringy.find_img_path(key,val);
+                    item_div.child_img.src = stringy.find_img_path(
+                        'rarity', that.ally.get_rarity() );
+                    break;
+                case 'weapon_type':
+                    item_div.className += " " + that.ally.get_weapon() + " ";
+                    item_div.child_img = document.createElement('img');
+                    item_div.child_img.onerror = function(){this.src = stringy.img_feh;};
+                    item_div.child_img.src = stringy.find_img_path(
+                        'weapon', that.ally.get_weapon_type() );
+                    break;
+                case 'colour_type':
+                    item_div.className += " " + that.ally.get_colour() + " ";
+                    item_div.child_img = document.createElement('img');
+                    item_div.child_img.onerror = function(){this.src = stringy.img_feh;};
+                    item_div.child_img.src = stringy.find_img_path(
+                        'colour', that.ally.get_colour() );
+                    break;
+                case 'move_type':
+                    item_div.className += " " + that.ally.get_move_type() + " ";
+                    item_div.child_img = document.createElement('img');
+                    item_div.child_img.onerror = function(){this.src = stringy.img_feh;};
+                    item_div.child_img.src = stringy.find_img_path(
+                        'move', that.ally.get_move_type() );
                     break;
                 case 'weapon':
-                    if ( dat.weapons[val] && dat.weapons[val].inherit == 'exclusive')
-                    {   item_div.className += " exclusive ";
-                    }
+                    if ( that.ally.is_equipped_weapon_exclusive() ) { item_div.className += " exclusive "; }
                     break;
                 default:
                     break;
@@ -492,7 +506,7 @@ tableau.row = class
         tableau.row_properties.forEach( function(property, index)
         {
             let key = property.key;
-            let val = that.ally[key];
+            // let val = that.ally[key];
             let item_div = that.itemdivs[index];
             let display_name = '';
 
@@ -500,16 +514,20 @@ tableau.row = class
             switch(key)
             {
                 case 'name':
-                    display_name = val || 'ERR_ALLY_NAME_NOT_FOUND';
+                    display_name = that.ally.get_name() || 'ERR_ALLY_NAME_NOT_FOUND';
                     break;
                 case 'obtained':
+                    display_name = that.ally.get_obtained_order();
+                    break;
                 case 'favourite':
+                    display_name = that.ally.is_favourite() || "--";
+                    break;
                 case 'fruit':
-                    display_name = val || "--";
+                    display_name = that.ally.get_fruit() || "--";
                     break;
                 case 'origin':
-                    display_name = stringy.get_origin_display(val); // allies.properties[key][val].display;
-                    break;
+                    display_name = stringy.get_origin_display( that.ally.get_origin_text() );
+                    break; // allies.properties[key][val].display;
                 case 'rarity':
                 case 'colour_type':
                 case 'weapon_type':
@@ -517,34 +535,34 @@ tableau.row = class
                     display_name = '';
                     break;
                 case 'nature':
-                    display_name = that.ally.return_nature();
+                    display_name = that.ally.get_nature();
                     break;
-                case 'bane':
-                    display_name = (val && val != 'neutral') ? '–'+val : "neutral";
+                // case 'bane':
+                //     display_name = (val && val != 'neutral') ? '–'+val : "neutral";
+                //     break;
+                case 'rating':
+                    display_name = that.ally.get_rating();
                     break;
-                case 'rating':  case 'hp' :
+                case 'hp' :
                 case 'atk':     case 'spd':
                 case 'def':     case 'res':
-                    display_name = val || "--";
+                    display_name = that.ally.get_stats()[key] || "--";
                     break;
-                case 'weapon':
-                case 'assist':
+                case 'weapons':
+                case 'support':
                 case 'special':
-                case 'passive_a':
-                case 'passive_b':
-                case 'passive_c':
-                    let container = property.container;
-                    if (val && container[val])
-                    {   display_name = container[val].name;
-                        if (container[val].text)
-                        {   item_div.title = container[val].text;
-                        }
+                case 'passive_A':
+                case 'passive_B':
+                case 'passive_C':
+                    display_name = that.ally.get_equipped_skill_name(key)
+                        ? that.ally.get_equipped_skill_name(key) : "--";
+                    if (that.ally.get_equipped_skill_effect(key))
+                    {   item_div.title = that.ally.get_equipped_skill_effect(key);
                     }
-                    else { display_name = val ? val : "--"; }
                     break;
                 default:
                     console.log("ERR_PROPERTY_KEY_NOT_FOUND",key);
-                    display_name = val || "--";
+                    display_name = key || "--";
                     break;
             }
 
@@ -578,7 +596,7 @@ tableau.row = class
     }
 
     fruit_click (item)
-    {   this.ally.cycle_fruit();
+    {   this.ally.goto_next_fruit();
         this.refresh_items();
     }
 
@@ -599,12 +617,12 @@ tableau.compare = function (a, b, property, reverse)
 {
     let x = 1; if(reverse) { x = -1; }
 
-    let c = a.ally[property];
-    let d = b.ally[property];
+    let c = a.ally.get_sort_properties()[property];
+    let d = b.ally.get_sort_properties()[property];
 
     if (isNaN(c - d) && property.includes('type'))
-    {   c = tableau.sort_properties[property].sort_array.indexOf(a.ally[property]);
-        d = tableau.sort_properties[property].sort_array.indexOf(b.ally[property]);
+    {   c = tableau.sort_properties[property].sort_array.indexOf(a.ally.get_sort_properties()[property]);
+        d = tableau.sort_properties[property].sort_array.indexOf(b.ally.get_sort_properties()[property]);
         return (c - d)*x;
     }
     else if (isNaN(c - d))
@@ -630,8 +648,9 @@ tableau.cascade_tiebreaker = function (a,b, property)
         let result = this.compare(a,b, prop, reverse);
         if (result) return result;
     }
-    console.log('exhausted tiebreakers for',property,a.tag,b.tag);
-    return 0;
+    let e = a.ally.get_catalog_index();
+    let f = a.ally.get_catalog_index();
+    return (e - f);
 };
 
 
@@ -654,8 +673,8 @@ tableau.sort_properties =
         [ 'rarity', 'colour_type', 'weapon_type', 'move_type', 'obtained' ], },
 
     origin :
-    {   tiebreaker : [ 'name', 'subname', 'rarity', 'obtained' ], // proximity to main character?
-    },
+    {   tiebreaker : [ 'name', 'subname', 'rarity', 'obtained' ],
+    }, // proximity to main character? // now by catalog index
 
     rarity :
     {   tiebreaker : [ 'colour_type', 'weapon_type', 'move_type', 'origin', 'obtained' ],
@@ -664,21 +683,21 @@ tableau.sort_properties =
 
     colour_type :
     {   tiebreaker : [ 'rarity', 'weapon_type', 'move_type', 'origin', 'obtained' ],
-        sort_array : [ 'red', 'blue', 'green', 'grey' ],
+        sort_array : [ 'red', 'blue', 'green', 'colorless' ],
     },
 
     weapon_type :
     {   tiebreaker : [ 'colour_type', 'rarity', 'move_type', 'origin', 'obtained' ],
         sort_array :
         [   'sword', 'lance', 'axe', 'bow', 'dagger',
-            'tome_red', 'tome_blue', 'tome_green', 'staff',
-            'dragon_red', 'dragon_blue', 'dragon_green'
+            'red_tome', 'blue_tome', 'green_tome', 'staff',
+            'red_dragonstone', 'blue_dragonstone', 'green_dragonstone'
         ],
     },
 
     move_type :
     {   tiebreaker : [ 'rarity', 'colour_type', 'weapon_type', 'origin', 'obtained' ],
-        sort_array : [ 'infantry', 'armor', 'cavalry', 'flyer' ]
+        sort_array : [ 'infantry', 'armor', 'cavalry', 'flying' ]
     },
 
     rating :
@@ -772,12 +791,12 @@ class sifter extends checky // handles filter
     add_subfilter(sub) { this.subfilters[sub.tag] = sub; }
 
     checkpoint(row)
-    {   let ally = row.ally;
+    {   let properties = row.ally.get_sort_properties();
 
         // special case, accept rarities 3, 2, 1 for "rarity 3"
-        if(this.property == 'rarity' && this.value == 321) { return (ally[this.property] <= 3); }
+        if(this.property == 'rarity' && this.value == 321) { return (properties[rarity] <= 3); }
 
-        return (ally[this.property] == this.value);
+        return (properties[this.property] == this.value);
     }
 
     enable()
@@ -839,7 +858,7 @@ tableau.filters =
     red   : new sifter({ tag:'red',   property:'colour_type', value:'red',   default:true }),
     blue  : new sifter({ tag:'blue',  property:'colour_type', value:'blue',  default:true }),
     green : new sifter({ tag:'green', property:'colour_type', value:'green', default:true }),
-    grey  : new sifter({ tag:'grey',  property:'colour_type', value:'grey',  default:true }),
+    grey  : new sifter({ tag:'grey',  property:'colour_type', value:'colorless',default:true }),
 };
 
 tableau.special_filters = // active even in isolate mode
@@ -870,19 +889,19 @@ tableau.subfilters = // subfilters must wait for their superfilter to exist
     bow   : new sifter({ property:'weapon_type', value:'bow',   default:true, tag:'bow',   sup:'grey'}),
     dagger: new sifter({ property:'weapon_type', value:'dagger',default:true, tag:'dagger',sup:'grey'}),
 
-    tome_red   : new sifter({ property:'weapon_type', value:'tome_red',   default:true, tag:'tome_red',   sup:'red'}),
-    tome_blue  : new sifter({ property:'weapon_type', value:'tome_blue',  default:true, tag:'tome_blue',  sup:'blue'}),
-    tome_green : new sifter({ property:'weapon_type', value:'tome_green', default:true, tag:'tome_green', sup:'green'}),
-    staff      : new sifter({ property:'weapon_type', value:'staff',      default:true, tag:'staff',      sup:'grey'}),
+    red_tome   : new sifter({ property:'weapon_type', value:'red_tome',   default:true, tag:'red_tome',   sup:'red'}),
+    blue_tome  : new sifter({ property:'weapon_type', value:'blue_tome',  default:true, tag:'blue_tome',  sup:'blue'}),
+    green_tome : new sifter({ property:'weapon_type', value:'green_tome', default:true, tag:'green_tome', sup:'green'}),
+    staff      : new sifter({ property:'weapon_type', value:'staff',default:true, tag:'staff',  sup:'grey'}),
 
-    dragon_red   : new sifter({ property:'weapon_type', value:'dragon_red',   default:true, tag:'dragon_red',   sup:'red'}),
-    dragon_blue  : new sifter({ property:'weapon_type', value:'dragon_blue',  default:true, tag:'dragon_blue',  sup:'blue'}),
-    dragon_green : new sifter({ property:'weapon_type', value:'dragon_green', default:true, tag:'dragon_green', sup:'green'}),
+    dragon_red   : new sifter({ property:'weapon_type', value:'red_dragonstone',   default:true, tag:'dragon_red',   sup:'red'}),
+    dragon_blue  : new sifter({ property:'weapon_type', value:'blue_dragonstone',  default:true, tag:'dragon_blue',  sup:'blue'}),
+    dragon_green : new sifter({ property:'weapon_type', value:'green_dragonstone', default:true, tag:'dragon_green', sup:'green'}),
 
     infantry : new sifter({ property:'move_type', value:'infantry', default:true, tag:'infantry', sup:'move'}),
-    armor    : new sifter({ property:'move_type', value:'armor',    default:true, tag:'armor',    sup:'move'}),
+    armored  : new sifter({ property:'move_type', value:'armored',    default:true, tag:'armored',sup:'move'}),
     cavalry  : new sifter({ property:'move_type', value:'cavalry',  default:true, tag:'cavalry',  sup:'move'}),
-    flyer    : new sifter({ property:'move_type', value:'flyer',    default:true, tag:'flyer',    sup:'move'}),
+    flying    : new sifter({ property:'move_type', value:'flying',    default:true, tag:'flying', sup:'move'}),
 };
 
 // end lower indent

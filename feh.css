@@ -103,9 +103,9 @@ img.icon
 {   background-color: navy;
     display:block;
     width:90%;
-    margin: 10px;
+    margin: 9px;
     border: solid 1px dimgrey;
-    padding: 10px;
+    padding: 9px;
     min-height: 100px;
 }
 #alter .portrait
@@ -137,6 +137,10 @@ img.icon
 
     }
 
+    #alter .locked
+    {   color: silver;
+    }
+
 
 
 
@@ -151,9 +155,9 @@ img.icon
 #adder
 {   display: inline-block;
     margin-left: 1%;
-    margin: 10px;
+    margin: 9px;
     border: solid 1px dimgrey;
-    padding: 10px;
+    padding: 9px;
 
 }
 #adder .dropdown
@@ -162,7 +166,7 @@ img.icon
     vertical-align: middle;
 }
 #adder .message
-{   margin: 10px;
+{   margin: 9px;
     color:aliceblue;
     vertical-align:middle;
 }
@@ -181,8 +185,8 @@ img.icon
     height: 5em;
 }
     #table_setting .inner
-    {   padding-left: 10px;
-        padding-right: 10px;
+    {   padding-left: 9px;
+        padding-right: 9px;
         display: inline-block;
         vertical-align: middle;
         text-align: center;
@@ -221,7 +225,7 @@ img.icon
     margin:auto;
     border: 1px solid dimgrey;
     color: #444444;
-    overflow-y:auto;
+    overflow-y:scroll; /* not auto so scroll always shows for title row width */
     max-height:480px;
 }
 
@@ -235,6 +239,14 @@ img.icon
     border-width: 0px;
     box-sizing: border-box; */
  /* color: #555555; */ /* belongs to the table */
+}
+.title_row
+{   position: absolute;
+    width: 97.232%;
+    z-index: 1;
+}
+.row .item.title
+{   border-bottom-width: 2px;
 }
 
 .click_item.name
@@ -270,16 +282,18 @@ img.icon
     margin-left: 50%;
 }
 
-.row .name.nosummon, .exclusive
-{ font-style:italic; }
+.row .name.limited, .exclusive
+{   font-style:italic;
+}
 
-.row .name.nosummon .subname
-{ font-style:normal; }
+.row .name.limited .subname
+{   font-style:normal;
+}
 
 /*
 display_properties =
 [   'name','hp', 'atk', 'spd', 'def', 'res', 'weapon_type', 'colour_type', 'move_type',
-    'weapon', 'assist', 'special', 'passive_a', 'passive_b', 'passive_c'  ];
+    'weapons', 'support', 'special', 'passive_A', 'passive_B', 'passive_C'  ];
 */
 
 .row .subdiv{ display:inline-block; }
@@ -355,8 +369,8 @@ display_properties =
         .row:nth-child(even) .colour_type.blue { background-color: #aaaaff; }
         .row:nth-child(odd)  .colour_type.blue { background-color: #ccccff; }
         /* .colour_type.colourless { background-color: #dddddd; } */
-        .row:nth-child(even) .colour_type.grey { background-color: #cccccc; }
-        .row:nth-child(odd)  .colour_type.grey { background-color: #eeeeee; }
+        .row:nth-child(even) .colour_type.colorless { background-color: #cccccc; }
+        .row:nth-child(odd)  .colour_type.colorless { background-color: #eeeeee; }
         .row:nth-child(even) .colour_type.colourless { background-color: #cccccc; }
         .row:nth-child(odd)  .colour_type.colourless { background-color: #eeeeee; }
         /* .colour_type.green { background-color: #ccffcc; } */
@@ -368,14 +382,14 @@ display_properties =
     .move_type   { width:33% }
         .move_type.title { background-color: #eeeeee; }
         /* .move_type.armored { background-color: #ffaaff; } */
-        .row:nth-child(even) .move_type.armor { background-color: #ffaaff; }
-        .row:nth-child(odd)  .move_type.armor { background-color: #ffccff; }
+        .row:nth-child(even) .move_type.armored { background-color: #ffaaff; }
+        .row:nth-child(odd)  .move_type.armored { background-color: #ffccff; }
         /* .move_type.cavalry { background-color: #ffcc77; } */
         .row:nth-child(even) .move_type.cavalry { background-color: #ffca44; }
         .row:nth-child(odd)  .move_type.cavalry { background-color: #ffea44; }
-        /* .move_type.flyer { background-color: #ccffff; } */
-        .row:nth-child(even) .move_type.flyer { background-color: #aaffff; }
-        .row:nth-child(odd)  .move_type.flyer { background-color: #ccffff; }
+        /* .move_type.flying { background-color: #ccffff; } */
+        .row:nth-child(even) .move_type.flying { background-color: #aaffff; }
+        .row:nth-child(odd)  .move_type.flying { background-color: #ccffff; }
         .row:nth-child(even) .move_type.flier { background-color: #aaffff; }
         .row:nth-child(odd)  .move_type.flier { background-color: #ccffff; }
         /* .move_type.infantry { background-color: #cccccc; } */
@@ -414,27 +428,27 @@ display_properties =
         .row .res.title { background-color: #7777ff; }
 
 .row .skill.subdiv { width: 50% }
-    .row .weapon { width:18% }
-        .row:nth-child(even) .weapon { background-color: #ffca44; }
-        .row:nth-child(odd)  .weapon { background-color: #ffea44; }
+    .row .weapons { width:18% }
+        .row:nth-child(even) .weapons { background-color: #ffca44; }
+        .row:nth-child(odd)  .weapons { background-color: #ffea44; }
         .row .weapon.title { background-color: #ffa744; }
-    .row .assist { width:17% }
-        .row:nth-child(even) .assist { background-color: #aaffff; }
-        .row:nth-child(odd) .assist { background-color: #ccffff; }
-        .row .assist.title { background-color: #77ffff; }
+    .row .support { width:17% }
+        .row:nth-child(even) .support { background-color: #aaffff; }
+        .row:nth-child(odd)  .support { background-color: #ccffff; }
+        .row .support.title { background-color: #77ffff; }
     .row .special { width:17% }
         .row:nth-child(even) .special { background-color: #ffaaff; }
         .row:nth-child(odd)  .special { background-color: #ffccff; }
         .row .special.title { background-color: #ff77ff; }
-    .passive_a { width:16% }
-        .row:nth-child(even) .passive_a { background-color: #ffaaaa; }
-        .row:nth-child(odd)  .passive_a { background-color: #ffcccc; }
-        .row .passive_a.title { background-color: #ff7777; }
-    .row .passive_b { width:16% }
-        .row:nth-child(even) .passive_b { background-color: #aaaaff; }
-        .row:nth-child(odd)  .passive_b { background-color: #ccccff; }
-        .row .passive_b.title { background-color: #7777ff; }
-    .row .passive_c { width:16% }
-        .row:nth-child(even) .passive_c { background-color: #aaffaa; }
-        .row:nth-child(odd)  .passive_c { background-color: #ccffcc; }
-        .row .passive_c.title { background-color: #77ff77; }
+    .passive_A { width:16% }
+        .row:nth-child(even) .passive_A { background-color: #ffaaaa; }
+        .row:nth-child(odd)  .passive_A { background-color: #ffcccc; }
+        .row .passive_A.title { background-color: #ff7777; }
+    .row .passive_B { width:16% }
+        .row:nth-child(even) .passive_B { background-color: #aaaaff; }
+        .row:nth-child(odd)  .passive_B { background-color: #ccccff; }
+        .row .passive_B.title { background-color: #7777ff; }
+    .row .passive_C { width:16% }
+        .row:nth-child(even) .passive_C { background-color: #aaffaa; }
+        .row:nth-child(odd)  .passive_C { background-color: #ccffcc; }
+        .row .passive_C.title { background-color: #77ff77; }

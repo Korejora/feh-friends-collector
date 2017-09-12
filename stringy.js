@@ -9,6 +9,8 @@ let stringy =
     {   return array.some( function(entry){ return string.includes(entry); });
     },
 
+    fruits : [ null, '🍇', '🍈', '🍉', '🍊', '🍋', '🍐', '🍑', '🍒', '🍓' ],
+
     img_feh : 'images/feh_owl.png',
     img_path : 'images/',
 
@@ -16,7 +18,7 @@ let stringy =
     img_path_portrait : 'images/portrait/',
     img_path_other : 'images/other/',
 
-    img_prefix_portrait : 'icon_portrait_',
+    img_prefix_portrait : 'portrait__',
     img_prefix_colour : 'orb_',
     img_prefix_icon : 'icon-',
     img_prefix_stars : 'stars_',
@@ -39,9 +41,51 @@ let stringy =
         tiki_shadow : ['(s)','shadow','mystery','emblem','(y)','young'],
         tiki_awakening : ['(a)','adult','awakening'],
 
+        mask : ['mask', '(m)'],
+
         spring : ['spring','bunny','(s)','(sf)'],
         bride : ['bride','bridal','(b)','(bb)'],
-        mask : ['mask', '(m)'],
+        summer : [ 'summer', 'beach', 'swim', '(ys)', '(ns)' ],
+        brave : [ 'brave', 'brave hero', '(bh)' ],
+
+    },
+
+    inherit_restrictions :
+    {   "None" : null,
+        "Exclusive" : 'exclusive',
+        "Is exclusive" : 'exclusive',
+
+        "Excludes Staff Users" : 'no_staff',
+        "Staff Users Only" : 'staff_only',
+
+        "Melee Weapon Users Only" : 'melee_only',
+        "Ranged Weapon Users Only" : 'ranged_only',
+
+        "Infantry Only" : 'infantry_only',
+        "Armored Only" : 'armored_only',
+        "Cavalry Only" : 'cavalry_only',
+        "Fliers Only" : 'flying_only',
+
+        "Excludes Fliers" : 'no_flying',
+
+        "Excludes Colorless Weapon Users" : 'no_colourless',
+        "Excludes Red Weapon Users" : 'no_red',
+        "Excludes Blue Weapon Users" : 'no_blue',
+        "Excludes Green Weapon Users" : 'no_green',
+
+
+        "Breath Users Only" : 'dragon_only',
+        "Sword Users Only"  : 'sword_only',
+        "Lance Users Only"  : 'lance_only',
+        "Axe Users Only"    : 'axe_only',
+        "Bow Users Only"    : 'bow_only',
+     // "Red Tome Users Only"   : 'red_tome_only',
+        "Blue Tome Users Only"  : 'blue_tome_only',
+        "Green Tome Users Only" : 'green_tome_only',
+
+        "Excludes Tome and Staff Users" : 'no_tome_no_staff',
+        "Sword, Lance, Axe Users Only" : 'sword_axe_lance',
+        "Melee Weapon Users Only, Infantry and Armored Only" : 'melee_only_infantry_only_armored_only',
     },
 
     find_img_path (type,key)
@@ -49,15 +93,23 @@ let stringy =
         if(type.includes('colour'))
         {   return this.img_path_type +
                 this.img_prefix_colour +
-                key +
+                key.toLowerCase() +
                 this.img_png_suffix;
         }
 
-        if(type.includes('weapon') || type.includes('move'))
+        if(type.includes('weapon'))
         {   return this.img_path_type +
                 this.img_prefix_icon +
-                type + '-' +
-                key +
+                'weapon_type' + '-' +
+                key.toLowerCase() +
+                this.img_png_suffix;
+        }
+
+        if(type.includes('move'))
+        {   return this.img_path_type +
+                this.img_prefix_icon +
+                'move_type' + '-' +
+                key.toLowerCase() +
                 this.img_png_suffix;
         }
 
@@ -88,29 +140,50 @@ let stringy =
     final_tick_text : "end of chain only ",
     unlocked_tick_text : "unlocked only ",
 
-    origin :
-    {    0 : { display: "Heroes",   text: "Fire Emblem Heroes" },
-       1.1 : { display: "Shadow",   text: "Fire Emblem: Shadow Dragon and the Blade of Light" }, // Wrys
-     //  2 : { display: "Gaiden",   text: "Fire Emblem Gaiden" },
-         1 : { display: "Mystery",  text: "Fire Emblem: Mystery of the Emblem" },
-         4 : { display: "Holy War", text: "Fire Emblem: Genealogy of the Holy War" },
-         5 : { display: "Thracia",  text: "Fire Emblem: Thracia 776" },
-         6 : { display: "Binding",  text: "Fire Emblem: The Binding Blade" },
-         7 : { display: "Blazing",  text: "Fire Emblem: The Blazing Blade" },
-         8 : { display: "Stones",   text: "Fire Emblem: The Sacred Stones" },
-         9 : { display: "Radiance", text: "Fire Emblem: Path of Radiance" },
-        10 : { display: "Radiant",  text: "Fire Emblem: Radiant Dawn" },
-     // 11 : { display: "Dragon",   text: "Fire Emblem: Shadow Dragon" },
-     // 12 : { display: "Emblem",   text: "Fire Emblem: New Mystery of the Emblem: Heroes of Light and Shadow" },
-        13 : { display: "Awakening",text: "Fire Emblem Awakening" },
-        14 : { display: "Fates",    text: "Fire Emblem Fates" },
-        15 : { display: "Echoes",   text: "Fire Emblem Echoes: Shadows of Valentia" }
+    origin_display :
+    {   "Fire Emblem Heroes" :                      "Heroes",
+        "Fire Emblem: Shadow Dragon and the Blade of Light" :   "Shadow", // Wrys
+     // "Fire Emblem Gaiden" :                      "Gaiden",
+        "Fire Emblem: Mystery of the Emblem" :     "Mystery",
+        "Fire Emblem: Genealogy of the Holy War" : "Holy War",
+        "Fire Emblem: Thracia 776" :               "Thracia",
+        "Fire Emblem: The Binding Blade":          "Binding",
+        "Fire Emblem: The Blazing Blade":          "Blazing",
+        "Fire Emblem: The Sacred Stones":          "Stones",
+        "Fire Emblem: Path of Radiance":           "Radiance",
+        "Fire Emblem: Radiant Dawn":               "Radiant",
+     // "Fire Emblem: Shadow Dragon":              "Dragon",
+     // "Fire Emblem: New Mystery of the Emblem: Heroes of Light and Shadow": "Emblem",
+        "Fire Emblem: New Mystery of the Emblem":  "Emblem",
+        "Fire Emblem Awakening":                   "Awaken",
+        "Fire Emblem Fates":                       "Fates",
+        "Fire Emblem Echoes: Shadows of Valentia": "Echoes"
     },
-    get_origin_display : function(number)
-    {   return this.origin[number].display;
-    },
-    get_origin_text : function(number)
-    {   return this.origin[number].text;
+
+    // origin_order :
+    // {   "Fire Emblem Heroes" :                      0,
+    //     "Fire Emblem: Shadow Dragon and the Blade of Light" :   1.1, // Wrys
+    //  // "Fire Emblem Gaiden" :                      2,
+    //     "Fire Emblem: Mystery of the Emblem" :      1,
+    //     "Fire Emblem: Genealogy of the Holy War" :  4,
+    //     "Fire Emblem: Thracia 776" :                5,
+    //     "Fire Emblem: The Binding Blade":           6,
+    //     "Fire Emblem: The Blazing Blade":           7,
+    //     "Fire Emblem: The Sacred Stones":           8,
+    //     "Fire Emblem: Path of Radiance":            9,
+    //     "Fire Emblem: Radiant Dawn":               10,
+    //  // "Fire Emblem: Shadow Dragon":              11,
+    //  // "Fire Emblem: New Mystery of the Emblem: Heroes of Light and Shadow": 12,
+    //     "Fire Emblem: New Mystery of the Emblem":  1.2,
+    //     "Fire Emblem Awakening":                   13,
+    //     "Fire Emblem Fates":                       14,
+    //     "Fire Emblem Echoes: Shadows of Valentia": 15
+    //
+    // },
+
+
+    get_origin_display : function(text)
+    {   return this.origin_display[text];
     },
 
     interpret_rarity : function(alias)

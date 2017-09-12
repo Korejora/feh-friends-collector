@@ -46,6 +46,14 @@ class divvy
         this.div.appendChild(document.createElement('br'));
     }
 
+    add_text_special_n(string,class_name)
+    {   let text_child = document.createElement('div');
+        text_child.innerText = string;
+        text_child.className = class_name;
+        this.div.appendChild(text_child);
+        this.div.appendChild(document.createElement('br'));
+    }
+
     add_linebreak()
     {   this.div.appendChild(document.createElement('br'));
     }

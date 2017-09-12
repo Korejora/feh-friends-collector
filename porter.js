@@ -69,6 +69,20 @@ let porter =
     googly_note(string, type)
     {   porter.googly.note.set_text(string);
         porter.googly.note.set_class(type);
+    },
+
+    get_googly_text()
+    {   return porter.googly.get_text();
+    },
+
+    get_googly_spreadsheet_ID()
+    {   let text = porter.get_googly_text();
+        if (text.includes('spreadsheets'))
+        {   let regexp = /\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/;
+            let blop = regexp.exec(text);
+            return blop[1];
+        }
+        else { return text; }
     }
 
 };
@@ -200,7 +214,7 @@ porter.googly.attach_oauthbuttons = function porter_googly_attach_oauthbuttons()
 };
 
 porter.googly.set_text = function porter_googly_set_text(string){ this.textarea.value = string; };
-porter.googly.return_text = function porter_googly_return_text(){ return this.textarea.value; };
+porter.googly.get_text = function porter_googly_return_text(){ return this.textarea.value; };
 
 porter.googly.handle_change = function porter_googly_handle_change()
 {   localStorage.googlytext = this.return_text();

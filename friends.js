@@ -8,53 +8,51 @@ let friends =
     roster : [],
     home : [],
 
-    fruit : [ null, '🍇', '🍈', '🍉', '🍊', '🍋', '🍐', '🍑', '🍒', '🍓' ],
-
-    next_fruit : function(fruit)
-    {
-        let index = friends.fruit.indexOf(fruit);
-        if (index < 0) { return friends.fruit[1]; }
-        let next_index = index + 1;
-        if (next_index == friends.fruit.length) { next_index = 0; }
-        let next_fruit = friends.fruit[next_index];
-        return next_fruit;
+    setup : function friends_setup()
+    {   this.first_friends();
     },
 
-    make_friend : function (pass)
+    make_friend : function(character)
     // (tag, rarity, boon, bane, favourite)
     {
-        if (chars[pass])
-        {   let index = (-1) + friends.roster.push( new chars[pass]() );
+        if (chars[character])
+        {   let index = (-1) + friends.roster.push( new ally(chars[character]) );
             let friend = friends.roster[index];
             friend.set_rarity(0); // minimum_rarity should catch this
             friend.rebuild();
             friend.obtained = friends.roster.length;
             return friend;
         }
-        else if (chars[pass.tag])
+        else if (chars[character.tag])
         {
-            let index = -1 + friends.roster.push( new chars[pass.tag](pass.rarity) );
+            // let index = -1 + friends.roster.push( new chars[character.tag](character.rarity) );
+            let index = -1;
+            if (chars[character.tag])
+            {   index += friends.roster.push( new ally(chars[character.tag]) );
+            }else
+            {   index += friends.roster.push( new ally(chars[tags[character.tag]]) );
+            }
             let friend = friends.roster[index];
 
-            let rarity = pass.rarity;
+            let rarity = character.rarity;
             let rarity_list = { '★★★★★':5, '★★★★':4, '★★★':3, '★★':2, '★':1 };
-            if (rarity_list[pass.rarity]) { rarity = rarity_list[pass.rarity]; }
-            friend.obtained = pass.obtained || friends.roster.length;
+            if (rarity_list[character.rarity]) { rarity = rarity_list[character.rarity]; }
+            friend.obtained = character.obtained || friends.roster.length;
 
-            friend.set_favourite(pass.favourite);
-            friend.set_fruit(friends.fruit[pass.fruit] || pass.fruit);
+            friend.set_favourite(character.favourite);
+            friend.set_fruit(character.fruit);
 
-            friend.boon = (pass.boon) ? pass.boon.replace('+','') : null;
-            friend.bane = (pass.bane) ? pass.bane.replace('–','') : null;
+            friend.boon = (character.boon) ? character.boon.replace('+','') : null;
+            friend.bane = (character.bane) ? character.bane.replace('–','') : null;
             if (friend.bane == friend.boon) { friend.bane = null; friend.boon = null; }
             friend.set_rarity(rarity);
             friend.rebuild();
 
-            if (pass.home) { friend.send_home(); }
+            if (character.home) { friend.send_home(); }
             return friend;
 
         }
-        else { console.log('ERR_ALLY_CONSTRUCTOR_NOT_FOUND', pass); }
+        else { console.log('ERR_ALLY_CONSTRUCTOR_NOT_FOUND', character); }
 
     },
 
@@ -70,7 +68,7 @@ let friends =
         friends.roster = [];
         for ( let i=0; i < restore_array.length; i++ )
         {   let friend = restore_array[i];
-            if (!friend.tag) { friend.tag = friends.find_tag(friend); }
+            friend.tag = friends.find_tag(friend);
             friends.make_friend(friend);
         }
 
@@ -92,7 +90,7 @@ let friends =
             let entry = save[i];
             entry.t = ally.tag;
             entry.f = ally.favourite ? 1 : 0;
-            if(ally.fruit){entry['*'] = friends.fruit.indexOf(ally.fruit);}
+            if(ally.fruit){entry['*'] = stringy.fruits.indexOf(ally.fruit);}
             entry.r = ally.rarity;
             if(ally.summon && ally.boon && ally.bane)
             {   entry['+'] = stringy.shorten_nature(ally.boon);
@@ -117,7 +115,7 @@ let friends =
             let entry = save[key];
             friend.tag     = entry.t;
             friend.favourite  = (entry.f) ? '❤' : false;
-            friend.fruit   = friends.fruit[entry['*']];
+            friend.fruit   = stringy.fruits[entry['*']];
             friend.rarity  = entry.r || 5;
             friend.boon    = stringy.interpret_stat(entry['+']) || null;
             friend.bane    = stringy.interpret_stat(entry['-']) || null;
@@ -133,26 +131,16 @@ let friends =
 
     first_friends : function ()
     {
-        friends.make_friend({tag:'anna',    rarity:2, /*fruit:'🍐'*/ });
-        friends.make_friend({tag:'virion',  rarity:2, /*fruit:'🍇'*/ });
-        friends.make_friend({tag:'matthew', rarity:2, /*fruit:'🍊'*/ });
-        friends.make_friend({tag:'raigh',   rarity:2, /*fruit:'🍒'*/ });
-        friends.make_friend({tag:'alfonse', rarity:2, /*fruit:'🍋'*/ });
-        friends.make_friend({tag:'sharena', rarity:2, /*fruit:'🍑'*/ });
-    },
-
-    fetch_googly_text : function()
-    {   let text = porter.googly.return_text();
-        if (text.includes('spreadsheets'))
-        {   let regexp = /\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/;
-            let blop = regexp.exec(text);
-            return blop[1];
-        }
-        else { return text; }
+        this.make_friend({tag:'anna__commander',           rarity:2, /*fruit:'🍐'*/ });
+        this.make_friend({tag:'virion__elite_archer',      rarity:2, /*fruit:'🍇'*/ });
+        this.make_friend({tag:'matthew__faithful_spy',     rarity:2, /*fruit:'🍊'*/ });
+        this.make_friend({tag:'raigh__dark_child',         rarity:2, /*fruit:'🍒'*/ });
+        this.make_friend({tag:'alfonse__prince_of_askr',   rarity:2, /*fruit:'🍋'*/ });
+        this.make_friend({tag:'sharena__princess_of_askr', rarity:2, /*fruit:'🍑'*/ });
     },
 
     restore_friends_googly : function()
-    {   let spreadsheet_ID = this.fetch_googly_text();
+    {   let spreadsheet_ID = porter.get_googly_spreadsheet_ID();
         this.get_googly_then_read(spreadsheet_ID);
     },
 
@@ -283,7 +271,7 @@ let friends =
 
     save_friends_googly : function()
     {
-        let spreadsheet_ID = this.fetch_googly_text();
+        let spreadsheet_ID = porter.get_googly_spreadsheet_ID();
         this.save_googly(spreadsheet_ID);
     },
 
@@ -322,87 +310,137 @@ let friends =
     find_tag : function(friend)
     {
         let name = friend.name.toLowerCase();
+        if (!friend.tag) { friend.tag = "NO_TAG"; }
 
-        // try to find the tag in the database. should work for most allies.
-        if (chars[name]) { return name; }
+        // // try to find the tag in the database. should work for most allies.
+        if (chars[friend.tag]) { return friend.tag; }
 
-        // if that didn't work then they're probably special.
+        // if that didn't work then check if they're special.
+
+        if( stringy.includes_any(name, stringy.suffixes.spring) || friend.tag.includes('spring') )
+        {   // it's a bunny! which one?
+            if (name.includes('camilla')) { return 'camilla__spring_princess'; }
+            if (name.includes('chrom'))   { return 'chrom__spring_exalt'; }
+            if (name.includes('lucina'))  { return 'lucina__spring_exalt'; }
+            if (name.includes('xander'))  { return 'xander__spring_prince'; }
+            console.log("thought a bunny ally was found, but could not identify which");
+        }
+
+        if( stringy.includes_any(name, stringy.suffixes.bride) || friend.tag.includes('bride') )
+        {   // it's a bride! which one?
+            if (name.includes('caeda'))     { return 'caeda__talyss_bride'; }
+            if (name.includes('charlotte')) { return 'charlotte__money_maiden'; }
+            if (name.includes('cordelia'))  { return 'cordelia__perfect_bride'; }
+            if (name.includes('lyn'))       { return 'lyn__bride_of_the_plains'; }
+            console.log("thought a bridal ally was found, but could not identify which");
+        }
+
+        if( stringy.includes_any(name, stringy.suffixes.summer) || friend.tag.includes('summer') )
+        {   // it's a beachgoer! which one?
+            if (name.includes('frederick')) { return 'frederick__horizon_watcher'; }
+            if (name.includes('gaius'))     { return 'gaius__thief_exposed'; }
+            if (name.includes('robin'))     { return 'robin__seaside_tactician'; }
+            if (name.includes('tiki'))      { return 'tiki__summering_scion'; }
+            // maybe a nohrian swimmer?
+            if (name.includes('corrin'))    { return 'corrin__novice_vacationer'; }
+            if (name.includes('elise'))     { return 'elise__tropical_flower'; }
+            if (name.includes('leo'))       { return 'leo__seashores_prince'; }
+            if (name.includes('xander'))    { return 'xander__student_swimmer'; }
+            console.log("thought a summer ally was found, but could not identify which");
+        }
+
+        if( stringy.includes_any(name, stringy.suffixes.brave) )
+        {   // it's a brave hero! which one?
+            if (name.includes('camilla')) { return 'camilla__spring_princess'; }
+            if (name.includes('chrom'))   { return 'chrom__spring_exalt'; }
+            if (name.includes('lucina'))  { return 'lucina__spring_exalt'; }
+            if (name.includes('xander'))  { return 'xander__spring_prince'; }
+            console.log("thought a brave ally was found, but could not identify which");
+        }
 
         if(name.includes('robin'))
         {   // it's robin! blue or green?
             if(friend.colour)
             {   let colour = friend.colour.toLowerCase();
-                if (colour.includes('blue'))  { return 'robin_blue'; }
-                if (colour.includes('green')) { return 'robin_green'; }
+                if (colour.includes('blue'))  { return 'robin__high_deliverer'; }
+                if (colour.includes('green')) { return 'robin__mystery_tactician'; }
             }
 
             if(stringy.includes_any(name, stringy.suffixes.robin_blue) )
-            {   return 'robin_blue'; }
+            {   return 'robin__high_deliverer'; }
             if(stringy.includes_any(name, stringy.suffixes.robin_green) )
-            {   return 'robin_green'; }
+            {   return 'robin__mystery_tactician'; }
+
+            if(friend.tag)
+            {   if (friend.tag.includes('blue'))  { return 'robin__high_deliverer'; }
+                if (friend.tag.includes('green')) { return 'robin__mystery_tactician'; }
+            }
+
             console.log("couldn't figure out which Robin was meant by: ", friend.name);
             console.log("assuming blue Robin ..");
-            return 'robin_blue';
+            return 'robin__high_deliverer';
+            // summer robin should have been caught above!
         }
 
         if(name.includes('corrin'))
-        {   // it's corrin! dragon or corn?
+        {   // it's corrin! dracorrin or corrnin?
             if(friend.colour)
             {   let colour = friend.colour.toLowerCase();
-                if (colour.includes('blue')) { return 'corrin_dragon'; }
-                if (colour.includes('red'))  { return 'corrin_sword'; }
+                if (colour.includes('blue')) { return 'corrin__fateful_princess'; }
+                if (colour.includes('red'))  { return 'corrin__fateful_prince'; }
             }
 
             if (stringy.includes_any(name, stringy.suffixes.corrin_dragon) )
-            {   return 'corrin_dragon'; }
+            {   return 'corrin__fateful_princess'; }
             if (stringy.includes_any(name, stringy.suffixes.corrin_sword) )
-            {   return 'corrin_sword'; }
+            {   return 'corrin__fateful_prince'; }
+
+            if(friend.tag)
+            {   if (friend.tag.includes('dragon'))  { return 'corrin__fateful_princess'; }
+                if (friend.tag.includes('sword')) { return 'corrin__fateful_prince'; }
+            }
+
             console.log("couldn't figure out which Corrin was meant by: ", friend.name);
             console.log("assuming dragon Corrin..");
-            return 'corrin_dragon';
+            return 'corrin__fateful_princess';
+            // summer corrin should have been caught above!
         }
 
         if(name.includes('tiki'))
         {   // it's tiki! from shadow dragon or awakening?
             if (stringy.includes_any(name, stringy.suffixes.tiki_shadow) )
-            {   return 'tiki_shadow'; }
+            {   return 'tiki__dragon_scion'; }
             if (stringy.includes_any(name, stringy.suffixes.tiki_awakening) )
-            {   return 'tiki_awakening'; }
+            {   return 'tiki__nagas_voice'; }
+
+            if(friend.tag)
+            {   if (friend.tag.includes('shadow'))  { return 'tiki__dragon_scion'; }
+                if (friend.tag.includes('awakening')) { return 'tiki__nagas_voice'; }
+            }
+
             console.log("couldn't figure out which Tiki was meant by: ", friend.name);
             console.log("assuming Awakening Tiki..");
-            return 'tiki_awakening';
-        }
-
-        if( stringy.includes_any(name, stringy.suffixes.spring) )
-        {   // it's a bunny! which one?
-            if (name.includes('camilla')) { return 'camilla_spring'; }
-            if (name.includes('chrom'))   { return 'chrom_spring'; }
-            if (name.includes('lucina'))  { return 'lucina_spring'; }
-            if (name.includes('xander'))  { return 'xander_spring'; }
-            console.log("thought a bunny ally was found, but could not identify which");
-        }
-
-        if( stringy.includes_any(name, stringy.suffixes.bride) )
-        {   // it's a bride! which one?
-            if (name.includes('caeda')) { return 'caeda_bride'; }
-            if (name.includes('charlotte'))   { return 'charlotte_bride'; }
-            if (name.includes('cordelia'))  { return 'cordelia_bride'; }
-            if (name.includes('lyn'))  { return 'lyn_bride'; }
-            console.log("thought a bridal ally was found, but could not identify which");
+            return 'tiki__nagas_voice';
+            // summer tiki should have been caught above!
         }
 
         if( name.includes("lon'qu"))
         {   // LON'QU YOUR NAME IS A PAIN
-            return 'lonqu';
+            return 'lonqu__solitary_blade';
         }
 
         if( name.includes("marth"))
         {   // masked marth
-            if (stringy.includes_any(name, stringy.suffixes.mask)) {return 'marth_mask';}
-            console.log("thought masked marth was found, but no proper suffix was found: ", friend.name);
-            console.log("assuming masked Marth..");
-            return 'marth_mask';
+            if (stringy.includes_any(name, stringy.suffixes.mask)) {return 'marth__enigmatic_blade';}
+            if(friend.tag)
+            {   if (friend.tag.includes('masked'))  { return 'marth__enigmatic_blade'; }
+            }
+            // console.log("thought masked marth was found, but no proper suffix was found: ", friend.name);
+            // console.log("assuming vanilla Marth..");
+            return 'marth__altean_prince';
         }
+
+        if (tags[friend.name]) { return tags[friend.name]; }
 
         console.log("couldn't figure out which ally was meant by: ", friend.name);
         return null;
@@ -412,5 +450,5 @@ let friends =
 
 };
 
-friends.first_friends();
+friends.setup();
 // friends.test_friends();

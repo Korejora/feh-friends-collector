@@ -49,7 +49,8 @@ let alter =
         this.add_to_selection(this.basic);
 
         // inherit skill list
-        this.inherit.setup();
+        this.inherit = new subalter_inherit();
+        this.add_to_selection(this.inherit);
 
         this.sendhome = new subalter_sendhome();
         this.add_to_selection(this.sendhome);
@@ -72,7 +73,7 @@ let alter =
 
     rebuild : function alter_rebuild() // if the ally changes
     {
-        this.portrait.src = stringy.find_img_path('portrait',this.ally.tag);
+        this.portrait.src = this.ally.get_portrait_image();
 
         this.deselection();
 
@@ -80,11 +81,15 @@ let alter =
         this.inherit.rebuild();
         this.sendhome.rebuild();
 
-        this.refresh();
+        // this.refresh();
+           this.note.clear(); this.note.hide();
+           this.left_rebuild();
+           this.left.show(); this.right.show();
+           this.inherit.rebuild();
     },
 
-    refresh : function alter_refresh() // if something changes but the ally doesn't need to be redone
-    {
+    refresh : function alter_refresh()
+    {   // if something changes but the ally doesn't need to be redone
         if (this.ally == allies.feh) { return; }
         this.note.clear(); this.note.hide();
         this.left_rebuild();
@@ -102,15 +107,15 @@ let alter =
 
     left_rebuild()
     {
-        this.name.set_text(this.ally.return_name());
+        this.name.set_text(this.ally.get_name());
         if(this.ally.favourite) { this.name.add_text(" ❤ "); }
         this.rarity.set_text(this.ally.return_rarity_stars());
-        this.nature.set_text(this.ally.return_nature());
+        this.nature.set_text(this.ally.get_nature());
     },
 
     send_ally_home()
     {
-        let name = this.ally.return_name();
+        let name = this.ally.get_name();
         if (!this.ally.is_home()) { this.ally.send_home(); }
         else { this.ally.undo_send_home(); }
         this.reset_ally();
@@ -122,35 +127,20 @@ let alter =
     add_to_selection(sub)
     {   this.right.upper.add_child(sub.select);
         this.right.upper.add_squiggly();
-        if(sub instanceof selectable) { this.selection.push(sub); } // FIXME: remove deprecated selectdivs
-        else { this.selection.push(sub.select); }
+        this.selection.push(sub);
         this.right.lower.add_child(sub.display);
     },
 
     deselection()
     {
         this.basic.do_deselect();
-        this.inherit.select.do_deselect();
+        this.inherit.do_deselect();
         this.sendhome.do_deselect();
     },
 
 
 };
 
-
-alter.construct_subalter = function subalter_constructor(select_text)
-{
-    this.select = new selectdiv({ innertext:select_text, deselectable:true });
-    let that = this;
-    this.select.activate = function(){ that.display.show(); };
-    this.select.deactivate = function(){ that.display.hide(); };
-
-    this.display = new divvy({ parent: alter.right.lower });
-    this.display.hide();
-
-    alter.add_to_selection(this);
-
-};
 
 class subalter_basic extends selectable
 {
@@ -195,7 +185,7 @@ class subalter_basic extends selectable
             for ( let i=5; i>0; i-- )
             {   let drop = this.dropdown;
                 let opt = drop.options[5-i];
-                let minrar = alter.ally.minimum_rarity;
+                let minrar = alter.ally.get_minimum_rarity();
 
                 opt.disabled = false;
                 if ( i < minrar )
@@ -288,12 +278,19 @@ class subalter_basic extends selectable
     }
 }
 
-alter.inherit =
+class subalter_inherit extends selectable
 {
-    setup()
+    constructor()
     {
-        this.construct_subalter = alter.construct_subalter;
-        this.construct_subalter("learnable skills");
+        super({deselectable:true});
+        let that = this;
+
+        this.select.set_text("learnable skills");
+        // this.select.activate = function(){ that.display.show(); };
+        // this.select.deactivate = function(){ that.display.hide(); };
+        //
+        // this.display = new divvy({ parent: alter.right.lower });
+        // this.display.hide();
 
         this.note = new divvy({parent:this.display.div});
 
@@ -307,7 +304,7 @@ alter.inherit =
                 id:"final_tick"
             }
         );
-        this.final_tick.handle_click = function() { alter.inherit.rebuild(); };
+        this.final_tick.handle_click = function() { that.rebuild(); };
         this.final_tick.div.style['padding-right'] = '10px';
 
         this.unlocked_tick = new checky
@@ -317,15 +314,15 @@ alter.inherit =
                 id:"unlocked_tick"
             }
         );
-        this.unlocked_tick.handle_click = function() { alter.inherit.rebuild(); };
+        this.unlocked_tick.handle_click = function() { that.rebuild(); };
 
         // subsections
-        this.weapons =  new divvy({parent:alter.inherit.display.div, classname:'inner'});
-        this.assists =  new divvy({parent:alter.inherit.display.div, classname:'inner'});
-        this.specials = new divvy({parent:alter.inherit.display.div, classname:'inner'});
-        this.passive_a = new divvy({parent:alter.inherit.display.div, classname:'inner'});
-        this.passive_b = new divvy({parent:alter.inherit.display.div, classname:'inner'});
-        this.passive_c = new divvy({parent:alter.inherit.display.div, classname:'inner'});
+        this.weapons = new divvy({parent:this.display.div, classname:'inner'});
+        this.support = new divvy({parent:this.display.div, classname:'inner'});
+        this.special = new divvy({parent:this.display.div, classname:'inner'});
+        this.passive_A = new divvy({parent:this.display.div, classname:'inner'});
+        this.passive_B = new divvy({parent:this.display.div, classname:'inner'});
+        this.passive_C = new divvy({parent:this.display.div, classname:'inner'});
 
         // single display for teachers of all subsections
         this.teach = new divvy({classname:'inner', parent:this.display });
@@ -341,7 +338,7 @@ alter.inherit =
         t.nature = new divvy({parent:t,classname:'inner'});
         t.unlock = new divvy({parent:t,classname:'inner'});
 
-    }, // end inherit setup
+    } // end inherit constructor
 
     rebuild() // this = alter.inherit
     {
@@ -355,20 +352,20 @@ alter.inherit =
         }
 
         this.rebuild_subsection('weapons');
-        this.rebuild_subsection('assists');
-        this.rebuild_subsection('specials');
-        this.rebuild_subsection('passive_a');
-        this.rebuild_subsection('passive_b');
-        this.rebuild_subsection('passive_c');
+        this.rebuild_subsection('support');
+        this.rebuild_subsection('special');
+        this.rebuild_subsection('passive_A');
+        this.rebuild_subsection('passive_B');
+        this.rebuild_subsection('passive_C');
 
         this.teach.hide();
-    },
+    }
 
-    rebuild_teachers(type, tag)
+    rebuild_teachers(type, skillname)
     {
         let t = this.teach;
 
-        t.title.innerText = dat[type][tag].name+" teachers";
+        t.title.innerText = skillname+" teachers";
         t.name.clear();
         t.obtained.clear();
         t.fruit.clear();
@@ -378,39 +375,35 @@ alter.inherit =
 
         if (alter.ally == allies.feh) { return; }
 
-        let teachers = alter.inherit.learnable[type][tag].teachers;
+        let teachers = this.learnable[type][skillname].teachers;
         for ( let i=0; i < teachers.length; i++ )
         {   let teacher = teachers[i];
 
-            if(this.unlocked_tick.is_ticked() && !teacher.knows_skill(tag, type))
-            {   // skip this teacher if they don't know the skill
-                continue;
+            let is_unlocked_css = '';
+            if(!teacher.knows_skill(skillname, type))
+            {   // skip this teacher if they don't know the skill and we don't show those
+                if( this.unlocked_tick.is_ticked() ) { continue; }
+                // but if we do show those then mark them out
+                is_unlocked_css = 'locked';
             }
 
-            t.name.add_text_n(teacher.return_name());
+            t.name.add_text_special_n(teacher.get_name(), is_unlocked_css);
             if(tableau.is_collection_active())
-            {   t.obtained.add_text_n("(#"+teacher.obtained+")");
-                t.fruit.add_text_n(teacher.return_fruit());
-                    if(teacher.return_fruit()) {t.fruit.show();} else {t.fruit.hide();}
-                t.rarity.add_text_n(teacher.return_rarity_stars());
-                t.nature.add_text_n(teacher.return_nature());
+            {   t.obtained.add_text_special_n("(#"+teacher.obtained+")", is_unlocked_css);
+                t.fruit.add_text_special_n(teacher.get_fruit(), is_unlocked_css);
+                    if(teacher.get_fruit()) {t.fruit.show();} else {t.fruit.hide();}
+                t.rarity.add_text_special_n(teacher.return_rarity_stars(), is_unlocked_css);
+                t.nature.add_text_special_n(teacher.get_nature(), is_unlocked_css);
             }
-            if(type.includes('passive'))
-            {   let unlock_rarity;
-                     if (type == teacher.early_passive)     { unlock_rarity = 4; }
-             // else if (type == teacher.late_passive)      { unlock_rarity = 5; }
-                else if (type == teacher.shield_passive)    { unlock_rarity = 4; }
-                else if (type == teacher.position_passive)  { unlock_rarity = 3; }
-                else if (type == teacher.range_passive)     { unlock_rarity = 3; }
-             // else if (type == teacher.special_passive)   { unlock_rarity = 5; }
-                else { unlock_rarity = 5; }
-                if (unlock_rarity < teacher.minimum_rarity) { unlock_rarity = teacher.minimum_rarity; }
 
-                t.unlock.add_text_n("("+unlock_rarity+"★"+" unlock"+")");
+            let unlock_rarity = teacher.get_skill_unlock_rarity(skillname, type);
+            if(!isNaN(unlock_rarity))
+            {   t.unlock.add_text_special_n("("+unlock_rarity+"★"+")", is_unlocked_css);
             }
+
         }
         t.show();
-    },
+    }
 
     rebuild_subsection (type)
     {
@@ -418,15 +411,15 @@ alter.inherit =
         subsection.clear();
         if (alter.ally == allies.feh) { return; }
 
-        let learnable = alter.inherit.learnable[type];
+        let learnable = this.learnable[type];
         let skills_array = Object.keys(learnable);
 
         if (this.final_tick.is_ticked())
         {   // filter down to end of chain skills
-            skills_array = skills_array.filter( function skill_ends_any_chain(tag)
-            {   for (let i=0; i < learnable[tag].teachers.length; i++)
-                {   let teacher = learnable[tag].teachers[i];
-                    if (teacher.skill_ends_chain(tag, type)) { return true; }
+            skills_array = skills_array.filter( function skill_ends_any_chain(skillname)
+            {   for (let i=0; i < learnable[skillname].teachers.length; i++)
+                {   let teacher = learnable[skillname].teachers[i];
+                    if (teacher.skill_ends_chain(skillname, type)) { return true; }
                 }
                 return false;
             });
@@ -434,10 +427,10 @@ alter.inherit =
 
         if (this.unlocked_tick.is_ticked())
         {   // filter down to unlocked skills
-            skills_array = skills_array.filter( function skill_ends_any_chain(tag)
-            {   for (let i=0; i < learnable[tag].teachers.length; i++)
-                {   let teacher = learnable[tag].teachers[i];
-                    if (teacher.knows_skill(tag, type)) { return true; }
+            skills_array = skills_array.filter( function skill_ends_any_chain(skillname)
+            {   for (let i=0; i < learnable[skillname].teachers.length; i++)
+                {   let teacher = learnable[skillname].teachers[i];
+                    if (teacher.knows_skill(skillname, type)) { return true; }
                 }
                 return false;
             });
@@ -451,22 +444,22 @@ alter.inherit =
         skills_array.sort();
 
         // build the skill's selectable
+        let that = this;
         for ( let i=0; i < skills_array.length; i++ )
-        {   let tag = skills_array[i];
-            let selecty = new selectdiv({innertext:dat[type][tag].name, classname:'clicky', parent:subsection}); // FIXME: selectable
+        {   let skillname = skills_array[i];
+            let selecty = new selectdiv({innertext:skillname, classname:'clicky', parent:subsection}); // FIXME: selectable
             /* jshint loopfunc: true */
             selecty.handle_click = function alter_inherit_subsection_handle_click()
-            {   alter.inherit.rebuild_teachers(type, tag);
-                if(alter.inherit.last_clicked){alter.inherit.last_clicked.dont_underline();}
+            {   that.rebuild_teachers(type, skillname);
+                if(that.last_clicked){that.last_clicked.dont_underline();}
                 selecty.underline();
-                alter.inherit.last_clicked = selecty;
+                that.last_clicked = selecty;
             };
             subsection.add_linebreak();
         }
     }
 
-
-};
+}
 
 
 
@@ -505,39 +498,39 @@ class subalter_sendhome extends selectable // single
 
     rebuild()
     {
-        if(!tableau.is_collection_active())
+        if( !tableau.is_collection_active() )
         {   this.select.hide();
         }
         else
         {   this.select.show();
         }
 
-        if (alter.ally.origin === 0)
+        if( alter.ally.is_askrian() )
         {   this.select.set_text("send home");
-            this.ask.set_text(alter.ally.return_name() + " is already at home in Askr!");
+            this.ask.set_text(alter.ally.get_name() + " is already at home in Askr!");
             this.confirm.hide();
         }
 
-        else if (!alter.ally.is_home())
+        else if( !alter.ally.is_home() )
         {   this.select.set_text("send home");
-            this.ask.set_text("Really send " + alter.ally.return_name() + " home?");
+            this.ask.set_text("Really send " + alter.ally.get_name() + " home?");
             this.confirm.show();
         }
         else
         {   this.select.set_text("recall");
-            this.ask.set_text("Really call " + alter.ally.return_name() + " back?");
+            this.ask.set_text("Really call " + alter.ally.get_name() + " back?");
             this.confirm.show();
         }
     }
 
     resolve()
     {
-        if(!alter.ally.is_home())
+        if( !alter.ally.is_home() )
         {   alter.send_ally_home();
         }
         else
         {   alter.ally.undo_send_home();
-            this.ask.set_text(alter.ally.return_name() + " recalled.");
+            this.ask.set_text(alter.ally.get_name() + " recalled.");
             this.confirm.hide();
         }
     }

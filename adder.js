@@ -23,9 +23,9 @@ let adder =
         adder.name_dropdown = document.createElement('select');
         adder.name_dropdown.className = ' dropdown ';
         allies.list.forEach( function(ally)
-        {   if (ally.origin !== 0) // exclude Heroes heroes
-            {   if (ally.subname) { adder.list[ally.name+ally.subname] = ally.tag;}
-                else {adder.list[ally.name] = ally.tag; }
+        {   if (!ally.get_origin_text().includes("Heroes")) // exclude Heroes heroes
+            {   if (ally.get_subname()) { adder.list[ally.get_name() + ally.get_subname()] = ally.get_tag();}
+                else {adder.list[ally.get_name()] = ally.get_tag(); }
             }
         });
         for ( let name in adder.list )
@@ -83,8 +83,8 @@ let adder =
         };
         let new_friend = friends.make_friend(friend_params);
         refreshment();
-        
-        this.message.set_text("Added " + new_friend.return_name() + " to the roster. ");
+
+        this.message.set_text("Added " + new_friend.get_name() + " to the roster. ");
         this.message.add_text("(");
         this.message.add_child(this.undo);
         this.message.add_text(")");
@@ -93,7 +93,7 @@ let adder =
     resolve_undo()
     {
         let removed_friend = friends.remove_last();
-        this.message.set_text("Removed " + removed_friend.return_name() + " from the roster.");
+        this.message.set_text("Removed " + removed_friend.get_name() + " from the roster.");
     },
 
     reset_message()
@@ -103,7 +103,7 @@ let adder =
 
     rebuild_ally()
     {   let tag = adder.list[adder.name_dropdown.value];
-        adder.ally = new chars[tag]();
+        adder.ally = new ally(chars[tag]);
         this.rarity.refresh();
         adder.boon.dropdown.value = "neutral";
         adder.bane.dropdown.value = "neutral";
@@ -133,20 +133,24 @@ let adder =
         adder.ally.set_boon(boondrop.value);
         adder.ally.set_bane(banedrop.value);
         adder.ally.assign_min_stats();
+        adder.ally.equip_known_skills();
+
+        let stats = adder.ally.get_stats();
+
+        let atk_might = '';
+        let might = adder.ally.get_equipped_weapons_might();
+        if(might) { atk_might = "(" + (stats.atk + might) + ")"; }
 
         let brave_speed = '';
-        if(adder.ally.weapon.includes('brave'))
-        {   brave_speed = "(" + (adder.ally.spd - 5) + ")";
-        }
+        if(adder.ally.has_equipped_brave_speed_weapon())
+        {   brave_speed = "(" + (stats.spd - 5) + ")"; }
 
         adder.stats.set_text(
-              "hp "  + adder.ally.hp  + ", "
-            + "atk " + adder.ally.atk
-                + "("+(adder.ally.atk+adder.ally.get_base_weapon_might())+")" +", "
-            + "spd " + adder.ally.spd
-                + brave_speed + ", "
-            + "def " + adder.ally.def + ", "
-            + "res " + adder.ally.res + "  " );
+              "hp "  + stats.hp  + ", "
+            + "atk " + stats.atk + atk_might +", "
+            + "spd " + stats.spd + brave_speed + ", "
+            + "def " + stats.def + ", "
+            + "res " + stats.res + "  " );
 
         adder.message.clear();
     },
@@ -169,7 +173,7 @@ let adder =
         {   for ( let i=5; i>0; i-- )
             {   let drop = this.dropdown;
                 let opt = drop.options[5-i];
-                let minrar = adder.ally.minimum_rarity;
+                let minrar = adder.ally.get_minimum_rarity();
 
                 opt.disabled = false;
                 if ( i < minrar )

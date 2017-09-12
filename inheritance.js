@@ -6,46 +6,53 @@
 let inheritance =
 {
     legacy :
-    {   weapons: {}, assists: {}, specials: {},
-        passive_a:{}, passive_b:{}, passive_c:{} },
+    {   weapons: {}, support: {}, special: {},
+        passive_A:{}, passive_B:{}, passive_C:{} },
 
     rebuild : function()
     {
         this.legacy.weapons  = {};
-        this.legacy.assists  = {};
-        this.legacy.specials = {};
-        this.legacy.passive_a = {};
-        this.legacy.passive_b = {};
-        this.legacy.passive_c = {};
+        this.legacy.support  = {};
+        this.legacy.special  = {};
+        this.legacy.passive_A = {};
+        this.legacy.passive_B = {};
+        this.legacy.passive_C = {};
 
-        let active_roster;
-        if(tableau.is_collection_active())
-        {   active_roster = friends.roster;
+        let roster;
+        if( tableau.is_collection_active() )
+        {   roster = friends.roster;
         }
         else
-        {   active_roster = allies.list;
+        {   roster = allies.list;
         }
 
-        for ( let i=0; i < active_roster.length; i++ )
-        {   let ally = active_roster[i];
-            if ( ally.origin === 0 ) { continue; } // cannot inherit from anna, alfonse, or sharena
-            if ( ally.favourite ) { continue; } // do not inherit from favourites
-            if ( ally.home ) { continue; } // cannot inherit from allies that have gone home
+        for( let i=0; i < roster.length; i++ )
+        {   let ally = roster[i];
 
-            let skills = ally.return_base_skills();
+            if( ally.is_askrian() ) { continue; } // cannot inherit from anna, alfonse, or sharena
+            if( ally.is_favourite() ) { continue; } // do not inherit from favourites
+            if( ally.is_home() ) { continue; } // cannot inherit from allies that have gone home
 
-            for ( let type in this.legacy )
+            let base_skills = ally.get_base_skills();
+
+            for( let type in this.legacy )
             {
-                for ( let i=0; i < skills[type].length; i++ )
+                for( let i=0; i < base_skills[type].length; i++ )
                 {   // iterate over each skill in the ally's skill list
-                    let tag = skills[type][i];
-
-                    if (!dat[type][tag]) { continue; } // skip if not found in database
-                    if (dat[type][tag].inherit == "exclusive") { continue; } // don't add exclusive skills to the list
+                    let skill = base_skills[type][i];
+                    let skillname = skill.name;
+                    if( skill.inherit == "exclusive" ) { continue; } // don't add exclusive skills to the list
 
                     // make new entry if not already present, else add to the list
-                    if (!this.legacy[type][tag]) { this.legacy[type][tag] = { tag:tag, teachers:[ally] }; }
-                    else { this.legacy[type][tag].teachers.push(ally); }
+                    if(!this.legacy[type][skillname])
+                    {   this.legacy[type][skillname] =
+                            {   skillname:skillname,
+                                inherit:skill.inherit,
+                                weapon_type:skill.weapon_type,
+                                teachers:[ally]
+                            };
+                    } else
+                    {   this.legacy[type][skillname].teachers.push(ally); }
                 }
             }
 
@@ -55,98 +62,131 @@ let inheritance =
     filter_for_ally : function(ally)
     {
         learnable =
-        {   weapons: {}, assists: {}, specials: {},
-            passive_a:{}, passive_b:{}, passive_c:{} };
+        {   weapons : {}, support : {}, special : {},
+            passive_A:{}, passive_B:{}, passive_C:{}
+        };
 
-        for ( let type in learnable )
+        for( let type in learnable )
         {
-            for ( let tag in this.legacy[type] )
+            for( let skillname in this.legacy[type] )
             {
-                // skip if not found
-                if (!dat[type]) { console.log("ERR_SKILL_NOT_FOUND", tag); continue; }
-
                 // don't bother inheriting skills already known
-                if ( ally.knows_skill(tag, type) ) { continue; }
+                if( ally.knows_skill(skillname, type) ) { continue; }
 
-                if (this.check_inherit(ally,dat[type][tag]))
-                {   learnable[type][tag] = this.legacy[type][tag];
+                if( this.check_inherit(ally, this.legacy[type][skillname] ) )
+                {   learnable[type][skillname] = this.legacy[type][skillname];
                 }
             }
         }
+
+
 
         return learnable;
     },
 
     check_inherit : function(ally, skill)
     {
-        let teachable = false;
-        let inherit = skill.inherit;
+        let teachable = false; // default false, change to true if applicable
 
-        switch(inherit)
-        {   case 'all':
-                teachable = true;
-                break;
-            case 'weapon_type':
-                if(ally.weapon_type == skill.weapon_type) { teachable = true; }
-                break;
-            case 'dragon':
-                if(allies.check_dragon(ally)) { teachable = true;}
+        switch(skill.inherit)
+        {   case null:
+            case 'none':
+                if( skill.weapon_type )
+                {   if( skill.weapon_type.includes('dragon') && ally.is_dragon() ) { teachable = true; }
+                    if( skill.weapon_type == ally.get_weapon_type() ) { teachable = true; }
+                } else
+                {   teachable = true;
+                }
                 break;
 
-            case 'staff':
-                if(ally.weapon_type == 'staff') { teachable = true; }
+            case 'staff_only':
+                if(ally.get_weapon_type() == 'staff') { teachable = true; }
                 break;
             case 'no_staff':
-                if(ally.weapon_type != 'staff') { teachable = true; }
-                break;
-            case 'axe':
-                if(ally.weapon_type == 'axe') { teachable = true; }
-                break;
-            case 'bow':
-                if(ally.weapon_type == 'bow') { teachable = true; }
-                break;
-            case 'tome_blue':
-                if(ally.weapon_type == 'tome_blue') { teachable = true; }
+                if(ally.get_weapon_type() != 'staff') { teachable = true; }
                 break;
 
+            case 'melee_only':
+                if(ally.is_melee()) { teachable = true; }
+                break;
+            case 'ranged_only':
+                if(ally.is_ranged()) { teachable = true; }
+                break;
+
+            case 'infantry_only':
+                if(ally.get_move_type() == 'infantry' ) { teachable = true; }
+                break;
+            case 'armored_only':
+                if(ally.get_move_type() == 'armored' ) { teachable = true; }
+                break;
+            case 'cavalry_only':
+                if(ally.get_move_type() == 'cavalry' ) { teachable = true; }
+                break;
+            case 'flying_only':
+                if(ally.get_move_type() == 'flying' ) { teachable = true; }
+                break;
+
+            case 'no_flying':
+                if(ally.get_move_type() != 'flying' ) { teachable = true; }
+                break;
+
+            case 'no_colourless':
+                if(ally.get_colour() != 'colorless') { teachable = true; }
+                break;
             case 'no_red':
-                if(ally.return_colour() != 'red') { teachable = true; }
+                if(ally.get_colour() != 'red') { teachable = true; }
                 break;
             case 'no_blue':
-                if(ally.return_colour() != 'blue') { teachable = true; }
+                if(ally.get_colour() != 'blue') { teachable = true; }
                 break;
             case 'no_green':
-                if(ally.return_colour() != 'green') { teachable = true; }
+                if(ally.get_colour() != 'green') { teachable = true; }
                 break;
-            case 'no_colourless':
-                if(!allies.check_colourless(ally)) { teachable = true; }
+
+            case 'dragon_only':
+                if(ally.is_dragon()) { teachable = true;}
                 break;
-            case 'melee':
-                if(allies.check_melee(ally)) { teachable = true; }
+            case 'sword_only':
+                if(ally.get_weapon_type() == 'sword') { teachable = true; }
                 break;
-            case 'ranged':
-                if(allies.check_ranged(ally)) { teachable = true; }
+            case 'lance_only':
+                if(ally.get_weapon_type() == 'lance') { teachable = true; }
                 break;
-            case 'armor':
-                if(ally.move_type == 'armor' ) { teachable = true; }
+            case 'axe_only':
+                if(ally.get_weapon_type() == 'axe') { teachable = true; }
                 break;
-            case 'cavalry':
-                if(ally.move_type == 'cavalry' ) { teachable = true; }
+            case 'bow_only':
+                if(ally.get_weapon_type() == 'bow') { teachable = true; }
                 break;
-            case 'flyer':
-                if(ally.move_type == 'flyer' ) { teachable = true; }
+            case 'blue_tome_only':
+                if(ally.get_weapon_type() == 'blue_tome') { teachable = true; }
                 break;
-            case 'no_flyer':
-                if(ally.move_type != 'flyer' ) { teachable = true; }
+            case 'green_tome_only':
+                if(ally.get_weapon_type() == 'green_tome') { teachable = true; }
                 break;
-            case 'ranged':
-                if(ally.move_type == 'ranged' ) { teachable = true; }
+
+            case 'no_tome_no_staff':
+                if(!ally.get_weapon_type().includes('staff')
+                && !ally.get_weapon_type().includes('tome') )
+                {   teachable = true; }
                 break;
+            case 'sword_axe_lance':
+                if( ally.get_weapon_type() == 'sword'
+                 || ally.get_weapon_type() == 'lance'
+                 || ally.get_weapon_type() == 'axe' )
+                {   teachable = true; }
+                break;
+            case 'melee_only_infantry_only_armored_only':
+                if( ally.is_melee()
+                && (ally.get_move_type() == 'infantry' || ally.get_move_type() == 'armored') )
+                {   teachable = true; }
+                break;
+
             case 'exclusive':
                 teachable = false;
                 break;
             default:
-                console.log("ERR_INHERIT_RULE_NOT_FOUND", skill.tag, inherit);
+                console.log("ERR_INHERIT_RULE_NOT_FOUND", skill.name, skill.inherit);
                 break;
         }
         return teachable;

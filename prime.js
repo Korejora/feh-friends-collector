@@ -27,7 +27,7 @@ let tagload_queue_manifest =
 let queueueue_manifest =
     [   'googly.js',
         'stringy.js', 'divvy.js', 'checky.js', 'selectable.js', 'porter.js','allies.js',
-        'data/chars.js','data/weapons.js','data/assists.js','data/specials.js','data/passives.js',
+        'data/chars.js', 'data/skills.js', 'data/tags.js',
         'alter.js', 'tableau.js', 'friends.js', 'adder.js', 'inheritance.js',
     ];
 
