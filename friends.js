@@ -264,9 +264,8 @@ let friends =
             restore_array.push(friend);
         }
 
-        porter.googly_note(stringy.googly_info_roster_restored,'inform');
-
         this.restore_friends(restore_array);
+        porter.googly_note(stringy.googly_info_roster_restored,'inform');
     },
 
     save_friends_googly ()
