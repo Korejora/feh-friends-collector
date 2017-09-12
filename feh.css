@@ -339,25 +339,34 @@ display_properties =
 #allies_table  .type.subdiv  { width: 16% }
     .weapon_type   { width:34% }
         .weapon_type.title { background-color: #cccccc; }
-        .weapon_type.bow { background-color: #dddddd; }
-        .weapon_type.dagger { background-color: #cccccc; }
-        .weapon_type.staff { background-color: #eeeeee; }
-         /* .weapon_type.axe { background-color: #ccffcc; } */
-        .row:nth-child(even) .weapon_type.axe { background-color: #aaffaa; }
-        .row:nth-child(odd)  .weapon_type.axe { background-color: #ccffcc; }
-         /* .weapon_type.dragon { background-color: #ccffff; } */
-        .row:nth-child(even) .weapon_type.dragon { background-color: #aaffff; }
-        .row:nth-child(odd)  .weapon_type.dragon { background-color: #ccffff; }
-            /* .weapon_type.breath { background-color: #ccffff; } */
-         /* .weapon_type.lance { background-color: #ccccff; } */
-        .row:nth-child(even) .weapon_type.lance { background-color: #aaaaff; }
-        .row:nth-child(odd)  .weapon_type.lance { background-color: #ccccff; }
-        /* .weapon_type.sword { background-color: #ffcccc; } */
-        .row:nth-child(even) .weapon_type.sword { background-color: #ffaaaa; }
-        .row:nth-child(odd)  .weapon_type.sword { background-color: #ffcccc; }
-        /* .weapon_type.tome { background-color: #ffaaff; } */
-        .row:nth-child(even) .weapon_type.tome { background-color: #ffaaff; }
-        .row:nth-child(odd)  .weapon_type.tome { background-color: #ffccff; }
+/*  .weapon_type.colorless { background-color: #dddddd; } */
+            .weapon_type.colorless_bow { background-color: #dddddd; }
+            .weapon_type.colorless_dagger { background-color: #cccccc; }
+            .weapon_type.colorless_staff { background-color: #eeeeee; }
+    /*  .weapon_type.red_sword { background-color: #ffcccc; } */
+            .row:nth-child(even) .weapon_type.red_sword { background-color: #ffaaaa; }
+            .row:nth-child(odd)  .weapon_type.red_sword { background-color: #ffcccc; }
+    /*  .weapon_type.blue_lance { background-color: #ccccff; } */
+            .row:nth-child(even) .weapon_type.blue_lance { background-color: #aaaaff; }
+            .row:nth-child(odd)  .weapon_type.blue_lance { background-color: #ccccff; }
+    /*  .weapon_type.green_axe { background-color: #ccffcc; } */
+            .row:nth-child(even) .weapon_type.green_axe { background-color: #aaffaa; }
+            .row:nth-child(odd)  .weapon_type.green_axe { background-color: #ccffcc; }
+    /*  .weapon_type.dragonstone { background-color: #ccffff; } */
+            .row:nth-child(even) .weapon_type.red_dragonstone { background-color: #aaffff; }
+            .row:nth-child(even) .weapon_type.blue_dragonstone { background-color: #aaffff; }
+            .row:nth-child(even) .weapon_type.green_dragonstone { background-color: #aaffff; }
+            .row:nth-child(odd)  .weapon_type.red_dragonstone { background-color: #ccffff; }
+            .row:nth-child(odd)  .weapon_type.blue_dragonstone { background-color: #ccffff; }
+            .row:nth-child(odd)  .weapon_type.green_dragonstone { background-color: #ccffff; }
+             /* .weapon_type.breath { background-color: #ccffff; } */
+    /*  .weapon_type.tome { background-color: #ffaaff; } */
+            .row:nth-child(even) .weapon_type.red_tome { background-color: #ffaaff; }
+            .row:nth-child(even) .weapon_type.blue_tome { background-color: #ffaaff; }
+            .row:nth-child(even) .weapon_type.green_tome { background-color: #ffaaff; }
+            .row:nth-child(odd)  .weapon_type.red_tome { background-color: #ffccff; }
+            .row:nth-child(odd)  .weapon_type.blue_tome { background-color: #ffccff; }
+            .row:nth-child(odd)  .weapon_type.green_tome { background-color: #ffccff; }
          /* .weapon_type.tome_blue { background-color: #ffaaff; }
             .weapon_type.tome_green { background-color: #ffaaff; }
             .weapon_type.tome_red { background-color: #ffaaff; } */
@@ -365,22 +374,23 @@ display_properties =
         .row:nth-child(odd)  .weapon_type.heart { background-color: #ffccff; }
     .colour_type   { width:33% }
         .colour_type.title { background-color: #dddddd; }
-        /* .colour_type.blue { background-color: #ccccff; } */
-        .row:nth-child(even) .colour_type.blue { background-color: #aaaaff; }
-        .row:nth-child(odd)  .colour_type.blue { background-color: #ccccff; }
         /* .colour_type.colourless { background-color: #dddddd; } */
         .row:nth-child(even) .colour_type.colorless { background-color: #cccccc; }
         .row:nth-child(odd)  .colour_type.colorless { background-color: #eeeeee; }
-        .row:nth-child(even) .colour_type.colourless { background-color: #cccccc; }
-        .row:nth-child(odd)  .colour_type.colourless { background-color: #eeeeee; }
-        /* .colour_type.green { background-color: #ccffcc; } */
-        .row:nth-child(even) .colour_type.green { background-color: #aaffaa; }
-        .row:nth-child(odd)  .colour_type.green { background-color: #ccffcc; }
         /* .colour_type.red { background-color: #ffcccc; } */
         .row:nth-child(even) .colour_type.red { background-color: #ffaaaa; }
         .row:nth-child(odd)  .colour_type.red { background-color: #ffcccc; }
+        /* .colour_type.blue { background-color: #ccccff; } */
+        .row:nth-child(even) .colour_type.blue { background-color: #aaaaff; }
+        .row:nth-child(odd)  .colour_type.blue { background-color: #ccccff; }
+        /* .colour_type.green { background-color: #ccffcc; } */
+        .row:nth-child(even) .colour_type.green { background-color: #aaffaa; }
+        .row:nth-child(odd)  .colour_type.green { background-color: #ccffcc; }
     .move_type   { width:33% }
         .move_type.title { background-color: #eeeeee; }
+        /* .move_type.infantry { background-color: #cccccc; } */
+        .row:nth-child(even) .move_type.infantry { background-color: #cccccc; }
+        .row:nth-child(odd)  .move_type.infantry { background-color: #eeeeee; }
         /* .move_type.armored { background-color: #ffaaff; } */
         .row:nth-child(even) .move_type.armored { background-color: #ffaaff; }
         .row:nth-child(odd)  .move_type.armored { background-color: #ffccff; }
@@ -392,9 +402,6 @@ display_properties =
         .row:nth-child(odd)  .move_type.flying { background-color: #ccffff; }
         .row:nth-child(even) .move_type.flier { background-color: #aaffff; }
         .row:nth-child(odd)  .move_type.flier { background-color: #ccffff; }
-        /* .move_type.infantry { background-color: #cccccc; } */
-        .row:nth-child(even) .move_type.infantry { background-color: #cccccc; }
-        .row:nth-child(odd)  .move_type.infantry { background-color: #eeeeee; }
 
 #friends_table .stat.subdiv  { width: 40% }
 #allies_table  .stat.subdiv  { width: 44% }

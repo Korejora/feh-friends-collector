@@ -43,9 +43,8 @@ class ally
         this.epithet        = c.epithet;
         this.description    = c.description;
         this.origin         = c.origin;
-        this.weapon_type    = c.weapon_type;
+        this.weapon_type    = c.weapon_type.toLowerCase();
         this.colour         = c.colour.toLowerCase();
-        this.weapon         = c.weapon.toLowerCase();
         this.move_type      = c.move_type.toLowerCase();
         this.summon         = c.summon;
         this.limited        = c.limited;
@@ -201,7 +200,6 @@ class ally
     get_colour() { return this.colour; }
     // return_colour() { return this.colour_type; }
     // TODO: get_colour_image() { }
-    get_weapon() { return this.weapon; }
     lookup_weapons (weapons_name) { return skill_data.weapons[weapons_name]; }
 
     is_dragon()

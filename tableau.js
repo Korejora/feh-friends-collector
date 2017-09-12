@@ -210,8 +210,8 @@ tableau.setup = function tableau_setup()
     addfilt('blue');
     fs.green = new divvy({classname:'filter column', parent:fs});
     addfilt('green');
-    fs.grey = new divvy({classname:'filter column', parent:fs});
-    addfilt('grey');
+    fs.colorless = new divvy({classname:'filter column', parent:fs});
+    addfilt('colorless');
     fs.move = new divvy({classname:'filter column', parent:fs});
     addfilt('move');
 
@@ -469,7 +469,7 @@ tableau.row = class
                         'rarity', that.ally.get_rarity() );
                     break;
                 case 'weapon_type':
-                    item_div.className += " " + that.ally.get_weapon() + " ";
+                    item_div.className += " " + that.ally.get_weapon_type() + " ";
                     item_div.child_img = document.createElement('img');
                     item_div.child_img.onerror = function(){this.src = stringy.img_feh;};
                     item_div.child_img.src = stringy.find_img_path(
@@ -858,7 +858,7 @@ tableau.filters =
     red   : new sifter({ tag:'red',   property:'colour_type', value:'red',   default:true }),
     blue  : new sifter({ tag:'blue',  property:'colour_type', value:'blue',  default:true }),
     green : new sifter({ tag:'green', property:'colour_type', value:'green', default:true }),
-    grey  : new sifter({ tag:'grey',  property:'colour_type', value:'colorless',default:true }),
+    colorless  : new sifter({ tag:'colorless',  property:'colour_type', value:'colorless',default:true }),
 };
 
 tableau.special_filters = // active even in isolate mode
@@ -883,16 +883,16 @@ tableau.subfilters = // subfilters must wait for their superfilter to exist
     rarity4 :   new sifter({ property:'rarity',    value:4,   default:true, tag:'rarity4',    sup:'rar', collection:true}),
     rarity321 : new sifter({ property:'rarity',    value:321, default:true, tag:'rarity321',  sup:'rar', collection:true}),
 
-    sword : new sifter({ property:'weapon_type', value:'sword', default:true, tag:'sword', sup:'red'}),
-    lance : new sifter({ property:'weapon_type', value:'lance', default:true, tag:'lance', sup:'blue'}),
-    axe   : new sifter({ property:'weapon_type', value:'axe',   default:true, tag:'axe',   sup:'green'}),
-    bow   : new sifter({ property:'weapon_type', value:'bow',   default:true, tag:'bow',   sup:'grey'}),
-    dagger: new sifter({ property:'weapon_type', value:'dagger',default:true, tag:'dagger',sup:'grey'}),
+    sword : new sifter({ property:'weapon_type', value:'red_sword', default:true, tag:'red_sword', sup:'red'}),
+    lance : new sifter({ property:'weapon_type', value:'blue_lance', default:true, tag:'blue_lance', sup:'blue'}),
+    axe   : new sifter({ property:'weapon_type', value:'green_axe',   default:true, tag:'green_axe',   sup:'green'}),
+    bow   : new sifter({ property:'weapon_type', value:'colorless_bow',   default:true, tag:'colorless_bow',   sup:'colorless'}),
+    dagger: new sifter({ property:'weapon_type', value:'colorless_dagger',default:true, tag:'colorless_dagger',sup:'colorless'}),
 
     red_tome   : new sifter({ property:'weapon_type', value:'red_tome',   default:true, tag:'red_tome',   sup:'red'}),
     blue_tome  : new sifter({ property:'weapon_type', value:'blue_tome',  default:true, tag:'blue_tome',  sup:'blue'}),
     green_tome : new sifter({ property:'weapon_type', value:'green_tome', default:true, tag:'green_tome', sup:'green'}),
-    staff      : new sifter({ property:'weapon_type', value:'staff',default:true, tag:'staff',  sup:'grey'}),
+    staff      : new sifter({ property:'weapon_type', value:'colorless_staff',default:true, tag:'colorless_staff',  sup:'colorless'}),
 
     dragon_red   : new sifter({ property:'weapon_type', value:'red_dragonstone',   default:true, tag:'dragon_red',   sup:'red'}),
     dragon_blue  : new sifter({ property:'weapon_type', value:'blue_dragonstone',  default:true, tag:'dragon_blue',  sup:'blue'}),
