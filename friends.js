@@ -12,7 +12,7 @@ let friends =
     {   this.first_friends();
     },
 
-    make_friend : function(character)
+    make_friend (character)
     // (tag, rarity, boon, bane, favourite)
     {
         if (chars[character])
@@ -56,14 +56,14 @@ let friends =
 
     },
 
-    remove_last : function ()
+    remove_last : function friends_remove_last()
     {
         let last_friend = friends.roster.pop();
         refreshment();
         return last_friend;
     },
 
-    restore_friends : function(restore_array)
+    restore_friends (restore_array)
     {
         friends.roster = [];
         for ( let i=0; i < restore_array.length; i++ )
@@ -79,7 +79,7 @@ let friends =
         tableau.last_sorted = null;
     },
 
-    save_friends_string : function ()
+    save_friends_string ()
     {
         // save tag, favourite, fruit, rarity, boon, bane
         let save = {};
@@ -103,7 +103,7 @@ let friends =
         porter.stringly.set_text(save_string);
     },
 
-    restore_friends_string : function ()
+    restore_friends_string ()
     {
         let save_string = porter.stringly.return_text();
         let save = JSON.parse(save_string);
@@ -129,7 +129,7 @@ let friends =
 
     },
 
-    first_friends : function ()
+    first_friends ()
     {
         this.make_friend({tag:'anna__commander',           rarity:2, /*fruit:'🍐'*/ });
         this.make_friend({tag:'virion__elite_archer',      rarity:2, /*fruit:'🍇'*/ });
@@ -139,7 +139,7 @@ let friends =
         this.make_friend({tag:'sharena__princess_of_askr', rarity:2, /*fruit:'🍑'*/ });
     },
 
-    restore_friends_googly : function()
+    restore_friends_googly ()
     {   let spreadsheet_ID = porter.get_googly_spreadsheet_ID();
         this.get_googly_then_read(spreadsheet_ID);
     },
@@ -175,7 +175,7 @@ let friends =
         }      );
     },
 
-    read_googly_then_restore : function(rows)
+    read_googly_rows_then_restore (rows)
     {
         let columns = {};
         let title_row_index = 0;
@@ -269,13 +269,13 @@ let friends =
         this.restore_friends(restore_array);
     },
 
-    save_friends_googly : function()
+    save_friends_googly ()
     {
         let spreadsheet_ID = porter.get_googly_spreadsheet_ID();
         this.save_googly(spreadsheet_ID);
     },
 
-    save_googly : function(spreadsheet_ID)
+    save_googly (spreadsheet_ID)
     {
         // TODO: teach friends.js to write to a google spreadsheet
 
