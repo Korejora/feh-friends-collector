@@ -49,11 +49,6 @@ class ally
         this.summon         = c.summon;
         this.limited        = c.limited;
 
-        this.rarities = [];
-        for ( let i = 0; i < c.rarities.length; i++ )
-        {   this.rarities[i] = parseInt(c.rarities[i]);
-        }
-
         this.base_stats = {};
         for ( let i = 1; i <= 5; i++ )
         {   if (c.base_stats[i])
@@ -86,7 +81,7 @@ class ally
             this.base_skills.weapons[i].known  = parseInt(c.base_weapons[i][5]) || c.base_weapons[i][5];
             this.base_skills.weapons[i].learn  = parseInt(c.base_weapons[i][6]) || c.base_weapons[i][6];
             // inheritance rules show up only in the skill data, not character data
-            this.base_skills.weapons[i].inherit = stringy.inherit_restrictions[skill_data.weapons[this.base_skills.weapons[i].name][5]];
+            this.base_skills.weapons[i].inherit = this.get_skill_inheritance_rule('weapons', this.base_skills.weapons[i].name);
             this.base_skills.weapons[i].weapon_type = this.weapon_type;
         }
         this.base_skills.support = [];
@@ -98,7 +93,7 @@ class ally
             this.base_skills.support[i].cost   = parseInt(c.base_support[i][3]) || c.base_support[i][3];
             this.base_skills.support[i].known  = parseInt(c.base_support[i][4]) || c.base_support[i][4];
             this.base_skills.support[i].learn  = parseInt(c.base_support[i][5]) || c.base_support[i][5];
-            this.base_skills.support[i].inherit = stringy.inherit_restrictions[skill_data.support[this.base_skills.support[i].name][4]];
+            this.base_skills.support[i].inherit = this.get_skill_inheritance_rule('support', this.base_skills.support[i].name);
         }
         this.base_skills.special = [];
         for ( let i = 0; i < c.base_special.length; i++)
@@ -109,7 +104,7 @@ class ally
             this.base_skills.special[i].cost   = parseInt(c.base_special[i][3]) || c.base_special[i][3];
             this.base_skills.special[i].known  = parseInt(c.base_special[i][4]) || c.base_special[i][4];
             this.base_skills.special[i].learn  = parseInt(c.base_special[i][5]) || c.base_special[i][5];
-            this.base_skills.special[i].inherit = stringy.inherit_restrictions[skill_data.special[this.base_skills.special[i].name][4]];
+            this.base_skills.special[i].inherit = this.get_skill_inheritance_rule('special',this.base_skills.special[i].name);
         }
         this.base_skills.passive_A = [];
         for ( let i = 0; i < c.base_passive_A.length; i++)
@@ -118,7 +113,7 @@ class ally
             this.base_skills.passive_A[i].effect = c.base_passive_A[i][1];
             this.base_skills.passive_A[i].cost   = parseInt(c.base_passive_A[i][2]) || c.base_passive_A[i][2];
             this.base_skills.passive_A[i].learn  = parseInt(c.base_passive_A[i][3]) || c.base_passive_A[i][3];
-            this.base_skills.passive_A[i].inherit = stringy.inherit_restrictions[skill_data.passive_A[this.base_skills.passive_A[i].name][3]];
+            this.base_skills.passive_A[i].inherit = this.get_skill_inheritance_rule('passive_A',this.base_skills.passive_A[i].name);
         }
         this.base_skills.passive_B = [];
         for ( let i = 0; i < c.base_passive_B.length; i++)
@@ -127,7 +122,7 @@ class ally
             this.base_skills.passive_B[i].effect = c.base_passive_B[i][1];
             this.base_skills.passive_B[i].cost   = parseInt(c.base_passive_B[i][2]) || c.base_passive_B[i][2];
             this.base_skills.passive_B[i].learn  = parseInt(c.base_passive_B[i][3]) || c.base_passive_B[i][3];
-            this.base_skills.passive_B[i].inherit = stringy.inherit_restrictions[skill_data.passive_B[this.base_skills.passive_B[i].name][3]];
+            this.base_skills.passive_B[i].inherit = this.get_skill_inheritance_rule('passive_B',this.base_skills.passive_B[i].name);
         }
         this.base_skills.passive_C = [];
         for ( let i = 0; i < c.base_passive_C.length; i++)
@@ -136,7 +131,7 @@ class ally
             this.base_skills.passive_C[i].effect = c.base_passive_C[i][1];
             this.base_skills.passive_C[i].cost   = parseInt(c.base_passive_C[i][2]) || c.base_passive_C[i][2];
             this.base_skills.passive_C[i].learn  = parseInt(c.base_passive_C[i][3]) || c.base_passive_C[i][3];
-            this.base_skills.passive_C[i].inherit = stringy.inherit_restrictions[skill_data.passive_C[this.base_skills.passive_C[i].name][3]];
+            this.base_skills.passive_C[i].inherit = this.get_skill_inheritance_rule('passive_C',this.base_skills.passive_C[i].name);
         }
 
 
@@ -383,6 +378,31 @@ class ally
     // return_skills() { return this.unlocked_skills; }
 
     get_base_skills() { return this.base_skills; }
+    get_skill_inheritance_rule( type, skillname )
+    {   if( skill_data[type][skillname] )
+        {   let inherit_text;
+            switch(type)
+            {   case 'weapons':
+                    inherit_text = skill_data.weapons[skillname][5];
+                    break;
+                case 'support': case 'special':
+                    inherit_text = skill_data[type][skillname][4];
+                    break;
+                case 'passive_A':   case 'passive_B':   case 'passive_C':
+                    inherit_text = skill_data[type][skillname][3];
+                    break;
+                default:
+                    console.log("ERR_SKILL_TYPE_NOT_FOUND", type);
+                    inherit_text = -2;
+                    break;
+            }
+            let inherit_rule = stringy.inherit_restrictions[inherit_text];
+            return inherit_rule;
+        } else
+        {   console.log("ERR_SKILL_NOT_FOUND", skillname);
+            return -1;
+        }
+    }
 
     get_equipped_weapons_might()
     {   if (this.equipped_skills.weapons.might)

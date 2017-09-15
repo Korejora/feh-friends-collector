@@ -11,7 +11,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 6, 8, 8, 5 ],
             "5": [ 17, 7, 8, 8, 6 ]
@@ -51,7 +50,6 @@ let chars =
         "move_type": "Infantry",
         "limited": true,
         "summon": false,
-        "rarities": [ 2 ],
         "base_stats":
         {   "2": [ 17, 8, 4, 7, 3 ],
             "3": [ 18, 8, 5, 7, 4 ],
@@ -93,7 +91,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 21, 9, 6, 6, 5 ]
         },
@@ -132,7 +129,6 @@ let chars =
         "move_type": "Armored",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 19, 6, 8, 9, 4 ]
         },
@@ -171,7 +167,6 @@ let chars =
         "move_type": "Infantry",
         "limited": true,
         "summon": false,
-        "rarities": [ 2 ],
         "base_stats":
         {   "2": [ 17, 6, 9, 3, 4 ],
             "3": [ 18, 6, 9, 4, 5 ],
@@ -213,7 +208,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 18, 7, 6, 7, 4 ],
             "4": [ 18, 8, 6, 8, 4 ],
@@ -253,7 +247,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 6, 10, 8, 4 ],
             "5": [ 17, 7, 10, 8, 5 ]
@@ -289,7 +282,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 18, 3, 6, 7, 5 ],
             "4": [ 18, 3, 7, 8, 5 ],
@@ -328,7 +320,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 5, 7, 4, 6 ]
         },
@@ -366,7 +357,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 19, 8, 7, 5, 3 ],
             "4": [ 19, 9, 8, 5, 3 ],
@@ -404,7 +394,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 20, 9, 5, 6, 2 ],
             "4": [ 20, 10, 5, 7, 2 ],
@@ -444,7 +433,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": false,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 18, 7, 4, 6, 6 ],
             "4": [ 18, 8, 4, 7, 6 ],
@@ -485,7 +473,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 19, 6, 5, 8, 4 ],
             "4": [ 19, 7, 5, 9, 4 ],
@@ -524,7 +511,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 18, 7, 4, 8, 4 ],
             "5": [ 19, 7, 5, 8, 5 ]
@@ -564,7 +550,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 5, 9, 4, 10 ],
             "5": [ 17, 6, 9, 5, 10 ]
@@ -604,7 +589,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 16, 7, 9, 4, 8 ]
         },
@@ -622,8 +606,8 @@ let chars =
         ],
         "base_passive_A":
         [   [ "Resistance +1", "Grants Res+1.", "30", "-" ],
-            [ "Attack Res +1", "Grants Atk/Res+1.", "80", "-" ],
-            [ "Attack Res +2", "Grants Atk/Res+2.", "160", "5" ]
+            [ "Attack Res 1", "Grants Atk/Res+1.", "80", "-" ],
+            [ "Attack Res 2", "Grants Atk/Res+2.", "160", "5" ]
         ],
         "base_passive_B": [],
         "base_passive_C":
@@ -643,7 +627,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 8, 5, 8, 5 ],
             "5": [ 18, 8, 6, 8, 6 ]
@@ -683,7 +666,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 8, 8, 5, 6 ],
             "5": [ 18, 8, 8, 6, 7 ]
@@ -724,7 +706,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 9, 6, 8, 4 ]
         },
@@ -760,7 +741,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": false,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 7, 8, 6, 3 ],
             "4": [ 17, 8, 9, 6, 3 ],
@@ -799,7 +779,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "3": [ 16, 6, 9, 6, 5 ],
             "4": [ 16, 7, 10, 6, 5 ],
@@ -840,7 +819,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 15, 6, 4, 3, 5 ],
             "2": [ 15, 7, 4, 3, 6 ],
@@ -882,7 +860,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 8, 7, 5, 7 ]
         },
@@ -922,7 +899,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 20, 10, 8, 5, 4 ]
         },
@@ -960,7 +936,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 19, 9, 5, 7, 2 ],
             "4": [ 19, 10, 5, 8, 2 ],
@@ -1000,7 +975,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 20, 9, 5, 7, 3 ],
             "5": [ 21, 9, 6, 7, 4 ]
@@ -1042,7 +1016,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 19, 9, 8, 6, 5 ]
         },
@@ -1080,7 +1053,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 6, 8, 4, 9 ],
             "5": [ 18, 7, 8, 5, 9 ]
@@ -1117,7 +1089,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 15, 5, 8, 4, 6 ],
             "4": [ 15, 5, 9, 4, 7 ],
@@ -1156,7 +1127,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": false,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 6, 7, 5, 4 ],
             "4": [ 17, 7, 8, 5, 4 ],
@@ -1197,7 +1167,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": false,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 18, 9, 5, 8, 3 ],
             "5": [ 19, 9, 6, 8, 4 ]
@@ -1235,7 +1204,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 9, 9, 4, 5 ],
             "5": [ 18, 9, 9, 5, 6 ]
@@ -1277,7 +1245,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 9, 9, 4, 5 ]
         },
@@ -1317,7 +1284,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 18, 7, 5, 7, 5 ],
             "4": [ 18, 8, 5, 8, 5 ],
@@ -1359,7 +1325,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 7, 8, 5, 7 ]
         },
@@ -1399,7 +1364,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 19, 8, 8, 5, 4 ],
             "5": [ 20, 8, 8, 6, 5 ]
@@ -1439,7 +1403,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 16, 10, 8, 3, 7 ]
         },
@@ -1477,7 +1440,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 15, 5, 3, 4, 2 ],
             "2": [ 15, 6, 3, 5, 2 ],
@@ -1517,7 +1479,6 @@ let chars =
         "move_type": "Armored",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "2": [ 22, 7, 4, 12, 1 ],
             "3": [ 23, 7, 5, 12, 2 ],
@@ -1557,7 +1518,6 @@ let chars =
         "move_type": "Armored",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 21, 12, 4, 11, 3 ],
             "5": [ 22, 12, 5, 11, 4 ]
@@ -1596,7 +1556,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 7, 9, 6, 5 ],
             "5": [ 18, 7, 9, 7, 6 ]
@@ -1633,7 +1592,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 19, 8, 5, 8, 6 ]
         },
@@ -1659,6 +1617,43 @@ let chars =
         ],
         "base_passive_C": []
     },
+    "elincia__lost_princess":
+    {   "tag": "elincia__lost_princess",
+        "name": "Elincia",
+        "epithet": "Lost Princess",
+        "description": "The princess of Crimea, whose existence was concealed. Cares for her kingdom and people.",
+        "origin": "Fire Emblem: Path of Radiance",
+        "weapon_type": "red_sword",
+        "colour": "red",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 16, 8, 10, 5, 8 ]
+        },
+        "growth_points": [ 5, 8, 8, 5, 5 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
+            [ "Amiti", "11", "1", "Spd-2. Attack twice when initiating combat.", "400", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Ardent Sacrifice", "1", "Heals adjacent ally 10 HP. Unit loses 10 HP (but cannot reach 0 this way).", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Death Blow 1", "Grants Atk+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Death Blow 2", "Grants Atk+4 during combat if unit initiates the attack.", "100", "-" ],
+            [ "Death Blow 3", "Grants Atk+6 during combat if unit initiates the attack.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Flier Formation 1", "If unit has 100% HP, unit can move to a space adjacent to a flier ally within 2 spaces.", "60", "-" ],
+            [ "Flier Formation 2", "If unit has ≥ 50% HP, unit can move to a space adjacent to a flier ally within 2 spaces.", "120", "-" ],
+            [ "Flier Formation 3", "Unit can move to a space adjacent to a flier ally within 2 spaces.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
     "elise__budding_flower":
     {   "tag": "elise__budding_flower",
         "name": "Elise",
@@ -1670,7 +1665,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 15, 8, 8, 4, 8 ]
         },
@@ -1708,7 +1702,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 10, 8, 3, 6 ]
         },
@@ -1747,7 +1740,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 16, 6, 7, 5, 7 ],
             "4": [ 16, 6, 8, 5, 8 ],
@@ -1788,7 +1780,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 19, 9, 6, 8, 5 ]
         },
@@ -1827,7 +1818,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 16, 8, 7, 4, 7 ],
             "4": [ 16, 9, 8, 4, 7 ],
@@ -1867,7 +1857,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 15, 4, 3, 6, 8 ],
             "5": [ 16, 5, 4, 6, 8 ]
@@ -1906,7 +1895,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 16, 6, 3, 4, 7 ]
         },
@@ -1941,7 +1929,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 13, 4, 9, 1, 7 ],
             "2": [ 13, 4, 10, 1, 8 ],
@@ -1984,7 +1971,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 18, 5, 9, 4, 6 ],
             "4": [ 18, 5, 10, 4, 7 ],
@@ -2025,7 +2011,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 6, 7, 5, 7 ],
             "4": [ 17, 6, 8, 5, 8 ],
@@ -2065,7 +2050,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 18, 8, 5, 7, 3 ],
             "4": [ 18, 9, 5, 8, 3 ],
@@ -2107,7 +2091,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 18, 8, 7, 6, 5 ]
         },
@@ -2145,7 +2128,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 6, 9, 4, 3 ],
             "4": [ 17, 7, 10, 4, 3 ],
@@ -2186,7 +2168,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 8, 9, 4, 6 ]
         },
@@ -2225,7 +2206,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 9, 6, 4, 8 ]
         },
@@ -2262,7 +2242,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 18, 6, 5, 7, 3 ],
             "4": [ 18, 7, 5, 8, 3 ],
@@ -2302,7 +2281,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 7, 6, 6, 3 ]
         },
@@ -2340,7 +2318,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 19, 8, 5, 9, 3 ],
             "2": [ 19, 9, 5, 10, 3 ],
@@ -2382,7 +2359,6 @@ let chars =
         "move_type": "Armored",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 22, 7, 4, 11, 5 ],
             "4": [ 22, 8, 4, 12, 5 ],
@@ -2421,7 +2397,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 16, 7, 8, 4, 2 ],
             "2": [ 16, 8, 9, 4, 2 ],
@@ -2463,7 +2438,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 20, 9, 4, 6, 5 ],
             "5": [ 21, 9, 5, 6, 6 ]
@@ -2503,7 +2477,6 @@ let chars =
         "move_type": "Armored",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 24, 10, 5, 11, 4 ]
         },
@@ -2540,7 +2513,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 18, 5, 4, 7, 5 ],
             "4": [ 18, 6, 4, 8, 5 ],
@@ -2581,7 +2553,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 20, 7, 4, 9, 2 ],
             "4": [ 20, 8, 4, 10, 2 ],
@@ -2622,7 +2593,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 19, 7, 8, 6, 7 ]
         },
@@ -2661,7 +2631,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 18, 9, 7, 8, 5 ]
         },
@@ -2702,7 +2671,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 10, 6, 9, 5 ]
         },
@@ -2725,7 +2693,7 @@ let chars =
             [ "Steady Breath", "If attacked, unit granted Def+4 during combat; also gains Special cooldown charge +1. (If using other similar skill, only highest value applied.)", "240", "5" ]
         ],
         "base_passive_B":
-        [   [ "Beorc's Blessing", "Effective against flying and cavalry units. Foe's bonuses (from skills like Fortify, Rally, etc.) are nullified during combat. (Skill cannot be inherited.)", "300", "5" ]
+        [   [ "Beorc's Blessing", "If foe is cavalry or flier type, foe's bonuses (from skills like Fortify, Rally, etc.) are nullified during combat. (Skill cannot be inherited.)", "300", "5" ]
         ],
         "base_passive_C":
         [   [ "Threaten Def 1", "Inflicts Def-3 on foes within 2 spaces through their next actions at the start of each turn.", "50", "-" ],
@@ -2744,7 +2712,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 16, 9, 8, 4, 7 ]
         },
@@ -2783,7 +2750,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 7, 9, 6, 5 ]
         },
@@ -2822,7 +2788,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 19, 7, 6, 7, 10 ],
             "4": [ 19, 8, 6, 7, 11 ],
@@ -2863,7 +2828,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 7, 9, 5, 4 ],
             "5": [ 17, 7, 9, 6, 5 ]
@@ -2902,7 +2866,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 8, 8, 4, 4 ],
             "5": [ 18, 8, 8, 5, 5 ]
@@ -2942,7 +2905,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 16, 9, 7, 4, 8 ]
         },
@@ -2981,7 +2943,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 15, 9, 8, 4, 5 ],
             "5": [ 16, 9, 8, 5, 6 ]
@@ -3021,7 +2982,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 19, 8, 9, 6, 5 ]
         },
@@ -3060,7 +3020,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 6, 8, 5, 8 ]
         },
@@ -3099,7 +3058,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 9, 7, 4, 4 ],
             "5": [ 18, 9, 7, 5, 5 ]
@@ -3139,7 +3097,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 5, 8, 4, 8 ],
             "5": [ 17, 6, 8, 5, 8 ]
@@ -3177,7 +3134,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 19, 8, 6, 5, 4 ],
             "4": [ 19, 9, 7, 5, 4 ],
@@ -3218,7 +3174,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": false,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 19, 9, 8, 4, 2 ],
             "4": [ 19, 10, 9, 4, 2 ],
@@ -3259,7 +3214,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 7, 5, 6, 8 ]
         },
@@ -3299,7 +3253,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 18, 8, 5, 6, 7 ]
         },
@@ -3338,7 +3291,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 8, 5, 8, 4 ],
             "5": [ 17, 8, 6, 8, 5 ]
@@ -3378,7 +3330,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 15, 9, 5, 3, 9 ],
             "5": [ 16, 9, 6, 4, 9 ]
@@ -3418,7 +3369,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 16, 9, 10, 4, 5 ]
         },
@@ -3456,7 +3406,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 15, 5, 4, 4, 6 ],
             "2": [ 15, 6, 4, 4, 7 ],
@@ -3497,7 +3446,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": false,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 16, 7, 8, 4, 7 ],
             "4": [ 16, 8, 9, 4, 7 ],
@@ -3538,7 +3486,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 18, 6, 10, 4, 4 ],
             "4": [ 18, 7, 11, 4, 4 ],
@@ -3579,7 +3526,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 19, 8, 10, 6, 4 ]
         },
@@ -3620,7 +3566,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 8, 10, 8, 4 ]
         },
@@ -3661,7 +3606,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 16, 7, 10, 5, 6 ]
         },
@@ -3699,7 +3643,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 5, 8, 2, 9 ],
             "5": [ 18, 6, 8, 3, 9 ]
@@ -3737,7 +3680,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 18, 9, 4, 10, 3 ],
             "5": [ 19, 9, 5, 10, 4 ]
@@ -3777,7 +3719,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 19, 8, 6, 8, 5 ]
         },
@@ -3816,7 +3757,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 18, 6, 11, 7, 5 ]
         },
@@ -3857,7 +3797,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 16, 7, 9, 5, 6 ]
         },
@@ -3899,7 +3838,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 6, 10, 6, 5 ]
         },
@@ -3936,7 +3874,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 15, 10, 6, 2, 8 ],
             "5": [ 16, 10, 7, 3, 8 ]
@@ -3971,7 +3908,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 4, 8, 3, 10 ],
             "5": [ 17, 5, 8, 4, 10 ]
@@ -4010,7 +3946,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 18, 7, 8, 6, 5 ],
             "5": [ 19, 7, 8, 7, 6 ]
@@ -4050,7 +3985,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": false,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 18, 8, 10, 5, 3 ],
             "5": [ 19, 8, 10, 6, 4 ]
@@ -4079,7 +4013,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 15, 6, 8, 6, 8 ],
             "5": [ 16, 7, 8, 7, 8 ]
@@ -4118,7 +4051,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "2": [ 15, 5, 9, 4, 3 ],
             "3": [ 16, 5, 9, 5, 4 ],
@@ -4159,7 +4091,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 18, 7, 8, 5, 3 ],
             "5": [ 19, 7, 8, 6, 4 ]
@@ -4199,7 +4130,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": false,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 18, 7, 6, 8, 3 ],
             "4": [ 18, 8, 6, 9, 3 ],
@@ -4238,7 +4168,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 18, 7, 9, 8, 5 ]
         },
@@ -4277,7 +4206,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 8, 6, 5, 8 ]
         },
@@ -4314,7 +4242,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": false,
-        "rarities": [ 2, 4 ],
         "base_stats":
         {   "2": [ 16, 6, 5, 7, 5 ],
             "3": [ 17, 6, 6, 7, 6 ],
@@ -4356,7 +4283,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": false,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 6, 10, 5, 4 ],
             "4": [ 17, 7, 11, 5, 4 ],
@@ -4386,6 +4312,44 @@ let chars =
             [ "Threaten Spd 3", "Inflicts Spd-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "4" ]
         ]
     },
+    "nephenee__fierce_halberdier":
+    {   "tag": "nephenee__fierce_halberdier",
+        "name": "Nephenee",
+        "epithet": "Fierce Halberdier",
+        "description": "A militia member from the Crimean countryside. Since she's quiet, people think she's shy, but...",
+        "origin": "Fire Emblem: Path of Radiance",
+        "weapon_type": "blue_lance",
+        "colour": "blue",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 18, 7, 9, 8, 5 ]
+        },
+        "growth_points": [ 5, 7, 8, 8, 3 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Slaying Lance", "10", "1", "Accelerates Special trigger (cooldown count-1).", "200", "-", "-" ],
+            [ "Slaying Lance+", "14", "1", "Accelerates Special trigger (cooldown count-1).", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "5", "-" ],
+            [ "Moonbow", "2", "Resolve combat as if foe suffered Def/Res-30%.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Speed +1", "Grants Spd+1.", "30", "-" ],
+            [ "Atk Spd 1", "Grants Atk/Spd+1.", "80", "-" ],
+            [ "Atk Spd 2", "Grants Atk/Spd+2.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Wrath 1", "If unit's HP ≤ 25%, Special cooldown count-1 at start of turn if Special triggers by attacking. If Special triggers, +10 damage from Special.", "60", "-" ],
+            [ "Wrath 2", "If unit's HP ≤ 50%, Special cooldown count-1 at start of turn if Special triggers by attacking. If Special triggers, +10 damage from Special.", "120", "-" ],
+            [ "Wrath 3", "If unit's HP ≤ 75%, Special cooldown count-1 at start of turn if Special triggers by attacking. If Special triggers, +10 damage from Special.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
     "niles__cruel_to_be_kind":
     {   "tag": "niles__cruel_to_be_kind",
         "name": "Niles",
@@ -4397,7 +4361,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 5, 7, 3, 7 ],
             "4": [ 17, 5, 8, 3, 8 ],
@@ -4438,7 +4401,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 16, 5, 7, 6, 5 ]
         },
@@ -4476,7 +4438,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 15, 6, 9, 3, 6 ],
             "4": [ 15, 7, 10, 3, 6 ],
@@ -4516,7 +4477,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 6, 4, 6, 4 ],
             "5": [ 17, 6, 5, 6, 5 ]
@@ -4555,7 +4515,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 7, 6, 8, 4 ],
             "4": [ 17, 8, 6, 9, 4 ],
@@ -4595,7 +4554,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 18, 4, 7, 5, 5 ],
             "4": [ 18, 4, 8, 6, 5 ],
@@ -4636,7 +4594,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 20, 7, 10, 5, 2 ],
             "5": [ 21, 7, 10, 6, 3 ]
@@ -4676,7 +4633,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 15, 4, 5, 3, 2 ],
             "2": [ 15, 5, 6, 3, 2 ],
@@ -4716,7 +4672,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 7, 8, 5, 6 ]
         },
@@ -4743,6 +4698,44 @@ let chars =
             [ "Ward Cavalry", "Grants cavalry allies within 2 spaces Def/Res+4 during combat.", "200", "5" ]
         ]
     },
+    "oscar__agile_horseman":
+    {   "tag": "oscar__agile_horseman",
+        "name": "Oscar",
+        "epithet": "Agile Horseman",
+        "description": "A straightforward but accommodating member of the Greil Mercenaries. Has good instincts.",
+        "origin": "Fire Emblem: Path of Radiance",
+        "weapon_type": "blue_lance",
+        "colour": "blue",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 18, 7, 8, 7, 6 ]
+        },
+        "growth_points": [ 6, 8, 8, 5, 3 ],
+        "base_weapons":
+        [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
+            [ "Sapphire Lance", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "-", "-" ],
+            [ "Sapphire Lance+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "5", "5" ]
+        ],
+        "base_support":
+        [   [ "Rally Speed", "1", "Grants Spd+4 to an adjacent ally until the end of the turn.", "150", "5", "-" ],
+            [ "Rally Speed Defense", "1", "Grants Spd/Def+3 to an adjacent ally until the end of the turn.", "300", "-", "5" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Lancebreaker 1", "If unit's HP ≥ 90% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
+            [ "Lancebreaker 2", "If unit's HP ≥ 70% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "100", "-" ],
+            [ "Lancebreaker 3", "If unit's HP ≥ 50% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Spur Spd Def 1", "Grants adjacent allies Spd/Def +2 during combat", "120", "-" ],
+            [ "Spur Spd Def 2", "Grants adjacent allies Spd/Def +3 during combat.", "240", "5" ]
+        ]
+    },
     "palla__eldest_whitewing":
     {   "tag": "palla__eldest_whitewing",
         "name": "Palla",
@@ -4754,7 +4747,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 6, 8, 5, 6 ],
             "4": [ 17, 7, 9, 5, 6 ],
@@ -4795,7 +4787,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 15, 9, 9, 5, 5 ],
             "5": [ 16, 9, 9, 6, 6 ]
@@ -4835,7 +4826,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 7, 6, 3, 8 ],
             "5": [ 17, 7, 7, 4, 8 ]
@@ -4873,7 +4863,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "2": [ 15, 7, 6, 3, 5 ],
             "3": [ 16, 7, 6, 4, 6 ],
@@ -4914,7 +4903,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 18, 8, 9, 5, 4 ],
             "5": [ 19, 8, 9, 6, 5 ]
@@ -4954,7 +4942,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 7, 8, 5, 4 ],
             "5": [ 18, 7, 8, 6, 5 ]
@@ -4993,7 +4980,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 15, 8, 5, 4, 8 ],
             "5": [ 16, 8, 6, 5, 8 ]
@@ -5034,7 +5020,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": false,
-        "rarities": [ 2, 3 ],
         "base_stats":
         {   "2": [ 16, 6, 6, 5, 3 ],
             "3": [ 17, 6, 6, 6, 4 ],
@@ -5077,7 +5062,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 18, 8, 8, 6, 7 ]
         },
@@ -5116,7 +5100,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 6, 6, 6, 4 ],
             "4": [ 17, 7, 7, 6, 4 ],
@@ -5157,7 +5140,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 7, 8, 5, 6 ],
             "5": [ 18, 7, 8, 6, 7 ]
@@ -5195,7 +5177,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 19, 8, 9, 5, 3 ],
             "5": [ 20, 8, 9, 6, 4 ]
@@ -5235,7 +5216,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 16, 8, 8, 7, 7 ]
         },
@@ -5275,7 +5255,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 19, 8, 11, 5, 4 ]
         },
@@ -5314,7 +5293,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 18, 7, 9, 8, 5 ]
         },
@@ -5353,7 +5331,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 16, 6, 7, 8, 2 ],
             "4": [ 16, 6, 8, 9, 2 ],
@@ -5393,7 +5370,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 5, 8, 4, 8 ],
             "5": [ 17, 6, 8, 5, 8 ]
@@ -5431,7 +5407,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 16, 9, 7, 4, 8 ]
         },
@@ -5469,7 +5444,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 5, 8, 7, 5 ],
             "4": [ 17, 5, 9, 8, 5 ],
@@ -5509,7 +5483,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 18, 8, 6, 8, 4 ],
             "5": [ 19, 8, 7, 8, 5 ]
@@ -5548,7 +5521,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 15, 5, 8, 3, 8 ],
             "4": [ 15, 5, 9, 3, 9 ],
@@ -5587,7 +5559,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 8, 6, 8, 4 ],
             "5": [ 18, 8, 7, 8, 5 ]
@@ -5626,7 +5597,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 5, 8, 4, 5 ],
             "4": [ 17, 6, 9, 4, 5 ],
@@ -5666,7 +5636,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 16, 7, 8, 5, 6 ],
             "4": [ 16, 8, 9, 5, 6 ],
@@ -5707,7 +5676,6 @@ let chars =
         "move_type": "Infantry",
         "limited": true,
         "summon": false,
-        "rarities": [ 2 ],
         "base_stats":
         {   "2": [ 17, 7, 7, 5, 3 ],
             "3": [ 18, 7, 7, 6, 4 ],
@@ -5748,7 +5716,6 @@ let chars =
         "move_type": "Armored",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 20, 8, 5, 12, 6 ],
             "5": [ 21, 8, 6, 12, 7 ]
@@ -5786,7 +5753,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 7, 7, 5, 8 ]
         },
@@ -5825,7 +5791,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 16, 7, 2, 4, 5 ],
             "2": [ 16, 8, 2, 4, 6 ],
@@ -5868,7 +5833,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 7, 9, 3, 6 ],
             "5": [ 17, 7, 9, 4, 7 ]
@@ -5908,7 +5872,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 17, 5, 5, 6, 3 ],
             "2": [ 17, 6, 5, 7, 3 ],
@@ -5950,7 +5913,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 16, 4, 7, 7, 3 ],
             "2": [ 16, 4, 8, 8, 3 ],
@@ -5992,7 +5954,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 6, 7, 6, 5 ],
             "4": [ 17, 7, 8, 6, 5 ],
@@ -6032,7 +5993,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 18, 8, 7, 6, 5 ]
         },
@@ -6069,7 +6029,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 17, 8, 10, 6, 6 ]
         },
@@ -6108,7 +6067,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 16, 8, 8, 5, 4 ],
             "5": [ 17, 8, 8, 6, 5 ]
@@ -6149,7 +6107,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 6, 5, 8, 6 ],
             "4": [ 17, 7, 5, 9, 6 ],
@@ -6191,7 +6148,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 18, 8, 6, 8, 7 ]
         },
@@ -6231,7 +6187,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 15, 5, 4, 8, 7 ]
         },
@@ -6270,7 +6225,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 5, 8, 5, 8 ],
             "5": [ 18, 6, 8, 6, 8 ]
@@ -6309,7 +6263,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": false,
-        "rarities": [ 4, 5 ],
         "base_stats":
         {   "4": [ 17, 7, 5, 4, 3 ],
             "5": [ 18, 7, 5, 5, 4 ]
@@ -6348,7 +6301,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": false,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 15, 6, 7, 3, 7 ],
             "4": [ 15, 6, 8, 3, 8 ],
@@ -6389,7 +6341,6 @@ let chars =
         "move_type": "Flying",
         "limited": false,
         "summon": false,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 17, 7, 8, 7, 3 ],
             "4": [ 17, 8, 9, 7, 3 ],
@@ -6430,7 +6381,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 18, 5, 5, 5, 1 ],
             "2": [ 18, 6, 6, 5, 1 ],
@@ -6473,7 +6423,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "1": [ 16, 3, 4, 3, 8 ],
             "2": [ 16, 3, 5, 3, 9 ],
@@ -6514,7 +6463,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": false,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 19, 7, 4, 8, 3 ],
             "4": [ 19, 8, 4, 9, 3 ],
@@ -6556,7 +6504,6 @@ let chars =
         "move_type": "Infantry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 19, 8, 6, 8, 6 ]
         },
@@ -6596,7 +6543,6 @@ let chars =
         "move_type": "Cavalry",
         "limited": false,
         "summon": true,
-        "rarities": [ 5 ],
         "base_stats":
         {   "5": [ 18, 6, 6, 9, 7 ]
         },
@@ -6632,7 +6578,6 @@ let chars =
         "move_type": "Armored",
         "limited": false,
         "summon": false,
-        "rarities": [ 3, 4 ],
         "base_stats":
         {   "3": [ 24, 8, 2, 11, 4 ],
             "4": [ 24, 9, 2, 12, 4 ],
