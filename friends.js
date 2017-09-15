@@ -143,7 +143,7 @@ let friends =
     {   let spreadsheet_ID = porter.get_googly_spreadsheet_ID();
         // this reads the google spreadsheet then calls the friends function read_googly_rows_then_restore
         googly.read_sheet_then_call_friends(spreadsheet_ID);
-        // this has to be a chain of functions calling each other to prevent race failure
+        // this has to be a chain of functions calling each other to prevent them racing each other
     },
 
     read_googly_rows_then_restore (rows)
