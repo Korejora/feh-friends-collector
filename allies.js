@@ -160,9 +160,7 @@ class ally
     toggle_favourite () { this.favourite = (!this.favourite) ? '❤' : null ; }
     set_favourite(fav) { this.favourite = fav; }
     is_favourite()
-    {   if(this.favourite)
-        {   return '❤';
-        }else { return false; }
+    {   if(this.favourite) { return '❤'; } else { return false; }
     }
 
     get_obtained_order() { return this.obtained; }
@@ -204,7 +202,7 @@ class ally
         else { return false; }
     }
     is_melee()
-    {   let melee = [   'sword', 'lance', 'axe', 'cheese',
+    {   let melee = [   'red_sword', 'blue_lance', 'green_axe', 'cheese',
             'red_dragonstone', 'blue_dragonstone', 'green_dragonstone' ];
         if ( melee.indexOf(this.weapon_type) != -1) { return true; }
         else { return false; }
@@ -217,7 +215,7 @@ class ally
 
     get_move_type() { return this.move_type; }
 
-    get_stats() { return this.stats; }
+ // get_stats() { return this.stats; }
     get_rating() { return (this.stats.hp
         + this.stats.atk + this.stats.spd + this.stats.def + this.stats.res);
     }
@@ -225,21 +223,21 @@ class ally
 
     rebuild ()
     {   if (this.summon === false) { this.boon = null; this.bane = null; }
-        this.assign_max_stats();
+        // this.assign_max_stats();
         this.rebuild_unlocked_skills();
         this.equip_last_skills();
     }
 
-    assign_max_stats ()
-    {   let max_stats = this.return_max_stats();
-        this.stats.hp  = max_stats.hp;
-        this.stats.atk = max_stats.atk;
-        this.stats.spd = max_stats.spd;
-        this.stats.def = max_stats.def;
-        this.stats.res = max_stats.res;
-        this.rating = max_stats.rating;
-    }
-    return_max_stats(rarity = this.rarity)
+    // assign_max_stats ()
+    // {   let max_stats = this.get_max_stats();
+    //     this.stats.hp  = max_stats.hp;
+    //     this.stats.atk = max_stats.atk;
+    //     this.stats.spd = max_stats.spd;
+    //     this.stats.def = max_stats.def;
+    //     this.stats.res = max_stats.res;
+    //     this.rating = max_stats.rating;
+    // }
+    get_max_stats(rarity = this.rarity)
     {
         let growths =
             [   [ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11 ], // possible gp
@@ -265,16 +263,16 @@ class ally
         stats.rating = stats.hp + stats.atk + stats.spd + stats.def + stats.res;
         return stats;
     }
-    assign_min_stats ()
-    {   let min_stats = this.return_min_stats();
-        this.stats.hp  = min_stats.hp;
-        this.stats.atk = min_stats.atk;
-        this.stats.spd = min_stats.spd;
-        this.stats.def = min_stats.def;
-        this.stats.res = min_stats.res;
-        this.rating = min_stats.rating;
-    }
-    return_min_stats (rarity = this.rarity)
+    // assign_min_stats ()
+    // {   let min_stats = this.get_min_stats();
+    //     this.stats.hp  = min_stats.hp;
+    //     this.stats.atk = min_stats.atk;
+    //     this.stats.spd = min_stats.spd;
+    //     this.stats.def = min_stats.def;
+    //     this.stats.res = min_stats.res;
+    //     this.rating = min_stats.rating;
+    // }
+    get_min_stats (rarity = this.rarity)
     {   let stats = {};
         for (let stat in this.base_stats[rarity])
         {   let min = this.base_stats[rarity][stat];
@@ -284,6 +282,7 @@ class ally
             }
             stats[stat] = (min);
         }
+        stats.rating = stats.hp + stats.atk + stats.spd + stats.def + stats.res;
         return stats;
     }
 
@@ -370,7 +369,7 @@ class ally
         {   this.set_boon(boon);
             this.set_bane(bane);
         }
-        this.assign_max_stats();
+        // this.assign_max_stats();
     }
 
     get_nature() { return stringy.display_nature(this.boon, this.bane); }
@@ -505,12 +504,13 @@ class ally
         properties.move_type = this.get_move_type().toLowerCase();
         properties.boon = this.boon;
         properties.bane = this.bane;
-        properties.rating = this.get_rating();
-        properties.hp  = this.stats.hp;
-        properties.atk = this.stats.atk;
-        properties.spd = this.stats.spd;
-        properties.def = this.stats.def;
-        properties.res = this.stats.res;
+        let stats = this.get_max_stats();
+        properties.rating = stats.rating;
+        properties.hp  = stats.hp;
+        properties.atk = stats.atk;
+        properties.spd = stats.spd;
+        properties.def = stats.def;
+        properties.res = stats.res;
         properties.weapons = this.get_equipped_skill_name('weapons');
         properties.support = this.get_equipped_skill_name('support');
         properties.special = this.get_equipped_skill_name('special');
