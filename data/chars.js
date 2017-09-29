@@ -346,6 +346,44 @@ let chars =
             [ "Fortify Res 3", "Grants adjacent allies Res+4 through their next actions at the start of each turn.", "200", "5" ]
         ]
     },
+    "azura__lady_of_ballads":
+    {   "tag": "azura__lady_of_ballads",
+        "name": "Azura",
+        "epithet": "Lady of Ballads",
+        "subname": "🎵",
+        "description": "A mysterious songstress who appeared at the theater in Cyrkensia. Has overwhelming singing abilities. Appears in Fire Emblem Fates.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "green_axe",
+        "colour": "green",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 16, 6, 8, 3, 6 ]
+        },
+        "growth_points": [ 5, 8, 8, 4, 6 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Axe", "11", "1", "-", "200", "-", "-" ],
+            [ "Urðr", "16", "1", "If Sing or Dance is used, target also granted Atk/Spd/Def/Res+3.", "400", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Sing", "1", "Enables target to take another action. Cannot be used on units with Sing or Dance.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Triangle Adept 1", "Gives Atk+10% if weapon-triangle advantage, Atk-10% if disadvantage.", "50", "-" ],
+            [ "Triangle Adept 2", "Gives Atk+15% if weapon-triangle advantage, Atk-15% if disadvantage.", "100", "-" ],
+            [ "Triangle Adept 3", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Res 1", "Grants adjacent allies Res+2 during combat.", "50", "-" ],
+            [ "Drive Res 1", "Grants allies within 2 spaces Res+2 during combat.", "120", "-" ],
+            [ "Drive Res 2", "Grants allies within 2 spaces Res+3 during combat.", "240", "5" ]
+        ]
+    },
     "barst__the_hatchet":
     {   "tag": "barst__the_hatchet",
         "name": "Barst",
@@ -2741,6 +2779,44 @@ let chars =
             [ "Threaten Def 3", "Inflicts Def-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
         ]
     },
+    "inigo__indigo_dancer":
+    {   "tag": "inigo__indigo_dancer",
+        "name": "Inigo",
+        "epithet": "Indigo Dancer",
+        "subname": "🎵",
+        "description": "A descendant of the dancer Olivia. He carries on his departed mother's dancing and her power. Appears in Fire Emblem Awakening.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "green_tome",
+        "colour": "green",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 15, 6, 7, 5, 3 ]
+        },
+        "growth_points": [ 6, 6, 8, 4, 4 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "-", "-" ],
+            [ "Dancer's Ring", "8", "2", "If unit initiates attack, adjacent allies recover 7 HP after combat.", "200", "-", "-" ],
+            [ "Dancer's Ring+", "12", "2", "If unit initiates attack, adjacent allies recover 7 HP after combat.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Dance", "1", "Enables target to take another action. Cannot be used on units with Sing or Dance.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Gale Dance 1", "If Sing or Dance is used, target also granted Spd+2.", "50", "-" ],
+            [ "Gale Dance 2", "If Sing or Dance is used, target also granted Spd+3.", "100", "-" ],
+            [ "Gale Dance 3", "If Sing or Dance is used, target also granted Spd+4.", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Hone Atk 1", "Grants adjacent allies Atk+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Atk 2", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Hone Atk 3", "Grants adjacent allies Atk+4 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
     "innes__regal_strategician":
     {   "tag": "innes__regal_strategician",
         "name": "Innes",
@@ -4700,6 +4776,44 @@ let chars =
             [ "Hone Atk 3", "Grants adjacent allies Atk+4 through their next actions at the start of each turn.", "200", "4" ]
         ]
     },
+    "olivia__festival_dancer":
+    {   "tag": "olivia__festival_dancer",
+        "name": "Olivia",
+        "epithet": "Festival Dancer",
+        "subname": "🎵",
+        "description": "A dancer who brings a smile to people's faces. She had appeared at a performing arts festival in Ylisse. Appears in Fire Emblem Awakening.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "colorless_dagger",
+        "colour": "colorless",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 15, 6, 8, 3, 4 ]
+        },
+        "growth_points": [ 5, 6, 8, 2, 7 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "-", "-" ],
+            [ "Dancer's Fan", "7", "2", "If unit initiates attack, adjacent allies recover 7 HP after combat. Also, enemy suffers Def/Res-5 after combat until the end of foe's next action.", "200", "-", "-" ],
+            [ "Dancer's Fan+", "10", "2", "If unit initiates attack, adjacent allies recover 7 HP after combat. Also, enemy suffers Def/Res-7 after combat until the end of foe's next action.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Dance", "1", "Enables target to take another action. Cannot be used on units with Sing or Dance.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Distant Def 1", "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+2 during combat.", "60", "-" ],
+            [ "Distant Def 2", "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+4 during combat.", "120", "-" ],
+            [ "Distant Def 3", "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+6 during combat.", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Blaze Dance 1", "If Sing or Dance is used, target also granted Atk+2.", "50", "-" ],
+            [ "Blaze Dance 2", "If Sing or Dance is used, target also granted Atk+3.", "100", "-" ],
+            [ "Blaze Dance 3", "If Sing or Dance is used, target also granted Atk+4.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
     "olwen__blue_mage_knight":
     {   "tag": "olwen__blue_mage_knight",
         "name": "Olwen",
@@ -5779,6 +5893,44 @@ let chars =
         [   [ "Fortify Def 1", "Grants adjacent allies Def+2 through their next actions at the start of each turn.", "50", "-" ],
             [ "Fortify Def 2", "Grants adjacent allies Def+3 through their next actions at the start of each turn.", "100", "-" ],
             [ "Fortify Armor", "Grants adjacent armor allies Def/Res+6 through their next actions at the start of each turn.", "200", "4" ]
+        ]
+    },
+    "shigure__dark_sky_singer":
+    {   "tag": "shigure__dark_sky_singer",
+        "name": "Shigure",
+        "epithet": "Dark Sky Singer",
+        "subname": "🎵",
+        "description": "A descendant of the songstress Azura. Sings in Cyrkensia while hiding his identity. Appears in Fire Emblem Fates.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "blue_tome",
+        "colour": "blue",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 15, 7, 5, 4, 5 ]
+        },
+        "growth_points": [ 5, 7, 7, 4, 5 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
+            [ "Dancer's Score", "8", "2", "If unit initiates attack, adjacent allies recover 7 HP after combat.", "200", "-", "-" ],
+            [ "Dancer's Score+", "12", "2", "If unit initiates attack, adjacent allies recover 7 HP after combat.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Sing", "1", "Enables target to take another action. Cannot be used on units with Sing or Dance.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Torrent Dance 1", "If Sing or Dance is used, target also granted Res+3.", "50", "-" ],
+            [ "Geyser Dance 1", "If Sing or Dance is used, target also granted Def/Res+3.", "120", "-" ],
+            [ "Geyser Dance 2", "If Sing or Dance is used, target also granted Def/Res+4.", "240", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "B Tome Valor 1", "If unit survives and uses a blue tome, unit gets 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "30", "-" ],
+            [ "B Tome Valor 2", "If unit survives, all blue tome users on team get 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "60", "-" ],
+            [ "B Tome Valor 3", "If unit survives, all blue tome users on team get 2x SP. (If similar skill effects also used, only highest multiplier applied.)", "120", "5" ]
         ]
     },
     "sonya__vengeful_mage":
