@@ -15,68 +15,59 @@ let friends =
     make_friend (character)
     // (tag, rarity, boon, bane, favourite)
     {
-        if (chars[character])
-        {   let index = (-1) + friends.roster.push( new ally(chars[character]) );
-            let friend = friends.roster[index];
-            friend.set_rarity(0); // minimum_rarity should catch this
-            friend.rebuild();
-            friend.obtained = friends.roster.length;
-            return friend;
-        }
-        else if (chars[character.tag])
+        if (chars[character.tag])
         {
-            // let index = -1 + friends.roster.push( new chars[character.tag](character.rarity) );
-            let index = -1;
-            if (chars[character.tag])
-            {   index += friends.roster.push( new ally(chars[character.tag]) );
-            }else
-            {   index += friends.roster.push( new ally(chars[tags[character.tag]]) );
-            }
-            let friend = friends.roster[index];
+            // let index = -1 + this.roster.push( new chars[character.tag](character.rarity) );
+            let friend = new ally(chars[character.tag]);
 
-            let rarity = character.rarity;
-            let rarity_list = { '★★★★★':5, '★★★★':4, '★★★':3, '★★':2, '★':1 };
-            if (rarity_list[character.rarity]) { rarity = rarity_list[character.rarity]; }
-            friend.obtained = character.obtained || friends.roster.length;
+            if (stringy.rarity_list[character.rarity])
+            {   friend.rarity = stringy.rarity_list[character.rarity]; }
+            else { friend.rarity = character.rarity; }
 
-            friend.set_favourite(character.favourite);
-            friend.set_fruit(character.fruit);
+
+            friend.favourite = character.favourite;
+            friend.fruit = character.fruit;
 
             friend.boon = (character.boon) ? character.boon.replace('+','') : null;
             friend.bane = (character.bane) ? character.bane.replace('–','') : null;
             if (friend.bane == friend.boon) { friend.bane = null; friend.boon = null; }
-            friend.set_rarity(rarity);
             friend.rebuild();
 
             if (character.home) { friend.send_home(); }
+
+            this.roster.push(friend);
+            friend.obtained = character.obtained || this.roster.length;
+
             return friend;
 
         }
-        else { console.log('ERR_ALLY_CONSTRUCTOR_NOT_FOUND', character); }
+        else { console.log('ERR_ALLY_CONSTRUCTOR_NOT_FOUND', character.tag); }
 
     },
 
     remove_last : function friends_remove_last()
     {
-        let last_friend = friends.roster.pop();
+        let last_friend = this.roster.pop();
         refreshment();
         return last_friend;
     },
 
     restore_friends (restore_array)
-    {
-        friends.roster = [];
+    {   let t0 = performance.now()
+        this.roster = []; let t1 = performance.now(); console.log((t1 - t0))
         for ( let i=0; i < restore_array.length; i++ )
-        {   let friend = restore_array[i];
-            friend.tag = friends.find_tag(friend);
-            friends.make_friend(friend);
+        {   let current_friend = restore_array[i];
+            if(!current_friend.tag) { current_friend.tag = this.find_tag(current_friend); }
+            this.make_friend(current_friend);
         }
-
-        friends.roster = friends.roster.sort(function(a,b){return a.obtained-b.obtained;});
-        tableau.friends_table.ally_list = friends.roster;
+let t2 = performance.now(); console.log((t2 - t1))
+        this.roster = this.roster.sort(function(a,b){return a.obtained-b.obtained;});
+        tableau.friends_table.ally_list = this.roster;
         alter.reset_ally();
         refreshment();
         tableau.last_sorted = null;
+        let tf = performance.now();
+        console.log("took " + (tf - t0) + "milliseconds to do restore_friends")
     },
 
     save_friends_string ()
@@ -84,8 +75,8 @@ let friends =
         // save tag, favourite, fruit, rarity, boon, bane
         let save = {};
 
-        for (let i = 0; i < friends.roster.length; i++ )
-        {   let ally = friends.roster[i];
+        for (let i = 0; i < this.roster.length; i++ )
+        {   let ally = this.roster[i];
             save[i] = {};
             let entry = save[i];
             entry.t = ally.tag;
@@ -144,6 +135,12 @@ let friends =
         // this reads the google spreadsheet then calls the friends function read_googly_rows_then_restore
         googly.read_sheet_then_call_friends(spreadsheet_ID);
         // this has to be a chain of functions calling each other to prevent them racing each other
+     // this.after_read_googly(rows);
+    },
+
+    after_read_googly(rows)
+    {
+        this.read_googly_rows_then_restore(rows);
     },
 
     read_googly_rows_then_restore (rows)
@@ -256,8 +253,8 @@ let friends =
         rows[0] = [ "tag", "Name", "Obtained", "Favourite", "Fruit",
                     "Rarity", "Boon", "Bane", "Home" ];
 
-        for ( let i = 0; i < friends.roster.length; i++ )
-        {   let ally = friends.roster[i];
+        for ( let i = 0; i < this.roster.length; i++ )
+        {   let ally = this.roster[i];
             rows[i+1] = [];
 
             for ( let j = 0; j < rows[0].length; j++ )
@@ -279,7 +276,10 @@ let friends =
 
     find_tag : function(friend)
     {
-        let name = friend.name.toLowerCase();
+
+        if( !friend.name)
+        { let name = "NO_NAME"; }
+        else{ let name = friend.name.toLowerCase(); }
         if (!friend.tag) { friend.tag = "NO_TAG"; }
 
         // // try to find the tag in the database. should work for most allies.
@@ -410,7 +410,11 @@ let friends =
             return 'marth__altean_prince';
         }
 
-        if (tags[friend.name]) { return tags[friend.name]; }
+        for( let i=0; i < catalog.length; i++)
+        {   if( catalog[i].includes(friend.name.toLowerCase()) )
+            {   return catalog[i];
+            }
+        }
 
         console.log("couldn't figure out which ally was meant by: ", friend.name);
         return null;
