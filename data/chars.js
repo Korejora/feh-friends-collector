@@ -422,6 +422,46 @@ let chars =
         ],
         "base_passive_C": []
     },
+    "black_knight__sinister_general":
+    {   "tag": "black_knight__sinister_general",
+        "name": "Black Knight",
+        "epithet": "Sinister General",
+        "description": "One of Daein's Four Riders. An enigmatic knight encased in pitch-black armor.",
+        "origin": "Fire Emblem: Path of Radiance",
+        "weapon_type": "red_sword",
+        "colour": "red",
+        "move_type": "Armored",
+        "limited": false,
+        "summon": false,
+        "base_stats":
+        {   "4": [ 21, 10, 7, 9, 4 ],
+            "5": [ 22, 10, 8, 9, 5 ]
+        },
+        "growth_points": [ 8, 7, 8, 8, 2 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
+            [ "Alondite", "16", "1", "Enables counterattack regardless of distance if this unit is attacked.", "400", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "4", "-" ],
+            [ "Luna", "3", "Resolve combat as if foe suffered Def/Res-50%.", "200", "-", "4" ],
+            [ "Black Luna", "3", "Resolve combat as if foe suffered Def/Res-80%. (Skill cannot be inherited.)", "500", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Steady Stance 1", "Grants Def+2 during combat when this unit is attacked.", "50", "-" ],
+            [ "Steady Stance 2", "Grants Def+4 during combat when this unit is attacked.", "100", "4" ],
+            [ "Steady Stance 3", "Grants Def+6 during combat when this unit is attacked.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Wings of Mercy 1", "Enables unit to warp adjacent to any ally with HP ≤ 30%.", "60", "-" ],
+            [ "Wings of Mercy 2", "Enables unit to warp adjacent to any ally with HP ≤ 40%.", "120", "-" ],
+            [ "Wings of Mercy 3", "Enables unit to warp adjacent to any ally with HP ≤ 50%.", "240", "4" ]
+        ],
+        "base_passive_C": []
+    },
     "berkut__prideful_prince":
     {   "tag": "berkut__prideful_prince",
         "name": "Berkut",
@@ -596,7 +636,7 @@ let chars =
         "base_weapons":
         [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
             [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
-            [ "Blessed Bouquet", "9", "2", "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.", "200", "-", "-" ],
+            [ "Blessed Bouquet", "8", "2", "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.", "200", "-", "-" ],
             [ "Blessed Bouquet+", "12", "2", "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates.", "300", "5", "-" ]
         ],
         "base_support": [],
