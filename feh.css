@@ -1,4 +1,51 @@
 
+:root
+{
+    --row-grey-light: #eeeeee;
+        --row-grey-odd : var(--row-grey-light);
+    --row-grey-lightish: #dddddd;
+    --row-grey-dark : #cccccc;
+        --row-grey-even : var(--row-grey-dark);
+    --row-grey-deep : #aaaaaa;
+
+    --row-red-light: #ffcccc;
+        --row-red-odd : var(--row-red-light);
+    --row-red-dark : #ffaaaa;
+        --row-red-even : var(--row-red-dark);
+    --row-red-deep : #ff7777;
+
+    --row-green-light: #ccffcc;
+        --row-green-odd : var(--row-green-light);
+    --row-green-dark : #aaffaa;
+        --row-green-even : var(--row-green-dark);
+    --row-green-deep : #77ff77;
+
+    --row-blue-light: #ccccff;
+        --row-blue-odd : var(--row-blue-light);
+    --row-blue-dark : #aaaaff;
+        --row-blue-even : var(--row-blue-dark);
+    --row-blue-deep : #7777ff;
+
+    --row-cyan-light: #ccffff;
+        --row-cyan-odd : var(--row-cyan-light);
+    --row-cyan-dark : #aaffff;
+        --row-cyan-even : var(--row-cyan-dark);
+    --row-cyan-deep : #77ffff;
+
+    --row-magenta-light: #ffccff;
+        --row-magenta-odd : var(--row-magenta-light);
+    --row-magenta-dark : #ffaaff;
+        --row-magenta-even : var(--row-magenta-dark);
+    --row-magenta-deep : #ff77ff;
+
+    --row-orange-light: #ffea44;
+        --row-orange-odd : var(--row-orange-light);
+    --row-orange-dark : #ffca44;
+        --row-orange-even : var(--row-orange-dark);
+    --row-orange-deep : #ffaa44;
+
+}
+
 
 @font-face
 {   font-family: chiarostdb;
@@ -6,7 +53,7 @@
 }
 
 body
-{   background-color: #000044;
+{   background-color: #111144;
     color: lightblue;
     font-family: chiarostdb;
 }
@@ -313,159 +360,159 @@ display_properties =
 #friends_table .name.subdiv  { width:  14% }
 #allies_table  .name.subdiv  { width:  20% }
 .row .name   { width:100% }
-    .row:nth-child(even) .name  { background-color: #cccccc; }
-    .row:nth-child(odd)  .name  { background-color: #eeeeee; }
-    .row .name.title { background-color: #aaaaaa; }
+    .row:nth-child(odd)  .name  { background-color: var(--row-grey-odd); }
+    .row:nth-child(even) .name  { background-color: var(--row-grey-even); }
+    .row .name.title { background-color: var(--row-grey-deep); }
 
 #friends_table .info.subdiv  { width: 34% }
 #allies_table  .info.subdiv  { width: 20% }
     #friends_table .obtained { width:14% }
     #allies_table  .obtained { display: none }
-        .row:nth-child(even) .obtained  { background-color: #aaffaa; }
-        .row:nth-child(odd)  .obtained  { background-color: #ccffcc; }
-        .row .obtained.title { background-color: #77ff77; }
+        .row:nth-child(odd)  .obtained  { background-color: var(--row-green-odd); }
+        .row:nth-child(even) .obtained  { background-color: var(--row-green-even); }
+        .row .obtained.title { background-color: var(--row-green-deep); }
     #friends_table .favourite { width:14% }
     #allies_table  .favourite { display: none }
-        .row:nth-child(even) .favourite  { background-color: #ffaaff; }
-        .row:nth-child(odd)  .favourite  { background-color: #ffccff; }
-        .row .favourite.title { background-color: #ff77ff; }
+        .row:nth-child(odd)  .favourite  { background-color: var(--row-magenta-odd); }
+        .row:nth-child(even) .favourite  { background-color: var(--row-magenta-even); }
+        .row .favourite.title { background-color: var(--row-magenta-deep); }
     #friends_table .fruit { width:14% }
     #allies_table  .fruit { display: none }
-        .row:nth-child(even) .fruit  { background-color: #aaffff; }
-        .row:nth-child(odd)  .fruit  { background-color: #ccffff; }
-        .row .fruit.title { background-color: #77ffff; }
+        .row:nth-child(odd)  .fruit  { background-color: var(--row-cyan-odd); }
+        .row:nth-child(even) .fruit  { background-color: var(--row-cyan-even); }
+        .row .fruit.title { background-color: var(--row-cyan-deep); }
     #friends_table .origin { width:29% }
     #allies_table  .origin { width:50% }
-        .row:nth-child(even) .origin  { background-color: #aaaaff; }
-        .row:nth-child(odd)  .origin  { background-color: #ccccff; }
-        .row .origin.title { background-color: #7777ff; }
+        .row:nth-child(odd)  .origin  { background-color: var(--row-blue-light); }
+        .row:nth-child(even) .origin  { background-color: var(--row-blue-dark); }
+        .row .origin.title { background-color: var(--row-blue-deep); }
     #friends_table .rarity { width:29% }
     #allies_table  .rarity { width:50% }
-        .row:nth-child(even) .rarity  { background-color: #ffaaaa; }
-        .row:nth-child(odd)  .rarity  { background-color: #ffcccc; }
-        .row .rarity.title { background-color: #ff7777; font-size: small; line-height:1.5 }
+        .row:nth-child(odd)  .rarity  { background-color: var(--row-red-odd); }
+        .row:nth-child(even) .rarity  { background-color: var(--row-red-even); }
+        .row .rarity.title { background-color: var(--row-red-dark); font-size: small; line-height:1.5 }
 
 #friends_table .type.subdiv  { width: 12% } /* 'weapon_type', 'colour_type', 'move_type', */
 #allies_table  .type.subdiv  { width: 16% }
     .weapon_type   { width:34% }
-        .weapon_type.title { background-color: #cccccc; }
+        .weapon_type.title { background-color: var(--row-grey-light); }
 /*  .weapon_type.colorless { background-color: #dddddd; } */
-            .weapon_type.colorless_bow { background-color: #dddddd; }
-            .weapon_type.colorless_dagger { background-color: #cccccc; }
-            .weapon_type.colorless_staff { background-color: #eeeeee; }
+            .weapon_type.colorless_bow { background-color: var(--row-grey-lightish); }
+            .weapon_type.colorless_dagger { background-color: var(--row-grey-light); }
+            .weapon_type.colorless_staff  { background-color: var(--row-grey-dark); }
     /*  .weapon_type.red_sword { background-color: #ffcccc; } */
-            .row:nth-child(even) .weapon_type.red_sword { background-color: #ffaaaa; }
-            .row:nth-child(odd)  .weapon_type.red_sword { background-color: #ffcccc; }
+            .row:nth-child(odd)  .weapon_type.red_sword { background-color: var(--row-red-odd); }
+            .row:nth-child(even) .weapon_type.red_sword { background-color: var(--row-red-even); }
     /*  .weapon_type.blue_lance { background-color: #ccccff; } */
-            .row:nth-child(even) .weapon_type.blue_lance { background-color: #aaaaff; }
-            .row:nth-child(odd)  .weapon_type.blue_lance { background-color: #ccccff; }
+            .row:nth-child(odd)  .weapon_type.blue_lance { background-color: var(--row-blue-light); }
+            .row:nth-child(even) .weapon_type.blue_lance { background-color: var(--row-blue-dark); }
     /*  .weapon_type.green_axe { background-color: #ccffcc; } */
-            .row:nth-child(even) .weapon_type.green_axe { background-color: #aaffaa; }
-            .row:nth-child(odd)  .weapon_type.green_axe { background-color: #ccffcc; }
+            .row:nth-child(odd)  .weapon_type.green_axe { background-color: var(--row-green-odd); }
+            .row:nth-child(even) .weapon_type.green_axe { background-color: var(--row-green-even); }
     /*  .weapon_type.dragonstone { background-color: #ccffff; } */
-            .row:nth-child(even) .weapon_type.red_dragonstone { background-color: #aaffff; }
-            .row:nth-child(even) .weapon_type.blue_dragonstone { background-color: #aaffff; }
-            .row:nth-child(even) .weapon_type.green_dragonstone { background-color: #aaffff; }
-            .row:nth-child(odd)  .weapon_type.red_dragonstone { background-color: #ccffff; }
-            .row:nth-child(odd)  .weapon_type.blue_dragonstone { background-color: #ccffff; }
-            .row:nth-child(odd)  .weapon_type.green_dragonstone { background-color: #ccffff; }
+            .row:nth-child(odd)  .weapon_type.red_dragonstone { background-color: var(--row-cyan-odd); }
+            .row:nth-child(odd)  .weapon_type.blue_dragonstone { background-color: var(--row-cyan-odd); }
+            .row:nth-child(odd)  .weapon_type.green_dragonstone { background-color: var(--row-cyan-odd); }
+            .row:nth-child(even) .weapon_type.red_dragonstone { background-color: var(--row-cyan-even); }
+            .row:nth-child(even) .weapon_type.blue_dragonstone { background-color: var(--row-cyan-even); }
+            .row:nth-child(even) .weapon_type.green_dragonstone { background-color: var(--row-cyan-even); }
              /* .weapon_type.breath { background-color: #ccffff; } */
     /*  .weapon_type.tome { background-color: #ffaaff; } */
-            .row:nth-child(even) .weapon_type.red_tome { background-color: #ffaaff; }
-            .row:nth-child(even) .weapon_type.blue_tome { background-color: #ffaaff; }
-            .row:nth-child(even) .weapon_type.green_tome { background-color: #ffaaff; }
-            .row:nth-child(odd)  .weapon_type.red_tome { background-color: #ffccff; }
-            .row:nth-child(odd)  .weapon_type.blue_tome { background-color: #ffccff; }
-            .row:nth-child(odd)  .weapon_type.green_tome { background-color: #ffccff; }
+            .row:nth-child(odd)  .weapon_type.red_tome   { background-color: var(--row-magenta-odd); }
+            .row:nth-child(odd)  .weapon_type.blue_tome  { background-color: var(--row-magenta-odd); }
+            .row:nth-child(odd)  .weapon_type.green_tome { background-color: var(--row-magenta-odd); }
+            .row:nth-child(even) .weapon_type.red_tome   { background-color: var(--row-magenta-even); }
+            .row:nth-child(even) .weapon_type.blue_tome  { background-color: var(--row-magenta-even); }
+            .row:nth-child(even) .weapon_type.green_tome { background-color: var(--row-magenta-even); }
          /* .weapon_type.tome_blue { background-color: #ffaaff; }
             .weapon_type.tome_green { background-color: #ffaaff; }
             .weapon_type.tome_red { background-color: #ffaaff; } */
-        .row:nth-child(even) .weapon_type.heart { background-color: #ffaaff; }
-        .row:nth-child(odd)  .weapon_type.heart { background-color: #ffccff; }
+        .row:nth-child(odd)  .weapon_type.heart { background-color: var(--row-magenta-odd); }
+        .row:nth-child(even) .weapon_type.heart { background-color: var(--row-magenta-even); }
     .colour_type   { width:33% }
-        .colour_type.title { background-color: #dddddd; }
+        .colour_type.title { background-color: var(--row-grey-lightish); }
         /* .colour_type.colourless { background-color: #dddddd; } */
-        .row:nth-child(even) .colour_type.colorless { background-color: #cccccc; }
-        .row:nth-child(odd)  .colour_type.colorless { background-color: #eeeeee; }
+        .row:nth-child(odd)  .colour_type.colorless { background-color: var(--row-grey-odd) ; }
+        .row:nth-child(even) .colour_type.colorless { background-color: var(--row-grey-even); }
         /* .colour_type.red { background-color: #ffcccc; } */
-        .row:nth-child(even) .colour_type.red { background-color: #ffaaaa; }
-        .row:nth-child(odd)  .colour_type.red { background-color: #ffcccc; }
+        .row:nth-child(odd)  .colour_type.red { background-color: var(--row-red-odd); }
+        .row:nth-child(even) .colour_type.red { background-color: var(--row-red-even); }
         /* .colour_type.blue { background-color: #ccccff; } */
-        .row:nth-child(even) .colour_type.blue { background-color: #aaaaff; }
-        .row:nth-child(odd)  .colour_type.blue { background-color: #ccccff; }
+        .row:nth-child(odd)  .colour_type.blue { background-color: var(--row-blue-light); }
+        .row:nth-child(even) .colour_type.blue { background-color: var(--row-blue-dark); }
         /* .colour_type.green { background-color: #ccffcc; } */
-        .row:nth-child(even) .colour_type.green { background-color: #aaffaa; }
-        .row:nth-child(odd)  .colour_type.green { background-color: #ccffcc; }
+        .row:nth-child(odd)  .colour_type.green { background-color: var(--row-green-odd); }
+        .row:nth-child(even) .colour_type.green { background-color: var(--row-green-even); }
     .move_type   { width:33% }
-        .move_type.title { background-color: #eeeeee; }
-        /* .move_type.infantry { background-color: #cccccc; } */
-        .row:nth-child(even) .move_type.infantry { background-color: #cccccc; }
-        .row:nth-child(odd)  .move_type.infantry { background-color: #eeeeee; }
+        .move_type.title { background-color: var(--row-grey-dark); }
+        /* .move_type.infantry { background-color: var(--row-grey-light); } */
+        .row:nth-child(odd)  .move_type.infantry { background-color: var(--row-grey-odd) ; }
+        .row:nth-child(even) .move_type.infantry { background-color: var(--row-grey-even); }
         /* .move_type.armored { background-color: #ffaaff; } */
-        .row:nth-child(even) .move_type.armored { background-color: #ffaaff; }
-        .row:nth-child(odd)  .move_type.armored { background-color: #ffccff; }
+        .row:nth-child(odd)  .move_type.armored { background-color: var(--row-magenta-odd); }
+        .row:nth-child(even) .move_type.armored { background-color: var(--row-magenta-even); }
         /* .move_type.cavalry { background-color: #ffcc77; } */
-        .row:nth-child(even) .move_type.cavalry { background-color: #ffca44; }
-        .row:nth-child(odd)  .move_type.cavalry { background-color: #ffea44; }
+        .row:nth-child(odd)  .move_type.cavalry { background-color: var(--row-orange-odd); }
+        .row:nth-child(even) .move_type.cavalry { background-color: var(--row-orange-even); }
         /* .move_type.flying { background-color: #ccffff; } */
-        .row:nth-child(even) .move_type.flying { background-color: #aaffff; }
-        .row:nth-child(odd)  .move_type.flying { background-color: #ccffff; }
-        .row:nth-child(even) .move_type.flier { background-color: #aaffff; }
-        .row:nth-child(odd)  .move_type.flier { background-color: #ccffff; }
+        .row:nth-child(odd)  .move_type.flying { background-color: var(--row-cyan-odd); }
+        .row:nth-child(even) .move_type.flying { background-color: var(--row-cyan-even); }
+        .row:nth-child(odd)  .move_type.flier { background-color: var(--row-cyan-odd); }
+        .row:nth-child(even) .move_type.flier { background-color: var(--row-cyan-even); }
 
 #friends_table .stat.subdiv  { width: 40% }
 #allies_table  .stat.subdiv  { width: 44% }
     .nature { width:25% }
-        .row:nth-child(even) .nature  { background-color: #cccccc; }
-        .row:nth-child(odd)  .nature  { background-color: #eeeeee; }
-        .row .nature.title { background-color: #aaaaaa; }
+        .row:nth-child(odd)  .nature  { background-color: var(--row-grey-odd) ; }
+        .row:nth-child(even) .nature  { background-color: var(--row-grey-even); }
+        .row .nature.title { background-color: var(--row-grey-deep); }
     .rating { width:15% }
-        .row:nth-child(even) .rating  { background-color: #aaffaa; }
-        .row:nth-child(odd)  .rating  { background-color: #ccffcc; }
-        .row .rating.title { background-color: #77ff77; }
+        .row:nth-child(odd)  .rating  { background-color: var(--row-green-odd); }
+        .row:nth-child(even) .rating  { background-color: var(--row-green-even); }
+        .row .rating.title { background-color: var(--row-green-deep); }
     .hp { width:12% }
-        .row:nth-child(even) .hp  { background-color: #ffaaff; }
-        .row:nth-child(odd)  .hp  { background-color: #ffccff; }
-        .row .hp.title { background-color: #ff77ff; }
+        .row:nth-child(odd)  .hp  { background-color: var(--row-magenta-odd); }
+        .row:nth-child(even) .hp  { background-color: var(--row-magenta-even); }
+        .row .hp.title { background-color: var(--row-magenta-deep); }
     .atk { width:12% }
-        .row:nth-child(even) .atk  { background-color: #ffca44; }
-        .row:nth-child(odd)  .atk  { background-color: #ffea44; }
-        .row .atk.title { background-color: #ffaa44; }
+        .row:nth-child(odd)  .atk  { background-color: var(--row-orange-odd); }
+        .row:nth-child(even) .atk  { background-color: var(--row-orange-even); }
+        .row .atk.title { background-color: var(--row-orange-deep); }
     .spd { width:12% }
-        .row:nth-child(even) .spd  { background-color: #aaffff; }
-        .row:nth-child(odd)  .spd  { background-color: #ccffff; }
-        .row .spd.title { background-color: #77ffff; }
+        .row:nth-child(odd)  .spd  { background-color: var(--row-cyan-odd); }
+        .row:nth-child(even) .spd  { background-color: var(--row-cyan-even); }
+        .row .spd.title { background-color: var(--row-cyan-deep); }
     .def { width:12% }
-        .row:nth-child(even) .def  { background-color: #ffaaaa; }
-        .row:nth-child(odd)  .def  { background-color: #ffcccc; }
-        .row .def.title { background-color: #ff7777; }
+        .row:nth-child(odd)  .def  { background-color: var(--row-red-odd); }
+        .row:nth-child(even) .def  { background-color: var(--row-red-even); }
+        .row .def.title { background-color: var(--row-red-dark); }
     .res { width:12% }
-        .row:nth-child(even) .res  { background-color: #aaaaff; }
-        .row:nth-child(odd)  .res  { background-color: #ccccff; }
-        .row .res.title { background-color: #7777ff; }
+        .row:nth-child(odd)  .res  { background-color: var(--row-blue-light); }
+        .row:nth-child(even) .res  { background-color: var(--row-blue-dark); }
+        .row .res.title { background-color: var(--row-blue-deep); }
 
 .row .skill.subdiv { width: 50% }
     .row .weapons { width:18% }
-        .row:nth-child(even) .weapons { background-color: #ffca44; }
-        .row:nth-child(odd)  .weapons { background-color: #ffea44; }
-        .row .weapon.title { background-color: #ffa744; }
+        .row:nth-child(odd)  .weapons { background-color: var(--row-orange-odd); }
+        .row:nth-child(even) .weapons { background-color: var(--row-orange-even); }
+        .row .weapons.title { background-color: var(--row-orange-deep); }
     .row .support { width:17% }
-        .row:nth-child(even) .support { background-color: #aaffff; }
-        .row:nth-child(odd)  .support { background-color: #ccffff; }
-        .row .support.title { background-color: #77ffff; }
+        .row:nth-child(odd)  .support { background-color: var(--row-cyan-odd); }
+        .row:nth-child(even) .support { background-color: var(--row-cyan-even); }
+        .row .support.title { background-color: var(--row-cyan-deep); }
     .row .special { width:17% }
-        .row:nth-child(even) .special { background-color: #ffaaff; }
-        .row:nth-child(odd)  .special { background-color: #ffccff; }
-        .row .special.title { background-color: #ff77ff; }
+        .row:nth-child(odd)  .special { background-color: var(--row-magenta-odd); }
+        .row:nth-child(even) .special { background-color: var(--row-magenta-even); }
+        .row .special.title { background-color: var(--row-magenta-deep); }
     .passive_A { width:16% }
-        .row:nth-child(even) .passive_A { background-color: #ffaaaa; }
-        .row:nth-child(odd)  .passive_A { background-color: #ffcccc; }
-        .row .passive_A.title { background-color: #ff7777; }
+        .row:nth-child(odd)  .passive_A { background-color: var(--row-red-odd); }
+        .row:nth-child(even) .passive_A { background-color: var(--row-red-even); }
+        .row .passive_A.title { background-color: var(--row-red-dark); }
     .row .passive_B { width:16% }
-        .row:nth-child(even) .passive_B { background-color: #aaaaff; }
-        .row:nth-child(odd)  .passive_B { background-color: #ccccff; }
-        .row .passive_B.title { background-color: #7777ff; }
+        .row:nth-child(odd)  .passive_B { background-color: var(--row-blue-light); }
+        .row:nth-child(even) .passive_B { background-color: var(--row-blue-dark); }
+        .row .passive_B.title { background-color: var(--row-blue-deep); }
     .row .passive_C { width:16% }
-        .row:nth-child(even) .passive_C { background-color: #aaffaa; }
-        .row:nth-child(odd)  .passive_C { background-color: #ccffcc; }
-        .row .passive_C.title { background-color: #77ff77; }
+        .row:nth-child(odd)  .passive_C { background-color: var(--row-green-odd); }
+        .row:nth-child(even) .passive_C { background-color: var(--row-green-even); }
+        .row .passive_C.title { background-color: var(--row-green-deep); }
