@@ -132,10 +132,10 @@ let adder =
 
         adder.ally.set_boon(boondrop.value);
         adder.ally.set_bane(banedrop.value);
-        adder.ally.assign_min_stats();
+        // adder.ally.assign_min_stats();
         adder.ally.equip_known_skills();
 
-        let stats = adder.ally.get_stats();
+        let stats = adder.ally.get_min_stats();
 
         let atk_might = '';
         let might = adder.ally.get_equipped_weapons_might();

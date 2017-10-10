@@ -91,7 +91,7 @@ let googly =
             if (rows && rows.length > 0)
             {
              // googly.rows = rows; // not currently used
-                friends.read_googly_rows_then_restore(rows); // read
+                friends.after_read_googly(rows); // read
             }
             else
             {   console.log('no data found.');

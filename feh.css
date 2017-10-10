@@ -216,6 +216,16 @@ img.icon
         margin: 1px;
     }
 
+    #table_setting_ticks
+    {   /* to make room for 3 options */
+        line-height: 1.7em
+    }
+
+    #table_setting_filters
+    {   /* to make room for 3 options */
+        line-height: 1.7em
+    }
+
 
 
 .table_wrapper
