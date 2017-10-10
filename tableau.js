@@ -3,6 +3,7 @@
 // handles the tables
 
 
+
 let tableau =
 {
     table_output_div : document.getElementById('table_output_div'),
@@ -228,6 +229,8 @@ tableau.setup = function tableau_setup()
     addfilt('colorless');
     fs.move = new divvy({classname:'filter column', parent:fs});
     addfilt('move');
+    fs.dance = new divvy({classname:'filter column', parent:fs});
+    addfilt('dance');
 
 
 
@@ -470,30 +473,30 @@ tableau.row = class
                     break;
                 case 'rarity':
                     item_div.className += " " + 'rarity' + " ";
-                    item_div.child_img = document.createElement('img');
-                    item_div.child_img.onerror = function(){this.src = stringy.img_feh;};
-                    item_div.child_img.src = stringy.find_img_path(
+                    property.child_img = document.createElement('img');
+                    property.child_img.onerror = function(){this.src = stringy.img_feh;};
+                    property.child_img.src = stringy.find_img_path(
                         'rarity', that.ally.get_rarity() );
                     break;
                 case 'weapon_type':
                     item_div.className += " " + that.ally.get_weapon_type() + " ";
-                    item_div.child_img = document.createElement('img');
-                    item_div.child_img.onerror = function(){this.src = stringy.img_feh;};
-                    item_div.child_img.src = stringy.find_img_path(
+                    property.child_img = document.createElement('img');
+                    property.child_img.onerror = function(){this.src = stringy.img_feh;};
+                    property.child_img.src = stringy.find_img_path(
                         'weapon', that.ally.get_weapon_type() );
                     break;
                 case 'colour_type':
                     item_div.className += " " + that.ally.get_colour() + " ";
-                    item_div.child_img = document.createElement('img');
-                    item_div.child_img.onerror = function(){this.src = stringy.img_feh;};
-                    item_div.child_img.src = stringy.find_img_path(
+                    property.child_img = document.createElement('img');
+                    property.child_img.onerror = function(){this.src = stringy.img_feh;};
+                    property.child_img.src = stringy.find_img_path(
                         'colour', that.ally.get_colour() );
                     break;
                 case 'move_type':
                     item_div.className += " " + that.ally.get_move_type() + " ";
-                    item_div.child_img = document.createElement('img');
-                    item_div.child_img.onerror = function(){this.src = stringy.img_feh;};
-                    item_div.child_img.src = stringy.find_img_path(
+                    property.child_img = document.createElement('img');
+                    property.child_img.onerror = function(){this.src = stringy.img_feh;};
+                    property.child_img.src = stringy.find_img_path(
                         'move', that.ally.get_move_type() );
                     break;
                 case 'weapon':
@@ -592,7 +595,7 @@ tableau.row = class
             {   item_div.innerText = display_name;
             }
 
-            if (item_div.child_img) { item_div.appendChild(item_div.child_img); }
+            if (property.child_img) { item_div.appendChild(property.child_img); }
 
         });
     } // end refresh_items
@@ -855,7 +858,7 @@ class tableau_filter_handler // tableau.sift
 
         this.special_filters =
         {
-            home  : new sifter({ tag:'home', label:'sent home', property:'home', value:true, default:false, special:true }),
+            home  : new sifter({ tag:'home', property:'home', value:true, default:false, special:true, label:'sent home' }),
         };
 
         this.dummy_filters = // containers (for subfilters) that are not filters themselves
@@ -863,6 +866,7 @@ class tableau_filter_handler // tableau.sift
             fav : new dummy_sifter(),
             rar : new dummy_sifter(),
             move : new dummy_sifter(),
+            dance : new dummy_sifter(),
         };
 
         this.subfilters = // subfilters must wait for their superfilter to exist
@@ -893,6 +897,9 @@ class tableau_filter_handler // tableau.sift
             armored  : new sifter({ property:'move_type', value:'armored',  default:true, tag:'armored',  sup:'move'}),
             cavalry  : new sifter({ property:'move_type', value:'cavalry',  default:true, tag:'cavalry',  sup:'move'}),
             flying   : new sifter({ property:'move_type', value:'flying',   default:true, tag:'flying',   sup:'move'}),
+
+            dancer : new sifter({ property:'is_dancer', value:true, default:true, tag:'dancer', sup:'dance', special:true, label:'dancer' }),
+            not_dancer : new sifter({ property:'is_dancer', value:false, default:true, tag:'not_dancer', sup:'dance', special:true, label:'not dancer' }),
         };
 
         // put the filters in a list

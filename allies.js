@@ -212,6 +212,12 @@ class ally
         if ( ranged.indexOf(this.weapon_type) != -1) { return true; }
         else { return false; }
     }
+    is_dancer()
+    {   let dance = [ 'dance', 'sing' ];
+        if ( !this.base_skills.support[0] ) { return false; }
+        if ( dance.indexOf(this.base_skills.support[0].name.toLowerCase()) != -1) { return true; }
+        else { return false; }
+    }
 
     get_move_type() { return this.move_type; }
 
@@ -518,6 +524,7 @@ class ally
         properties.passive_B = this.get_equipped_skill_name('passive_B');
         properties.passive_C = this.get_equipped_skill_name('passive_C');
         properties.home = this.is_home();
+        properties.is_dancer = this.is_dancer();
         return properties;
     }
 
