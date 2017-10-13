@@ -459,6 +459,7 @@ tableau.row = class
                     item_div.onmousedown = function(){ that.name_click(); };
                     item_div.className += " click_item noselect ";
                     if (that.ally.is_home()) { item_div.className += " strike "; }
+                    item_div.className += " "+that.ally.get_colour()+" ";
                     break;
                 case 'favourite':
                     item_div.onmousedown = function(){ that.favourite_click(); };

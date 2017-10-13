@@ -7,30 +7,38 @@
     --row-grey-dark : #cccccc;
         --row-grey-even : var(--row-grey-dark);
     --row-grey-deep : #aaaaaa;
+    --row-grey-faded-light: #cccccc;
+    --row-grey-faded-dark : #bbbbbb;
 
     --row-red-light: #ffcccc;
         --row-red-odd : var(--row-red-light);
     --row-red-dark : #ffaaaa;
         --row-red-even : var(--row-red-dark);
     --row-red-deep : #ff7777;
+    --row-red-faded-light: #ccbbbb;
+    --row-red-faded-dark : #bbaaaa;
 
     --row-green-light: #ccffcc;
         --row-green-odd : var(--row-green-light);
     --row-green-dark : #aaffaa;
         --row-green-even : var(--row-green-dark);
     --row-green-deep : #77ff77;
+    --row-green-faded-light: #bbddbb;
+    --row-green-faded-dark : #aaccaa;
 
     --row-blue-light: #ccccff;
         --row-blue-odd : var(--row-blue-light);
     --row-blue-dark : #aaaaff;
         --row-blue-even : var(--row-blue-dark);
     --row-blue-deep : #7777ff;
+    --row-blue-faded-light: #bbbbcc;
+    --row-blue-faded-dark : #aaaabb;
 
-    --row-cyan-light: #ccffff;
+    --row-cyan-light: #77ffff; /*#ccffff;*/
         --row-cyan-odd : var(--row-cyan-light);
-    --row-cyan-dark : #aaffff;
+    --row-cyan-dark : #44eeff; /*#aaffff;*/
         --row-cyan-even : var(--row-cyan-dark);
-    --row-cyan-deep : #77ffff;
+    --row-cyan-deep : #00ddff; /*#77ffff;*/
 
     --row-magenta-light: #ffccff;
         --row-magenta-odd : var(--row-magenta-light);
@@ -147,7 +155,7 @@ img.icon
 }
 
 #alter
-{   background-color: navy;
+{   background-color: midnightblue;
     display:block;
     width:90%;
     margin: 9px;
@@ -290,7 +298,8 @@ img.icon
 {   background-color: #555555;
     display: block; /* because the rows are blocks */
     height: 21px; /* 1.3em; */
-    line-height: 1.2; /* apparently the text wont align without this */
+    line-height: 1.7; /* apparently the text wont align without this */
+    font-size: small;
  /* margin:auto; */ /* to align it to the center */
  /* border-style: solid;
     border-width: 0px;
@@ -303,7 +312,8 @@ img.icon
     z-index: 1;
 }
 .row .item.title
-{   border-bottom-width: 2px;
+{   border-bottom-style: solid;
+    border-bottom-width: 1px;
 }
 
 .click_item.name
@@ -322,9 +332,9 @@ img.icon
     background-color: hotpink; /* error colour if no colour found */
  /* margin:0; */
  /* padding:0; */
-    border-style: solid;
-    border-width: 1px; /* 1px 1px 1px 1px; */ /* ok we get it its 1px */
-    box-sizing: border-box; /* to make sure it includes the border in sizing */
+ /* border-style: solid; */ /* never mind no border */
+ /* border-width: 0px; */ /* 1px 1px 1px 1px; */ /* ok we get it its 1px */
+ /* box-sizing: border-box; */ /* to make sure it includes the border in sizing */
  /* white-space: nowrap; */ /* i cant figure out why this is here so it goes */
     overflow:hidden; /* dont spill out of the div */
     height:100%; /* fill the row (21px) */
@@ -337,6 +347,7 @@ img.icon
     top: 50%;
     transform: translate(-50%,-50%);
     margin-left: 50%;
+    font-size: initial;
 }
 
 .row .name.limited, .exclusive
@@ -363,6 +374,13 @@ display_properties =
     .row:nth-child(odd)  .name  { background-color: var(--row-grey-odd); }
     .row:nth-child(even) .name  { background-color: var(--row-grey-even); }
     .row .name.title { background-color: var(--row-grey-deep); }
+        .row:nth-child(odd)  .name.red  { background-color: var(--row-red-faded-light); }
+        .row:nth-child(even) .name.red  { background-color: var(--row-red-faded-dark); }
+        .row:nth-child(odd)  .name.blue  { background-color: var(--row-blue-faded-light); }
+        .row:nth-child(even) .name.blue  { background-color: var(--row-blue-faded-dark); }
+        .row:nth-child(odd)  .name.green  { background-color: var(--row-green-faded-light); }
+        .row:nth-child(even) .name.green  { background-color: var(--row-green-faded-dark); }
+
 
 #friends_table .info.subdiv  { width: 34% }
 #allies_table  .info.subdiv  { width: 20% }
@@ -390,7 +408,7 @@ display_properties =
     #allies_table  .rarity { width:50% }
         .row:nth-child(odd)  .rarity  { background-color: var(--row-red-odd); }
         .row:nth-child(even) .rarity  { background-color: var(--row-red-even); }
-        .row .rarity.title { background-color: var(--row-red-dark); font-size: small; line-height:1.5 }
+        .row .rarity.title { background-color: var(--row-red-deep); font-size: small; line-height:1.5 }
 
 #friends_table .type.subdiv  { width: 12% } /* 'weapon_type', 'colour_type', 'move_type', */
 #allies_table  .type.subdiv  { width: 16% }
@@ -485,7 +503,7 @@ display_properties =
     .def { width:12% }
         .row:nth-child(odd)  .def  { background-color: var(--row-red-odd); }
         .row:nth-child(even) .def  { background-color: var(--row-red-even); }
-        .row .def.title { background-color: var(--row-red-dark); }
+        .row .def.title { background-color: var(--row-red-deep); }
     .res { width:12% }
         .row:nth-child(odd)  .res  { background-color: var(--row-blue-light); }
         .row:nth-child(even) .res  { background-color: var(--row-blue-dark); }
@@ -507,7 +525,7 @@ display_properties =
     .passive_A { width:16% }
         .row:nth-child(odd)  .passive_A { background-color: var(--row-red-odd); }
         .row:nth-child(even) .passive_A { background-color: var(--row-red-even); }
-        .row .passive_A.title { background-color: var(--row-red-dark); }
+        .row .passive_A.title { background-color: var(--row-red-deep); }
     .row .passive_B { width:16% }
         .row:nth-child(odd)  .passive_B { background-color: var(--row-blue-light); }
         .row:nth-child(even) .passive_B { background-color: var(--row-blue-dark); }
