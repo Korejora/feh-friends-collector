@@ -214,10 +214,10 @@ porter.googly.attach_oauthbuttons = function porter_googly_attach_oauthbuttons()
 };
 
 porter.googly.set_text = function porter_googly_set_text(string){ this.textarea.value = string; };
-porter.googly.get_text = function porter_googly_return_text(){ return this.textarea.value; };
+porter.googly.get_text = function porter_googly_get_text(){ return this.textarea.value; };
 
 porter.googly.handle_change = function porter_googly_handle_change()
-{   localStorage.googlytext = this.return_text();
+{   localStorage.googlytext = this.get_text();
 };
 
 
