@@ -197,6 +197,42 @@ let chars =
             [ "Spur Res 3", "Grants adjacent allies Res+4 during combat.", "200", "4" ]
         ]
     },
+    "arden__strong_and_tough":
+    {   "tag": "arden__strong_and_tough",
+        "name": "Arden",
+        "epithet": "Strong and Tough",
+        "description": "An armored knight from Chalphy. Dreams of fighting on the front lines, but is often assigned to castle defense.",
+        "origin": "Fire Emblem: Genealogy of the Holy War",
+        "weapon_type": "red_sword",
+        "colour": "red",
+        "move_type": "Armored",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "3": [ 24, 9, 2, 12, 2 ],
+            "4": [ 24, 10, 2, 13, 2 ],
+            "5": [ 25, 10, 3, 13, 3 ]
+        },
+        "growth_points": [ 12, 8, 2, 9, 2 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Brave Sword", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "4", "-" ],
+            [ "Brave Sword+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Buckler", "3", "Reduces damage inflicted by attacks from adjacent foes by 30%.", "100", "4", "-" ],
+            [ "Pavise", "3", "Reduces damage inflicted by attacks from adjacent foes by 50%.", "200", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Drive Def 1", "Grants allies within 2 spaces Def+2 during combat.", "120", "-" ],
+            [ "Drive Def 2", "Grants allies within 2 spaces Def+3 during combat.", "240", "-" ]
+        ]
+    },
     "arthur__hapless_hero":
     {   "tag": "arthur__hapless_hero",
         "name": "Arthur",
@@ -236,6 +272,44 @@ let chars =
         ],
         "base_passive_C": []
     },
+    "arvis__emperor_of_flame":
+    {   "tag": "arvis__emperor_of_flame",
+        "name": "Arvis",
+        "epithet": "Emperor of Flame",
+        "description": "Duke of Velthomer, and descendant of the crusader Fjalar and Maera of the imperial family.",
+        "origin": "Fire Emblem: Genealogy of the Holy War",
+        "weapon_type": "red_tome",
+        "colour": "red",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": false,
+        "base_stats":
+        {   "3": [ 17, 7, 6, 3, 6 ],
+            "4": [ 17, 8, 7, 3, 6 ],
+            "5": [ 18, 8, 7, 4, 7 ]
+        },
+        "growth_points": [ 3, 8, 7, 2, 8 ],
+        "base_weapons":
+        [   [ "Fire", "4", "2", "-", "50", "-", "-" ],
+            [ "Elfire", "6", "2", "-", "100", "3", "-" ],
+            [ "Bolganone", "9", "2", "-", "200", "4", "3" ],
+            [ "Valflame", "14", "2", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Atk/Res-4 until the end of foe's next action.", "400", "-", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Rising Flame", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "3" ],
+            [ "Growing Flame", "5", "Before combat this unit initiates, foes in a wide area around target take damage equal to (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Recover Ring", "Restores 10 HP at the start of each turn. (Skill cannot be inherited.)", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Def Ploy 1", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Def-3 until the end of foe's next action.", "60", "-" ],
+            [ "Def Ploy 2", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Def-4 until the end of foe's next action.", "120", "-" ],
+            [ "Def Ploy 3", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Def-5 until the end of foe's next action.", "240", "4" ]
+        ]
+    },
     "athena__borderland_sword":
     {   "tag": "athena__borderland_sword",
         "name": "Athena",
@@ -269,6 +343,47 @@ let chars =
             [ "Sturdy Blow 2", "Grants Atk/Def+4 during combat if unit initiates combat.", "240", "5" ]
         ],
         "base_passive_B": [],
+        "base_passive_C": []
+    },
+    "ayra__astras_wielder":
+    {   "tag": "ayra__astras_wielder",
+        "name": "Ayra",
+        "epithet": "Astra's Wielder",
+        "description": "Princess of Isaach, master of the sword, and descendant of the crusader Od. She fights for her homeland.",
+        "origin": "Fire Emblem: Genealogy of the Holy War",
+        "weapon_type": "red_sword",
+        "colour": "red",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "3": [ 18, 6, 10, 6, 3 ],
+            "4": [ 18, 7, 11, 6, 3 ],
+            "5": [ 19, 7, 11, 7, 4 ]
+        },
+        "growth_points": [ 6, 8, 8, 7, 4 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
+            [ "Ayra's Blade", "16", "1", "Grants Spd+3. If unit's Spd - foe's Spd ≥ 1, gain Special cooldown charge +1 per attack. (If similar skill also used, only highest value applied.)", "400", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "4", "-" ],
+            [ "Astra", "5", "Grants +150% to damage dealt.", "200", "-", "4" ],
+            [ "Regnal Astra", "2", "Boosts damage dealt by 40% of unit's Spd. (Skill cannot be inherited.)", "500", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Darting Blow 1", "Grants Spd+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Swift Sparrow 1", "If unit initiates combat, unit granted Atk/Spd+2 during battle.", "120", "-" ],
+            [ "Swift Sparrow 2", "If unit initiates combat, unit granted Atk/Spd+4 during battle.", "240", "-" ]
+        ],
+        "base_passive_B":
+        [   [ "Desperation 1", "If unit initiates combat with HP ≤ 25%, follow-up attacks occur immediately after unit's attack.", "50", "-" ],
+            [ "Desperation 2", "If unit initiates combat with HP ≤ 50%, follow-up attacks occur immediately after unit's attack.", "100", "-" ],
+            [ "Desperation 3", "If unit initiates combat with HP ≤ 75%, follow-up attacks occur immediately after unit's attack.", "200", "-" ]
+        ],
         "base_passive_C": []
     },
     "azama__carefree_monk":
@@ -351,7 +466,7 @@ let chars =
         "name": "Azura",
         "epithet": "Lady of Ballads",
         "subname": "🎵",
-        "description": "A mysterious songstress who appeared at the theater in Cyrkensia. Has overwhelming singing abilities. Appears in Fire Emblem Fates.",
+        "description": "A mysterious songstress who appeared at the theater in Cyrkensia. Has overwhelming singing abilities.",
         "origin": "Fire Emblem Fates",
         "weapon_type": "green_axe",
         "colour": "green",
@@ -1470,6 +1585,43 @@ let chars =
         ],
         "base_passive_C": []
     },
+    "deirdre__lady_of_the_forest":
+    {   "tag": "deirdre__lady_of_the_forest",
+        "name": "Deirdre",
+        "epithet": "Lady of the Forest",
+        "description": "She lives hidden away in the Spirit Forest. She lost the memories of her past.",
+        "origin": "Fire Emblem: Genealogy of the Holy War",
+        "weapon_type": "green_tome",
+        "colour": "green",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 17, 9, 6, 3, 9 ]
+        },
+        "growth_points": [ 5, 7, 6, 2, 8 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "-", "-" ],
+            [ "Rexcalibur", "9", "2", "-", "200", "-", "-" ],
+            [ "Divine Naga", "14", "2", "Effective against dragons. ", "400", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Ardent Sacrifice", "1", "Heals adjacent ally 10 HP. Unit loses 10 HP (but cannot reach 0 this way).", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Quick Riposte 1", "Unit automatically makes a follow-up attack if attacked at HP ≥ 90%.", "60", "-" ],
+            [ "Quick Riposte 2", "Unit automatically makes a follow-up attack if attacked at HP ≥ 80%.", "120", "-" ],
+            [ "Quick Riposte 3", "Unit automatically makes a follow-up attack if attacked at HP ≥ 70%.", "240", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Spd Ploy 1", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Spd-3 until the end of foe's next action.", "60", "-" ],
+            [ "Spd Ploy 2", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Spd-4 until the end of foe's next action.", "120", "-" ],
+            [ "Spd Ploy 3", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Spd-5 until the end of foe's next action.", "240", "5" ]
+        ]
+    },
     "delthea__free_spirit":
     {   "tag": "delthea__free_spirit",
         "name": "Delthea",
@@ -1714,7 +1866,7 @@ let chars =
         [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
             [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
             [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
-            [ "Amiti", "11", "1", "Spd-2. Attack twice when initiating combat.", "400", "5", "5" ]
+            [ "Amiti", "11", "1", "Spd-2. Attack twice when initiating combat.", "400", "5", "-" ]
         ],
         "base_support":
         [   [ "Ardent Sacrifice", "1", "Heals adjacent ally 10 HP. Unit loses 10 HP (but cannot reach 0 this way).", "150", "5", "-" ]
@@ -2784,7 +2936,7 @@ let chars =
         "name": "Inigo",
         "epithet": "Indigo Dancer",
         "subname": "🎵",
-        "description": "A descendant of the dancer Olivia. He carries on his departed mother's dancing and her power. Appears in Fire Emblem Awakening.",
+        "description": "A descendant of the dancer Olivia. He carries on his departed mother's dancing and her power.",
         "origin": "Fire Emblem Awakening",
         "weapon_type": "green_tome",
         "colour": "green",
@@ -4781,7 +4933,7 @@ let chars =
         "name": "Olivia",
         "epithet": "Festival Dancer",
         "subname": "🎵",
-        "description": "A dancer who brings a smile to people's faces. She had appeared at a performing arts festival in Ylisse. Appears in Fire Emblem Awakening.",
+        "description": "A dancer who brings a smile to people's faces. She had appeared at a performing arts festival in Ylisse.",
         "origin": "Fire Emblem Awakening",
         "weapon_type": "colorless_dagger",
         "colour": "colorless",
@@ -4863,29 +5015,30 @@ let chars =
         "limited": false,
         "summon": true,
         "base_stats":
-        {   "5": [ 18, 7, 8, 7, 6 ]
+        {   "4": [ 17, 7, 8, 6, 5 ],
+            "5": [ 18, 7, 8, 7, 6 ]
         },
         "growth_points": [ 6, 8, 8, 5, 3 ],
         "base_weapons":
         [   [ "Iron Lance", "6", "1", "-", "50", "-", "-" ],
             [ "Steel Lance", "8", "1", "-", "100", "-", "-" ],
-            [ "Sapphire Lance", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "-", "-" ],
+            [ "Sapphire Lance", "8", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "200", "4", "-" ],
             [ "Sapphire Lance+", "12", "1", "Gives Atk+20% if weapon-triangle advantage, Atk-20% if disadvantage.", "300", "5", "5" ]
         ],
         "base_support":
-        [   [ "Rally Speed", "1", "Grants Spd+4 to an adjacent ally until the end of the turn.", "150", "5", "-" ],
-            [ "Rally Speed Defense", "1", "Grants Spd/Def+3 to an adjacent ally until the end of the turn.", "300", "-", "5" ]
+        [   [ "Rally Speed", "1", "Grants Spd+4 to an adjacent ally until the end of the turn.", "150", "4", "-" ],
+            [ "Rally Speed Defense", "1", "Grants Spd/Def+3 to an adjacent ally until the end of the turn.", "300", "-", "4" ]
         ],
         "base_special": [],
         "base_passive_A": [],
         "base_passive_B":
         [   [ "Lancebreaker 1", "If unit's HP ≥ 90% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "50", "-" ],
             [ "Lancebreaker 2", "If unit's HP ≥ 70% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "100", "-" ],
-            [ "Lancebreaker 3", "If unit's HP ≥ 50% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "200", "5" ]
+            [ "Lancebreaker 3", "If unit's HP ≥ 50% in combat against a lance user, unit makes a follow-up attack and foe cannot.", "200", "4" ]
         ],
         "base_passive_C":
         [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
-            [ "Spur Spd Def 1", "Grants adjacent allies Spd/Def +2 during combat", "120", "-" ],
+            [ "Spur Spd Def 1", "Grants adjacent allies Spd/Def +2 during combat", "120", "4" ],
             [ "Spur Spd Def 2", "Grants adjacent allies Spd/Def +3 during combat.", "240", "5" ]
         ]
     },
@@ -5900,7 +6053,7 @@ let chars =
         "name": "Shigure",
         "epithet": "Dark Sky Singer",
         "subname": "🎵",
-        "description": "A descendant of the songstress Azura. Sings in Cyrkensia while hiding his identity. Appears in Fire Emblem Fates.",
+        "description": "A descendant of the songstress Azura. Sings in Cyrkensia while hiding his identity.",
         "origin": "Fire Emblem Fates",
         "weapon_type": "blue_tome",
         "colour": "blue",
@@ -5933,6 +6086,45 @@ let chars =
             [ "B Tome Valor 3", "If unit survives, all blue tome users on team get 2x SP. (If similar skill effects also used, only highest multiplier applied.)", "120", "5" ]
         ]
     },
+    "sigurd__holy_knight":
+    {   "tag": "sigurd__holy_knight",
+        "name": "Sigurd",
+        "epithet": "Holy Knight",
+        "description": "Heir to Chalphy, descendant of the crusader Baldr, and Seliph's father. He's courageous and has a strong sense of justice.",
+        "origin": "Fire Emblem: Genealogy of the Holy War",
+        "weapon_type": "red_sword",
+        "colour": "red",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 19, 9, 8, 6, 4 ]
+        },
+        "growth_points": [ 6, 8, 7, 9, 2 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
+            [ "Divine Tyrfing", "16", "1", "Grants Res+3. If in combat against foe using magic, unit receives 50% less damage from the first attack.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Miracle", "5", "If HP &gt; 1, survive a lethal attack with 1 HP remaining.", "200", "5", "-" ]
+        ],
+        "base_passive_A":
+        [   [ "Close Def 1", "If unit is attacked by foe using sword, axe, lance, or dragonstone, unit receives Def/Res+2 during combat.", "60", "-" ],
+            [ "Close Def 2", "If unit is attacked by foe using sword, axe, lance, or dragonstone, unit receives Def/Res+4 during combat.", "120", "-" ],
+            [ "Close Def 3", "If unit is attacked by foe using sword, axe, lance, or dragonstone, unit receives Def/Res+6 during combat.", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Crusader's Ward", "If unit receives consecutive attack from a foe 2 spaces away, damage from second attack onward reduced by 80%. (Skill cannot be inherited.)", "300", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Spd Smoke 1", "After combat, inflicts Spd-3 on foes within 2 spaces of target through their next actions.", "60", "-" ],
+            [ "Spd Smoke 2", "After combat, inflicts Spd-5 on foes within 2 spaces of target through their next actions.", "120", "-" ],
+            [ "Spd Smoke 3", "After combat, inflicts Spd-7 on foes within 2 spaces of target through their next actions.", "240", "5" ]
+        ]
+    },
     "sonya__vengeful_mage":
     {   "tag": "sonya__vengeful_mage",
         "name": "Sonya",
@@ -5952,7 +6144,7 @@ let chars =
         [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
             [ "Elwind", "6", "2", "-", "100", "-", "-" ],
             [ "Rexcalibur", "9", "2", "-", "200", "-", "-" ],
-            [ "Dark Excalibur", "14", "2", "Grants +10 to damage when special triggers.", "400", "-", "5" ]
+            [ "Dark Excalibur", "14", "2", "Grants +10 to damage when special triggers.", "400", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
@@ -6171,6 +6363,44 @@ let chars =
         [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
             [ "Spur Def 2", "Grants adjacent allies Def+3 during combat.", "100", "-" ],
             [ "Spur Def 3", "Grants adjacent allies Def+4 during combat.", "200", "4" ]
+        ]
+    },
+    "tailtiu__thunder_noble":
+    {   "tag": "tailtiu__thunder_noble",
+        "name": "Tailtiu",
+        "epithet": "Thunder Noble",
+        "description": "A noblewoman from Friege and descendant of the crusader Thrud. She appears cheerful but is hiding her troubles.",
+        "origin": "Fire Emblem: Genealogy of the Holy War",
+        "weapon_type": "blue_tome",
+        "colour": "blue",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 17, 8, 9, 4, 6 ]
+        },
+        "growth_points": [ 6, 7, 8, 2, 5 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
+            [ "Blárblade", "9", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "200", "-", "-" ],
+            [ "Blárblade+", "13", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Rally Resistance", "1", "Grants Res+4 to an adjacent ally until the end of the turn.", "150", "5", "-" ],
+            [ "Rally Speed Resistance", "1", "Grants Spd/Res+3 to an adjacent ally until the end of the turn.", "300", "-", "5" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Attack +1", "Grants Atk+1.", "30", "-" ],
+            [ "Attack Res 1", "Grants Atk/Res+1.", "80", "-" ],
+            [ "Attack Res 2", "Grants Atk/Res+2.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Spd 1", "Grants adjacent allies Spd+2 during combat.", "50", "-" ],
+            [ "Drive Spd 1", "Grants allies within 2 spaces Spd+2 during combat.", "120", "-" ],
+            [ "Drive Spd 2", "Grants allies within 2 spaces Spd+3 during combat.", "240", "5" ]
         ]
     },
     "takumi__wild_card":
