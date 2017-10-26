@@ -207,7 +207,7 @@ let chars =
         "colour": "red",
         "move_type": "Armored",
         "limited": false,
-        "summon": true,
+        "summon": false,
         "base_stats":
         {   "3": [ 24, 9, 2, 12, 2 ],
             "4": [ 24, 10, 2, 13, 2 ],
