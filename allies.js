@@ -447,7 +447,6 @@ class ally
     send_home()
     {   if (this.origin !== 0)
         {   this.home = true;
-            refreshment();
         }
     }
     undo_send_home()

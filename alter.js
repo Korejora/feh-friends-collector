@@ -120,6 +120,7 @@ let alter =
         else { this.ally.undo_send_home(); }
         this.reset_ally();
         this.note.set_text(name + " sent home.");
+        refreshment();
     },
 
     selection : [],

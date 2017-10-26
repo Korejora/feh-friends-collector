@@ -53,21 +53,18 @@ let friends =
     },
 
     restore_friends (restore_array)
-    {   let t0 = performance.now()
-        this.roster = []; let t1 = performance.now(); console.log((t1 - t0))
+    {
+        this.roster = [];
         for ( let i=0; i < restore_array.length; i++ )
         {   let current_friend = restore_array[i];
             if(!current_friend.tag) { current_friend.tag = this.find_tag(current_friend); }
             this.make_friend(current_friend);
         }
-let t2 = performance.now(); console.log((t2 - t1))
         this.roster = this.roster.sort(function(a,b){return a.obtained-b.obtained;});
         tableau.friends_table.ally_list = this.roster;
         alter.reset_ally();
         refreshment();
         tableau.last_sorted = null;
-        let tf = performance.now();
-        console.log("took " + (tf - t0) + "milliseconds to do restore_friends")
     },
 
     save_friends_string ()
