@@ -99,7 +99,7 @@ let chars =
         [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
             [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
             [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
-            [ "Falchion", "16", "1", "Effective against dragons. ", "400", "5", "-" ]
+            [ "Falchion", "16", "1", "Effective against dragons.  At the start of every third turn, unit recovers 10 HP.", "400", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
@@ -1174,7 +1174,7 @@ let chars =
         [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
             [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
             [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
-            [ "Falchion", "16", "1", "Effective against dragons. ", "400", "5", "5" ]
+            [ "Falchion", "16", "1", "Effective against dragons.  At the start of every third turn, unit recovers 10 HP.", "400", "5", "5" ]
         ],
         "base_support": [],
         "base_special":
@@ -2129,8 +2129,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
-            [ "Firesweep Bow", "7", "2", "Effective against fliers. ", "200", "-", "-" ],
-            [ "Firesweep Bow+", "11", "2", "Effective against fliers. ", "300", "5", "-" ]
+            [ "Firesweep Bow", "7", "2", "Effective against fliers.  Unit and enemies cannot use counterattacks.", "200", "-", "-" ],
+            [ "Firesweep Bow+", "11", "2", "Effective against fliers.  Unit and enemies cannot use counterattacks.", "300", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
@@ -2478,8 +2478,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "3", "-" ],
-            [ "Brave Bow", "4", "2", "Spd-5. Effective against flying units. ", "200", "4", "3" ],
-            [ "Brave Bow+", "7", "2", "Spd-5. Effective against flying units. ", "300", "5", "5" ]
+            [ "Brave Bow", "4", "2", "Spd-5. Effective against flying units.  Attacks twice if unit initiates combat.", "200", "4", "3" ],
+            [ "Brave Bow+", "7", "2", "Spd-5. Effective against flying units.  Attacks twice if unit initiates combat.", "300", "5", "5" ]
         ],
         "base_support":
         [   [ "Shove", "1", "Push adjacent ally 1 space farther away.", "150", "4", "3" ]
@@ -3022,7 +3022,7 @@ let chars =
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
             [ "Silver Bow", "9", "2", "Effective against flying units. ", "200", "-", "-" ],
-            [ "Nidhogg", "14", "2", "Effective against flying units. ", "400", "5", "-" ]
+            [ "Nidhogg", "14", "2", "Effective against flying units.  During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2.", "400", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
@@ -3176,8 +3176,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
-            [ "Monstrous Bow", "8", "2", "Effective against fliers. ", "200", "-", "-" ],
-            [ "Monstrous Bow+", "12", "2", "Effective against fliers. ", "300", "5", "-" ]
+            [ "Monstrous Bow", "8", "2", "Effective against fliers.  After combat, bonuses become penalties on all foes within 2 spaces through foe's next action.", "200", "-", "-" ],
+            [ "Monstrous Bow+", "12", "2", "Effective against fliers.  After combat, bonuses become penalties on all foes within 2 spaces through foe's next action.", "300", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
@@ -3216,7 +3216,7 @@ let chars =
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
             [ "Silver Bow", "9", "2", "Effective against flying units. ", "200", "4", "-" ],
-            [ "Parthia", "14", "2", "Effective against flying units. ", "400", "5", "5" ]
+            [ "Parthia", "14", "2", "Effective against flying units.  Grants Res+4 during combat if initiating attack.", "400", "5", "5" ]
         ],
         "base_support": [],
         "base_special":
@@ -3292,8 +3292,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
             [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "-", "-" ],
-            [ "Poison Dagger", "2", "2", "Effective against infantry units. ", "200", "4", "-" ],
-            [ "Poison Dagger+", "5", "2", "Effective against infantry units. ", "300", "5", "5" ]
+            [ "Poison Dagger", "2", "2", "Effective against infantry units.  Infantry foes suffer Def/Res-4 after combat through their next actions.", "200", "4", "-" ],
+            [ "Poison Dagger+", "5", "2", "Effective against infantry units.  Infantry foes suffer Def/Res-6 after combat through their next actions.", "300", "5", "5" ]
         ],
         "base_support": [],
         "base_special":
@@ -3407,8 +3407,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
-            [ "Brave Bow", "4", "2", "Spd-5. Effective against flying units. ", "200", "4", "-" ],
-            [ "Brave Bow+", "7", "2", "Spd-5. Effective against flying units. ", "300", "5", "5" ]
+            [ "Brave Bow", "4", "2", "Spd-5. Effective against flying units.  Attacks twice if unit initiates combat.", "200", "4", "-" ],
+            [ "Brave Bow+", "7", "2", "Spd-5. Effective against flying units.  Attacks twice if unit initiates combat.", "300", "5", "5" ]
         ],
         "base_support": [],
         "base_special":
@@ -3640,8 +3640,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
-            [ "Slaying Bow", "8", "2", "Effective against flying units. ", "200", "4", "-" ],
-            [ "Slaying Bow+", "12", "2", "Effective against flying units. ", "300", "5", "5" ]
+            [ "Slaying Bow", "8", "2", "Effective against flying units.  Accelerates Special trigger (cooldown count-1).", "200", "4", "-" ],
+            [ "Slaying Bow+", "12", "2", "Effective against flying units.  Accelerates Special trigger (cooldown count-1).", "300", "5", "5" ]
         ],
         "base_support": [],
         "base_special":
@@ -3875,7 +3875,7 @@ let chars =
         [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
             [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
             [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
-            [ "Falchion", "16", "1", "Effective against dragons. ", "400", "5", "-" ]
+            [ "Falchion", "16", "1", "Effective against dragons.  At the start of every third turn, unit recovers 10 HP.", "400", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
@@ -4146,7 +4146,7 @@ let chars =
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
             [ "Silver Bow", "9", "2", "Effective against flying units. ", "200", "-", "-" ],
-            [ "Mulagir", "14", "2", "Effective against flying units. Grants Spd+3. If foe is magic user, foe's bonuses (from skills like Fortify, Rally, etc.) are nullified during combat.", "400", "5", "-" ]
+            [ "Mulagir", "14", "2", "Effective against flying units.  Grants Spd+3. If foe is magic user, foe's bonuses (from skills like Fortify, Rally, etc.) are nullified during combat.", "400", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
@@ -4295,7 +4295,7 @@ let chars =
         [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
             [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
             [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
-            [ "Falchion", "16", "1", "Effective against dragons. ", "400", "5", "5" ]
+            [ "Falchion", "16", "1", "Effective against dragons.  At the start of every third turn, unit recovers 10 HP.", "400", "5", "5" ]
         ],
         "base_support":
         [   [ "Pivot", "1", "Unit moves to opposite side of adjacent ally.", "150", "4", "-" ]
@@ -4334,7 +4334,7 @@ let chars =
         [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
             [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
             [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
-            [ "Falchion", "16", "1", "Effective against dragons. ", "400", "5", "5" ]
+            [ "Falchion", "16", "1", "Effective against dragons.  At the start of every third turn, unit recovers 10 HP.", "400", "5", "5" ]
         ],
         "base_support": [],
         "base_special": [],
@@ -4710,8 +4710,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "3", "-" ],
-            [ "Killer Bow", "5", "2", "Effective against flying units. ", "200", "4", "3" ],
-            [ "Killer Bow+", "9", "2", "Effective against flying units. ", "300", "-", "5" ]
+            [ "Killer Bow", "5", "2", "Effective against flying units.  Accelerates Special trigger (cooldown count-1).", "200", "4", "3" ],
+            [ "Killer Bow+", "9", "2", "Effective against flying units.  Accelerates Special trigger (cooldown count-1).", "300", "-", "5" ]
         ],
         "base_support": [],
         "base_special":
@@ -5834,8 +5834,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
             [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "-", "-" ],
-            [ "Kitty Paddle", "5", "2", "Effective against foe using magic. ", "200", "-", "-" ],
-            [ "Kitty Paddle+", "8", "2", "Effective against foe using magic. ", "300", "5", "-" ]
+            [ "Kitty Paddle", "5", "2", "Effective against foe using magic.  After combat, if foe uses magic, foe suffers Def/Res-5 through foe's next action.", "200", "-", "-" ],
+            [ "Kitty Paddle+", "8", "2", "Effective against foe using magic.  After combat, if foe uses magic, foe suffers Def/Res-7 through foe's next action.", "300", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
@@ -6068,8 +6068,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "3", "-" ],
-            [ "Assassin's Bow", "7", "2", "Effective against flying units. ", "200", "4", "3" ],
-            [ "Assassin's Bow+", "11", "2", "Effective against flying units. ", "300", "5", "5" ]
+            [ "Assassin's Bow", "7", "2", "Effective against flying units.  If target has a dagger, it can't make a follow-up attack and this unit will.", "200", "4", "3" ],
+            [ "Assassin's Bow+", "11", "2", "Effective against flying units.  If target has a dagger, it can't make a follow-up attack and this unit will.", "300", "5", "5" ]
         ],
         "base_support":
         [   [ "Reciprocal Aid", "1", "Swap HP with adjacent ally (neither unit can go above their max HP).", "150", "4", "3" ]
@@ -6578,7 +6578,7 @@ let chars =
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
             [ "Silver Bow", "9", "2", "Effective against flying units. ", "200", "-", "-" ],
-            [ "Fujin Yumi", "14", "2", "Effective against flying units. ", "400", "5", "-" ]
+            [ "Fujin Yumi", "14", "2", "Effective against flying units.  Unit can pass though foes if own HP ≥ 50%.", "400", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
