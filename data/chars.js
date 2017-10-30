@@ -178,7 +178,7 @@ let chars =
         [   [ "Iron Axe", "6", "1", "-", "50", "2", "-" ],
             [ "Steel Axe", "8", "1", "-", "100", "-", "2" ],
             [ "Silver Axe", "11", "1", "-", "200", "-", "3" ],
-            [ "Nóatún", "16", "1", "Unit may move adjacent to any ally when HP ≤ 40%", "400", "-", "5" ]
+            [ "Nóatún", "16", "1", "Unit may move adjacent to any ally when HP ≤ 40%.", "400", "-", "5" ]
         ],
         "base_support": [],
         "base_special":
@@ -209,8 +209,7 @@ let chars =
         "limited": false,
         "summon": false,
         "base_stats":
-        {   "3": [ 24, 9, 2, 12, 2 ],
-            "4": [ 24, 10, 2, 13, 2 ],
+        {   "4": [ 24, 10, 2, 13, 2 ],
             "5": [ 25, 10, 3, 13, 3 ]
         },
         "growth_points": [ 12, 8, 2, 9, 2 ],
@@ -230,7 +229,7 @@ let chars =
         "base_passive_C":
         [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
             [ "Drive Def 1", "Grants allies within 2 spaces Def+2 during combat.", "120", "-" ],
-            [ "Drive Def 2", "Grants allies within 2 spaces Def+3 during combat.", "240", "-" ]
+            [ "Drive Def 2", "Grants allies within 2 spaces Def+3 during combat.", "240", "4" ]
         ]
     },
     "arthur__hapless_hero":
@@ -357,32 +356,30 @@ let chars =
         "limited": false,
         "summon": true,
         "base_stats":
-        {   "3": [ 18, 6, 10, 6, 3 ],
-            "4": [ 18, 7, 11, 6, 3 ],
-            "5": [ 19, 7, 11, 7, 4 ]
+        {   "5": [ 19, 7, 11, 7, 4 ]
         },
         "growth_points": [ 6, 8, 8, 7, 4 ],
         "base_weapons":
         [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
             [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
-            [ "Silver Sword", "11", "1", "-", "200", "4", "-" ],
-            [ "Ayra's Blade", "16", "1", "Grants Spd+3. If unit's Spd - foe's Spd ≥ 1, gain Special cooldown charge +1 per attack. (If similar skill also used, only highest value applied.)", "400", "5", "5" ]
+            [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
+            [ "Ayra's Blade", "16", "1", "Grants Spd+3. If unit's Spd - foe's Spd ≥ 1, gain Special cooldown charge +1 per attack. (If similar skill also used, only highest value applied.)", "400", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
-        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "4", "-" ],
-            [ "Astra", "5", "Grants +150% to damage dealt.", "200", "-", "4" ],
+        [   [ "Night Sky", "4", "Grants +50% to damage dealt.", "100", "5", "-" ],
+            [ "Astra", "5", "Grants +150% to damage dealt.", "200", "-", "5" ],
             [ "Regnal Astra", "2", "Boosts damage dealt by 40% of unit's Spd. (Skill cannot be inherited.)", "500", "-", "5" ]
         ],
         "base_passive_A":
         [   [ "Darting Blow 1", "Grants Spd+2 during combat if unit initiates the attack.", "50", "-" ],
             [ "Swift Sparrow 1", "If unit initiates combat, unit granted Atk/Spd+2 during battle.", "120", "-" ],
-            [ "Swift Sparrow 2", "If unit initiates combat, unit granted Atk/Spd+4 during battle.", "240", "-" ]
+            [ "Swift Sparrow 2", "If unit initiates combat, unit granted Atk/Spd+4 during battle.", "240", "5" ]
         ],
         "base_passive_B":
         [   [ "Desperation 1", "If unit initiates combat with HP ≤ 25%, follow-up attacks occur immediately after unit's attack.", "50", "-" ],
             [ "Desperation 2", "If unit initiates combat with HP ≤ 50%, follow-up attacks occur immediately after unit's attack.", "100", "-" ],
-            [ "Desperation 3", "If unit initiates combat with HP ≤ 75%, follow-up attacks occur immediately after unit's attack.", "200", "-" ]
+            [ "Desperation 3", "If unit initiates combat with HP ≤ 75%, follow-up attacks occur immediately after unit's attack.", "200", "5" ]
         ],
         "base_passive_C": []
     },
@@ -2772,6 +2769,42 @@ let chars =
         ],
         "base_passive_C": []
     },
+    "henry__happy_vampire":
+    {   "tag": "henry__happy_vampire",
+        "name": "Henry",
+        "epithet": "Happy Vampire",
+        "description": "This dark mage of Plegia will curse you without a second thought if you withhold candy. Appears in Fire Emblem Awakening.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "green_tome",
+        "colour": "green",
+        "move_type": "Armored",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 17, 9, 10, 4, 12 ]
+        },
+        "growth_points": [ 5, 7, 7, 6, 7 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "-", "-" ],
+            [ "Spectral Tome", "8", "2", "After combat, bonuses become penalties on all foes within 2 spaces through foe's next action.", "200", "-", "-" ],
+            [ "Spectral Tome+", "12", "2", "After combat, bonuses become penalties on all foes within 2 spaces through foe's next action.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Retribution", "3", "Grants bonus to damage dealt equal to 30% of damage suffered.", "100", "5", "-" ],
+            [ "Reprisal", "2", "Grants bonus to damage dealt equal to 30% of damage suffered.", "200", "-", "5" ]
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Live for Honor", "If unit survives, get 1.5x normal badges from a Training Tower map. (If similar skill effects also used, only highest multiplier applied.)", "100", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Armor March 1", "If unit has 100% HP and an adjacent armored ally at start of turn, unit and any such allies can move 1 extra space. (That turn only; does not stack.)", "60", "-" ],
+            [ "Armor March 2", "If unit has ≥ 50% HP and an adjacent armored ally at start of turn, unit and any such allies can move 1 extra space. (That turn only; does not stack.)", "120", "-" ],
+            [ "Armor March 3", "If unit has an adjacent armored ally at the start of turn, unit and any such allies can move 1 extra space. (That turn only; does not stack.)", "240", "5" ]
+        ]
+    },
     "hinata__wild_samurai":
     {   "tag": "hinata__wild_samurai",
         "name": "Hinata",
@@ -2836,7 +2869,7 @@ let chars =
         "base_support": [],
         "base_special":
         [   [ "Rising Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "5", "-" ],
-            [ "Blazing Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5x (unit's Atk minus foe's Def or Res).", "300", "-", "5" ]
+            [ "Blazing Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).", "300", "-", "5" ]
         ],
         "base_passive_A":
         [   [ "Defiant Def 1", "Grants Def+3 at start of turn if unit's HP ≤ 50%.", "40", "-" ],
@@ -3120,6 +3153,44 @@ let chars =
         [   [ "Renewal 1", "At the start of every fourth turn, restores 10 HP.", "60", "-" ],
             [ "Renewal 2", "At the start of every third turn, restores 10 HP.", "120", "4" ],
             [ "Renewal 3", "At the start of every second turn, restores 10 HP.", "240", "5" ]
+        ],
+        "base_passive_C": []
+    },
+    "jakob__devoted_monster":
+    {   "tag": "jakob__devoted_monster",
+        "name": "Jakob",
+        "epithet": "Devoted Monster",
+        "description": "A butler of Nohr who serves Corrin. He would rather receive tea than candy. Appears in Fire Emblem Fates.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "colorless_bow",
+        "colour": "colorless",
+        "move_type": "Armored",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 20, 9, 6, 9, 8 ]
+        },
+        "growth_points": [ 6, 8, 4, 7, 7 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Monstrous Bow", "8", "2", "Effective against fliers. ", "200", "-", "-" ],
+            [ "Monstrous Bow+", "12", "2", "Effective against fliers. ", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Glowing Ember", "4", "Boosts damage dealt by 50% of unit's Def.", "100", "5", "-" ],
+            [ "Ignis", "4", "Boosts damage dealt by 80% of unit's Def.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Armored Blow 1", "Grants Def+2 during combat if unit initiates the attack.", "50", "-" ],
+            [ "Bracing Blow 1", "Grants Def/Res+2 during combat if unit initiates combat.", "120", "-" ],
+            [ "Bracing Blow 2", "Grants Def/Res+4 during combat if unit initiates combat.", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Wary Fighter 1", "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 90%.", "60", "-" ],
+            [ "Wary Fighter 2", "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 70%.", "120", "-" ],
+            [ "Wary Fighter 3", "Prevents follow-up attacks in combat from unit and foes if unit's HP ≥ 50%.", "240", "5" ]
         ],
         "base_passive_C": []
     },
@@ -4771,6 +4842,45 @@ let chars =
             [ "Threaten Res 3", "Inflicts Res-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "4" ]
         ]
     },
+    "nowi__eternal_witch":
+    {   "tag": "nowi__eternal_witch",
+        "name": "Nowi",
+        "epithet": "Eternal Witch",
+        "description": "Manakete who travels with Chrom's group. She may be over a thousand years old, but she still gets candy. Appears in Fire Emblem Awakening.",
+        "origin": "Fire Emblem Awakening",
+        "weapon_type": "red_tome",
+        "colour": "red",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 17, 8, 6, 5, 8 ]
+        },
+        "growth_points": [ 4, 8, 8, 3, 5 ],
+        "base_weapons":
+        [   [ "Flux", "4", "2", "-", "50", "-", "-" ],
+            [ "Ruin", "6", "2", "-", "100", "-", "-" ],
+            [ "Fenrir", "9", "2", "-", "200", "-", "-" ],
+            [ "Grimoire", "14", "2", "If unit has ≥ 50% HP, unit can move to a space adjacent to an ally within 2 spaces.", "400", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Reposition", "1", "Moves adjacent ally to opposite side of unit.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Atk Res Bond 1", "Grants Atk/Res+3 to this unit during combat if unit is adjacent to an ally.", "60", "-" ],
+            [ "Atk Res Bond 2", "Grants Atk/Res+4 to this unit during combat if unit is adjacent to an ally.", "120", "-" ],
+            [ "Atk Res Bond 3", "Grants Atk/Res+5 to this unit during combat if unit is adjacent to an ally.", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Live for Bounty", "If unit survives, get 1.5x shards/crystals from a Training Tower map. (If similar skill effects also used, only highest multiplier applied.)", "100", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Hone Atk 1", "Grants adjacent allies Atk+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Atk 2", "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Hone Fliers", "Grants adjacent flying allies Atk/Spd+6 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
     "oboro__fierce_fighter":
     {   "tag": "oboro__fierce_fighter",
         "name": "Oboro",
@@ -5702,6 +5812,48 @@ let chars =
             [ "Fortify Def 3", "Grants adjacent allies Def+4 through their next actions at the start of each turn.", "200", "5" ]
         ]
     },
+    "sakura__gentle_nekomata":
+    {   "tag": "sakura__gentle_nekomata",
+        "name": "Sakura",
+        "epithet": "Gentle Nekomata",
+        "description": "This Hoshidan princess is so kind that she wouldn't play a trick on anyone, even if they didn't give her candy. Appears in Fire Emblem Fates.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "colorless_dagger",
+        "colour": "colorless",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 16, 8, 8, 4, 8 ]
+        },
+        "growth_points": [ 4, 7, 8, 1, 8 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, inflicts Def/Res-3 on foe through its next action.", "100", "-", "-" ],
+            [ "Kitty Paddle", "5", "2", "Effective against foe using magic. ", "200", "-", "-" ],
+            [ "Kitty Paddle+", "8", "2", "Effective against foe using magic. ", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "5", "-" ],
+            [ "Glacies", "4", "Boosts damage dealt by 80% of unit's Res.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Warding Stance 1", "Grants Res+2 during combat when this unit is attacked.", "50", "-" ],
+            [ "Warding Stance 2", "Grants Res+4 during combat when this unit is attacked.", "100", "-" ],
+            [ "Warding Stance 3", "Grants Res+6 during combat when this unit is attacked.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Guard 1", "If unit's HP is 100% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "50", "-" ],
+            [ "Guard 2", "If unit's HP is ≥ 90% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "100", "-" ],
+            [ "Guard 3", "If unit's HP is ≥ 80% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Dagger Valor 1", "If unit survives and uses a dagger, unit gets 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "30", "-" ],
+            [ "Dagger Valor 2", "If unit survives, all dagger users on team get 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "60", "-" ],
+            [ "Dagger Valor 3", "If unit survives, all dagger users on team get 2x SP. (If similar skill effects also used, only highest multiplier applied.)", "120", "5" ]
+        ]
+    },
     "sanaki__begnions_apostle":
     {   "tag": "sanaki__begnions_apostle",
         "name": "Sanaki",
@@ -6144,7 +6296,7 @@ let chars =
         [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
             [ "Elwind", "6", "2", "-", "100", "-", "-" ],
             [ "Rexcalibur", "9", "2", "-", "200", "-", "-" ],
-            [ "Dark Excalibur", "14", "2", "Grants +10 to damage when special triggers.", "400", "5", "-" ]
+            [ "Dark Excalibur", "14", "2", "Grants +10 to damage when Special triggers.", "400", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
