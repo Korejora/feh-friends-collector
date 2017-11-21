@@ -1695,6 +1695,48 @@ let chars =
         ],
         "base_passive_C": []
     },
+    "dorcas__serene_warrior":
+    {   "tag": "dorcas__serene_warrior",
+        "name": "Dorcas",
+        "epithet": "Serene Warrior",
+        "description": "A mercenary trying to earn money for his ill wife's treatment. Doesn't talk much and isn't expressive, but loves his family dearly.",
+        "origin": "Fire Emblem: The Blazing Blade",
+        "weapon_type": "green_axe",
+        "colour": "green",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 19, 9, 6, 9, 5 ]
+        },
+        "growth_points": [ 8, 8, 4, 8, 5 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Axe", "11", "1", "-", "200", "-", "-" ],
+            [ "Stout Tomahawk", "16", "1", "Enables counterattack regardless of distance if this unit is attacked.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Dragon Gaze", "4", "Grants +30% to Atk.", "100", "5", "-" ],
+            [ "Draconic Aura", "3", "Grants +30% to Atk.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Fierce Stance 1", "Grants Atk+2 during combat when this unit is attacked.", "50", "-" ],
+            [ "Fierce Stance 2", "Grants Atk+4 during combat when this unit is attacked.", "100", "-" ],
+            [ "Fierce Stance 3", "Grants Atk+6 during combat when this unit is attacked.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Quick Riposte 1", "Unit automatically makes a follow-up attack if attacked at HP ≥ 90%.", "60", "-" ],
+            [ "Quick Riposte 2", "Unit automatically makes a follow-up attack if attacked at HP ≥ 80%.", "120", "-" ],
+            [ "Quick Riposte 3", "Unit automatically makes a follow-up attack if attacked at HP ≥ 70%.", "240", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Infantry Pulse 1", "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 5 fewer HP than unit. (Effects will stack with similar skills.)", "60", "-" ],
+            [ "Infantry Pulse 2", "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 3 fewer HP than unit. (Effects will stack with similar skills.)", "120", "-" ],
+            [ "Infantry Pulse 3", "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 1 fewer HP than unit. (Effects will stack with similar skills.)", "240", "5" ]
+        ]
+    },
     "draug__gentle_giant":
     {   "tag": "draug__gentle_giant",
         "name": "Draug",
@@ -1832,7 +1874,7 @@ let chars =
         "base_support": [],
         "base_special":
         [   [ "Rising Light", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "-", "-" ],
-            [ "Growing Light", "5", "Before combat this unit initiates, foes in a wide area near target take damage equal to (unit's Atk - foe's Def or Res).", "300", "5", "-" ]
+            [ "Growing Light", "5", "Before combat this unit initiates, foes in a wide area near target take damage equal to (unit's Atk minus foe's Def or Res).", "300", "5", "-" ]
         ],
         "base_passive_A":
         [   [ "Fury 1", "Grants Atk/Spd/Def/Res+1. Unit takes 2 damage after combat.", "50", "-" ],
@@ -1903,7 +1945,7 @@ let chars =
         "base_support":
         [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
             [ "Mend", "1", "Restores 10 HP.", "100", "-", "-" ],
-            [ "Recover", "1", "Restores 15 HP. Slows Special trigger (cooldown count +1).", "200", "5", "-" ]
+            [ "Recover", "1", "Restores 15 HP. Slows Special trigger (cooldown count+1).", "200", "5", "-" ]
         ],
         "base_special":
         [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "-", "-" ],
@@ -2679,7 +2721,7 @@ let chars =
         "base_support": [],
         "base_special":
         [   [ "Rising Light", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "-" ],
-            [ "Growing Light", "5", "Before combat this unit initiates, foes in a wide area near target take damage equal to (unit's Atk - foe's Def or Res).", "300", "-", "4" ]
+            [ "Growing Light", "5", "Before combat this unit initiates, foes in a wide area near target take damage equal to (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
         ],
         "base_passive_A":
         [   [ "Death Blow 1", "Grants Atk+2 during combat if unit initiates the attack.", "50", "-" ],
@@ -2774,7 +2816,7 @@ let chars =
         "name": "Henry",
         "epithet": "Happy Vampire",
         "subname": "👻",
-        "description": "This dark mage of Plegia will curse you without a second thought if you withhold candy. Appears in Fire Emblem Awakening.",
+        "description": "This dark mage of Plegia will curse you without a second thought if you withhold candy.",
         "origin": "Fire Emblem Awakening",
         "weapon_type": "green_tome",
         "colour": "green",
@@ -2788,8 +2830,8 @@ let chars =
         "base_weapons":
         [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
             [ "Elwind", "6", "2", "-", "100", "-", "-" ],
-            [ "Spectral Tome", "8", "2", "After combat, bonuses become penalties on all foes within 2 spaces through foe's next action.", "200", "-", "-" ],
-            [ "Spectral Tome+", "12", "2", "After combat, bonuses become penalties on all foes within 2 spaces through foe's next action.", "300", "5", "-" ]
+            [ "Spectral Tome", "8", "2", "After combat, bonuses become penalties on all foes within 2 spaces of target through foes' next actions.", "200", "-", "-" ],
+            [ "Spectral Tome+", "12", "2", "After combat, bonuses become penalties on all foes within 2 spaces of target through foes' next actions.", "300", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
@@ -3162,7 +3204,7 @@ let chars =
         "name": "Jakob",
         "epithet": "Devoted Monster",
         "subname": "👻",
-        "description": "A butler of Nohr who serves Corrin. He would rather receive tea than candy. Appears in Fire Emblem Fates.",
+        "description": "A butler of Nohr who serves Corrin. He would rather receive tea than candy.",
         "origin": "Fire Emblem Fates",
         "weapon_type": "colorless_bow",
         "colour": "colorless",
@@ -3176,8 +3218,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
             [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
-            [ "Monstrous Bow", "8", "2", "Effective against fliers.  After combat, bonuses become penalties on all foes within 2 spaces through foe's next action.", "200", "-", "-" ],
-            [ "Monstrous Bow+", "12", "2", "Effective against fliers.  After combat, bonuses become penalties on all foes within 2 spaces through foe's next action.", "300", "5", "-" ]
+            [ "Monstrous Bow", "8", "2", "Effective against flying foes.  After combat, bonuses become penalties on all foes within 2 spaces of target through foes' next actions.", "200", "-", "-" ],
+            [ "Monstrous Bow+", "12", "2", "Effective against flying foes.  After combat, bonuses become penalties on all foes within 2 spaces of target through foes' next actions.", "300", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
@@ -3234,6 +3276,45 @@ let chars =
             [ "Spur Spd 2", "Grants adjacent allies Spd+3 during combat.", "100", "4" ],
             [ "Spur Spd 3", "Grants adjacent allies Spd+4 during combat.", "200", "5" ]
         ]
+    },
+    "joshua__tempest_king":
+    {   "tag": "joshua__tempest_king",
+        "name": "Joshua",
+        "epithet": "Tempest King",
+        "description": "A mercenary who loves to gamble. He has an evasive, almost aggravating personality.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "red_sword",
+        "colour": "red",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": false,
+        "base_stats":
+        {   "4": [ 17, 6, 9, 8, 5 ],
+            "5": [ 18, 7, 9, 8, 6 ]
+        },
+        "growth_points": [ 6, 7, 8, 6, 6 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Slaying Edge", "10", "1", "Accelerates Special trigger (cooldown count-1).", "200", "4", "-" ],
+            [ "Audhulma", "16", "1", "Accelerates Special trigger (cooldown count-1). Grants Res+5.", "400", "5", "5" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "4", "-" ],
+            [ "Moonbow", "2", "Resolve combat as if foe suffered Def/Res-30%.", "200", "-", "4" ]
+        ],
+        "base_passive_A":
+        [   [ "Close Def 1", "If unit is attacked by foe using sword, axe, lance, or dragonstone, unit receives Def/Res+2 during combat.", "60", "-" ],
+            [ "Close Def 2", "If unit is attacked by foe using sword, axe, lance, or dragonstone, unit receives Def/Res+4 during combat.", "120", "4" ],
+            [ "Close Def 3", "If unit is attacked by foe using sword, axe, lance, or dragonstone, unit receives Def/Res+6 during combat.", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Windsweep 1", "If unit initiates attack, no follow-up occurs. Against foe with sword, lance, axe, bow, or dagger, if unit’s Spd - foe’s Spd ≥ 5, foe can’t counterattack.", "60", "-" ],
+            [ "Windsweep 2", "If unit initiates attack, no follow-up occurs. Against foe with sword, lance, axe, bow, or dagger, if unit’s Spd - foe’s Spd ≥ 3, foe can’t counterattack.", "120", "-" ],
+            [ "Windsweep 3", "If unit initiates attack, no follow-up occurs. Against foe with sword, lance, axe, bow, or dagger, if unit’s Spd - foe’s Spd ≥ 1, foe can’t counterattack.", "240", "4" ]
+        ],
+        "base_passive_C": []
     },
     "julia__nagas_blood":
     {   "tag": "julia__nagas_blood",
@@ -4087,6 +4168,44 @@ let chars =
             [ "Panic Ploy 3", "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 1 or more lower than unit through foe's next action.", "240", "5" ]
         ]
     },
+    "lute__prodigy":
+    {   "tag": "lute__prodigy",
+        "name": "Lute",
+        "epithet": "Prodigy",
+        "description": "A young mage of Renais with an unusual temperament. Confident in her abilities.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "blue_tome",
+        "colour": "blue",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 16, 10, 8, 3, 8 ]
+        },
+        "growth_points": [ 4, 8, 7, 2, 8 ],
+        "base_weapons":
+        [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
+            [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
+            [ "Thoron", "9", "2", "-", "200", "-", "-" ],
+            [ "Weirding Tome", "14", "2", "Grants Spd+3. At start of turn, all foes in cardinal directions, and with Res 1 or more lower than unit, suffer Spd-5 until the end of foes' next actions.", "400", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Rally Attack", "1", "Grants Atk+4 to an adjacent ally until the end of the turn.", "150", "5", "-" ],
+            [ "Rally Attack Resistance", "1", "Grants Atk/Res+3 to an adjacent ally until the end of the turn.", "300", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Resistance +1", "Grants Res+1.", "30", "-" ],
+            [ "HP Res 1", "Grants HP+3, Res+1.", "100", "-" ],
+            [ "HP Res 2", "Grants HP+4, Res+2.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Res Ploy 1", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Res-3 until the end of foe's next action.", "60", "-" ],
+            [ "Res Ploy 2", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Res-4 until the end of foe's next action.", "120", "-" ],
+            [ "Res Ploy 3", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Res-5 until the end of foe's next action.", "240", "5" ]
+        ]
+    },
     "lyn__lady_of_the_plains":
     {   "tag": "lyn__lady_of_the_plains",
         "name": "Lyn",
@@ -4459,6 +4578,44 @@ let chars =
             [ "Spur Res 3", "Grants adjacent allies Res+4 during combat.", "200", "4" ]
         ]
     },
+    "mia__lady_of_blades":
+    {   "tag": "mia__lady_of_blades",
+        "name": "Mia",
+        "epithet": "Lady of Blades",
+        "description": "A mercenary fighting to improve her sword skills. In life, she doesn't sweat the details.",
+        "origin": "Fire Emblem: Path of Radiance",
+        "weapon_type": "red_sword",
+        "colour": "red",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 16, 8, 12, 6, 6 ]
+        },
+        "growth_points": [ 6, 7, 9, 6, 5 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Wo Dao", "9", "1", "Grants +10 to damage when Special triggers.", "200", "-", "-" ],
+            [ "Resolute Blade", "16", "1", "Grants Atk+3. Grants +10 to damage when Special triggers.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "5", "-" ],
+            [ "Luna", "3", "Resolve combat as if foe suffered Def/Res-50%.", "200", "5", "-" ]
+        ],
+        "base_passive_A":
+        [   [ "Flashing Blade 1", "If unit's Spd - foe's Spd ≥ 5, unit gains Special cooldown charge +1 per attack. (If using other similar skill, only highest value applied.)", "60", "-" ],
+            [ "Flashing Blade 2", "If unit's Spd - foe's Spd ≥ 3, unit gains Special cooldown charge +1 per attack. (If using other similar skill, only highest value applied.)", "120", "-" ],
+            [ "Flashing Blade 3", "If unit's Spd - foe's Spd ≥ 1, unit gains Special cooldown charge +1 per attack. (If using other similar skill, only highest value applied.)", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Vantage 1", "Unit counterattacks first when attacked at HP ≤ 25%.", "50", "-" ],
+            [ "Vantage 2", "Unit counterattacks first when attacked at HP ≤ 50%.", "100", "-" ],
+            [ "Vantage 3", "Unit counterattacks first when attacked at HP ≤ 75%.", "200", "5" ]
+        ],
+        "base_passive_C": []
+    },
     "michalis__ambitious_king":
     {   "tag": "michalis__ambitious_king",
         "name": "Michalis",
@@ -4557,7 +4714,7 @@ let chars =
         "base_support":
         [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
             [ "Mend", "1", "Restores 10 HP.", "100", "-", "-" ],
-            [ "Recover", "1", "Restores 15 HP. Slows Special trigger (cooldown count +1).", "200", "5", "-" ]
+            [ "Recover", "1", "Restores 15 HP. Slows Special trigger (cooldown count+1).", "200", "5", "-" ]
         ],
         "base_special":
         [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "-", "-" ],
@@ -4638,7 +4795,7 @@ let chars =
         "base_support": [],
         "base_special":
         [   [ "Rising Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "150", "4", "3" ],
-            [ "Blazing Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5x (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
+            [ "Blazing Wind", "5", "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).", "300", "-", "4" ]
         ],
         "base_passive_A": [],
         "base_passive_B":
@@ -4849,7 +5006,7 @@ let chars =
         "name": "Nowi",
         "epithet": "Eternal Witch",
         "subname": "👻",
-        "description": "Manakete who travels with Chrom's group. She may be over a thousand years old, but she still gets candy. Appears in Fire Emblem Awakening.",
+        "description": "Manakete who travels with Chrom's group. She may be over a thousand years old, but she still gets candy.",
         "origin": "Fire Emblem Awakening",
         "weapon_type": "red_tome",
         "colour": "red",
@@ -5796,12 +5953,14 @@ let chars =
         "growth_points": [ 5, 6, 6, 5, 6 ],
         "base_weapons":
         [   [ "Assault", "10", "2", "-", "50", "-", "-" ],
-            [ "Fear", "5", "2", "After combat, inflicts Atk-6 on targeted foe through its next action.", "150", "-", "4" ]
+            [ "Fear", "5", "2", "After combat, inflicts Atk-6 on targeted foe through its next action.", "150", "-", "4" ],
+            [ "Fear+", "12", "2", "After combat, inflicts Atk-7 on target and foes within 2 spaces through their next actions.", "300", "-", "5" ]
         ],
         "base_support":
         [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
             [ "Mend", "1", "Restores 10 HP.", "100", "4", "-" ],
-            [ "Physic", "2", "Restores 8 HP. Rng: 2.", "200", "5", "4" ]
+            [ "Physic", "2", "Restores 8 HP. Rng: 2.", "200", "5", "4" ],
+            [ "Physic+", "2", "Restores HP = 50% of Atk. (Minimum of 8 HP.) Rng: 2.", "300", "5", "5" ]
         ],
         "base_special":
         [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "4", "-" ],
@@ -5820,7 +5979,7 @@ let chars =
         "name": "Sakura",
         "epithet": "Gentle Nekomata",
         "subname": "👻",
-        "description": "This Hoshidan princess is so kind that she wouldn't play a trick on anyone, even if they didn't give her candy. Appears in Fire Emblem Fates.",
+        "description": "This Hoshidan princess is so kind that she wouldn't play a trick on anyone, even if they didn't give her candy.",
         "origin": "Fire Emblem Fates",
         "weapon_type": "colorless_dagger",
         "colour": "colorless",
@@ -5996,7 +6155,7 @@ let chars =
         "base_support":
         [   [ "Heal", "1", "Restores 5 HP.", "-", "-", "-" ],
             [ "Mend", "1", "Restores 10 HP.", "100", "3", "-" ],
-            [ "Recover", "1", "Restores 15 HP. Slows Special trigger (cooldown count +1).", "200", "-", "4" ]
+            [ "Recover", "1", "Restores 15 HP. Slows Special trigger (cooldown count+1).", "200", "-", "4" ]
         ],
         "base_special":
         [   [ "Imbue", "1", "When healing an ally with a staff, increases recovered HP by 10.", "50", "4", "-" ],
@@ -6533,30 +6692,31 @@ let chars =
         "limited": false,
         "summon": true,
         "base_stats":
-        {   "5": [ 17, 8, 9, 4, 6 ]
+        {   "4": [ 16, 8, 9, 3, 5 ],
+            "5": [ 17, 8, 9, 4, 6 ]
         },
         "growth_points": [ 6, 7, 8, 2, 5 ],
         "base_weapons":
         [   [ "Thunder", "4", "2", "-", "50", "-", "-" ],
             [ "Elthunder", "6", "2", "-", "100", "-", "-" ],
-            [ "Blárblade", "9", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "200", "-", "-" ],
-            [ "Blárblade+", "13", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "300", "5", "-" ]
+            [ "Blárblade", "9", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "200", "4", "-" ],
+            [ "Blárblade+", "13", "2", "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt.", "300", "5", "5" ]
         ],
         "base_support":
-        [   [ "Rally Resistance", "1", "Grants Res+4 to an adjacent ally until the end of the turn.", "150", "5", "-" ],
-            [ "Rally Speed Resistance", "1", "Grants Spd/Res+3 to an adjacent ally until the end of the turn.", "300", "-", "5" ]
+        [   [ "Rally Resistance", "1", "Grants Res+4 to an adjacent ally until the end of the turn.", "150", "4", "-" ],
+            [ "Rally Speed Resistance", "1", "Grants Spd/Res+3 to an adjacent ally until the end of the turn.", "300", "-", "4" ]
         ],
         "base_special": [],
         "base_passive_A":
         [   [ "Attack +1", "Grants Atk+1.", "30", "-" ],
-            [ "Attack Res 1", "Grants Atk/Res+1.", "80", "-" ],
+            [ "Attack Res 1", "Grants Atk/Res+1.", "80", "4" ],
             [ "Attack Res 2", "Grants Atk/Res+2.", "160", "5" ]
         ],
         "base_passive_B": [],
         "base_passive_C":
         [   [ "Spur Spd 1", "Grants adjacent allies Spd+2 during combat.", "50", "-" ],
             [ "Drive Spd 1", "Grants allies within 2 spaces Spd+2 during combat.", "120", "-" ],
-            [ "Drive Spd 2", "Grants allies within 2 spaces Spd+3 during combat.", "240", "5" ]
+            [ "Drive Spd 2", "Grants allies within 2 spaces Spd+3 during combat.", "240", "4" ]
         ]
     },
     "takumi__wild_card":
