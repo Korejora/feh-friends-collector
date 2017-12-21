@@ -10,11 +10,11 @@ let allies = {};
 allies.setup = function allies_setup()
 {
     allies.list = [];
-    allies.tags = [];
 
     for ( let key in chars )
     {   allies.list.push( new ally(chars[key]) );
-        allies.tags.push(key);
+        ally_index = (allies.list.length - 1);
+        allies.list[ally_index].index = ally_index;
     }
 
     allies.list.forEach(function setup_ally(ally)
@@ -23,6 +23,7 @@ allies.setup = function allies_setup()
     });
 
     allies.feh = new ally(allies.feh__messenger_owl);
+    allies.feh.obtained = 0;
 };
 
 
@@ -80,7 +81,7 @@ class ally
             this.base_skills.weapons[i].cost   = parseInt(c.base_weapons[i][4]) || c.base_weapons[i][4];
             this.base_skills.weapons[i].known  = parseInt(c.base_weapons[i][5]) || c.base_weapons[i][5];
             this.base_skills.weapons[i].learn  = parseInt(c.base_weapons[i][6]) || c.base_weapons[i][6];
-            // inheritance rules show up only in the skill data, not character data
+            // inheritance rules are not available on the wiki
             this.base_skills.weapons[i].inherit = this.get_skill_inheritance_rule('weapons', this.base_skills.weapons[i].name);
             this.base_skills.weapons[i].weapon_type = this.weapon_type;
         }
@@ -163,7 +164,12 @@ class ally
     {   if(this.favourite) { return '❤'; } else { return false; }
     }
 
-    get_obtained_order() { return this.obtained; }
+    get_obtained() { return this.obtained; }
+
+    get_index()
+    {   if(this.obtained) { return (this.obtained - 1); }
+        return this.index;
+    }
 
     get_origin_text() { return this.origin; }
     get_catalog_index() { return catalog.indexOf(this.tag); }
@@ -451,7 +457,6 @@ class ally
     }
     undo_send_home()
     {   this.home = false;
-        refreshment();
     }
     is_home() { return this.home; }
 
@@ -499,7 +504,7 @@ class ally
     {   let properties = {};
         properties.name = this.get_name();
         properties.subname = this.get_subname();
-        properties.obtained = this.get_obtained_order();
+        properties.obtained = this.get_obtained();
         properties.favourite = this.is_favourite();
         properties.fruit = this.get_fruit();
         properties.origin = this.get_catalog_index();
@@ -576,7 +581,9 @@ allies.feh__messenger_owl =
           "At the start of every third turn, unit recovers 10 HP.", "400" ]
     ],
     "base_support": [],
-    "base_special": [],
+    "base_special":
+    [   [ "Eavesdropping Owl", "100", "Snoop on the Order of Heroes to gather the juiciest scoops on Fire Emblem Heroes.", "100", "-", "-" ],
+    ],
     "base_passive_A": [],
     "base_passive_B": [],
     "base_passive_C": []

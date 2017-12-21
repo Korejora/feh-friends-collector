@@ -38,7 +38,7 @@ let tableau =
         { key:'passive_C', display:'Passive C', parent_div:'skill' }
     ],
 
-    setup_friends_table : function()
+    setup_friends_table()
     {   this.friends_table = new this.table();
         this.friends_table.ally_list = friends.roster;
         this.friends_table.last_sorted = 'obtained';
@@ -47,7 +47,7 @@ let tableau =
         this.table_output_div.appendChild(this.friends_table.div);
     },
 
-    setup_allies_table : function()
+    setup_allies_table()
     {   this.allies_table = new this.table();
         this.allies_table.ally_list = allies.list;
         this.allies_table.last_sorted = 'name';
@@ -95,15 +95,15 @@ let tableau =
     },
 
     add_feh_row()
-    {   this.friends_table.div.appendChild(tableau.feh_row.div);
+    {   this.friends_table.contents_div.appendChild(tableau.feh_row.div);
     },
 
-    refresh()
+    refresh : function tableau_refresh()
     {   this.friends_table.refresh();
         this.allies_table.refresh();
     },
 
-    rebuild()
+    rebuild : function tableau_rebuild()
     {   this.active_table.rebuild_rows();
     },
 
@@ -276,6 +276,15 @@ tableau.table = class
     constructor()
     {   this.div = document.createElement('div');
         this.div.className = 'table_wrapper';
+
+        // this.title_row_div = document.createElement('div');
+        // this.div.appendChild(this.title_row_div);
+        this.build_title_row();
+
+        this.contents_div = document.createElement('div');
+        this.contents_div.className = 'table_contents';
+        this.div.appendChild(this.contents_div);
+
         this.ally_list = [];
         this.rows = [];
         this.filtered_rows = [];
@@ -283,9 +292,8 @@ tableau.table = class
     }
 
 
-    rebuild_title_row ()
-    {
-        this.title_row = new tableau.row();
+    build_title_row ()
+    {   this.title_row = new tableau.row();
         this.title_row.div.className += ' title_row ';
         this.div.appendChild(this.title_row.div);
 
@@ -304,14 +312,13 @@ tableau.table = class
             if (prop.mouseover) { title_div.title = prop.mouseover; }
 
             title_div.onmousedown = function(){ that.sort_rows(prop.key); };
-
         });
     }
 
     rebuild_rows ()
     {
-        this.div.innerHTML = '';
-        this.rebuild_title_row();
+        this.contents_div.innerHTML = '';
+        // this.rebuild_title_row();
 
         this.rows = [];
         for ( let i = 0;  i < this.ally_list.length;  i++)
@@ -329,12 +336,13 @@ tableau.table = class
 
     refresh ()
     {
+        this.div.appendChild(this.contents_div);
         if(this == tableau.active_table) { this.hide(); }
 
         let rows = this.rows;
-        this.div.appendChild(tableau.feh_row.div);
+        // this.contents_div.appendChild(tableau.feh_row.div);
         for ( let i = 0;  i < rows.length;  i++)
-        {   this.div.appendChild(rows[i].div);
+        {   this.contents_div.appendChild(rows[i].div);
         }
         this.filter_rows();
 
@@ -440,6 +448,7 @@ tableau.row = class
         tableau.row_properties.forEach( function(property)
         {
             let key = property.key;
+            let prop = that[key];
             // let val = that.ally[key]; // property value FIXME: deprecated
 
             let item_div = document.createElement('div');
@@ -474,30 +483,34 @@ tableau.row = class
                     break;
                 case 'rarity':
                     item_div.className += " " + 'rarity' + " ";
-                    property.child_img = document.createElement('img');
-                    property.child_img.onerror = function(){this.src = stringy.img_feh;};
-                    property.child_img.src = stringy.find_img_path(
+                    that.rarity = {};
+                    that.rarity.img = document.createElement('img');
+                    that.rarity.img.onerror = function(){this.src = stringy.img_feh;};
+                    that.rarity.img.src = stringy.find_img_path(
                         'rarity', that.ally.get_rarity() );
                     break;
                 case 'weapon_type':
                     item_div.className += " " + that.ally.get_weapon_type() + " ";
-                    property.child_img = document.createElement('img');
-                    property.child_img.onerror = function(){this.src = stringy.img_feh;};
-                    property.child_img.src = stringy.find_img_path(
+                    that.weapon_type = {};
+                    that.weapon_type.img = document.createElement('img');
+                    that.weapon_type.img.onerror = function(){this.src = stringy.img_feh;};
+                    that.weapon_type.img.src = stringy.find_img_path(
                         'weapon', that.ally.get_weapon_type() );
                     break;
                 case 'colour_type':
                     item_div.className += " " + that.ally.get_colour() + " ";
-                    property.child_img = document.createElement('img');
-                    property.child_img.onerror = function(){this.src = stringy.img_feh;};
-                    property.child_img.src = stringy.find_img_path(
+                    that.colour_type = {};
+                    that.colour_type.img = document.createElement('img');
+                    that.colour_type.img.onerror = function(){this.src = stringy.img_feh;};
+                    that.colour_type.img.src = stringy.find_img_path(
                         'colour', that.ally.get_colour() );
                     break;
                 case 'move_type':
                     item_div.className += " " + that.ally.get_move_type() + " ";
-                    property.child_img = document.createElement('img');
-                    property.child_img.onerror = function(){this.src = stringy.img_feh;};
-                    property.child_img.src = stringy.find_img_path(
+                    that.move_type = {};
+                    that.move_type.img = document.createElement('img');
+                    that.move_type.img.onerror = function(){this.src = stringy.img_feh;};
+                    that.move_type.img.src = stringy.find_img_path(
                         'move', that.ally.get_move_type() );
                     break;
                 case 'weapon':
@@ -517,6 +530,7 @@ tableau.row = class
         tableau.row_properties.forEach( function(property, index)
         {
             let key = property.key;
+            let prop = that[key];
             // let val = that.ally[key];
             let item_div = that.itemdivs[index];
             let display_name = '';
@@ -528,7 +542,7 @@ tableau.row = class
                     display_name = that.ally.get_name() || 'ERR_ALLY_NAME_NOT_FOUND';
                     break;
                 case 'obtained':
-                    display_name = that.ally.get_obtained_order();
+                    display_name = that.ally.get_obtained();
                     break;
                 case 'favourite':
                     display_name = that.ally.is_favourite() || "--";
@@ -596,7 +610,7 @@ tableau.row = class
             {   item_div.innerText = display_name;
             }
 
-            if (property.child_img) { item_div.appendChild(property.child_img); }
+            if (prop && prop.img) { item_div.appendChild(prop.img); }
 
         });
     } // end refresh_items
