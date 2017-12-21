@@ -23,7 +23,7 @@ let adder =
         adder.name_dropdown = document.createElement('select');
         adder.name_dropdown.className = ' dropdown ';
         allies.list.forEach( function(ally)
-        {   if (!ally.get_origin_text().includes("Heroes")) // exclude Heroes heroes
+        {   if (!stringy.includes_any(ally.get_name(),["Anna","Alfonse","Sharena"])) // exclude Heroes heroes
             {   if (ally.get_subname()) { adder.list[ally.get_name() + ally.get_subname()] = ally.get_tag();}
                 else {adder.list[ally.get_name()] = ally.get_tag(); }
             }
