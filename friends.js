@@ -128,9 +128,9 @@ let friends =
     },
 
     restore_friends_googly ()
-    {   let spreadsheet_ID = porter.get_googly_spreadsheet_ID();
+    {
         // this reads the google spreadsheet then calls the friends function read_googly_rows_then_restore
-        googly.read_sheet_then_call_friends(spreadsheet_ID);
+        googly.read_sheet_then_call_friends();
         // this has to be a chain of functions calling each other to prevent them racing each other
      // this.after_read_googly(rows);
     },
@@ -271,7 +271,7 @@ let friends =
 
     },
 
-    find_tag : function(friend)
+    find_tag : function find_friend_tag(friend)
     {
 
         if( !friend.name)

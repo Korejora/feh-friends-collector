@@ -2,6 +2,7 @@
 // googly.js
 // handles google voodoo
 
+var gapi; //define gapi?
 
 let googly =
 {
@@ -74,11 +75,21 @@ let googly =
     } ,
 
 
-    read_sheet_then_call_friends (spreadsheet_ID)
+    read_sheet_then_call_friends ()
     {
+        let spreadsheet_ID = porter.get_googly_spreadsheet_ID();
+
         if (!spreadsheet_ID)
-        {   console.log('no spreadsheet ID found! ..'); return;
+        {   porter.googly_note("No spreadsheet ID found.",'error');
+            console.log('no spreadsheet ID found! ..');
+            return;
          // spreadsheet_ID = googly.spreadsheet_ID;
+        }
+
+        if (!gapi || !gapi.client || !gapi.client.sheets)
+        {   porter.googly_note("Couldn't find the google api.",'error');
+            console.log("something went wrong with the gapi client ..");
+            return;
         }
 
         gapi.client.sheets.spreadsheets.values.get
