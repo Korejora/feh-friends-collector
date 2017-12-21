@@ -56,6 +56,7 @@ let googly =
             authorizeButton.style.display = 'none';
             signoutButton.style.display = 'inline';
             porter.googly.saverestoredivvy.show();
+            porter.googly.active.show();
             porter.googly_note("Please be careful with the write function! It will CLEAR the spreadsheet (and may also set it on fire)!",'warning');
         }
         else
