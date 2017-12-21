@@ -153,25 +153,35 @@ porter.googly.setup = function porter_googly_setup()
 {
     this.select = new selectdiv({ innertext: "write/read google sheet ", deselectable:true });
     let that = this;
-    this.select.activate = function porter_select_googly() { that.show(); };
+    this.select.activate = function porter_select_googly()
+    {   that.show();
+        if(gapi && gapi.client && gapi.client.sheets)
+        {   that.active.show();
+        } else
+        {   that.active.hide();
+            porter.googly_note("Couldn't find the google api.",'error');
+        }
+    };
     this.select.deactivate = function porter_deselect_googly() { that.hide(); };
     this.select.icon = document.createElement('img');
     this.select.icon.className = 'icon';
     this.select.icon.src = stringy.path_google_sheets_icon;
     this.select.add_child(this.select.icon);
 
+    this.active = new divvy({parent:this.div});
+
     this.textarea = document.createElement('textarea');
     this.textarea.placeholder = "google spreadsheet ID goes here";
     this.textarea.cols = '60';
     this.textarea.rows = '2';
     this.textarea.oninput = function(){ porter.googly.handle_change(); };
-    this.div.appendChild(this.textarea);
+    this.active.add_child(this.textarea);
 
     if(localStorage.googlytext) { this.set_text(localStorage.googlytext); }
 
-    this.add_squiggly();
+    this.active.add_squiggly();
 
-    this.saverestoredivvy = new divvy({parent:this.div});
+    this.saverestoredivvy = new divvy({parent:this.active.div});
 
     this.save = new divvy(
         {   parent:this.saverestoredivvy.div,
@@ -191,9 +201,11 @@ porter.googly.setup = function porter_googly_setup()
 
     this.saverestoredivvy.add_squiggly();
 
-    this.oauthbutton = new divvy({parent:this.div});
+    this.oauthbutton = new divvy({parent:this.active.div});
 
-    this.add_squiggly();
+    this.active.add_squiggly();
+
+    this.add_linebreak();
 
     this.note = new divvy({id:'googly_note',parent:this.div, classname:'warning'});
 
