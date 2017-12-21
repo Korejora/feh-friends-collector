@@ -78,8 +78,6 @@ function run_this_function_on_queue_complete()
 
     porter.setup();
 
-    googly.setup();
-
 
     allies.setup();
     alter.setup();
@@ -90,6 +88,8 @@ function run_this_function_on_queue_complete()
 
     document.getElementById('sad_ie_div').innerHTML = "Please send bug reports or feature requests to " + stringy.html_code_email + " or post them as <a href='https://github.com/korejora/feh-friends-collector/issues'>issues on github</a>.";
 
+    googly.setup();
+    
 }
 
 function refreshment()
