@@ -77,7 +77,7 @@ class ally
             this.base_skills.weapons[i].name   = c.base_weapons[i][0];
             this.base_skills.weapons[i].might  = parseInt(c.base_weapons[i][1]);
             this.base_skills.weapons[i].range  = parseInt(c.base_weapons[i][2]);
-            this.base_skills.weapons[i].effect = c.base_weapons[i][3];
+            this.base_skills.weapons[i].effect = "Mt " + this.base_skills.weapons[i].might + ". " + c.base_weapons[i][3];
             this.base_skills.weapons[i].cost   = parseInt(c.base_weapons[i][4]) || c.base_weapons[i][4];
             this.base_skills.weapons[i].known  = parseInt(c.base_weapons[i][5]) || c.base_weapons[i][5];
             this.base_skills.weapons[i].learn  = parseInt(c.base_weapons[i][6]) || c.base_weapons[i][6];
