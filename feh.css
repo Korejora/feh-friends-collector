@@ -233,6 +233,15 @@ img.icon
 
 
 
+#table_output_div
+{   display: block;
+    width:99%;
+    overflow: hidden;
+}
+
+
+
+
 #table_setting
 {   display: block;
     margin: 4px;
@@ -286,12 +295,16 @@ img.icon
 .table_wrapper
 {   background-color: hotpink; /* should never be visible */
     display: block;
-    width:99%;
+    width: 100%;
     margin:auto;
     border: 1px solid dimgrey;
     color: #444444;
-    overflow-y:scroll; /* not auto so scroll always shows for title row width */
+}
+.table_contents
+{   display: block;
     max-height:480px;
+    overflow-y:scroll; /* not auto so scroll always shows for title row width */
+    width: calc(100% + 17px); /* remove the scrollbar */
 }
 
 .row
@@ -307,11 +320,6 @@ img.icon
  /* color: #555555; */ /* belongs to the table */
 }
 .title_row
-{   position: absolute;
-    width: 97.232%;
-    z-index: 1;
-}
-.row .item.title
 {   border-bottom-style: solid;
     border-bottom-width: 1px;
 }
