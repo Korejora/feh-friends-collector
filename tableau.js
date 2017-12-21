@@ -749,7 +749,7 @@ tableau.sort_properties =
 }; // end sort_properties
 
 tableau.check_if_reverse_sort = function(property)
-{   let reverse_sorts = ['rarity','rating','hp','atk','spd','def','res','subname'];
+{   let reverse_sorts = ['obtained','rarity','rating','hp','atk','spd','def','res','subname'];
     if ( reverse_sorts.indexOf(property) != -1 ) { return true; }
     else { return false; }
 };
