@@ -150,7 +150,7 @@ class ally
     {   if (this.subname)
         {   return this.subname;
         }else
-        {   return null;
+        {   return "";
         }
     }
     get_epithet() { return this.epithet; }
@@ -173,7 +173,12 @@ class ally
 
     get_origin_text() { return this.origin; }
     get_catalog_index() { return catalog.indexOf(this.tag); }
-    is_askrian() { return (this.get_origin_text() == "Fire Emblem Heroes"); }
+
+    is_askrian()
+    {   if( this.name == "Anna" || this.name == "Alfonse" || this.name == "Sharena")
+        {   return true; }
+        return false;
+    }
 
     set_rarity (r)
     {

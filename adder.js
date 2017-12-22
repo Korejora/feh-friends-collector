@@ -23,10 +23,8 @@ let adder =
         adder.name_dropdown = document.createElement('select');
         adder.name_dropdown.className = ' dropdown ';
         allies.list.forEach( function(ally)
-        {   if (!stringy.includes_any(ally.get_name(),["Anna","Alfonse","Sharena"])) // exclude Heroes heroes
-            {   if (ally.get_subname()) { adder.list[ally.get_name() + ally.get_subname()] = ally.get_tag();}
-                else {adder.list[ally.get_name()] = ally.get_tag(); }
-            }
+        {   if (ally.is_askrian()) { return; } // exclude Heroes heroes
+            adder.list[ally.get_name() + ally.get_subname()] = ally.get_tag();
         });
         for ( let name in adder.list )
         {   let option = document.createElement('option');
