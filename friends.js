@@ -37,6 +37,7 @@ let friends =
 
             this.roster.push(friend);
             friend.obtained = character.obtained || this.roster.length;
+            friend.index = this.roster.length - 1;
 
             return friend;
 
@@ -418,6 +419,31 @@ let friends =
 
     },
 
+    swap_next : function swap_friend_next(index)
+    {   let swapi = index + 1;
+        if(!this.roster[index]||!this.roster[swapi])
+        {   console.log("ERROR: hero index [" + index + "] not defined");
+            return;
+        }
+        this.roster[index] = [this.roster[swapi], this.roster[swapi] = this.roster[index] ][0];
+        this.roster[index].index = index;
+        this.roster[swapi].index = swapi;
+        this.roster[index].obtained = index+1;
+        this.roster[swapi].obtained = swapi+1;
+    },
+
+    swap_previous : function swap_friend_previous(index)
+    {   let swapi = index - 1;
+        if(!this.roster[index]||!this.roster[swapi])
+        {   console.log("ERROR: hero index [" + index + "] not defined");
+            return;
+        }
+        this.roster[index] = [this.roster[swapi], this.roster[swapi] = this.roster[index] ][0];
+        this.roster[index].index = index;
+        this.roster[swapi].index = swapi;
+        this.roster[index].obtained = index+1;
+        this.roster[swapi].obtained = swapi+1;
+    }
 
 };
 

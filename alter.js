@@ -155,6 +155,10 @@ class subalter_basic extends selectable
 
         this.nature_setup();
 
+        this.display.add_linebreak();
+
+        this.swap_setup();
+
     }
 
     rarity_setup()
@@ -271,6 +275,38 @@ class subalter_basic extends selectable
         lvl.display.add_text(" ");
 
 
+    }
+
+    swap_setup()
+    {   this.swap = new divvy({parent:this.display});
+        this.swap.div.style.padding = '10px';
+        this.swap.add_text("swap with ");
+
+        this.swap.prev =
+            new divvy(
+                {   classname:"clickables",
+                    innertext:"previous",
+                    parent:this.swap
+                });
+        this.swap.prev.div.onclick = function alter_swap_prev()
+        {   friends.swap_previous(alter.ally.get_index());
+            refreshment();
+        };
+
+        this.swap.add_text(" / " );
+
+        this.swap.next =
+            new divvy(
+                {   classname:"clickables",
+                    innertext:"next",
+                    parent:this.swap
+                });
+        this.swap.next.div.onclick = function alter_swap_next()
+        {   friends.swap_next(alter.ally.get_index());
+            refreshment();
+        };
+
+        this.swap.add_text(" hero ");
     }
 
     rebuild()

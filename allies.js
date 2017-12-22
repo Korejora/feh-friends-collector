@@ -165,11 +165,7 @@ class ally
     }
 
     get_obtained() { return this.obtained; }
-
-    get_index()
-    {   if(this.obtained) { return (this.obtained - 1); }
-        return this.index;
-    }
+    get_index() { return this.index; }
 
     get_origin_text() { return this.origin; }
     get_catalog_index() { return catalog.indexOf(this.tag); }
