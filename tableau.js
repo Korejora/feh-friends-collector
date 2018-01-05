@@ -333,7 +333,7 @@ tableau.table = class
 
         this.refresh();
         
-        this.sort_rows(previous_sort);
+        this.sort_rows(this.last_sorted);
 
     }
 
