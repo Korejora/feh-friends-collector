@@ -498,6 +498,44 @@ let chars =
             [ "Drive Res 2", "Grants allies within 2 spaces Res+3 during combat.", "240", "5" ]
         ]
     },
+    "azura__celebratory_spirit":
+    {   "tag": "azura__celebratory_spirit",
+        "name": "Azura",
+        "epithet": "Celebratory Spirit",
+        "subname": "🎉",
+        "description": "An enchanting princess raised in Hoshido who has never lost a match of the traditional sport hanetsuki when played at the New Year.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "green_axe",
+        "colour": "green",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 15, 6, 9, 5, 4 ]
+        },
+        "growth_points": [ 6, 7, 8, 4, 6 ],
+        "base_weapons":
+        [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
+            [ "Hagoita", "10", "2", "Grants Def/Res+2 during combat to allies within 2 spaces.", "200", "-", "-" ],
+            [ "Hagoita+", "14", "2", "Grants Def/Res+2 during combat to allies within 2 spaces.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Sing", "1", "Enables target to take another action. Cannot be used on units with Sing or Dance.", "150", "5", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   [ "Earth Dance 1", "If Sing or Dance is used, target also granted Def+3.", "50", "-" ],
+            [ "Earth Dance 2", "If Sing or Dance is used, target also granted Def+4.", "100", "-" ],
+            [ "Earth Dance 3", "If Sing or Dance is used, target also granted Def+5.", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Hone Spd 1", "Grants adjacent allies Spd+2 through their next actions at the start of each turn.", "50", "-" ],
+            [ "Hone Spd 2", "Grants adjacent allies Spd+3 through their next actions at the start of each turn.", "100", "-" ],
+            [ "Hone Fliers", "Grants adjacent flying allies Atk/Spd+6 through their next actions at the start of each turn.", "200", "5" ]
+        ]
+    },
     "barst__the_hatchet":
     {   "tag": "barst__the_hatchet",
         "name": "Barst",
@@ -921,6 +959,45 @@ let chars =
         [   [ "Live for Bounty", "If unit survives, get 1.5x shards/crystals from a Training Tower map. (If similar skill effects also used, only highest multiplier applied.)", "100", "5" ]
         ],
         "base_passive_C": []
+    },
+    "camilla__holiday_traveler":
+    {   "tag": "camilla__holiday_traveler",
+        "name": "Camilla",
+        "epithet": "Holiday Traveler",
+        "subname": "🎉",
+        "description": "A princess of Nohr who dotes on her sibling Corrin and is trying to learn about Hoshidan culture through fashion.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "red_sword",
+        "colour": "red",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 18, 9, 9, 7, 4 ]
+        },
+        "growth_points": [ 6, 7, 8, 7, 5 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Kadomatsu", "10", "2", "Grants Def/Res+2 during combat to allies within 2 spaces.", "200", "-", "-" ],
+            [ "Kadomatsu+", "14", "2", "Grants Def/Res+2 during combat to allies within 2 spaces.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Dragon Gaze", "4", "Grants +30% to Atk.", "100", "-", "-" ],
+            [ "Draconic Aura", "3", "Grants +30% to Atk.", "200", "-", "-" ]
+        ],
+        "base_passive_A":
+        [   [ "Spd Def Bond 1", "Grants Spd/Def+3 to this unit during combat if unit is adjacent to an ally.", "60", "-" ],
+            [ "Spd Def Bond 2", "Grants Spd/Def+4 to this unit during combat if unit is adjacent to an ally.", "120", "-" ],
+            [ "Spd Def Bond 3", "Grants Spd/Def+5 to this unit during combat if unit is adjacent to an ally.", "240", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Spur Def 2", "Grants adjacent allies Def+3 during combat.", "100", "-" ],
+            [ "Ward Fliers", "Grants flying allies within 2 spaces Def/Res+4 during combat.", "200", "5" ]
+        ]
     },
     "camus__sable_knight":
     {   "tag": "camus__sable_knight",
@@ -1624,6 +1701,45 @@ let chars =
             [ "Fortify Fliers", "Grants adjacent flying allies Def/Res+6 through their next actions at the start of each turn.", "200", "5" ]
         ]
     },
+    "corrin__enjoying_tradition":
+    {   "tag": "corrin__enjoying_tradition",
+        "name": "Corrin",
+        "epithet": "Enjoying Tradition",
+        "subname": "🎉",
+        "description": "A Hoshidan prince raised in Nohr. His kimono was prepared by Mikoto while she was still alive.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "colorless_bow",
+        "colour": "colorless",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 18, 8, 8, 6, 5 ]
+        },
+        "growth_points": [ 5, 7, 6, 9, 2 ],
+        "base_weapons":
+        [   [ "Iron Bow", "4", "2", "Effective against flying units. ", "50", "-", "-" ],
+            [ "Steel Bow", "6", "2", "Effective against flying units. ", "100", "-", "-" ],
+            [ "Hama Ya", "8", "2", "Effective against flying foes . Grants Def/Res+2 during combat to allies within 2 spaces.", "200", "-", "-" ],
+            [ "Hama Ya+", "12", "2", "Effective against flying foes . Grants Def/Res+2 during combat to allies within 2 spaces.", "300", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Rally Defense", "1", "Grants Def+4 to an adjacent ally until the end of the turn.", "150", "-", "-" ],
+            [ "Rally Defense Resistance", "1", "Grants Def/Res+3 to an adjacent ally until the end of the turn.", "300", "-", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Defense +1", "Grants Def+1.", "30", "-" ],
+            [ "Attack Def +1", "Grants Atk/Def+1.", "80", "-" ],
+            [ "Attack Def +2", "Grants Atk/Def+2.", "160", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Def 1", "Grants adjacent allies Def+2 during combat.", "50", "-" ],
+            [ "Spur Def Res 1", "Grants adjacent allies Def/Res +2 during combat", "120", "-" ],
+            [ "Spur Def Res 2", "Grants adjacent allies Def/Res +3 during combat.", "240", "5" ]
+        ]
+    },
     "deirdre__lady_of_the_forest":
     {   "tag": "deirdre__lady_of_the_forest",
         "name": "Deirdre",
@@ -1797,7 +1913,7 @@ let chars =
         "growth_points": [ 8, 6, 8, 8, 3 ],
         "base_weapons":
         [   [ "Iron Sword", "6", "1", "-", "50", "2", "-" ],
-            [ "Steel Sword", "8", "1", "-", "100", "-", "2" ],
+            [ "Steel Sword", "8", "1", "-", "100", "3", "2" ],
             [ "Brave Sword", "5", "1", "Spd-5. Attack twice when initiating combat.", "200", "4", "3" ],
             [ "Brave Sword+", "8", "1", "Spd-5. Attack twice when initiating combat.", "300", "5", "5" ]
         ],
@@ -2661,6 +2777,46 @@ let chars =
         [   [ "Sword Valor 1", "If unit survives and uses a sword, unit gets 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "30", "-" ],
             [ "Sword Valor 2", "If unit survives, all sword users on team get 1.5x SP. (If similar skill effects also used, only highest multiplier applied.)", "60", "-" ],
             [ "Sword Valor 3", "If unit survives, all sword users on team get 2x SP. (If similar skill effects also used, only highest multiplier applied.)", "120", "5" ]
+        ]
+    },
+    "gunnthra__voice_of_dreams":
+    {   "tag": "gunnthra__voice_of_dreams",
+        "name": "Gunnthrá",
+        "epithet": "Voice of Dreams",
+        "description": "The eldest princess of Nifl, the Kingdom of Ice. A gentle and caring soul with strong maternal instincts.",
+        "origin": "Fire Emblem Heroes",
+        "weapon_type": "green_tome",
+        "colour": "green",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 15, 7, 9, 6, 6 ]
+        },
+        "growth_points": [ 6, 7, 7, 2, 5 ],
+        "base_weapons":
+        [   [ "Wind", "4", "2", "-", "50", "-", "-" ],
+            [ "Elwind", "6", "2", "-", "100", "-", "-" ],
+            [ "Rexcalibur", "9", "2", "-", "200", "-", "-" ],
+            [ "Blizzard", "14", "2", "Grants Res+3. Grants bonus to unit's Atk equal to total penalties on foe during combat.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Chilling Wind", "4", "Boosts damage dealt by 50% of unit's Res.", "100", "5", "-" ],
+            [ "Glacies", "4", "Boosts damage dealt by 80% of unit's Res.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Fortress Res 1", "Grants Res+3. Inflicts Atk-3.", "40", "-" ],
+            [ "Fortress Res 2", "Grants Res+4. Inflicts Atk-3.", "80", "-" ],
+            [ "Fortress Res 3", "Grants Res+5. Inflicts Atk-3.", "160", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Chilling Seal", "At the start of each turn, if unit's HP ≥ 50%, inflicts Atk/Spd-6 on foe on the enemy team with the lowest Def through its next action. (Skill cannot be inherited.)", "300", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Res Ploy 1", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Res-3 until the end of foe's next action.", "60", "-" ],
+            [ "Res Ploy 2", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Res-4 until the end of foe's next action.", "120", "-" ],
+            [ "Res Ploy 3", "At start of turn, all foes in cardinal directions with Res 1 or more lower than unit suffer Res-5 until the end of foe's next action.", "240", "5" ]
         ]
     },
     "gunter__inveterate_soldier":
@@ -6458,9 +6614,9 @@ let chars =
             [ "HP +5", "Grants +5 to max HP.", "160", "5" ]
         ],
         "base_passive_B":
-        [   [ "Bowbreaker 1", "If unit's HP ≥ 90% in combat against a colorless bow user, unit makes a guaranteed follow-up attack and foe cannot make a follow-up attack.", "50", "-" ],
-            [ "Bowbreaker 2", "If unit's HP ≥ 70% in combat against a colorless bow user, unit makes a guaranteed follow-up attack and foe cannot make a follow-up attack.", "100", "3" ],
-            [ "Bowbreaker 3", "If unit's HP ≥ 50% in combat against a colorless bow user, unit makes a guaranteed follow-up attack and foe cannot make a follow-up attack.", "200", "4" ]
+        [   [ "Bowbreaker 1", "If unit's HP ≥ 90% in combat against a colorless bow foe, unit makes a guaranteed follow-up attack and foe cannot make a follow-up attack.", "50", "-" ],
+            [ "Bowbreaker 2", "If unit's HP ≥ 70% in combat against a colorless bow foe, unit makes a guaranteed follow-up attack and foe cannot make a follow-up attack.", "100", "3" ],
+            [ "Bowbreaker 3", "If unit's HP ≥ 50% in combat against a colorless bow foe, unit makes a guaranteed follow-up attack and foe cannot make a follow-up attack.", "200", "4" ]
         ],
         "base_passive_C": []
     },
@@ -6715,7 +6871,9 @@ let chars =
             [ "Divine Tyrfing", "16", "1", "Grants Res+3. If in combat against foe using magic, unit receives 50% less damage from the first attack.", "400", "5", "-" ]
         ],
         "base_support": [],
-        "base_special": [],
+        "base_special":
+        [   [ "Miracle", "5", "If HP &gt; 1, survive a lethal attack with 1 HP remaining.", "200", "5", "-" ]
+        ],
         "base_passive_A":
         [   [ "Close Def 1", "If unit is attacked by foe using sword, axe, lance, or dragonstone, unit receives Def/Res+2 during combat.", "60", "-" ],
             [ "Close Def 2", "If unit is attacked by foe using sword, axe, lance, or dragonstone, unit receives Def/Res+4 during combat.", "120", "-" ],
@@ -7083,6 +7241,45 @@ let chars =
             [ "Threaten Spd 2", "Inflicts Spd-4 on foes within 2 spaces through their next actions at the start of each turn.", "100", "-" ],
             [ "Threaten Spd 3", "Inflicts Spd-5 on foes within 2 spaces through their next actions at the start of each turn.", "200", "5" ]
         ]
+    },
+    "takumi__prince_of_soup":
+    {   "tag": "takumi__prince_of_soup",
+        "name": "Takumi",
+        "epithet": "Prince of Soup",
+        "subname": "🎉",
+        "description": "The Hoshidan prince who wields the divine bow Fujin Yumi. Loves miso soup, but loves ozoni, eaten at the New Year, just as much.",
+        "origin": "Fire Emblem Fates",
+        "weapon_type": "colorless_dagger",
+        "colour": "colorless",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 18, 8, 10, 4, 5 ]
+        },
+        "growth_points": [ 6, 8, 7, 2, 6 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, if unit attacked, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, if unit attacked, inflicts Def/Res-3 on foe through its next action.", "100", "-", "-" ],
+            [ "Kagami Mochi", "8", "2", "Grants Def/Res+2 during combat to allies within 2 spaces.", "200", "-", "-" ],
+            [ "Kagami Mochi+", "12", "2", "Accelerates Special trigger (cooldown count-1). After combat, if unit attacked, inflicts Def/Res-7 on target and foes within 2 spaces through their next actions.", "300", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "5", "-" ],
+            [ "Moonbow", "2", "Resolve combat as if foe suffered Def/Res-30%.", "200", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Atk Res Bond 1", "Grants Atk/Res+3 to this unit during combat if unit is adjacent to an ally.", "60", "-" ],
+            [ "Atk Res Bond 2", "Grants Atk/Res+4 to this unit during combat if unit is adjacent to an ally.", "120", "-" ],
+            [ "Atk Res Bond 3", "Grants Atk/Res+5 to this unit during combat if unit is adjacent to an ally.", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Bowbreaker 1", "If unit's HP ≥ 90% in combat against a colorless bow foe, unit makes a guaranteed follow-up attack and foe cannot make a follow-up attack.", "50", "-" ],
+            [ "Bowbreaker 2", "If unit's HP ≥ 70% in combat against a colorless bow foe, unit makes a guaranteed follow-up attack and foe cannot make a follow-up attack.", "100", "-" ],
+            [ "Bowbreaker 3", "If unit's HP ≥ 50% in combat against a colorless bow foe, unit makes a guaranteed follow-up attack and foe cannot make a follow-up attack.", "200", "5" ]
+        ],
+        "base_passive_C": []
     },
     "tana__winged_princess":
     {   "tag": "tana__winged_princess",
