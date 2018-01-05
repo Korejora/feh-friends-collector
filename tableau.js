@@ -311,7 +311,11 @@ tableau.table = class
 
             if (prop.mouseover) { title_div.title = prop.mouseover; }
 
-            title_div.onmousedown = function(){ that.sort_rows(prop.key); };
+            title_div.onmousedown = function()
+            {   that.flip_sort = (prop.key == that.last_sorted) ? !that.flip_sort : false;
+                that.sort_rows(prop.key);
+                that.last_sorted = prop.key;
+            };
         });
     }
 
@@ -377,13 +381,13 @@ tableau.table = class
     }
 
     sort_rows(property)
-    {   let reverse = (property == this.last_sorted) ? true : false;
-        if (tableau.check_if_reverse_sort(property)) { reverse = (reverse) ? false : true; }
+    {   // let reverse = (property == this.last_sorted) ? true : false;
+        let reverse = this.flip_sort;
+        if (tableau.check_if_reverse_sort(property)) { reverse = (this.flip_sort) ? false : true; }
         if (property == 'nature') { property = 'boon'; }
 
         this.rows.sort(tableau.comparison(property, reverse));
 
-        this.last_sorted = (this.last_sorted == property) ? null : property;
         this.refresh();
     }
 
@@ -749,7 +753,7 @@ tableau.sort_properties =
 }; // end sort_properties
 
 tableau.check_if_reverse_sort = function(property)
-{   let reverse_sorts = ['obtained','rarity','rating','hp','atk','spd','def','res','subname'];
+{   let reverse_sorts = ['rarity','rating','hp','atk','spd','def','res','subname'];
     if ( reverse_sorts.indexOf(property) != -1 ) { return true; }
     else { return false; }
 };
