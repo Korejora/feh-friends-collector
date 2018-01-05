@@ -332,8 +332,7 @@ tableau.table = class
         }
 
         this.refresh();
-        let previous_sort = this.last_sorted || 'obtained';
-        this.last_sorted = null;
+        
         this.sort_rows(previous_sort);
 
     }
