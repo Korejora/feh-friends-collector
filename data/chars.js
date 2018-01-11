@@ -517,8 +517,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Axe", "6", "1", "-", "50", "-", "-" ],
             [ "Steel Axe", "8", "1", "-", "100", "-", "-" ],
-            [ "Hagoita", "10", "2", "Grants Def/Res+2 during combat to allies within 2 spaces.", "200", "-", "-" ],
-            [ "Hagoita+", "14", "2", "Grants Def/Res+2 during combat to allies within 2 spaces.", "300", "5", "-" ]
+            [ "Hagoita", "10", "1", "Grants Def/Res+2 during combat to allies within 2 spaces.", "200", "-", "-" ],
+            [ "Hagoita+", "14", "1", "Grants Def/Res+2 during combat to allies within 2 spaces.", "300", "5", "-" ]
         ],
         "base_support":
         [   [ "Sing", "1", "Enables target to take another action. Cannot be used on units with Sing or Dance.", "150", "5", "-" ]
@@ -979,8 +979,8 @@ let chars =
         "base_weapons":
         [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
             [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
-            [ "Kadomatsu", "10", "2", "Grants Def/Res+2 during combat to allies within 2 spaces.", "200", "-", "-" ],
-            [ "Kadomatsu+", "14", "2", "Grants Def/Res+2 during combat to allies within 2 spaces.", "300", "5", "-" ]
+            [ "Kadomatsu", "10", "1", "Grants Def/Res+2 during combat to allies within 2 spaces.", "200", "-", "-" ],
+            [ "Kadomatsu+", "14", "1", "Grants Def/Res+2 during combat to allies within 2 spaces.", "300", "5", "-" ]
         ],
         "base_support": [],
         "base_special":
@@ -1724,8 +1724,8 @@ let chars =
             [ "Hama Ya+", "12", "2", "Effective against flying foes . Grants Def/Res+2 during combat to allies within 2 spaces.", "300", "5", "-" ]
         ],
         "base_support":
-        [   [ "Rally Defense", "1", "Grants Def+4 to an adjacent ally until the end of the turn.", "150", "-", "-" ],
-            [ "Rally Defense Resistance", "1", "Grants Def/Res+3 to an adjacent ally until the end of the turn.", "300", "-", "-" ]
+        [   [ "Rally Defense", "1", "Grants Def+4 to an adjacent ally until the end of the turn.", "150", "5", "-" ],
+            [ "Rally Defense Resistance", "1", "Grants Def/Res+3 to an adjacent ally until the end of the turn.", "300", "-", "5" ]
         ],
         "base_special": [],
         "base_passive_A":
@@ -4908,6 +4908,48 @@ let chars =
         ],
         "base_passive_C": []
     },
+    "micaiah__priestess_of_dawn":
+    {   "tag": "micaiah__priestess_of_dawn",
+        "name": "Micaiah",
+        "epithet": "Priestess of Dawn",
+        "description": "A member of the Dawn Brigade with silver hair and mysterious powers. As close with Sothe as a sister, though they're not related by blood.",
+        "origin": "Fire Emblem: Radiant Dawn",
+        "weapon_type": "blue_tome",
+        "colour": "blue",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 16, 9, 6, 5, 9 ]
+        },
+        "growth_points": [ 5, 8, 6, 2, 8 ],
+        "base_weapons":
+        [   [ "Light", "4", "2", "-", "50", "-", "-" ],
+            [ "Ellight", "6", "2", "-", "100", "-", "-" ],
+            [ "Shine", "9", "2", "-", "200", "-", "-" ],
+            [ "Thani", "14", "2", "Grants Res+3. Effective against armored and cavalry foes.  Against armored and cavalry foes using bow, dagger, magic, or staff, damage from first attack received by unit during combat reduced by 30%.", "400", "5", "-" ]
+        ],
+        "base_support":
+        [   [ "Ardent Sacrifice", "1", "Heals adjacent ally 10 HP. Unit loses 10 HP (but cannot reach 0 this way).", "150", "-", "-" ],
+            [ "Sacrifice", "1", "Converts penalties on target into bonuses. Restores target's HP = unit's current HP -1. Unit's HP reduced by amount restored.", "400", "-", "-" ]
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   [ "Distant Def 1", "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+2 during combat.", "60", "-" ],
+            [ "Distant Def 2", "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+4 during combat.", "120", "-" ],
+            [ "Distant Def 3", "If unit is attacked by foe using bow, daggers, magic, or staff, unit receives Def/Res+6 during combat.", "240", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Guard 1", "If unit's HP is 100% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "50", "-" ],
+            [ "Guard 2", "If unit's HP is ≥ 90% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "100", "-" ],
+            [ "Guard 3", "If unit's HP is ≥ 80% at start of combat, enemy is inflicted with Special cooldown charge-1. (If using similar skill, only highest value applied.)", "200", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Spur Atk 1", "Grants adjacent allies Atk+2 during combat.", "50", "-" ],
+            [ "Drive Atk 1", "Grants allies within 2 spaces Atk+2 during combat.", "120", "-" ],
+            [ "Drive Atk 2", "Grants allies within 2 spaces Atk+3 during combat.", "240", "5" ]
+        ]
+    },
     "michalis__ambitious_king":
     {   "tag": "michalis__ambitious_king",
         "name": "Michalis",
@@ -7046,6 +7088,44 @@ let chars =
             [ "Fortify Res 3", "Grants adjacent allies Res+4 through their next actions at the start of each turn.", "200", "4" ]
         ]
     },
+    "sothe__zephyr":
+    {   "tag": "sothe__zephyr",
+        "name": "Sothe",
+        "epithet": "Zephyr",
+        "description": "A thief for the Dawn Brigade. He generally shows little interest in others but tends to be overprotective of his Micaiah, who's like a sister to him.",
+        "origin": "Fire Emblem: Radiant Dawn",
+        "weapon_type": "colorless_dagger",
+        "colour": "colorless",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 17, 10, 9, 5, 4 ]
+        },
+        "growth_points": [ 6, 8, 7, 4, 4 ],
+        "base_weapons":
+        [   [ "Iron Dagger", "3", "2", "After combat, if unit attacked, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
+            [ "Steel Dagger", "5", "2", "After combat, if unit attacked, inflicts Def/Res-3 on foe through its next action.", "100", "-", "-" ],
+            [ "Silver Dagger", "7", "2", "After combat, if unit attacked, inflicts Def/Res-5 on foe through its next action.", "200", "-", "-" ],
+            [ "Peshkatz", "14", "2", "After combat, if unit attacked, inflicts Atk/Spd/Def/Res-4 on target and foes within 2 spaces of target through their next actions, and grants Atk/Spd/Def/Res+4 to unit and allies within 2 spaces for 1 turn.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "Night Sky", "3", "Grants +50% to damage dealt.", "100", "-", "-" ],
+            [ "Glimmer", "2", "Grants +50% to damage dealt.", "200", "5", "-" ]
+        ],
+        "base_passive_A":
+        [   [ "Life and Death 1", "Grants Atk/Spd+3. Inflicts Def/Res-3.", "50", "-" ],
+            [ "Life and Death 2", "Grants Atk/Spd+4. Inflicts Def/Res-4.", "100", "-" ],
+            [ "Life and Death 3", "Grants Atk/Spd+5. Inflicts Def/Res-5.", "200", "5" ]
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   [ "Spur Atk 1", "Grants adjacent allies Atk+2 during combat.", "50", "-" ],
+            [ "Spur Atk Spd 1", "Grants adjacent allies Atk/Spd +2 during combat", "120", "-" ],
+            [ "Spur Atk Spd 2", "Grants adjacent allies Atk/Spd +3 during combat.", "240", "5" ]
+        ]
+    },
     "stahl__viridian_knight":
     {   "tag": "stahl__viridian_knight",
         "name": "Stahl",
@@ -7261,7 +7341,7 @@ let chars =
         "base_weapons":
         [   [ "Iron Dagger", "3", "2", "After combat, if unit attacked, inflicts Def/Res-3 on foe through its next action.", "50", "-", "-" ],
             [ "Steel Dagger", "5", "2", "After combat, if unit attacked, inflicts Def/Res-3 on foe through its next action.", "100", "-", "-" ],
-            [ "Kagami Mochi", "8", "2", "Grants Def/Res+2 during combat to allies within 2 spaces.", "200", "-", "-" ],
+            [ "Kagami Mochi", "8", "2", "Accelerates Special trigger (cooldown count-1). After combat, if unit attacked, inflicts Def/Res-5 on target and foes within 2 spaces through their next actions.", "200", "-", "-" ],
             [ "Kagami Mochi+", "12", "2", "Accelerates Special trigger (cooldown count-1). After combat, if unit attacked, inflicts Def/Res-7 on target and foes within 2 spaces through their next actions.", "300", "5", "-" ]
         ],
         "base_support": [],
@@ -7871,6 +7951,47 @@ let chars =
         [   [ "Infantry Pulse 1", "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 5 fewer HP than unit. (Effects will stack with similar skills.)", "60", "-" ],
             [ "Infantry Pulse 2", "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 3 fewer HP than unit. (Effects will stack with similar skills.)", "120", "-" ],
             [ "Infantry Pulse 3", "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 1 fewer HP than unit. (Effects will stack with similar skills.)", "240", "5" ]
+        ]
+    },
+    "zelgius__jet-black_general":
+    {   "tag": "zelgius__jet-black_general",
+        "name": "Zelgius",
+        "epithet": "Jet-Black General",
+        "description": "A general clad head to toe in the blackest of armor, naturally known as the Black Knight. His holy sword, Alondite, has the power to rend the heavens.",
+        "origin": "Fire Emblem: Radiant Dawn",
+        "weapon_type": "red_sword",
+        "colour": "red",
+        "move_type": "Armored",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 22, 10, 7, 10, 6 ]
+        },
+        "growth_points": [ 7, 8, 8, 9, 3 ],
+        "base_weapons":
+        [   [ "Iron Sword", "6", "1", "-", "50", "-", "-" ],
+            [ "Steel Sword", "8", "1", "-", "100", "-", "-" ],
+            [ "Silver Sword", "11", "1", "-", "200", "-", "-" ],
+            [ "Alondite", "16", "1", "Enables counterattack regardless of distance if this unit is attacked.", "400", "5", "-" ]
+        ],
+        "base_support": [],
+        "base_special":
+        [   [ "New Moon", "3", "Resolve combat as if foe suffered Def/Res-30%.", "100", "5", "-" ],
+            [ "Luna", "3", "Resolve combat as if foe suffered Def/Res-50%.", "200", "-", "5" ],
+            [ "Black Luna", "3", "Resolve combat as if foe suffered Def/Res-80%. (Skill cannot be inherited.)", "500", "-", "5" ]
+        ],
+        "base_passive_A":
+        [   [ "Fierce Stance 1", "Grants Atk+2 during combat when this unit is attacked.", "50", "-" ],
+            [ "Fierce Stance 2", "Grants Atk+4 during combat when this unit is attacked.", "100", "-" ],
+            [ "Fierce Stance 3", "Grants Atk+6 during combat when this unit is attacked.", "200", "5" ]
+        ],
+        "base_passive_B":
+        [   [ "Warp Powder", "If unit's HP ≥ 80%, unit can move adjacent to any ally within 2 spaces.", "300", "5" ]
+        ],
+        "base_passive_C":
+        [   [ "Panic Ploy 1", "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 5 or more lower than unit through foe's next action.", "60", "-" ],
+            [ "Panic Ploy 2", "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 3 or more lower than unit through foe's next action.", "120", "-" ],
+            [ "Panic Ploy 3", "At start of turn, bonuses become penalties on all foes in cardinal directions with HP 1 or more lower than unit through foe's next action.", "240", "5" ]
         ]
     },
     "zephiel__the_liberator":
