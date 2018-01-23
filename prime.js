@@ -27,8 +27,10 @@ let tagload_queue_manifest =
 let queueueue_manifest =
     [   'googly.js',
         'stringy.js', 'divvy.js', 'checky.js', 'selectable.js', 'porter.js','allies.js',
-        'data/chars.js', 'data/skills.js', 'data/catalog.js',
-        'alter.js', 'tableau.js', 'friends.js', 'adder.js', 'inheritance.js',
+        'data/chars.js', 'data/catalog.js',
+        'tableau.js',
+            'sorter.js', 'sifter.js',
+        'friends.js', 'alter.js', 'adder.js', 'inheritance.js',
     ];
 
 
@@ -89,7 +91,7 @@ function run_this_function_on_queue_complete()
     document.getElementById('sad_ie_div').innerHTML = "Please send bug reports or feature requests to " + stringy.html_code_email + " or post them as <a href='https://github.com/korejora/feh-friends-collector/issues'>issues on github</a>.";
 
     googly.setup();
-    
+
 }
 
 function refreshment()

@@ -152,26 +152,38 @@ tableau.setup = function tableau_setup()
     // ticks
     sets.ticks = new divvy({id:'table_setting_ticks',classname:'inner', parent:sets.div});
 
-    let st = sets.ticks;
+    let tik = sets.ticks;
 
-    st.skill = new checky({default:true,label:"show skills",parent:st.div});
-    st.skill.handle_click = function()
-    {   if( st.skill.is_ticked() )
+    tik.skill = new checky({default:true,label:"show skills",parent:tik.div});
+    tik.skill.handle_click = function()
+    {   if( tik.skill.is_ticked() )
         {      tableau.show_skill_divs(); }
         else { tableau.hide_skill_divs(); }
     };
 
-    st.add_linebreak();
-    st.stats = new checky({default:false,label:"show min stats",parent:st.div});
-    st.stats.handle_click = function()
-    {   if( st.stats.is_ticked() )
-        {      tableau.show_min_stats(); }
-        else { tableau.show_max_stats(); }
+    tik.add_linebreak();
+    tik.min_stats = new checky({default:false,label:"show min stats",parent:tik.div});
+    tik.min_stats.handle_click = function()
+    {   if(tik.min_stats.is_ticked())
+        {   tableau.show_min = true;
+        } else
+        {   tableau.show_min = false; }
+        tableau.rebuild();
     };
-    st.stats.div.title = "Columns will continue to sort by MAX stats";
+    tik.min_stats.div.title = "Columns will continue to sort by MAX stats";
 
-    st.add_linebreak();
-    st.add_child(this.sift.special_filters.home.div);
+    tik.add_linebreak();
+    tik.gold_stats = new checky({default:false,label:"show 5☆ stats",parent:tik.div});
+    tik.gold_stats.handle_click = function()
+    {   if( tik.gold_stats.is_ticked() )
+        {      tableau.show_gold = true; }
+        else { tableau.show_gold = false; }
+        tableau.rebuild();
+    };
+    tik.gold_stats.div.title = "Compare stats as if all heroes are 5☆";
+
+    tik.add_linebreak();
+    tik.add_child(this.sift.special_filters.home.tick.div);
 
 
     sets.add_divider();
@@ -204,10 +216,10 @@ tableau.setup = function tableau_setup()
     {   let section = sets.filters.select[tag];
         let filter = tableau.sift.filters[tag];
         if (!filter) { filter = tableau.sift.dummy_filters[tag]; }
-        section.add_child(filter.div);
+        section.add_child(filter.tick.div);
         for ( let key in filter.subfilters )
         {   section.add_linebreak();
-            section.add_child(filter.subfilters[key].div);
+            section.add_child(filter.subfilters[key].tick.div);
         }
     };
 
@@ -216,8 +228,8 @@ tableau.setup = function tableau_setup()
     let fs = sets.filters.select;
     fs.rar = new divvy({classname:'filter column', parent:fs});
         fs.fav = new divvy({classname:'filter', parent:fs.rar});
-        fs.fav.add_child(tableau.sift.subfilters.favourite.div);
-        fs.fav.add_child(tableau.sift.subfilters.unfavourite.div);
+        fs.fav.add_child(tableau.sift.subfilters.favourite.tick.div);
+        fs.fav.add_child(tableau.sift.subfilters.unfavourite.tick.div);
     addfilt('rar');
     fs.red = new divvy({classname:'filter column', parent:fs});
     addfilt('red');
@@ -257,16 +269,6 @@ tableau.hide_skill_divs = function()
     tableau.allies_table.hide_skill_divs();
     tableau.feh_row.hide_skill_div();
     tableau.hide_skills = true;
-};
-
-tableau.show_max_stats = function()
-{   tableau.show_min = false;
-    tableau.rebuild();
-};
-
-tableau.show_min_stats = function()
-{   tableau.show_min = true;
-    tableau.rebuild();
 };
 
 
@@ -332,7 +334,7 @@ tableau.table = class
         }
 
         this.refresh();
-        
+
         this.sort_rows(this.last_sorted);
 
     }
@@ -382,10 +384,10 @@ tableau.table = class
     sort_rows(property)
     {   // let reverse = (property == this.last_sorted) ? true : false;
         let reverse = this.flip_sort;
-        if (tableau.check_if_reverse_sort(property)) { reverse = (this.flip_sort) ? false : true; }
+        if (sorter.check_if_reverse_sort(property)) { reverse = (this.flip_sort) ? false : true; }
         if (property == 'nature') { property = 'boon'; }
 
-        this.rows.sort(tableau.comparison(property, reverse));
+        this.rows.sort(sorter.comparison(property, reverse));
 
         this.refresh();
     }
@@ -574,10 +576,12 @@ tableau.row = class
                 case 'hp' :
                 case 'atk':     case 'spd':
                 case 'def':     case 'res':
-                    if( !tableau.show_min )
-                    {   display_name = that.ally.get_max_stats()[key] || "--";
+                    let r = that.ally.get_rarity();
+                    if(tableau.show_gold) { r = 5; }
+                    if(!tableau.show_min)
+                    {   display_name = that.ally.get_max_stats(r)[key] || "--";
                     } else
-                    {   display_name = that.ally.get_min_stats()[key] || "--";
+                    {   display_name = that.ally.get_min_stats(r)[key] || "--";
                     }
                     break;
                 case 'weapons':
@@ -643,332 +647,3 @@ tableau.row = class
     }
 
 }; // end row class
-
-
-tableau.compare = function (a, b, property, reverse)
-{
-    let x = 1; if(reverse) { x = -1; }
-
-    let c = a.ally.get_sort_properties()[property];
-    let d = b.ally.get_sort_properties()[property];
-
-    if (isNaN(c - d) && property.includes('type'))
-    {   c = tableau.sort_properties[property].sort_array.indexOf(a.ally.get_sort_properties()[property]);
-        d = tableau.sort_properties[property].sort_array.indexOf(b.ally.get_sort_properties()[property]);
-        return (c - d)*x;
-    }
-    else if (isNaN(c - d))
-    {   if (  c && !d ) { return -1*x; }
-        if ( !c &&  d ) { return  1*x; }
-        if ( !c && !d ) { return  0;   }
-        if ( c.toLowerCase() < d.toLowerCase() ) { return -1*x; }
-        if ( c.toLowerCase() > d.toLowerCase() ) { return  1*x; }
-        return 0;
-    }
-    else { return (c - d)*x; }
-
-};
-
-tableau.cascade_tiebreaker = function (a,b, property)
-{
-    if (!this.sort_properties[property]) { property = 'other'; }
-
-    for( let i = 0; i < this.sort_properties[property].tiebreaker.length; i++ )
-    {   let prop = this.sort_properties[property].tiebreaker[i];
-        let reverse = tableau.check_if_reverse_sort(prop);
-
-        let result = this.compare(a,b, prop, reverse);
-        if (result) return result;
-    }
-    let e = a.ally.get_catalog_index();
-    let f = a.ally.get_catalog_index();
-    return (e - f);
-};
-
-
-tableau.comparison = function (property, reverse)
-{   return function(a,b)
-    {   let first_try = tableau.compare(a,b,property,reverse);
-        if (first_try) { return first_try; }
-        return tableau.cascade_tiebreaker(a,b,property);
-    };
-};
-
-
-tableau.sort_properties =
-{
-    name :
-    {   tiebreaker : [ 'subname', 'obtained' ] },
-
-    favourite :
-    {   tiebreaker :
-        [ 'rarity', 'colour_type', 'weapon_type', 'move_type', 'obtained' ], },
-
-    origin :
-    {   tiebreaker : [ 'name', 'subname', 'rarity', 'obtained' ],
-    }, // proximity to main character? // now by catalog index
-
-    rarity :
-    {   tiebreaker : [ 'colour_type', 'weapon_type', 'move_type', 'origin', 'obtained' ],
-        reverse : true
-    },
-
-    colour_type :
-    {   tiebreaker : [ 'rarity', 'weapon_type', 'move_type', 'origin', 'obtained' ],
-        sort_array : [ 'red', 'blue', 'green', 'colorless' ],
-    },
-
-    weapon_type :
-    {   tiebreaker : [ 'colour_type', 'rarity', 'move_type', 'origin', 'obtained' ],
-        sort_array :
-        [   'sword', 'lance', 'axe', 'bow', 'dagger',
-            'red_tome', 'blue_tome', 'green_tome', 'staff',
-            'red_dragonstone', 'blue_dragonstone', 'green_dragonstone'
-        ],
-    },
-
-    move_type :
-    {   tiebreaker : [ 'rarity', 'colour_type', 'weapon_type', 'origin', 'obtained' ],
-        sort_array : [ 'infantry', 'armor', 'cavalry', 'flying' ]
-    },
-
-    rating :
-    {   tiebreaker :
-        [ 'rarity', 'colour_type', 'weapon_type', 'move_type', 'origin', 'obtained' ],
-        reverse : true
-    },
-    // rarity, colour_type, weapon_type, move_type, origin, proximity to main character
-
-    other :
-    {   tiebreaker :
-        [ 'rarity', 'colour_type', 'weapon_type', 'move_type', 'origin', 'obtained' ] },
-
-    boon :
-    {   tiebreaker :
-        [   'bane', 'rarity', 'colour_type', 'weapon_type', 'move_type',
-            'origin', 'obtained' ]
-    }
-
-}; // end sort_properties
-
-tableau.check_if_reverse_sort = function(property)
-{   let reverse_sorts = ['rarity','rating','hp','atk','spd','def','res','subname'];
-    if ( reverse_sorts.indexOf(property) != -1 ) { return true; }
-    else { return false; }
-};
-
-
-class sifter extends checky // handles filter
-{   constructor(params)
-    {   // params = { property: type, value: violet }
-        super({default:params.default, classname: 'filter'});
-
-        this.property   = params.property;
-        this.value      = params.value;
-        this.tag        = params.tag;
-        this.collection = params.collection;
-
-        if (!params.special)
-        {   this.img = document.createElement('img');
-            this.img.onerror = function(){this.src = stringy.img_feh;};
-            this.img.src = stringy.find_img_path(this.property,this.value);
-            this.img.className = 'icon';
-            this.div.className += ' icon';
-            this.label.appendChild(this.img);
-        }
-        else
-        {   if(params.label) { this.label.appendChild(document.createTextNode(params.label)); }
-            else {this.label.appendChild(document.createTextNode(this.tag));}
-            if(!params.special) { this.div.className += ' text'; }
-        }
-
-        this.exclude_active = !this.is_ticked();
-
-        this.subfilters = [];
-        if (params.sup)
-        {   let sup = params.sup;
-            if (tableau.sift.superfilters[sup])
-                { this.supfilter = tableau.sift.superfilters[sup]; }
-            else{ this.supfilter = tableau.sift.dummy_filters[sup]; }
-            this.supfilter.add_subfilter(this);
-        }
-
-        this.special = params.special;
-    }
-
-    handle_click()
-    {
-        // why are filters so depressing
-        this.refresh();
-        tableau.sift.refresh();
-
-        tableau.active_table.refresh();
-    }
-
-    add_subfilter(sub) { this.subfilters[sub.tag] = sub; }
-
-    checkpoint(row)
-    {   let properties = row.ally.get_sort_properties();
-
-        // special case, accept rarities 3, 2, 1 for "rarity 3"
-        if(this.property == 'rarity' && this.value == 321) { return (properties.rarity <= 3); }
-
-        return (properties[this.property] == this.value);
-    }
-
-    enable()
-    {   this.checkbox.disabled = false;
-        this.exclude_active = !this.is_ticked();
-    }
-
-    disable()
-    {   this.checkbox.disabled = true;
-        this.exclude_active = false;
-    }
-
-    refresh()
-    {
-        if (!tableau.is_collection_active() && this.collection)
-        {   // do not show favourite or rarity in generic allies list
-            this.tick();
-            this.disable();
-            return;
-        }
-        if (this.supfilter && this.supfilter.exclude_active)
-        {   // no need to run subfilters if superfilter active
-            this.disable();
-            return;
-        }
-
-        this.enable(); return;
-    }
-}
-
-class dummy_sifter extends divvy
-{
-    constructor()
-    {   super({classname:'checky'});
-        this.subfilters = [];
-    }
-
-    add_subfilter(sub) { this.subfilters[sub.tag] = sub; }
-}
-
-
-class tableau_filter_handler // tableau.sift
-{
-
-    constructor()
-    {   // external must call construct_filters
-    }
-
-    construct_filters()
-    {
-        this.filters = {};
-
-        this.superfilters =
-        {
-            red   : new sifter({ tag:'red',   property:'colour_type', value:'red',   default:true }),
-            blue  : new sifter({ tag:'blue',  property:'colour_type', value:'blue',  default:true }),
-            green : new sifter({ tag:'green', property:'colour_type', value:'green', default:true }),
-            colorless  : new sifter({ tag:'colorless',  property:'colour_type', value:'colorless',default:true }),
-        };
-
-        this.special_filters =
-        {
-            home  : new sifter({ tag:'home', property:'home', value:true, default:false, special:true, label:'sent home' }),
-        };
-
-        this.dummy_filters = // containers (for subfilters) that are not filters themselves
-        {
-            fav : new dummy_sifter(),
-            rar : new dummy_sifter(),
-            move : new dummy_sifter(),
-            dance : new dummy_sifter(),
-        };
-
-        this.subfilters = // subfilters must wait for their superfilter to exist
-        {
-            favourite : new sifter({ property:'favourite', value:'❤',  default:true, tag:'favourite',  sup:'fav', collection:true}),
-            unfavourite:new sifter({ property:'favourite', value:false,default:true, tag:'unfavourite',sup:'fav', collection:true}),
-
-            rarity5 :   new sifter({ property:'rarity',    value:5,   default:true, tag:'rarity5',    sup:'rar', collection:true}),
-            rarity4 :   new sifter({ property:'rarity',    value:4,   default:true, tag:'rarity4',    sup:'rar', collection:true}),
-            rarity321 : new sifter({ property:'rarity',    value:321, default:true, tag:'rarity321',  sup:'rar', collection:true}),
-
-            sword : new sifter({ property:'weapon_type', value:'red_sword',       default:true, tag:'red_sword',        sup:'red'}),
-            lance : new sifter({ property:'weapon_type', value:'blue_lance',      default:true, tag:'blue_lance',       sup:'blue'}),
-            axe   : new sifter({ property:'weapon_type', value:'green_axe',       default:true, tag:'green_axe',        sup:'green'}),
-            bow   : new sifter({ property:'weapon_type', value:'colorless_bow',   default:true, tag:'colorless_bow',    sup:'colorless'}),
-            dagger: new sifter({ property:'weapon_type', value:'colorless_dagger',default:true, tag:'colorless_dagger', sup:'colorless'}),
-
-            red_tome   : new sifter({ property:'weapon_type', value:'red_tome',   default:true, tag:'red_tome',   sup:'red'}),
-            blue_tome  : new sifter({ property:'weapon_type', value:'blue_tome',  default:true, tag:'blue_tome',  sup:'blue'}),
-            green_tome : new sifter({ property:'weapon_type', value:'green_tome', default:true, tag:'green_tome', sup:'green'}),
-            staff      : new sifter({ property:'weapon_type', value:'colorless_staff',default:true,tag:'colorless_staff',sup:'colorless'}),
-
-            dragon_red   : new sifter({ property:'weapon_type', value:'red_dragonstone',   default:true, tag:'dragon_red',   sup:'red'}),
-            dragon_blue  : new sifter({ property:'weapon_type', value:'blue_dragonstone',  default:true, tag:'dragon_blue',  sup:'blue'}),
-            dragon_green : new sifter({ property:'weapon_type', value:'green_dragonstone', default:true, tag:'dragon_green', sup:'green'}),
-
-            infantry : new sifter({ property:'move_type', value:'infantry', default:true, tag:'infantry', sup:'move'}),
-            armored  : new sifter({ property:'move_type', value:'armored',  default:true, tag:'armored',  sup:'move'}),
-            cavalry  : new sifter({ property:'move_type', value:'cavalry',  default:true, tag:'cavalry',  sup:'move'}),
-            flying   : new sifter({ property:'move_type', value:'flying',   default:true, tag:'flying',   sup:'move'}),
-
-            dancer : new sifter({ property:'is_dancer', value:true, default:true, tag:'dancer', sup:'dance', special:true, label:'dancer' }),
-            not_dancer : new sifter({ property:'is_dancer', value:false, default:true, tag:'not_dancer', sup:'dance', special:true, label:'not dancer' }),
-        };
-
-        // put the filters in a list
-        for ( let key in this.superfilters )
-        {   this.filters[key] = this.superfilters[key];
-        }
-        for ( let key in this.subfilters )
-        {   this.filters[key] = this.subfilters[key];
-        }
-
-    } // end constructor
-
-    tick_all()
-    {   for ( let key in this.filters)
-        {   let current_filter = this.filters[key];
-            current_filter.tick();
-            current_filter.refresh();
-        }
-        this.refresh();
-        tableau.active_table.refresh();
-    }
-
-    untick_weapons()
-    {   for ( let key in this.subfilters)
-        {   let current_filter = this.filters[key];
-            if( current_filter.property == 'weapon_type' )
-            {   current_filter.untick();
-                current_filter.refresh();
-            }
-        }
-        this.refresh();
-        tableau.active_table.refresh();
-    }
-
-    untick_move()
-    {   for ( let key in this.subfilters)
-        {   let current_filter = this.filters[key];
-            if( current_filter.property == 'move_type' )
-            {   current_filter.untick();
-                current_filter.refresh();
-            }
-        }
-        this.refresh();
-        tableau.active_table.refresh();
-    }
-
-    refresh()
-    {   for ( let key in this.filters)
-        {   let current_filter = this.filters[key];
-            current_filter.refresh();
-        }
-    }
-
-} // end tableau_filter_handler

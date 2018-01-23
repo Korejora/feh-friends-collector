@@ -13,6 +13,7 @@ let stringy =
     rarity_list : { '★★★★★':5, '★★★★':4, '★★★':3, '★★':2, '★':1 },
 
     img_feh : 'images/feh_owl.png',
+    img_error : this.img_feh,
     img_path : 'images/',
 
     img_path_type : 'images/type/',

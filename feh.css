@@ -281,13 +281,13 @@ img.icon
     }
 
     #table_setting_ticks
-    {   /* to make room for 3 options */
-        line-height: 1.7em
+    {   /* to make room for 4 options */
+        line-height: 1.2em
     }
 
     #table_setting_filters
     {   /* to make room for 3 options */
-        line-height: 1.7em
+        line-height: 1.4em
     }
 
 
@@ -382,12 +382,12 @@ display_properties =
     .row:nth-child(odd)  .name  { background-color: var(--row-grey-odd); }
     .row:nth-child(even) .name  { background-color: var(--row-grey-even); }
     .row .name.title { background-color: var(--row-grey-deep); }
-        .row:nth-child(odd)  .name.red  { background-color: var(--row-red-faded-light); }
-        .row:nth-child(even) .name.red  { background-color: var(--row-red-faded-dark); }
-        .row:nth-child(odd)  .name.blue  { background-color: var(--row-blue-faded-light); }
-        .row:nth-child(even) .name.blue  { background-color: var(--row-blue-faded-dark); }
-        .row:nth-child(odd)  .name.green  { background-color: var(--row-green-faded-light); }
-        .row:nth-child(even) .name.green  { background-color: var(--row-green-faded-dark); }
+        .row:nth-child(odd)  .name.red  { background-color: var(--row-red-odd); }
+        .row:nth-child(even) .name.red  { background-color: var(--row-red-evenm); }
+        .row:nth-child(odd)  .name.blue  { background-color: var(--row-blue-dd); }
+        .row:nth-child(even) .name.blue  { background-color: var(--row-blue-even); }
+        .row:nth-child(odd)  .name.green  { background-color: var(--row-green-odd); }
+        .row:nth-child(even) .name.green  { background-color: var(--row-green-even); }
 
 
 #friends_table .info.subdiv  { width: 34% }

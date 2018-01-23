@@ -6,7 +6,6 @@
 
 let allies = {};
 
-
 allies.setup = function allies_setup()
 {
     allies.list = [];
@@ -26,8 +25,43 @@ allies.setup = function allies_setup()
     allies.feh.obtained = 0;
 };
 
-
 // allies.skills = ['weapons','support','special','passive_A','passive_B','passive_C'];
+
+allies.inherit_rulebook =
+{
+    "Melee Weapon Users Only" : [ 'red_tome', 'blue_tome', 'green_tome', 'colorless_bow', 'colorless_dagger', 'colorless_staff' ],
+    "Ranged Weapon Users Only" : [ 'red_sword', 'red_dragonstone', 'blue_lance', 'blue_dragonstone', 'green_axe', 'green_dragonstone' ],
+    "Sword Users Only" : [ 'red_tome', 'red_dragonstone', 'blue_lance', 'blue_tome', 'blue_dragonstone', 'green_axe', 'green_tome', 'green_dragonstone', 'colorless_bow', 'colorless_dagger', 'colorless_staff' ],
+    "Axe Users Only" : [ 'red_sword', 'red_tome', 'red_dragonstone', 'blue_lance', 'blue_tome', 'blue_dragonstone', 'green_tome', 'green_dragonstone', 'colorless_bow', 'colorless_dagger', 'colorless_staff' ],
+    "Lance Users Only" : [ 'red_sword', 'red_tome', 'red_dragonstone', 'blue_tome', 'blue_dragonstone', 'green_axe', 'green_tome', 'green_dragonstone', 'colorless_bow', 'colorless_dagger', 'colorless_staff' ],
+    "Bow Users Only" : [ 'red_sword', 'red_tome', 'red_dragonstone', 'blue_lance', 'blue_tome', 'blue_dragonstone', 'green_axe', 'green_tome', 'green_dragonstone', 'colorless_dagger', 'colorless_staff' ],
+    "Dagger Users Only" : [ 'red_sword', 'red_tome', 'red_dragonstone', 'blue_lance', 'blue_tome', 'blue_dragonstone', 'green_axe', 'green_tome', 'green_dragonstone', 'colorless_bow', 'colorless_staff' ],
+    "Red Tome Users Only" : [ 'red_sword', 'red_dragonstone', 'blue_lance', 'blue_tome', 'blue_dragonstone', 'green_axe', 'green_tome', 'green_dragonstone', 'colorless_bow', 'colorless_dagger', 'colorless_staff' ],
+    "Blue Tome Users Only" : [ 'red_sword', 'red_tome', 'red_dragonstone', 'blue_lance', 'blue_dragonstone', 'green_axe', 'green_tome', 'green_dragonstone', 'colorless_bow', 'colorless_dagger', 'colorless_staff' ],
+    "Green Tome Users Only" : [ 'red_sword', 'red_tome', 'red_dragonstone', 'blue_lance', 'blue_tome', 'blue_dragonstone', 'green_axe', 'green_dragonstone', 'colorless_bow', 'colorless_dagger', 'colorless_staff' ],
+    "Staff Users Only" : [ 'red_sword', 'red_tome', 'red_dragonstone', 'blue_lance', 'blue_tome', 'blue_dragonstone', 'green_axe', 'green_tome', 'green_dragonstone', 'colorless_bow', 'colorless_dagger' ],
+    "Breath Users Only" : [ 'red_sword', 'red_tome', 'blue_lance', 'blue_tome', 'green_axe', 'green_tome', 'colorless_bow', 'colorless_dagger', 'colorless_staff' ],
+    "Infantry Only" : [ 'armored', 'cavalry', 'flying' ],
+    "Cavalry Only" : [ 'infantry', 'armored', 'flying' ],
+    "Armored Only" : [ 'infantry', 'cavalry', 'flying' ],
+    "Fliers Only" : [ 'infantry', 'armored', 'cavalry' ],
+    "Excludes Red Weapon Users" : [ 'red_axe', 'red_tome', 'red_dragonstone' ],
+    "Excludes Blue Weapon Users" : [ 'blue_axe', 'blue_tome', 'blue_dragonstone' ],
+    "Excludes Green Weapon Users" : [ 'green_axe', 'green_tome', 'green_dragonstone' ],
+    "Excludes Colorless Weapon Users" : [ 'colorless_bow', 'colorless_dagger', 'colorless_staff' ],
+    "Excludes Tome and Staff Users" : [ 'red_tome', 'blue_tome', 'green_tome', 'colorless_staff' ],
+    "Excludes Staff Users" : [ 'colorless_staff' ],
+    "Excludes Fliers" : [ 'flying' ],
+    "Is exclusive" : 'Prf',
+    'Prf' : 'Prf',
+    "None" : [],
+    "Melee Weapon Users Only <br />Infantry and Armored Only" : [ 'cavalry', 'flying', 'red_tome', 'blue_tome', 'green_tome', 'colorless_bow', 'colorless_dagger', 'colorless_staff' ],
+    "Excludes Staff Users <br />Infantry and Armored Only" : [ 'cavalry', 'flying', 'colorless_staff' ],
+
+    'ONLY_STAFF' : [ 'red_sword', 'red_tome', 'red_dragonstone', 'blue_lance', 'blue_tome', 'blue_dragonstone', 'green_axe', 'green_tome', 'green_dragonstone', 'colorless_bow', 'colorless_dagger' ],
+    'NO_STAFF' : [ 'staff' ],
+    'ONLY_MELEE' : [ 'red_tome', 'blue_tome', 'green_tome', 'colorless_bow', 'colorless_dagger', 'colorless_staff' ],
+};
 
 
 class ally
@@ -72,67 +106,75 @@ class ally
 
         this.base_skills.weapons = [];
         for ( let i = 0; i < c.base_weapons.length; i++)
-        {   this.base_skills.weapons[i] = {};
-            this.base_skills.weapons[i] = this.base_skills.weapons[i];
-            this.base_skills.weapons[i].name   = c.base_weapons[i][0];
-            this.base_skills.weapons[i].might  = parseInt(c.base_weapons[i][1]);
-            this.base_skills.weapons[i].range  = parseInt(c.base_weapons[i][2]);
-            this.base_skills.weapons[i].effect = "Mt " + this.base_skills.weapons[i].might + ". " + c.base_weapons[i][3];
-            this.base_skills.weapons[i].cost   = parseInt(c.base_weapons[i][4]) || c.base_weapons[i][4];
-            this.base_skills.weapons[i].known  = parseInt(c.base_weapons[i][5]) || c.base_weapons[i][5];
-            this.base_skills.weapons[i].learn  = parseInt(c.base_weapons[i][6]) || c.base_weapons[i][6];
-            // inheritance rules are not available on the wiki
-            this.base_skills.weapons[i].inherit = this.get_skill_inheritance_rule('weapons', this.base_skills.weapons[i].name);
-            this.base_skills.weapons[i].weapon_type = this.weapon_type;
+        {   let weapon = {}; let data = c.base_weapons[i];
+            weapon.name   = data.name;
+            weapon.might  = parseInt(data.mt);
+            weapon.range  = parseInt(data.rng);
+            weapon.effect = "Mt " + weapon.might + ". " + data.effect;
+            weapon.cost   = parseInt(data.sp) || data.sp;
+            weapon.known  = parseInt(data.known) || data.known;
+            weapon.learn  = parseInt(data.learn) || data.learn;
+            weapon.inherit = data.inherit || null;
+            weapon.weapon_type = this.weapon_type;
+            this.base_skills.weapons[i] = weapon;
         }
         this.base_skills.support = [];
         for ( let i = 0; i < c.base_support.length; i++)
-        {   this.base_skills.support[i] = {};
-            this.base_skills.support[i].name   = c.base_support[i][0];
-            this.base_skills.support[i].range  = parseInt(c.base_support[i][1]);
-            this.base_skills.support[i].effect = c.base_support[i][2];
-            this.base_skills.support[i].cost   = parseInt(c.base_support[i][3]) || c.base_support[i][3];
-            this.base_skills.support[i].known  = parseInt(c.base_support[i][4]) || c.base_support[i][4];
-            this.base_skills.support[i].learn  = parseInt(c.base_support[i][5]) || c.base_support[i][5];
-            this.base_skills.support[i].inherit = this.get_skill_inheritance_rule('support', this.base_skills.support[i].name);
+        {   let support = {}; let data = c.base_support[i];
+            support.name   = data.name;
+            support.range  = parseInt(data.rng);
+            support.effect = data.effect;
+            support.cost   = parseInt(data.sp) || data.sp;
+            support.known  = parseInt(data.known) || data.known;
+            support.learn  = parseInt(data.learn) || data.learn;
+            support.inherit = data.inherit || null;
+            if( ["ONLY_STAFF","NO_STAFF"].includes(support.inherit) )
+            {   support.inherit = allies.inherit_rulebook[support.inherit]; }
+            this.base_skills.support[i] = support;
         }
         this.base_skills.special = [];
         for ( let i = 0; i < c.base_special.length; i++)
-        {   this.base_skills.special[i] = {};
-            this.base_skills.special[i].name   = c.base_special[i][0];
-            this.base_skills.special[i].cooldown = parseInt(c.base_special[i][1]);
-            this.base_skills.special[i].effect = c.base_special[i][2];
-            this.base_skills.special[i].cost   = parseInt(c.base_special[i][3]) || c.base_special[i][3];
-            this.base_skills.special[i].known  = parseInt(c.base_special[i][4]) || c.base_special[i][4];
-            this.base_skills.special[i].learn  = parseInt(c.base_special[i][5]) || c.base_special[i][5];
-            this.base_skills.special[i].inherit = this.get_skill_inheritance_rule('special',this.base_skills.special[i].name);
+        {   let special = {}; let data = c.base_special[i];
+            special.name   = data.name;
+            special.cooldown = parseInt(data.cooldown);
+            special.effect = data.effect;
+            special.cost   = parseInt(data.sp) || data.sp;
+            special.known  = parseInt(data.known) || data.known;
+            special.learn  = parseInt(data.learn) || data.learn;
+            special.inherit = data.inherit || null;
+            if( ["ONLY_STAFF","NO_STAFF","ONLY_MELEE"].includes(special.inherit) > -1 )
+            {   special.inherit = allies.inherit_rulebook[special.inherit]; }
+            this.base_skills.special[i] = special;
         }
         this.base_skills.passive_A = [];
         for ( let i = 0; i < c.base_passive_A.length; i++)
-        {   this.base_skills.passive_A[i] = {};
-            this.base_skills.passive_A[i].name   = c.base_passive_A[i][0];
-            this.base_skills.passive_A[i].effect = c.base_passive_A[i][1];
-            this.base_skills.passive_A[i].cost   = parseInt(c.base_passive_A[i][2]) || c.base_passive_A[i][2];
-            this.base_skills.passive_A[i].learn  = parseInt(c.base_passive_A[i][3]) || c.base_passive_A[i][3];
-            this.base_skills.passive_A[i].inherit = this.get_skill_inheritance_rule('passive_A',this.base_skills.passive_A[i].name);
+        {   let passive = {}; let data = c.base_passive_A[i];
+            passive.name   = data.name;
+            passive.effect = data.effect;
+            passive.cost   = parseInt(data.sp) || data.sp;
+            passive.learn  = parseInt(data.learn) || data.learn;
+            passive.inherit = allies.inherit_rulebook[data.inherit];
+            this.base_skills.passive_A[i] = passive;
         }
         this.base_skills.passive_B = [];
         for ( let i = 0; i < c.base_passive_B.length; i++)
-        {   this.base_skills.passive_B[i] = {};
-            this.base_skills.passive_B[i].name   = c.base_passive_B[i][0];
-            this.base_skills.passive_B[i].effect = c.base_passive_B[i][1];
-            this.base_skills.passive_B[i].cost   = parseInt(c.base_passive_B[i][2]) || c.base_passive_B[i][2];
-            this.base_skills.passive_B[i].learn  = parseInt(c.base_passive_B[i][3]) || c.base_passive_B[i][3];
-            this.base_skills.passive_B[i].inherit = this.get_skill_inheritance_rule('passive_B',this.base_skills.passive_B[i].name);
+        {   let passive = {}; let data = c.base_passive_B[i];
+            passive.name   = data.name;
+            passive.effect = data.effect;
+            passive.cost   = parseInt(data.sp) || data.sp;
+            passive.learn  = parseInt(data.learn) || data.learn;
+            passive.inherit = allies.inherit_rulebook[data.inherit];
+            this.base_skills.passive_B[i] = passive;
         }
         this.base_skills.passive_C = [];
         for ( let i = 0; i < c.base_passive_C.length; i++)
-        {   this.base_skills.passive_C[i] = {};
-            this.base_skills.passive_C[i].name   = c.base_passive_C[i][0];
-            this.base_skills.passive_C[i].effect = c.base_passive_C[i][1];
-            this.base_skills.passive_C[i].cost   = parseInt(c.base_passive_C[i][2]) || c.base_passive_C[i][2];
-            this.base_skills.passive_C[i].learn  = parseInt(c.base_passive_C[i][3]) || c.base_passive_C[i][3];
-            this.base_skills.passive_C[i].inherit = this.get_skill_inheritance_rule('passive_C',this.base_skills.passive_C[i].name);
+        {   let passive = {}; let data = c.base_passive_C[i];
+            passive.name   = data.name;
+            passive.effect = data.effect;
+            passive.cost   = parseInt(data.sp) || data.sp;
+            passive.learn  = parseInt(data.learn) || data.learn;
+            passive.inherit = allies.inherit_rulebook[data.inherit];
+            this.base_skills.passive_C[i] = passive;
         }
 
 
@@ -225,6 +267,9 @@ class ally
         if ( dance.indexOf(this.base_skills.support[0].name.toLowerCase()) != -1) { return true; }
         else { return false; }
     }
+    is_staff()
+    {   return( this.weapon_type == 'staff' );
+    }
 
     get_move_type() { return this.move_type; }
 
@@ -297,6 +342,10 @@ class ally
         }
         stats.rating = stats.hp + stats.atk + stats.spd + stats.def + stats.res;
         return stats;
+    }
+
+    get_max_gold_stats ()
+    {   return this.get_max_stats(5);
     }
 
 
@@ -390,31 +439,6 @@ class ally
     // return_skills() { return this.unlocked_skills; }
 
     get_base_skills() { return this.base_skills; }
-    get_skill_inheritance_rule( type, skillname )
-    {   if( skill_data[type][skillname] )
-        {   let inherit_text;
-            switch(type)
-            {   case 'weapons':
-                    inherit_text = skill_data.weapons[skillname][5];
-                    break;
-                case 'support': case 'special':
-                    inherit_text = skill_data[type][skillname][4];
-                    break;
-                case 'passive_A':   case 'passive_B':   case 'passive_C':
-                    inherit_text = skill_data[type][skillname][3];
-                    break;
-                default:
-                    console.log("ERR_SKILL_TYPE_NOT_FOUND", type);
-                    inherit_text = -2;
-                    break;
-            }
-            let inherit_rule = stringy.inherit_restrictions[inherit_text];
-            return inherit_rule;
-        } else
-        {   console.log("ERR_SKILL_NOT_FOUND", skillname);
-            return -1;
-        }
-    }
 
     get_equipped_weapons_might()
     {   if (this.equipped_skills.weapons.might)
@@ -531,6 +555,24 @@ class ally
         properties.home = this.is_home();
         properties.is_dancer = this.is_dancer();
         return properties;
+    }
+
+    check_if_inheritable_weapon(weapon_type)
+    {   if( weapon_type == this.weapon_type ) { return true; }
+        if( weapon_type.includes('dragonstone') && this.is_dragon()) { return true; }
+        return false;
+    }
+
+    check_if_inheritable(rule)
+    {   if( !rule ) { return true; } // no rule, no exclusion
+        if( rule == "Prf" ) { return false; } // cannot inherit exclusive skills
+
+        // check if exclusion array contains ally properties
+        let properties = [ this.weapon_type, this.move_type ];
+        if( rule.includes(this.weapon_type) ) { return false; }
+        if( rule.includes(this.move_type) ) { return false; }
+
+        return true; // if not excluded
     }
 
 }
