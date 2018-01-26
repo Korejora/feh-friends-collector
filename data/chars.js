@@ -4718,7 +4718,7 @@ let chars =
         [   { "name": "Flux", "mt": "4", "rng": "2", "effect": "-", "sp": "50", "known": "-", "learn": "-" },
             { "name": "Ruin", "mt": "6", "rng": "2", "effect": "-", "sp": "100", "known": "3", "learn": "-" },
             { "name": "Fenrir", "mt": "9", "rng": "2", "effect": "-", "sp": "200", "known": "4", "learn": "3" },
-            { "name": "Naglfar", "mt": "14", "rng": "2", "effect": "Grants weapon advantage vs. colorless foes.", "sp": "400", "known": "-", "learn": "5" }
+            { "name": "Naglfar", "mt": "14", "rng": "2", "effect": "Grants weapon advantage vs. colorless foes.", "sp": "400", "known": "-", "learn": "5", "inherit": "Prf" }
         ],
         "base_support": [],
         "base_special":
