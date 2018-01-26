@@ -1028,7 +1028,7 @@ let chars =
             { "name": "Growing Thunder", "cooldown": "4", "effect": "Before combat this unit initiates, foes in a wide area around target take damage equal to (unit's Atk minus foe's Def or Res).", "sp": "300", "known": "-", "learn": "4", "inherit": "NO_STAFF" }
         ],
         "base_passive_A":
-        [   { "name": "Grani's Shield", "effect": "Neutralizes \"effective against\" bonuses.", "sp": "200", "learn": "4", "inherit": "Cavalry Only" }
+        [   { "name": "Grani's Shield", "effect": "Neutralizes \"effective against cavalry\" bonuses.", "sp": "200", "learn": "4", "inherit": "Cavalry Only" }
         ],
         "base_passive_B": [],
         "base_passive_C":
@@ -2005,6 +2005,45 @@ let chars =
             { "name": "Hone Spd 2", "effect": "Grants adjacent allies Spd+3 through their next actions at the start of each turn.", "sp": "100", "learn": "-", "inherit": "None" },
             { "name": "Hone Spd 3", "effect": "Grants adjacent allies Spd+4 through their next actions at the start of each turn.", "sp": "200", "learn": "4", "inherit": "None" }
         ]
+    },
+    "eirika__anamnesis_lady":
+    {   "tag": "eirika__anamnesis_lady",
+        "name": "Eirika",
+        "epithet": "Anamnesis Lady",
+        "subname": "📕",
+        "description": "Princess of Renais, Ephraim's twin sister, and Lyon's friend. The three of them studied many things together in their youth.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "red_tome",
+        "colour": "red",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 17, 7, 9, 5, 5 ]
+        },
+        "growth_points": [ 5, 7, 8, 3, 4 ],
+        "base_weapons":
+        [   { "name": "Flux", "mt": "4", "rng": "2", "effect": "-", "sp": "50", "known": "-", "learn": "-" },
+            { "name": "Ruin", "mt": "6", "rng": "2", "effect": "-", "sp": "100", "known": "-", "learn": "-" },
+            { "name": "Fenrir", "mt": "9", "rng": "2", "effect": "-", "sp": "200", "known": "-", "learn": "-" },
+            { "name": "Gleipnir", "mt": "14", "rng": "2", "effect": "Grants Res+3. If foes' HP = 100% at start of combat, grants Atk/Spd+3 during combat.", "sp": "400", "known": "5", "learn": "-", "inherit": "Prf" }
+        ],
+        "base_support":
+        [   { "name": "Rally Speed", "rng": "1", "effect": "Grants Spd+4 to an adjacent ally until the end of the turn.", "sp": "150", "known": "5", "learn": "-", "inherit": "NO_STAFF" },
+            { "name": "Rally Attack Speed", "rng": "1", "effect": "Grants Atk/Spd+3 to an adjacent ally until the end of the turn.", "sp": "300", "known": "-", "learn": "5", "inherit": "NO_STAFF" }
+        ],
+        "base_special": [],
+        "base_passive_A":
+        [   { "name": "Death Blow 1", "effect": "Grants Atk+2 during combat if unit initiates the attack.", "sp": "50", "learn": "-", "inherit": "Excludes Staff Users" },
+            { "name": "Swift Sparrow 1", "effect": "If unit initiates combat, unit granted Atk/Spd+2 during battle.", "sp": "120", "learn": "-", "inherit": "Excludes Staff Users" },
+            { "name": "Swift Sparrow 2", "effect": "If unit initiates combat, unit granted Atk/Spd+4 during battle.", "sp": "240", "learn": "5", "inherit": "Excludes Staff Users" }
+        ],
+        "base_passive_B":
+        [   { "name": "Desperation 1", "effect": "If unit initiates combat with HP ≤ 25%, follow-up attacks occur immediately after unit's attack.", "sp": "50", "learn": "-", "inherit": "None" },
+            { "name": "Desperation 2", "effect": "If unit initiates combat with HP ≤ 50%, follow-up attacks occur immediately after unit's attack.", "sp": "100", "learn": "-", "inherit": "None" },
+            { "name": "Desperation 3", "effect": "If unit initiates combat with HP ≤ 75%, follow-up attacks occur immediately after unit's attack.", "sp": "200", "learn": "5", "inherit": "None" }
+        ],
+        "base_passive_C": []
     },
     "eldigan__lionheart":
     {   "tag": "eldigan__lionheart",
@@ -3750,6 +3789,44 @@ let chars =
         ],
         "base_passive_C": []
     },
+    "larachel__princess_of_light":
+    {   "tag": "larachel__princess_of_light",
+        "name": "L'Arachel",
+        "epithet": "Princess of Light",
+        "description": "Princess of Rausten. Dozla and Rennac accompany her on their quest to defeat the monsters around Magvel.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "blue_tome",
+        "colour": "blue",
+        "move_type": "Cavalry",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 16, 9, 7, 4, 7 ]
+        },
+        "growth_points": [ 4, 7, 7, 2, 7 ],
+        "base_weapons":
+        [   { "name": "Light", "mt": "4", "rng": "2", "effect": "-", "sp": "50", "known": "-", "learn": "-" },
+            { "name": "Ellight", "mt": "6", "rng": "2", "effect": "-", "sp": "100", "known": "-", "learn": "-" },
+            { "name": "Shine", "mt": "9", "rng": "2", "effect": "-", "sp": "200", "known": "-", "learn": "-" },
+            { "name": "Ivaldi", "mt": "14", "rng": "2", "effect": "Grants Def+3. If foe's HP = 100% at start of combat, grants Atk/Spd+3 during combat.", "sp": "400", "known": "5", "learn": "-", "inherit": "Prf" }
+        ],
+        "base_support": [],
+        "base_special":
+        [   { "name": "Rising Light", "cooldown": "4", "effect": "Before combat this unit initiates, foes in an area near target take damage equal to (unit's Atk minus foe's Def or Res).", "sp": "150", "known": "-", "learn": "-", "inherit": "NO_STAFF" },
+            { "name": "Growing Light", "cooldown": "4", "effect": "Before combat this unit initiates, foes in a wide area near target take damage equal to (unit's Atk minus foe's Def or Res).", "sp": "300", "known": "-", "learn": "-", "inherit": "NO_STAFF" }
+        ],
+        "base_passive_A": [],
+        "base_passive_B":
+        [   { "name": "Renewal 1", "effect": "At the start of every fourth turn, restores 10 HP.", "sp": "60", "learn": "-", "inherit": "None" },
+            { "name": "Renewal 2", "effect": "At the start of every third turn, restores 10 HP.", "sp": "120", "learn": "-", "inherit": "None" },
+            { "name": "Renewal 3", "effect": "At the start of every second turn, restores 10 HP.", "sp": "240", "learn": "5", "inherit": "None" }
+        ],
+        "base_passive_C":
+        [   { "name": "Res Tactic 1", "effect": "At start of turn, grants Res+2 to allies within 2 spaces for 1 turn. Granted only if number of that ally's movement type on current team ≤ 2.", "sp": "60", "learn": "-", "inherit": "None" },
+            { "name": "Res Tactic 2", "effect": "At start of turn, grants Res+4 to allies within 2 spaces for 1 turn. Granted only if number of that ally's movement type on current team ≤ 2.", "sp": "120", "learn": "-", "inherit": "None" },
+            { "name": "Res Tactic 3", "effect": "At start of turn, grants Res+6 to allies within 2 spaces for 1 turn. Granted only if number of that ally's movement type on current team ≤ 2.", "sp": "240", "learn": "5", "inherit": "None" }
+        ]
+    },
     "lachesis__lionhearts_sister":
     {   "tag": "lachesis__lionhearts_sister",
         "name": "Lachesis",
@@ -4620,6 +4697,46 @@ let chars =
             { "name": "Atk Smoke 3", "effect": "After combat, inflicts Atk-7 on foes within 2 spaces of target through their next actions.", "sp": "240", "learn": "5", "inherit": "Excludes Staff Users" }
         ]
     },
+    "lyon__shadow_prince":
+    {   "tag": "lyon__shadow_prince",
+        "name": "Lyon",
+        "epithet": "Shadow Prince",
+        "description": "Prince of Grado; not fond of fighting. A childhood friend of Ephraim and Eirika.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "red_tome",
+        "colour": "red",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": false,
+        "base_stats":
+        {   "3": [ 18, 9, 3, 3, 7 ],
+            "4": [ 18, 10, 3, 3, 8 ],
+            "5": [ 19, 10, 4, 4, 8 ]
+        },
+        "growth_points": [ 6, 7, 4, 6, 6 ],
+        "base_weapons":
+        [   { "name": "Flux", "mt": "4", "rng": "2", "effect": "-", "sp": "50", "known": "-", "learn": "-" },
+            { "name": "Ruin", "mt": "6", "rng": "2", "effect": "-", "sp": "100", "known": "3", "learn": "-" },
+            { "name": "Fenrir", "mt": "9", "rng": "2", "effect": "-", "sp": "200", "known": "4", "learn": "3" },
+            { "name": "Naglfar", "mt": "14", "rng": "2", "effect": "Grants weapon advantage vs. colorless foes.", "sp": "400", "known": "-", "learn": "5" }
+        ],
+        "base_support": [],
+        "base_special":
+        [   { "name": "Retribution", "cooldown": "3", "effect": "Grants bonus to damage dealt equal to 30% of damage suffered.", "sp": "100", "known": "4", "learn": "3", "inherit": "NO_STAFF" },
+            { "name": "Vengeance", "cooldown": "3", "effect": "Grants bonus to damage dealt equal to 50% of damage suffered.", "sp": "200", "known": "-", "learn": "4", "inherit": "NO_STAFF" }
+        ],
+        "base_passive_A":
+        [   { "name": "Resistance +1", "effect": "Grants Res+1.", "sp": "30", "learn": "-", "inherit": "None" },
+            { "name": "Attack Res 1", "effect": "Grants Atk/Res+1.", "sp": "80", "learn": "4", "inherit": "None" },
+            { "name": "Attack Res 2", "effect": "Grants Atk/Res+2.", "sp": "160", "learn": "5", "inherit": "None" }
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   { "name": "Spur Res 1", "effect": "Grants adjacent allies Res+2 during combat.", "sp": "50", "learn": "-", "inherit": "None" },
+            { "name": "Drive Res 1", "effect": "Grants allies within 2 spaces Res+2 during combat.", "sp": "120", "learn": "-", "inherit": "None" },
+            { "name": "Drive Res 2", "effect": "Grants allies within 2 spaces Res+3 during combat.", "sp": "240", "learn": "4", "inherit": "None" }
+        ]
+    },
     "mae__bundle_of_energy":
     {   "tag": "mae__bundle_of_energy",
         "name": "Mae",
@@ -4699,6 +4816,45 @@ let chars =
         [   { "name": "Fortify Res 1", "effect": "Grants adjacent allies Res+2 through their next actions at the start of each turn.", "sp": "50", "learn": "-", "inherit": "None" },
             { "name": "Fortify Res 2", "effect": "Grants adjacent allies Res+3 through their next actions at the start of each turn.", "sp": "100", "learn": "4", "inherit": "None" },
             { "name": "Fortify Res 3", "effect": "Grants adjacent allies Res+4 through their next actions at the start of each turn.", "sp": "200", "learn": "5", "inherit": "None" }
+        ]
+    },
+    "marisa__crimson_flash":
+    {   "tag": "marisa__crimson_flash",
+        "name": "Marisa",
+        "epithet": "Crimson Flash",
+        "description": "An aloof swordfighter in a mercenary group led by Gerik. Her nom de guerre, Crimson Flash, strikes fear in others.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "red_sword",
+        "colour": "red",
+        "move_type": "Infantry",
+        "limited": false,
+        "summon": false,
+        "base_stats":
+        {   "4": [ 17, 8, 10, 5, 5 ],
+            "5": [ 18, 8, 10, 6, 6 ]
+        },
+        "growth_points": [ 9, 6, 8, 7, 3 ],
+        "base_weapons":
+        [   { "name": "Iron Sword", "mt": "6", "rng": "1", "effect": "-", "sp": "50", "known": "-", "learn": "-" },
+            { "name": "Steel Sword", "mt": "8", "rng": "1", "effect": "-", "sp": "100", "known": "-", "learn": "-" },
+            { "name": "Wo Dao", "mt": "9", "rng": "1", "effect": "Grants +10 to damage when Special triggers.", "sp": "200", "known": "4", "learn": "-" },
+            { "name": "Wo Dao+", "mt": "13", "rng": "1", "effect": "Grants +10 to damage when Special triggers.", "sp": "300", "known": "5", "learn": "5" }
+        ],
+        "base_support": [],
+        "base_special":
+        [   { "name": "Night Sky", "cooldown": "3", "effect": "Grants +50% to damage dealt.", "sp": "100", "known": "4", "learn": "3", "inherit": "NO_STAFF" },
+            { "name": "Glimmer", "cooldown": "2", "effect": "Grants +50% to damage dealt.", "sp": "200", "known": "-", "learn": "4", "inherit": "NO_STAFF" }
+        ],
+        "base_passive_A":
+        [   { "name": "HP +3", "effect": "Grants +3 to max HP.", "sp": "40", "learn": "-", "inherit": "None" },
+            { "name": "HP Def 1", "effect": "Grants HP+3, Def+1.", "sp": "100", "learn": "-", "inherit": "None" },
+            { "name": "HP Def 2", "effect": "Grants HP+4, Def+2.", "sp": "200", "learn": "4", "inherit": "None" }
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   { "name": "Infantry Pulse 1", "effect": "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 5 fewer HP than unit. (Effects will stack with similar skills.)", "sp": "60", "learn": "-", "inherit": "Infantry Only" },
+            { "name": "Infantry Pulse 2", "effect": "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 3 fewer HP than unit. (Effects will stack with similar skills.)", "sp": "120", "learn": "4", "inherit": "Infantry Only" },
+            { "name": "Infantry Pulse 3", "effect": "Special cooldown count-1 at start of turn 1 for any Infantry allies with at least 1 fewer HP than unit. (Effects will stack with similar skills.)", "sp": "240", "learn": "5", "inherit": "Infantry Only" }
         ]
     },
     "marth__altean_prince":
@@ -4994,7 +5150,7 @@ let chars =
             { "name": "Blazing Thunder", "cooldown": "4", "effect": "Before combat this unit initiates, foes in an area near target take damage equal to 1.5 x (unit's Atk minus foe's Def or Res).", "sp": "300", "known": "-", "learn": "4", "inherit": "NO_STAFF" }
         ],
         "base_passive_A":
-        [   { "name": "Iote's Shield", "effect": "Neutralizes \"effective against\" bonuses.", "sp": "200", "learn": "4", "inherit": "Fliers Only" }
+        [   { "name": "Iote's Shield", "effect": "Neutralizes \"effective against fliers\" bonuses.", "sp": "200", "learn": "4", "inherit": "Fliers Only" }
         ],
         "base_passive_B": [],
         "base_passive_C":
@@ -5085,6 +5241,44 @@ let chars =
         [   { "name": "Spur Res 1", "effect": "Grants adjacent allies Res+2 during combat.", "sp": "50", "learn": "-", "inherit": "None" },
             { "name": "Spur Def Res 1", "effect": "Grants adjacent allies Def/Res +2 during combat", "sp": "120", "learn": "-", "inherit": "None" },
             { "name": "Spur Def Res 2", "effect": "Grants adjacent allies Def/Res +3 during combat.", "sp": "240", "learn": "5", "inherit": "None" }
+        ]
+    },
+    "myrrh__great_dragon":
+    {   "tag": "myrrh__great_dragon",
+        "name": "Myrrh",
+        "epithet": "Great Dragon",
+        "description": "A manakete who is much older than her appearance suggests. She's shy but oddly attached to Ephraim.",
+        "origin": "Fire Emblem: The Sacred Stones",
+        "weapon_type": "green_dragonstone",
+        "colour": "green",
+        "move_type": "Flying",
+        "limited": false,
+        "summon": true,
+        "base_stats":
+        {   "5": [ 16, 7, 6, 3, 7 ]
+        },
+        "growth_points": [ 8, 8, 5, 11, 7 ],
+        "base_weapons":
+        [   { "name": "Fire Breath", "mt": "6", "rng": "1", "effect": "-", "sp": "50", "known": "-", "learn": "-" },
+            { "name": "Fire Breath+", "mt": "8", "rng": "1", "effect": "-", "sp": "100", "known": "-", "learn": "-" },
+            { "name": "Flametongue", "mt": "11", "rng": "1", "effect": "-", "sp": "200", "known": "-", "learn": "-" },
+            { "name": "Great Flame", "mt": "16", "rng": "1", "effect": "Grants Atk+3. If unit's Def - foe's Def ≥ 5, foe can't make a follow-up attack. If foe's Range = 2, damage calculated using the lower of foe's Def or Res.", "sp": "400", "known": "5", "learn": "-" }
+        ],
+        "base_support": [],
+        "base_special":
+        [   { "name": "Glowing Ember", "cooldown": "4", "effect": "Boosts damage dealt by 50% of unit's Def.", "sp": "100", "known": "-", "learn": "-", "inherit": "NO_STAFF" },
+            { "name": "Bonfire", "cooldown": "3", "effect": "Boosts damage dealt by 50% of unit's Def.", "sp": "200", "known": "-", "learn": "-", "inherit": "NO_STAFF" }
+        ],
+        "base_passive_A":
+        [   { "name": "Fury 1", "effect": "Grants Atk/Spd/Def/Res+1. Unit takes 2 damage after combat.", "sp": "50", "learn": "-", "inherit": "Excludes Staff Users" },
+            { "name": "Fury 2", "effect": "Grants Atk/Spd/Def/Res+2. Unit takes 4 damage after combat.", "sp": "100", "learn": "-", "inherit": "Excludes Staff Users" },
+            { "name": "Fury 3", "effect": "Grants Atk/Spd/Def/Res+3. Unit takes 6 damage after combat.", "sp": "200", "learn": "5", "inherit": "Excludes Staff Users" }
+        ],
+        "base_passive_B": [],
+        "base_passive_C":
+        [   { "name": "Hone Atk 1", "effect": "Grants adjacent allies Atk+2 through their next actions at the start of each turn.", "sp": "50", "learn": "-", "inherit": "None" },
+            { "name": "Hone Atk 2", "effect": "Grants adjacent allies Atk+3 through their next actions at the start of each turn.", "sp": "100", "learn": "-", "inherit": "None" },
+            { "name": "Hone Dragons", "effect": "Grants adjacent dragon allies Atk/Spd+6 through their next actions at the start of each turn.", "sp": "200", "learn": "5", "inherit": "Breath Users Only" }
         ]
     },
     "narcian__wyvern_general":
@@ -6833,7 +7027,7 @@ let chars =
             { "name": "Escutcheon", "cooldown": "2", "effect": "Reduces damage inflicted by attacks from adjacent foes by 30%.", "sp": "200", "known": "-", "learn": "4", "inherit": "ONLY_MELEE" }
         ],
         "base_passive_A":
-        [   { "name": "Svalinn Shield", "effect": "Neutralizes \"effective against\" bonuses.", "sp": "200", "learn": "4", "inherit": "Armored Only" }
+        [   { "name": "Svalinn Shield", "effect": "Neutralizes \"effective against armored\" bonuses.", "sp": "200", "learn": "4", "inherit": "Armored Only" }
         ],
         "base_passive_B": [],
         "base_passive_C":
@@ -7172,29 +7366,30 @@ let chars =
         "limited": false,
         "summon": true,
         "base_stats":
-        {   "5": [ 17, 10, 9, 5, 4 ]
+        {   "4": [ 16, 10, 9, 4, 3 ],
+            "5": [ 17, 10, 9, 5, 4 ]
         },
         "growth_points": [ 6, 8, 7, 4, 4 ],
         "base_weapons":
         [   { "name": "Iron Dagger", "mt": "3", "rng": "2", "effect": "After combat, if unit attacked, inflicts Def/Res-3 on foe through its next action.", "sp": "50", "known": "-", "learn": "-" },
-            { "name": "Steel Dagger", "mt": "5", "rng": "2", "effect": "After combat, if unit attacked, inflicts Def/Res-3 on foe through its next action.", "sp": "100", "known": "-", "learn": "-" },
+            { "name": "Steel Dagger", "mt": "5", "rng": "2", "effect": "After combat, if unit attacked, inflicts Def/Res-3 on foe through its next action.", "sp": "100", "known": "4", "learn": "-" },
             { "name": "Silver Dagger", "mt": "7", "rng": "2", "effect": "After combat, if unit attacked, inflicts Def/Res-5 on foe through its next action.", "sp": "200", "known": "-", "learn": "-" },
-            { "name": "Peshkatz", "mt": "14", "rng": "2", "effect": "After combat, if unit attacked, inflicts Atk/Spd/Def/Res-4 on target and foes within 2 spaces of target through their next actions, and grants Atk/Spd/Def/Res+4 to unit and allies within 2 spaces for 1 turn.", "sp": "400", "known": "5", "learn": "-", "inherit": "Prf" }
+            { "name": "Peshkatz", "mt": "14", "rng": "2", "effect": "After combat, if unit attacked, inflicts Atk/Spd/Def/Res-4 on target and foes within 2 spaces of target through their next actions, and grants Atk/Spd/Def/Res+4 to unit and allies within 2 spaces for 1 turn.", "sp": "400", "known": "5", "learn": "5", "inherit": "Prf" }
         ],
         "base_support": [],
         "base_special":
-        [   { "name": "Night Sky", "cooldown": "3", "effect": "Grants +50% to damage dealt.", "sp": "100", "known": "-", "learn": "-", "inherit": "NO_STAFF" },
-            { "name": "Glimmer", "cooldown": "2", "effect": "Grants +50% to damage dealt.", "sp": "200", "known": "5", "learn": "-", "inherit": "NO_STAFF" }
+        [   { "name": "Night Sky", "cooldown": "3", "effect": "Grants +50% to damage dealt.", "sp": "100", "known": "4", "learn": "-", "inherit": "NO_STAFF" },
+            { "name": "Glimmer", "cooldown": "2", "effect": "Grants +50% to damage dealt.", "sp": "200", "known": "5", "learn": "5", "inherit": "NO_STAFF" }
         ],
         "base_passive_A":
         [   { "name": "Life and Death 1", "effect": "Grants Atk/Spd+3. Inflicts Def/Res-3.", "sp": "50", "learn": "-", "inherit": "Excludes Staff Users" },
             { "name": "Life and Death 2", "effect": "Grants Atk/Spd+4. Inflicts Def/Res-4.", "sp": "100", "learn": "-", "inherit": "Excludes Staff Users" },
-            { "name": "Life and Death 3", "effect": "Grants Atk/Spd+5. Inflicts Def/Res-5.", "sp": "200", "learn": "5", "inherit": "Excludes Staff Users" }
+            { "name": "Life and Death 3", "effect": "Grants Atk/Spd+5. Inflicts Def/Res-5.", "sp": "200", "learn": "4", "inherit": "Excludes Staff Users" }
         ],
         "base_passive_B": [],
         "base_passive_C":
         [   { "name": "Spur Atk 1", "effect": "Grants adjacent allies Atk+2 during combat.", "sp": "50", "learn": "-", "inherit": "None" },
-            { "name": "Spur Atk Spd 1", "effect": "Grants adjacent allies Atk/Spd +2 during combat.", "sp": "120", "learn": "-", "inherit": "None" },
+            { "name": "Spur Atk Spd 1", "effect": "Grants adjacent allies Atk/Spd +2 during combat.", "sp": "120", "learn": "4", "inherit": "None" },
             { "name": "Spur Atk Spd 2", "effect": "Grants adjacent allies Atk/Spd +3 during combat.", "sp": "240", "learn": "5", "inherit": "None" }
         ]
     },
@@ -7538,7 +7733,7 @@ let chars =
             { "name": "Iceberg", "cooldown": "3", "effect": "Boosts damage dealt by 50% of unit's Res.", "sp": "200", "known": "-", "learn": "-", "inherit": "NO_STAFF" }
         ],
         "base_passive_A":
-        [   { "name": "Close Counter", "effect": "Enables unit to counterattack regardless of distance to attacker.", "sp": "300", "learn": "-", "inherit": "Ranged Weapon Users Only" }
+        [   { "name": "Close Counter", "effect": "Enables unit to counterattack regardless of distance to attacker.", "sp": "300", "learn": "5", "inherit": "Ranged Weapon Users Only" }
         ],
         "base_passive_B":
         [   { "name": "Vengeful Fighter 1", "effect": "If unit's HP ≥ 90% and foe initiates combat, unit makes a guaranteed follow-up attack. Grants Special cooldown charge +1 per attack. (Does not stack.)", "sp": "60", "learn": "-", "inherit": "Armored Only" },
